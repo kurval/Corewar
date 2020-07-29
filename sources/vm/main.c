@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:48:36 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/07/29 10:02:40 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/07/29 16:52:57 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int main(int ac, **av)
 {
-
+    return(0);
 }
