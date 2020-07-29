@@ -10,6 +10,8 @@ void			parse_file(int fd)
 	cursor.row = 0;
 	while (get_next_line(fd, &line))
 	{
-		ft_printf("%s\n", line);
+		cursor.col = 0;
+		tokens = tokenize(line, cursor);
+		cursor.row++;
 	}
 }

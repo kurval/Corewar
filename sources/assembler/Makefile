@@ -1,20 +1,8 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: atuomine <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/10/15 13:38:08 by atuomine          #+#    #+#              #
-#    Updated: 2020/01/24 11:57:56 by atuomine         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = asm
 INC = ../../libft/
 INC2 = ../../includes/
 INC3 = ../../libft/printf/includes/
-SRC =  main.c parse_file.c
+SRC =  main.c parse_file.c utils.c tokenize.c
 OBJECT = $(SRC:%.c=%.o)
 LIBRARY = ../../libft/libft.a
 
