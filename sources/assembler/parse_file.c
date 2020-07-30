@@ -30,16 +30,16 @@ void			parse_file(int fd)
 	t_cursor	cursor;
 	t_token		*tokens;
 	t_statement *statement;
-	
-	fd = open("test", O_RDONLY);
+	char		*tmp_line;
+
 	cursor.row = 1;
 	while (get_next_line(fd, &line))
 	{
 		cursor.col = 0;
-		validate_characters(line, cursor);
-		tokens = tokenize(line, cursor);
+		tmp_line = ft_strjoin(line, "\n");
+		tokens = tokenize(tmp_line, cursor);
+		free(tmp_line);
 		//print_tokens(tokens);
 		cursor.row++;
 	}
-	close(fd);
 }

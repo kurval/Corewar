@@ -110,7 +110,7 @@ typedef struct	s_token
 
 void			parse_file(int fd);
 int				is_valid_char(char c);
-void			validate_characters(char *line, t_cursor cursor);
+void			validate_characters(char *line, int col, int row, int end_point);
 int				skip_whitespaces(char *line, int i);
 int				skip_valid_chars(char *line, int i);
 t_token			*tokenize(char *line, t_cursor cursor);
@@ -119,5 +119,5 @@ int				find_last_char(char *str, int start, char *chars);
 char			*merge_strs(char *s1, char *s2, int place);
 void			handle_error(char *msg);
 void			check_params(int ac, char **av);
-
+void			lexical_error_tmp(t_cursor cursor);
 #endif

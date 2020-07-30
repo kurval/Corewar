@@ -1,8 +1,12 @@
 #include "asm.h"
 
-void	lexical_error(t_cursor cursor)
+/*
+** Temporary lexical error for testing
+*/
+
+void	lexical_error_tmp(t_cursor cursor)
 {
-	ft_printf("Lexical error [%d:%d]\n", cursor.row, cursor.col + 1);
+	ft_printf("Lexical error [%d:%d] (this message is temporary)\n", cursor.row, cursor.col + 1);
 	exit(1);
 }
 
@@ -13,18 +17,20 @@ int	is_valid_char(char c)
 	return (0);
 }
 
-void	validate_characters(char *line, t_cursor cursor)
+void	validate_characters(char *line, int col, int row, int end_point)
 {
-	cursor.col = 0;
-	while (line[cursor.col] && 
-	line[cursor.col] != COMMENT_CHAR && line[cursor.col] != '\n')
+	t_cursor cursor;
+
+	cursor.col = col;
+	cursor.row = row;
+	while (line[cursor.col] && cursor.col < end_point)
 	{
-		cursor.col = skip_whitespaces(line, cursor.col);
-		cursor.col = skip_valid_chars(line, cursor.col);
 		if (line[cursor.col] == COMMENT_CHAR || line[cursor.col] == '\n')
 			break ;
+		if (line[cursor.col] == '-' && ft_isdigit(line[cursor.col + 1]))
+			cursor.col++;
 		if (!is_valid_char(line[cursor.col]))
-			lexical_error(cursor);
+			lexical_error_tmp(cursor);
 		cursor.col++;
 	}
 }
