@@ -12,8 +12,31 @@
 
 #include "asm.h"
 
-int		main(int ac, char **av)
+/*
+** Main
+** 1. Check the params
+** 2. Try to open the .s file
+** 3. Parse file
+** 4. Try to close the .s file
+*/
+
+int	main(int ac, char **av)
 {
-	parse_file(0);
+	char	*msg;
+	int		fd;
+
+	check_params(ac, av);
+	if ((fd = open(av[1], O_RDONLY)) == -1)
+	{
+		msg = merge_strs("Can't read source file ", av[1], 23);
+		handle_error(msg);
+		ft_strdel(&msg);
+	}
+	if (close(fd) == -1)
+	{
+		msg = merge_strs("Can't close source file ", av[1], 23);
+		handle_error(msg);
+		ft_strdel(&msg);
+	}
 	return (0);
 }
