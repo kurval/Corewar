@@ -24,29 +24,57 @@ char			*create_edge_chars(void)
 {
 	char *chars;
 
-	chars = (char *)malloc(sizeof(char) * 10);
+	chars = (char *)malloc(sizeof(char) * 11);
 	chars = ft_strdup(" \t\n\r\v\f");
 	chars[6] = LABEL_CHAR;
 	chars[7] = COMMENT_CHAR;
 	chars[8] = SEPARATOR_CHAR;
 	chars[9] = DIRECT_CHAR;
-	chars[10] = '\0';
+	chars[10] = '-';
+	chars[11] = '\0';
 	return (chars);
 }
 
 int				skip_first_direct_and_label(char *line, t_cursor cursor,
-int	*label_usable)
+int	*has_label_or_direct)
 {
 	int i;
 
-	*label_usable = 1;
+	*has_label_or_direct = 0;
 	i = cursor.col;
 	if (line[i] == DIRECT_CHAR)
+	{
 		i++;
-	if (line[i] == LABEL_CHAR)
+		if (line[i] == LABEL_CHAR)
+		{
+			*has_label_or_direct = LABEL;
+			i++;
+		}
+		else if ((line[i] == '-' && ft_isdigit(line[i + 1])) ||
+		ft_isdigit(line[i]))
+		{
+			*has_label_or_direct = DIRECT;
+			i++;
+		}
+		else
+			lexical_error_tmp(cursor);
+	}
+	else if (line[i] == LABEL_CHAR)
+	{
+		*has_label_or_direct = LABEL;
 		i++;
-	if (i != cursor.col)
-		*label_usable = 0;
+	}
+	return (i);
+}
+
+int		skip_number(char *line, int start)
+{
+	int i;
+
+	i = start;
+	i = (line[i] == '-' ? start + 1 : start);
+	while (ft_isdigit(line[i]))
+		i++;
 	return (i);
 }
 
@@ -54,17 +82,21 @@ int	*label_usable)
 **	Checks if there are lexical errors in the current token bit,
 **	and sets token end (the index of the limiting character).
 **
-**	Example:
+**	Example 1:
 **
-**	% : l a b e l ,			0 - cursor.col	2 - token_content_start
+**	% : l a b e l :			0 - cursor.col	2 - token_content_start
 **	0 1 2 3 4 5 6 7			7 - *token_end
+**
+**	Example 2;
+**	l a b e l :				0 - cursor.col	0 - token_content_start
+**	0 1 2 3 4 5 6 7			6 - *token_end
 */
 
 void			check_for_lexical_error(char *line, t_cursor cursor,
 int *token_end, char *edge_chars)
 {
 	int		token_content_start;
-	int		is_label_usable;
+	int		has_label_or_direct;
 
 	if (line[cursor.col] == SEPARATOR_CHAR)
 	{
@@ -73,12 +105,14 @@ int *token_end, char *edge_chars)
 	}
 	else
 	{
-		token_content_start = skip_first_direct_and_label(line, cursor, &is_label_usable);
+		token_content_start = skip_first_direct_and_label(line, cursor, &has_label_or_direct);
+		if (has_label_or_direct == DIRECT) //ADD A CASE IF LINE STARTING AT THIS POINT IS A NUMBER SKIP IT
+			*token_end = skip_number(line, token_content_start);
+		else
+		{
 		*token_end = find_first_char(line, token_content_start, edge_chars);
 		validate_characters(line, token_content_start, cursor.row, *token_end);
-		if (is_label_usable && line[*token_end] == LABEL_CHAR &&
-		ft_strchr(edge_chars, line[*token_end + 1]))
-		{
+		if (!has_label_or_direct && line[*token_end] == LABEL_CHAR)
 			*token_end = *token_end + 1;
 		}
 	}
