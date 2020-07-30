@@ -28,13 +28,13 @@ int	main(int ac, char **av)
 	check_params(ac, av);
 	if ((fd = open(av[1], O_RDONLY)) == -1)
 	{
-		msg = merge_strs("Can't read source file ", av[1], 23);
+		msg = merge_strs("Can't read source file %s", av[1]);
 		handle_error(msg);
 		ft_strdel(&msg);
 	}
 	if (close(fd) == -1)
 	{
-		msg = merge_strs("Can't close source file ", av[1], 23);
+		msg = merge_strs("Can't close source file %s", av[1]);
 		handle_error(msg);
 		ft_strdel(&msg);
 	}
