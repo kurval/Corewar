@@ -14,7 +14,7 @@ NAME = asm
 INC = ../../libft/
 INC2 = ../../includes/
 INC3 = ../../libft/printf/includes/
-SRC =  main.c parse_file.c utils.c tokenize.c
+SRC =  main.c parse_file.c utils.c tokenize.c validate_characters.c
 OBJECT = $(SRC:%.c=%.o)
 LIBRARY = ../../libft/libft.a
 

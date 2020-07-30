@@ -14,7 +14,7 @@
 
 t_token			*make_token(char *line, t_cursor *cursor)
 {
-	t_token		*token = NULL;
+	t_token	*token = NULL;
 
 	cursor->col++;
 	return (token);
@@ -29,21 +29,16 @@ t_token			*tokenize(char *line, t_cursor cursor)
 	while (line[cursor.col])
 	{
 		cursor.col = skip_whitespaces(line, cursor.col);
-		ft_printf("cursor col %d\n", cursor.col);
-		if (is_valid_char(line[cursor.col]))
+		if (!head)
 		{
-			if (!head)
-			{
-				token = make_token(line, &cursor);
-				head = token;
-			}
-			else
-			{
-				token->next = make_token(line, &cursor);
-				token = token->next;
-			}
+			token = make_token(line, &cursor);
+			head = token;
 		}
-		ft_printf("cursor col %d after\n", cursor.col);
+		else
+		{
+			token->next = make_token(line, &cursor);
+			token = token->next;
+		}
 	}
 	return (head);
 }

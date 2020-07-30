@@ -67,7 +67,9 @@ typedef struct	s_token
 
 void	parse_file(int fd);
 int		is_valid_char(char c);
+void	validate_characters(char *line, t_cursor cursor);
 int		skip_whitespaces(char *line, int i);
+int		skip_valid_chars(char *line, int i);
 t_token	*tokenize(char *line, t_cursor cursor);
 int		find_first_char(char *str, int start, char *chars);
 int		find_last_char(char *str, int start, char *chars);
