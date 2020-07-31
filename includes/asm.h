@@ -18,21 +18,22 @@
 */
 
 # include <fcntl.h>
-
 # include "libft.h"
 # include "get_next_line.h"
 # include "printf.h"
 # include "op.h"
 
-# define INSTRUCTION 1
-# define LABEL 2
-# define REGISTER 4
-# define SEPARATOR 8
-# define DIRECT 16
-# define DIRECT_LABEL 32
-# define INDIRECT 64
-# define INDIRECT_LABEL 128
-# define STRING 256
+# define REGISTER T_REG
+# define DIRECT T_DIR
+# define INDIRECT T_IND
+# define INSTRUCTION 8
+# define LABEL 16
+# define SEPARATOR 32
+# define STRING 64
+# define CMD_STR 128
+# define ARG_LABEL 256
+# define DIRECT_LABEL 258
+# define INDIRECT_LABEL 260
 
 /*
 ** T_champ
@@ -108,14 +109,19 @@ typedef struct	s_token
 	struct s_token	*next;
 }				t_token;
 
+int				overlap(int type1, int type2);
 void			parse_file(int fd);
 int				is_valid_char(char c);
+void			validate_characters(char *line, int col, int row,
+				int end_point);
 int				skip_whitespaces(char *line, int i);
+int				skip_valid_chars(char *line, int i);
 t_token			*tokenize(char *line, t_cursor cursor);
 int				find_first_char(char *str, int start, char *chars);
 int				find_last_char(char *str, int start, char *chars);
 char			*merge_strs(char *s1, char *s2);
 void			handle_error(char *msg);
 void			check_params(int ac, char **av);
+void			lexical_error_tmp(t_cursor cursor);
 
 #endif
