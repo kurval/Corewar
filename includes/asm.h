@@ -116,7 +116,7 @@ int				skip_valid_chars(char *line, int i);
 t_token			*tokenize(char *line, t_cursor cursor);
 int				find_first_char(char *str, int start, char *chars);
 int				find_last_char(char *str, int start, char *chars);
-char			*merge_strs(char *s1, char *s2, int place);
+char			*merge_strs(char *s1, char *s2);
 void			handle_error(char *msg);
 void			check_params(int ac, char **av);
 void			lexical_error_tmp(t_cursor cursor);
