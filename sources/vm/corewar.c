@@ -3,16 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/29 09:48:36 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/07/29 16:52:57 by vkurkela         ###   ########.fr       */
+/*   Created: 2020/08/02 15:30:41 by bkonjuha          #+#    #+#             */
+/*   Updated: 2020/08/02 15:55:23 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/corewar.h"
+#include "../../includes/corewar.h"
+#include "../../libft/libft.h"
 
-int main(int ac, **av)
+int	main(int ac, char **av)
 {
-    return(0);
+	if (ac >= 2)
+	{
+		ft_putstr(av[1]);
+		t_vm *vm = init_vm();
+
+	}
+	return (0);
 }
