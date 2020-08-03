@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-int				skip_whitespaces(char *line, int i)
+int	skip_whitespaces(char *line, int i)
 {
 	char whitespaces[] = " \t\r\v\f";
 
@@ -25,23 +25,16 @@ int				skip_whitespaces(char *line, int i)
 	return (i);
 }
 
-int				skip_valid_chars(char *line, int i)
+int	ft_isnum(char *str)
 {
-	while (line[i] && (line[i] == LABEL_CHAR ||
-	line[i] == SEPARATOR_CHAR || line[i] == DIRECT_CHAR ||
-	line[i] == '"' || line[i] == '-'))
+	int	i;
+
+	i = (str[0] == '-' ? 1 : 0);
+	while (str[i])
 	{
-		
-		if (line[i] == '"')
-		{
-			i++;
-			while (line[i] && line[i] != '\n' && line[i] != COMMENT_CHAR &&
-			line[i] != '"')
-				i++;
-		}
-		if (!line[i])
-			break ;
+		if (ft_isdigit(str[i]) != 1)
+			return (0);
 		i++;
 	}
-	return (i);
+	return (1);
 }

@@ -23,6 +23,12 @@
 # include "printf.h"
 # include "op.h"
 
+/*
+** Defines for different token types.
+** Note that ARG_LABEL is only a mask for dir and indir labels
+** and not an actual token type.
+*/
+
 # define REGISTER T_REG
 # define DIRECT T_DIR
 # define INDIRECT T_IND
@@ -34,6 +40,7 @@
 # define ARG_LABEL 256
 # define DIRECT_LABEL 258
 # define INDIRECT_LABEL 260
+# define ENDLINE 512
 
 /*
 ** T_champ
@@ -113,15 +120,19 @@ int				overlap(int type1, int type2);
 void			parse_file(int fd);
 int				is_valid_char(char c);
 void			validate_characters(char *line, int col, int row,
-				int end_point);
+				int *end_point);
+int				validate_number(char *line, int start, t_cursor cursor);
+int				validate_cmd_str(char *line, t_cursor cursor);
 int				skip_whitespaces(char *line, int i);
 int				skip_valid_chars(char *line, int i);
-t_token			*tokenize(char *line, t_cursor cursor);
+t_token			*tokenize(char *line, t_cursor cursor, char *edge_chars);
 int				find_first_char(char *str, int start, char *chars);
 int				find_last_char(char *str, int start, char *chars);
 char			*merge_strs(char *s1, char *s2);
 void			handle_error(char *msg);
 void			check_params(int ac, char **av);
 void			lexical_error_tmp(t_cursor cursor);
-
+void			check_for_lexical_error(char *line, t_cursor cursor,
+				int *token_end, char *edge_chars);
+int				ft_isnum(char *str);
 #endif
