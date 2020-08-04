@@ -33,7 +33,7 @@ static int	get_line_len(char **s)
 		if ((*s)[len] == '"')
 			str_char_count++;
 		len++;
-		if ((*s)[len] == '\n' && str_char_count % 2 != 0)
+		while ((*s)[len] == '\n' && str_char_count % 2 != 0)
 			len++;
 	}
 	return (len);
