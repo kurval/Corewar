@@ -135,4 +135,6 @@ void			lexical_error_tmp(t_cursor cursor);
 void			check_for_lexical_error(char *line, t_cursor cursor,
 				int *token_end, char *edge_chars);
 int				ft_isnum(char *str);
+int				asm_gnl(const int fd, char **line);
+int				count_string_chars(char *str);
 #endif

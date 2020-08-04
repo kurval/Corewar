@@ -14,11 +14,9 @@
 
 int	skip_whitespaces(char *line, int i)
 {
-	char whitespaces[] = " \t\r\v\f";
-
 	while (line[i])
 	{
-		if (!ft_strchr(whitespaces, line[i]))
+		if (!ft_strchr(" \t\r\v\f", line[i]))
 			return (i);
 		i++;
 	}
@@ -37,4 +35,20 @@ int	ft_isnum(char *str)
 		i++;
 	}
 	return (1);
+}
+
+int	count_string_chars(char *str)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (str[i] == '"')
+			count++;
+		i++;
+	}
+	return (count);
 }

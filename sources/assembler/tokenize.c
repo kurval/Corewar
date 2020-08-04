@@ -57,7 +57,10 @@ t_token			*make_token(char *line, t_cursor *cursor, int end)
 
 	token = (t_token *)malloc(sizeof(t_token));
 	token->next = NULL;
-	token->content = ft_strsub(line, cursor->col, (size_t)(end - cursor->col));
+	if (end != -1)
+		token->content = ft_strsub(line, cursor->col, end - cursor->col);
+	else
+		token->content = ft_strdup(&line[cursor->col]);
 	token->cursor = copy_cursor(*cursor);
 	token->type = determine_token_type(token->content, end - cursor->col);
 	cursor->col = end;

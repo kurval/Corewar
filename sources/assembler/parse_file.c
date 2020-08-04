@@ -77,17 +77,14 @@ void			parse_file(int fd)
 	t_cursor	cursor;
 	t_token		*tokens;
 	t_statement *statement;
-	char		*tmp_line; //This will be deleted when gnl is fixed
 	char		*edge_chars;
 
 	cursor.row = 1;
 	edge_chars = create_edge_chars();
-	while (get_next_line(fd, &line))
+	while (asm_gnl(fd, &line))
 	{
 		cursor.col = 0;
-		tmp_line = ft_strjoin(line, "\n"); //this is temporary until gnl is fixed
-		tokens = tokenize(tmp_line, cursor, edge_chars);
-		free(tmp_line);
+		tokens = tokenize(line, cursor, edge_chars);
 		free(line);
 		print_tokens(tokens);
 		cursor.row++;
