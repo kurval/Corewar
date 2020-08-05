@@ -32,12 +32,37 @@ int		open_corefile(char *s_filename, int filename_len)
 	return (fd);
 }
 
+void	insert_magic_header(int fd)
+{
+	int		magic;
+	int		byte;
+	char	output[4];
+	int		i;
+
+	magic = COREWAR_EXEC_MAGIC;
+	i = 3;
+	while (byte && i > -1)
+	{
+		byte = (magic & 0xFF);
+		output[i] = (char)byte;
+		magic = (magic >> 8);
+		i--;
+	}
+	i = 0;
+	while (i < 4)
+	{
+		ft_putchar_fd(output[i], fd);
+		i++;
+	}
+}
+
 void	make_cor_file(char *s_filename, t_asm assembler)
 {
 	int		fd;
 	char	*msg;
 
 	fd = open_corefile(s_filename, ft_strlen(s_filename) - 2);
+	insert_magic_header(fd);
 	if (close(fd) == -1)
 	{
 		msg = merge_strs("Can't close source file %s", s_filename);
