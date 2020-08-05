@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_champion.c                                :+:      :+:    :+:   */
+/*   validate_champions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:45:03 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/02 16:56:58 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/04 20:50:42 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ends_with_cor(char *s)
 	i = 0;
 	while(s[i])
 		i++;
-	if (!ft_strequ(s + i - 4, ".cor"))
+	if (!(ft_strequ(s + i - 4, ".cor")))
 		return (0);
 	return (1);
 }
@@ -27,13 +27,25 @@ static int	ends_with_cor(char *s)
 static int	is_valid_length(char *s)
 {
 	int fd;
+	long long num;
 
-	fd = open(s, O_RDONLY);
-
+	if((fd = open(s, O_RDONLY)) < 0)
+		ft_errno(INPUT_ERROR);
+	else if((num = lseek(fd, 0, SEEK_END) - COREWAR_EXEC_MAGIC) > CHAMP_MAX_SIZE)
+		ft_errno(INPUT_ERROR);
+	ft_printf("It's fine\n");
+	close(fd);
+	return (1);
 }
 
-char		*validate_chapion(char *s)
+void			validate_chapions(char **s)
 {
-	if (!(ends_with_cor(s) || is_valid_length(s)))
-		ft_errno(INPUT_ERROR);
+	int i;
+
+	i = 0;
+	while (s[++i])
+	{
+		if (!ends_with_cor(s[i]) || !is_valid_length(s[i]))
+			ft_errno(INPUT_ERROR);
+	}
 }

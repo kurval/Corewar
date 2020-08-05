@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_errno.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:16 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/02 15:52:30 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/03 21:02:55 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/corewar.h"
-#include "../libft/libft.h"
+#include "../../includes/corewar.h"
+#include "../../libft/libft.h"
 
 void	ft_errno(char *s)
 {

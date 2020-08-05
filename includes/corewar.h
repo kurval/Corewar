@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/02 16:56:16 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/04 22:15:39 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 # include "corewar_error.h"
 # include "../libft/libft.h"
 # include "../libft/get_next_line.h"
+# include "../libft/printf/includes/printf.h"
+# include <stdio.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 typedef struct		s_arena
 {
@@ -44,10 +49,15 @@ typedef struct		s_player
 {
 	int				id;
 	char			*name;
-	char			*comment;
 	int				executable_size;
 	char			*code;
 	int				live;
+	//				Meant for T_Header VVVV
+	unsigned int	magic;
+	char			prog_name[PROG_NAME_LENGTH + 1];
+	unsigned int	prog_size;
+	char			comment[COMMENT_LENGTH + 1];
+	//				Meant for t_header /\/\/
 	t_process		proc;
 }					t_player;
 
@@ -72,5 +82,13 @@ t_vm				*init_vm(void);
 */
 
 void				ft_errno(char *id);
+
+/*
+**					PARSE INPUT FUNCTIONS
+*/
+
+void				validate_chapions(char **s);
+
+void				parse_input(char **av, t_vm *vm);
 
 #endif

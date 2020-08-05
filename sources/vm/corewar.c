@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   corewar.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:30:41 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/02 15:55:23 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/04 22:29:08 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 
 int	main(int ac, char **av)
 {
+	t_vm *vm;
+
 	if (ac >= 2)
 	{
-		ft_putstr(av[1]);
-		t_vm *vm = init_vm();
-
+		vm = init_vm();
+		validate_chapions(av);
+		parse_input(av, vm);
+		ft_printf("\n ending %p\n", vm->checks);
 	}
 	return (0);
 }
