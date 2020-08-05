@@ -1,3 +1,3 @@
-.name "asd
+.name	"asd
 aaaaa
 asdsdf"

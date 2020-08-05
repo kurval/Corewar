@@ -11,34 +11,51 @@
 /* ************************************************************************** */
 
 #include "asm.h"
-#include <sys/errno.h>
 
 /*
-** Main
+** Handle file
 ** 1. Check the params
 ** 2. Try to open the .s file
 ** 3. Parse file
 ** 4. Try to close the .s file
+** 5. Return file info in assembler struct
 */
 
-int	main(int ac, char **av)
+static t_asm	handle_file(char *filename)
 {
-	char	*msg;
 	int		fd;
+	char	*msg;
+	t_asm	assembler;
 
-	check_params(ac, av);
-	if ((fd = open(av[1], O_RDONLY)) == -1)
+	if ((fd = open(filename, O_RDONLY)) == -1)
 	{
-		msg = merge_strs("Can't read source file %s", av[1]);
+		msg = merge_strs("Can't read source file %s", filename);
 		handle_error(msg);
 		ft_strdel(&msg);
 	}
-	parse_file(fd);
+	parse_file(fd, &assembler);
 	if (close(fd) == -1)
 	{
-		msg = merge_strs("Can't close source file %s", av[1]);
+		msg = merge_strs("Can't close source file %s", filename);
 		handle_error(msg);
 		ft_strdel(&msg);
 	}
+	return (assembler);
+}
+
+/*
+** Main
+** 1. Check the params
+** 2. Save info in file given as argument in assembler struct
+** (3. Temporary automatic leaks test with system function)
+*/
+
+int				main(int ac, char **av)
+{
+	t_asm		assembler;
+
+	check_params(ac, av);
+	assembler = handle_file(av[1]);
+	system("leaks asm");
 	return (0);
 }

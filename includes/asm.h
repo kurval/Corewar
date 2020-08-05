@@ -102,11 +102,24 @@ typedef struct	s_label
 	struct s_label	*next;
 }				t_label;
 
+/*
+** T_cursor
+** The current location row and column
+*/
+
 typedef struct	s_cursor
 {
 	int	row;
 	int	col;
 }				t_cursor;
+
+/*
+** T_token
+** Contains information on each .s file component
+** Example line: .name "Matti"
+** token 1: | type: CMD_STR | content: .name   | cursor: [row 1 pos 0] |
+** token 2: | type: STRING  | content: "Matti" | cursor: [row 1 pos 6] |
+*/
 
 typedef struct	s_token
 {
@@ -116,8 +129,23 @@ typedef struct	s_token
 	struct s_token	*next;
 }				t_token;
 
+/*
+** T_asm
+** Contains lists and other important information needed in this project
+** champ: champion name and comment
+** statements: A list of all the statements
+** tokens: A list of all the tokens
+*/
+
+typedef struct	s_asm
+{
+	t_champ		champ;
+	t_statement	*statements;
+	t_token		*tokens;
+}				t_asm;
+
 int				overlap(int type1, int type2);
-void			parse_file(int fd);
+void			parse_file(int fd, t_asm *assembler);
 int				is_valid_char(char c);
 void			validate_characters(char *line, int col, int row,
 				int *end_point);
