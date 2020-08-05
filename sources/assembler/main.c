@@ -56,7 +56,7 @@ static t_asm	handle_file(char *filename)
 #include <stdio.h>
 
 void			print_op(t_op *op)
-{
+{ 
 	int	i;
 
 	printf("op\n");
@@ -89,6 +89,7 @@ int				main(int ac, char **av)
 	assembler = handle_file(av[1]);
 	op = get_op();
 	//print_op(op);
+	make_cor_file(av[1], assembler);
 	system("leaks asm");
 	return (0);
 }

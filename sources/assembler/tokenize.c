@@ -74,12 +74,11 @@ t_cursor cursor, char *line)
 
 	while (line[cursor.col] && line[cursor.col] != '\n')
 		cursor.col++;
+	if (!line[cursor.col])
+		return (head);
 	endline = (t_token *)malloc(sizeof(t_token));
 	endline->next = NULL;
-	if (!line[cursor.col])
-		endline->content = NULL;
-	else
-		endline->content = ft_strdup("\n");
+	endline->content = ft_strdup("\n");
 	endline->type = ENDLINE;
 	endline->cursor = copy_cursor(cursor);
 	if (!head)

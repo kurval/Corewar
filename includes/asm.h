@@ -175,5 +175,6 @@ int				ft_isnum(char *str);
 int				asm_gnl(const int fd, char **line);
 int				count_string_chars(char *str);
 t_op			*get_op(void);
+void			make_cor_file(char *s_filename, t_asm assembler);
 
 #endif
