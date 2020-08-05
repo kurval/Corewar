@@ -56,6 +56,7 @@ int				main(int ac, char **av)
 
 	check_params(ac, av);
 	assembler = handle_file(av[1]);
+	make_cor_file(av[1], assembler);
 	system("leaks asm");
 	return (0);
 }
