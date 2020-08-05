@@ -15,7 +15,7 @@ INC = ../../libft/
 INC2 = ../../includes/
 INC3 = ../../libft/printf/includes/
 SRC =  main.c parse_file.c utils.c tokenize.c find_first_char.c check_params.c \
-validate.c overlap.c check_for_lexical_error.c asm_gnl.c
+validate.c overlap.c check_for_lexical_error.c asm_gnl.c get_op.c
 OBJECT = $(SRC:%.c=%.o)
 LIBRARY = ../../libft/libft.a
 

@@ -47,15 +47,48 @@ static t_asm	handle_file(char *filename)
 ** Main
 ** 1. Check the params
 ** 2. Save info in file given as argument in assembler struct
-** (3. Temporary automatic leaks test with system function)
+** 3 Create op linked list.
+** (3.2 Print op to check its validity)
+** (4. Temporary automatic leaks test with system function)
+*/
+
+/*
+#include <stdio.h>
+
+void			print_op(t_op *op)
+{
+	int	i;
+
+	printf("op\n");
+	while (op)
+	{
+		printf("\n");
+		printf("instr_name: %s\n", op->instr_name);
+		printf("argc: %d\n", op->argc);
+		printf("argv: ");
+		i = 0;
+		while (i < op->argc)
+		{
+			if (i)
+				printf(", ");
+			printf("%d", op->argv[i++]);
+		}
+		printf("\n");
+		printf("instr_code: %d\n", op->instr_code);
+		op = op->next;
+	}
+}
 */
 
 int				main(int ac, char **av)
 {
 	t_asm		assembler;
+	t_op		*op;
 
 	check_params(ac, av);
 	assembler = handle_file(av[1]);
+	op = get_op();
+	//print_op(op);
 	system("leaks asm");
 	return (0);
 }

@@ -144,6 +144,15 @@ typedef struct	s_asm
 	t_token		*tokens;
 }				t_asm;
 
+typedef struct	s_op
+{
+	char		*instr_name;
+	int			argc;
+	int			*argv;
+	int			instr_code;
+	struct s_op	*next;
+}				t_op;
+
 int				overlap(int type1, int type2);
 void			parse_file(int fd, t_asm *assembler);
 int				is_valid_char(char c);
@@ -165,4 +174,6 @@ void			check_for_lexical_error(char *line, t_cursor cursor,
 int				ft_isnum(char *str);
 int				asm_gnl(const int fd, char **line);
 int				count_string_chars(char *str);
+t_op			*get_op(void);
+
 #endif
