@@ -6,7 +6,7 @@
 #    By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/08/04 20:39:50 by bkonjuha         ###   ########.fr        #
+#    Updated: 2020/08/05 10:56:32 by bkonjuha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ C = $(addprefix $(MAIN_PATH), $(C_MAIN))
 
 INCLUDES = -I ./includes/
 HEADER_PATH = ./includes/
-HEADER_FILES = corewar.h corewar_error.h asm.h
+HEADER_FILES = corewar.h corewar_error.h asm.h op.h
 HEADERS = $(addprefix $(HEADER_PATH), $(HEADER_FILES))
 COMPILE = gcc -Wall -Werror -Wextra -g # remove g flag before turning the assignment in
 

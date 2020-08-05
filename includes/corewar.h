@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/04 22:15:39 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/05 10:58:07 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct		s_player
 	unsigned int	prog_size;
 	char			comment[COMMENT_LENGTH + 1];
 	//				Meant for t_header /\/\/
+	header_t		header;
 	t_process		proc;
 }					t_player;
 
