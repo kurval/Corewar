@@ -42,6 +42,8 @@
 # define INDIRECT_LABEL 260
 # define ENDLINE 512
 
+# define IS_ODD(nbr) (nbr % 2)
+
 /*
 ** T_champ
 ** Done: Indicates if champion values have been saved
@@ -129,6 +131,15 @@ typedef struct	s_token
 	struct s_token	*next;
 }				t_token;
 
+typedef struct	s_op
+{
+	char		*instr_name;
+	int			argc;
+	int			*argv;
+	int			instr_code;
+	struct s_op	*next;
+}				t_op;
+
 /*
 ** T_asm
 ** Contains lists and other important information needed in this project
@@ -139,19 +150,11 @@ typedef struct	s_token
 
 typedef struct	s_asm
 {
+	t_op		*op;
 	t_champ		champ;
 	t_statement	*statements;
 	t_token		*tokens;
 }				t_asm;
-
-typedef struct	s_op
-{
-	char		*instr_name;
-	int			argc;
-	int			*argv;
-	int			instr_code;
-	struct s_op	*next;
-}				t_op;
 
 int				overlap(int type1, int type2);
 void			parse_file(int fd, t_asm *assembler);
@@ -176,5 +179,6 @@ int				asm_gnl(const int fd, char **line);
 int				count_string_chars(char *str);
 t_op			*get_op(void);
 void			make_cor_file(char *s_filename, t_asm assembler);
+void			check_token_order(t_token *token, t_op *op);
 
 #endif
