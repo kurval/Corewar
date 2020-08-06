@@ -24,71 +24,68 @@
 */
 
 /*
-#include <stdio.h>
-
-void			print_op(t_op *op)
-{
-	int	i;
-
-	printf("op\n");
-	while (op)
-	{
-		printf("\n");
-		printf("instr_name: %s\n", op->instr_name);
-		printf("argc: %d\n", op->argc);
-		printf("argv: ");
-		i = 0;
-		while (i < op->argc)
-		{
-			if (i)
-				printf(", ");
-			printf("%d", op->argv[i++]);
-		}
-		printf("\n");
-		printf("instr_code: %d\n", op->instr_code);
-		op = op->next;
-	}
-}
+** #include <stdio.h>
+**
+** void			print_op(t_op *op)
+** {
+** 	int	i;
+**
+** 	printf("op\n");
+** 	while (op)
+** 	{
+** 		printf("\n");
+** 		printf("instr_name: %s\n", op->instr_name);
+** 		printf("argc: %d\n", op->argc);
+** 		printf("argv: ");
+** 		i = 0;
+** 		while (i < op->argc)
+** 		{
+** 			if (i)
+** 				printf(", ");
+** 			printf("%d", op->argv[i++]);
+** 		}
+** 		printf("\n");
+** 		printf("instr_code: %d\n", op->instr_code);
+** 		op = op->next;
+** 	}
+** }
 */
 
 static t_asm	handle_file(char *filename)
 {
+	t_asm	assembler;
 	int		fd;
 	char	*msg;
-	t_asm	assembler;
 
 	if ((fd = open(filename, O_RDONLY)) == -1)
 	{
-		msg = merge_strs("Can't read source file %s", filename);
+		msg = add_str_to_str("Can't read source file %s", filename);
 		handle_error(msg);
-		ft_strdel(&msg);
 	}
 	assembler.op = get_op();
-	//print_op(assembler.op);
 	parse_file(fd, &assembler);
 	if (close(fd) == -1)
 	{
-		msg = merge_strs("Can't close source file %s", filename);
+		msg = add_str_to_str("Can't close source file %s", filename);
 		handle_error(msg);
-		ft_strdel(&msg);
 	}
 	return (assembler);
 }
 
 /*
 ** Main
-** 1. Check the params
+** 1. Check the args
 ** 2. Save info in file given as argument in assembler struct
 ** (3. Temporary automatic leaks test with system function)
 */
 
-int				main(int ac, char **av)
+int				main(int argc, char **argv)
 {
 	t_asm		assembler;
 
-	check_params(ac, av);
-	assembler = handle_file(av[1]);
-	make_cor_file(av[1], assembler);
+	check_args(argc, argv);
+	assembler = handle_file(argv[1]);
+	make_cor_file(argv[1], assembler);
 	system("leaks asm");
 	return (0);
 }

@@ -42,7 +42,7 @@
 # define INDIRECT_LABEL 260
 # define ENDLINE 512
 
-# define IS_ODD(nbr) (nbr % 2)
+# define MALLOC_ERROR "Malloc error"
 
 /*
 ** T_champ
@@ -168,9 +168,9 @@ int				skip_valid_chars(char *line, int i);
 t_token			*tokenize(char *line, t_cursor cursor, char *edge_chars);
 int				find_first_char(char *str, int start, char *chars);
 int				find_last_char(char *str, int start, char *chars);
-char			*merge_strs(char *s1, char *s2);
+char			*add_str_to_str(char *s1, char *s2);
 void			handle_error(char *msg);
-void			check_params(int ac, char **av);
+void			check_args(int ac, char **av);
 void			lexical_error_tmp(t_cursor cursor);
 void			check_for_lexical_error(char *line, t_cursor cursor,
 				int *token_end, char *edge_chars);
@@ -179,6 +179,13 @@ int				asm_gnl(const int fd, char **line);
 int				count_string_chars(char *str);
 t_op			*get_op(void);
 void			make_cor_file(char *s_filename, t_asm assembler);
-void			check_token_order(t_token *token, t_op *op);
+void			check_token_order(t_token *token);
+char			*pad_nbr(int nbr, int size);
+char			*token_type_str(int type);
+int				find_first_str(char *haystack, int start, char *needle);
+char			*add_strs_to_str(char *str, char **strs);
+char			*join_free_strs(char *s1, char *s2);
+void			del_array(char **array);
+void			handle_syntax_error(t_token *token);
 
 #endif

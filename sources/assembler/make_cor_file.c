@@ -24,9 +24,8 @@ int		open_corefile(char *s_filename, int filename_len)
 	c_filename[filename_len + 4] = '\0';
 	if ((fd = open(c_filename, O_WRONLY | O_CREAT, 0755)) == -1)
 	{
-		msg = merge_strs("Can't create file %s", c_filename);
+		msg = add_str_to_str("Can't create file %s", c_filename);
 		handle_error(msg);
-		ft_strdel(&msg);
 	}
 	free(c_filename);
 	return (fd);
@@ -65,8 +64,7 @@ void	make_cor_file(char *s_filename, t_asm assembler)
 	insert_magic_header(fd);
 	if (close(fd) == -1)
 	{
-		msg = merge_strs("Can't close source file %s", s_filename);
+		msg = add_str_to_str("Can't close source file %s", s_filename);
 		handle_error(msg);
-		ft_strdel(&msg);
 	}
 }

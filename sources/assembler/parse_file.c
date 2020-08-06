@@ -101,7 +101,7 @@ void			parse_file(int fd, t_asm *assembler)
 		cursor.col = 0;
 		assembler->tokens = tokenize(line, cursor, edge_chars);
 		//token validation functions here
-		check_token_order(assembler->tokens, assembler->op);
+		check_token_order(assembler->tokens);
 		ft_strdel(&line);
 		print_tokens(assembler->tokens);
 		//assembler->statements = function that saves the
