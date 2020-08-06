@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/05 10:58:07 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/06 13:03:52 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ typedef struct		s_vm
 	int				cycles;
 	int				current_cycle;
 	int				checks;
+	int				lives;
+	int				ctd;
 }					t_vm;
 
 /*
@@ -77,6 +79,7 @@ typedef struct		s_vm
 */
 
 t_vm				*init_vm(void);
+void				run_cycles(t_vm *cor);
 
 /*
 **					HELPER FUNCTIONS

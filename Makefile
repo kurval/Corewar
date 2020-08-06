@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+         #
+#    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/08/05 10:56:32 by bkonjuha         ###   ########.fr        #
+#    Updated: 2020/08/06 11:50:11 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ ASM = asm
 COREWAR = COREWAR
 
 VM_SRC_PATH = ./sources/vm/
-SRC_FILES = ft_errno.c init_vm.c parse_input.c validate_champions.c
+SRC_FILES = ft_errno.c init_vm.c parse_input.c validate_champions.c run_cycles.c
 SRC = $(addprefix $(VM_SRC_PATH), $(SRC_FILES))
 
 MAIN_PATH = ./sources/vm/
@@ -42,7 +42,7 @@ COLOR_PENDING = \033[0;33m
 COLOR_SUCCESS = \033[0;32m
 COLOR_DEFAULT = \033[1;34m
 
-all: $(COREWAR) $(ASM)
+all: $(COREWAR)
 
 $(COREWAR): $(HEADERS) $(LIBFT) $(PRINTF)
 		@$(COMPILE) $(C) $(SRC) $(LIBFT) $(PRINTF) -o $(COREWAR)
