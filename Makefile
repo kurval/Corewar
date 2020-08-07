@@ -6,12 +6,12 @@
 #    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/08/06 11:50:11 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/08/07 14:50:39 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ASM = asm
-COREWAR = COREWAR
+COREWAR = corewar
 
 VM_SRC_PATH = ./sources/vm/
 SRC_FILES = ft_errno.c init_vm.c parse_input.c validate_champions.c run_cycles.c

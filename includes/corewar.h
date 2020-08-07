@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/07 11:29:49 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/07 14:34:53 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ typedef struct		s_vm
 **					VM FUNCTIONS
 */
 
-t_vm				*init_vm(void);
+void				init_vm(t_vm *vm);
 void				run_cycles(t_vm *cor);
 
 /*
