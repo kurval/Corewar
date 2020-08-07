@@ -64,7 +64,7 @@ void	lexical_error(t_cursor cursor)
 	if (!(cursor_str = (char **)malloc(sizeof(char *) * 3)))
 		handle_error(MALLOC_ERROR);
 	cursor_str[0] = ft_itoa(cursor.row);
-	cursor_str[1] = ft_itoa(cursor.col);
+	cursor_str[1] = ft_itoa(cursor.col + 1);
 	cursor_str[2] = NULL;
 	msg = add_strs_to_str("Lexical error at [%s:%s]", cursor_str);
 	del_array(cursor_str);
@@ -80,6 +80,6 @@ void		handle_error(char *msg)
 {
 	ft_putstr_fd(msg, 2);
 	ft_putstr_fd("\n", 2);
-	system("leaks asm");
+	//system("leaks asm");
 	exit(EXIT_FAILURE);
 }
