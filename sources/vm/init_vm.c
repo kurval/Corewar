@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:33:54 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/06 13:04:08 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/07 11:30:55 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ t_vm	*init_vm(void)
 	vm->last_live_id = 0;
 	vm->ctd = CYCLE_TO_DIE;
 	vm->lives = 0;
+	vm->dump_cycle = 0;
 	return (vm);
 }
