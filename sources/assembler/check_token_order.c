@@ -34,7 +34,7 @@
 ** }
 */
 
-char	*pad_nbr(int nbr, int size)
+char		*pad_nbr(int nbr, int size)
 {
 	char	*padded_nbr;
 	char	*s1;
@@ -55,7 +55,7 @@ char	*pad_nbr(int nbr, int size)
 	return (padded_nbr);
 }
 
-void	handle_syntax_error(t_token *token)
+void		handle_syntax_error(t_token *token)
 {
 	char	*syntax_error;
 	char	**strs;
@@ -82,7 +82,15 @@ void	handle_syntax_error(t_token *token)
 	handle_error(syntax_error);
 }
 
-void	check_token_order(t_token *token)
+static int	is_arg_or_sep(int ord, int type)
+{
+	if ((!(ord % 2) && overlap((T_REG | T_DIR | T_IND), type)) ||
+	(ord % 2 && type == SEPARATOR))
+		return (1);
+	return (0);
+}
+
+void		check_token_order(t_token *token)
 {
 	int	i;
 
@@ -101,8 +109,7 @@ void	check_token_order(t_token *token)
 		{
 			token = token->next;
 			i = 0;
-			while (token && ((!(i % 2) && overlap((T_REG | T_DIR | T_IND),
-			token->type)) || (i % 2 && token->type == SEPARATOR)) && i++ < 5)
+			while (token && is_arg_or_sep(i, token->type) && i++ < 5)
 				token = token->next;
 			if (!(i % 2))
 				handle_syntax_error(token);
