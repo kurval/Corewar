@@ -47,19 +47,18 @@ void		check_token_validity(t_token *token, t_op *op)
 }
 
 /*
-**
-**
-**
+**	Checks that champion info is not set multiple times,
+**	and that info is set before other types of tokens.
 */
 
-void	check_statement_order(t_token *token, t_champ *champ)
+void		check_statement_order(t_token *token, t_champ *champ)
 {
 	if (token->type != ENDLINE)
 	{
 		if (overlap(token->type, CMD_STR))
 		{
 			if (token->type == COMMAND_NAME && champ->name)
-				handle_error_msg(SYNTAX_ERROR, token);		
+				handle_error_msg(SYNTAX_ERROR, token);
 			if (token->type == COMMAND_COMMENT && champ->message)
 				handle_error_msg(SYNTAX_ERROR, token);
 		}

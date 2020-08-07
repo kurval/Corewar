@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c			                                :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmetelin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-char		*pad_nbr(int nbr, int size)
+char	*pad_nbr(int nbr, int size)
 {
 	char	*padded_nbr;
 	char	*s1;
@@ -33,7 +33,7 @@ char		*pad_nbr(int nbr, int size)
 	return (padded_nbr);
 }
 
-void		handle_error_msg(int error, t_token *token)
+void	handle_error_msg(int error, t_token *token)
 {
 	char	*msg;
 	char	**strs;
@@ -70,13 +70,14 @@ void	lexical_error(t_cursor cursor)
 	del_array(cursor_str);
 	handle_error(msg);
 }
+
 /*
 ** Handle_error
 ** 1. Print error msg followed by a \n to stderr
 ** 2. Exit with EXIT_FAILURE
 */
 
-void		handle_error(char *msg)
+void	handle_error(char *msg)
 {
 	ft_putstr_fd(msg, 2);
 	ft_putstr_fd("\n", 2);
