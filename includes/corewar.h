@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/06 13:03:52 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/07 11:29:49 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct		s_vm
 	int				checks;
 	int				lives;
 	int				ctd;
+	int				dump_cycle;
 }					t_vm;
 
 /*
