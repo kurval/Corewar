@@ -44,6 +44,9 @@
 
 # define MALLOC_ERROR "Malloc error"
 
+# define SYNTAX_ERROR 1
+# define INVALID_INSTR 2
+
 /*
 ** T_champ
 ** Done: Indicates if champion values have been saved
@@ -186,6 +189,7 @@ int				find_first_str(char *haystack, int start, char *needle);
 char			*add_strs_to_str(char *str, char **strs);
 char			*join_free_strs(char *s1, char *s2);
 void			del_array(char **array);
-void			handle_syntax_error(t_token *token);
+void			handle_error_msg(int error, t_token *token);
+void			check_token_validity(t_token *token, t_op *op);
 
 #endif

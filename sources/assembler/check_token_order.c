@@ -12,28 +12,6 @@
 
 #include "asm.h"
 
-/*
-** Check_token_order
-** 1. Checks that the tokens are in a valid order:
-**    (CMD_STR STRING |
-**    (LABEL) (INSTRUCTION T_REG|T_DIR|T_IND
-**    (SEPARATOR T_REG|T_DIR|T_IND (SEPARATOR T_REG|T_DIR|T_IND)))
-**    ENDLINE
-** 2. Prints the correct error msg to STDERR
-*/
-
-/*
-** #include <stdio.h>
-**
-** static void	print_token(t_token *token)
-** {
-** 	printf("token\n");
-** 	printf("type %d\n", token->type);
-** 	printf("content %s\n", token->content);
-** 	printf("cursor row %d col %d\n\n", token->cursor->row, token->cursor->col);
-** }
-*/
-
 char		*pad_nbr(int nbr, int size)
 {
 	char	*padded_nbr;
@@ -55,32 +33,72 @@ char		*pad_nbr(int nbr, int size)
 	return (padded_nbr);
 }
 
-void		handle_syntax_error(t_token *token)
+void		handle_error_msg(int error, t_token *token)
 {
-	char	*syntax_error;
+	char	*msg;
 	char	**strs;
 
-	if (!(strs = (char **)malloc(sizeof(char *) * 5)))
+	if (!(strs = (char **)malloc(sizeof(char *) * 6)) ||
+	!(strs[0] = ft_strdup((overlap(SYNTAX_ERROR, error) ? "Syntax error" :
+	"Invalid instruction"))))
 		handle_error(MALLOC_ERROR);
-	strs[0] = pad_nbr(token->cursor->row, 3);
-	strs[1] = pad_nbr(token->cursor->col, 3);
-	if (!(strs[2] = ft_strdup(token_type_str(token->type))) ||
-	!(strs[3] = ft_strdup(token->content)))
+	strs[1] = pad_nbr(token->cursor->row, 3);
+	strs[2] = pad_nbr(token->cursor->col, 3);
+	if (!(strs[3] = ft_strdup(token_type_str(token->type))) ||
+	!(strs[4] = ft_strdup(token->content)))
 		handle_error(MALLOC_ERROR);
-	strs[4] = NULL;
+	strs[5] = NULL;
 	if (token->type != ENDLINE)
-	{
-		syntax_error = add_strs_to_str(
-		"Syntax error at token [TOKEN] [%s:%s] %s \"%s\"", strs);
-	}
+		msg = add_strs_to_str("%s at token [TOKEN] [%s:%s] %s \"%s\"", strs);
 	else
-	{
-		syntax_error = add_strs_to_str(
-		"Syntax error at token [TOKEN] [%s:%s] %s", strs);
-	}
+		msg = add_strs_to_str("%s at token [TOKEN] [%s:%s] %s", strs);
 	del_array(strs);
-	handle_error(syntax_error);
+	handle_error(msg);
 }
+
+/*
+** Check_token_validity
+** 1. Checks that the instruction is valid and has a valid amount of valid
+**    arguments
+** 2. Prints the correct error msg to STDERR
+*/
+
+void		check_token_validity(t_token *token, t_op *op)
+{
+	int	argc;
+
+	if (token->type == LABEL)
+		token = token->next;
+	if (token && token->type == INSTRUCTION)
+	{
+		while (op && !ft_strequ(op->instr_name, token->content))
+			op = op->next;
+		if (!op)
+			handle_error_msg(INVALID_INSTR, token);
+		token = token->next;
+		argc = 0;
+		while (token && (overlap((T_REG | T_DIR | T_IND), token->type) ||
+		token->type == SEPARATOR) && argc < op->argc)
+		{
+			if (token->type != SEPARATOR &&
+			!overlap(op->argv[argc++], token->type))
+				handle_error("Invalid argument");
+			token = token->next;
+		}
+		if (argc != op->argc || token->type != ENDLINE)
+			handle_error("Invalid amount of arguments");
+	}
+}
+
+/*
+** Check_token_order
+** 1. Checks that the tokens are in a valid order:
+**    (CMD_STR STRING |
+**    (LABEL) (INSTRUCTION T_REG|T_DIR|T_IND
+**    (SEPARATOR T_REG|T_DIR|T_IND (SEPARATOR T_REG|T_DIR|T_IND)))
+**    ENDLINE
+** 2. Prints the correct error msg to STDERR
+*/
 
 static int	is_arg_or_sep(int ord, int type)
 {
@@ -98,7 +116,7 @@ void		check_token_order(t_token *token)
 	{
 		token = token->next;
 		if (!token || token->type != STRING)
-			handle_syntax_error(token);
+			handle_error_msg(SYNTAX_ERROR, token);
 		token = token->next;
 	}
 	else
@@ -112,9 +130,9 @@ void		check_token_order(t_token *token)
 			while (token && is_arg_or_sep(i, token->type) && i++ < 5)
 				token = token->next;
 			if (!(i % 2))
-				handle_syntax_error(token);
+				handle_error_msg(SYNTAX_ERROR, token);
 		}
 	}
 	if (!token || token->type != ENDLINE)
-		handle_syntax_error(token);
+		handle_error_msg(SYNTAX_ERROR, token);
 }

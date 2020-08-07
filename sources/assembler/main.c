@@ -23,34 +23,6 @@
 ** 6. Return file info in assembler struct
 */
 
-/*
-** #include <stdio.h>
-**
-** void			print_op(t_op *op)
-** {
-** 	int	i;
-**
-** 	printf("op\n");
-** 	while (op)
-** 	{
-** 		printf("\n");
-** 		printf("instr_name: %s\n", op->instr_name);
-** 		printf("argc: %d\n", op->argc);
-** 		printf("argv: ");
-** 		i = 0;
-** 		while (i < op->argc)
-** 		{
-** 			if (i)
-** 				printf(", ");
-** 			printf("%d", op->argv[i++]);
-** 		}
-** 		printf("\n");
-** 		printf("instr_code: %d\n", op->instr_code);
-** 		op = op->next;
-** 	}
-** }
-*/
-
 static t_asm	handle_file(char *filename)
 {
 	t_asm	assembler;
@@ -86,6 +58,6 @@ int				main(int argc, char **argv)
 	check_args(argc, argv);
 	assembler = handle_file(argv[1]);
 	make_cor_file(argv[1], assembler);
-	system("leaks asm");
+	//system("leaks asm");
 	return (0);
 }
