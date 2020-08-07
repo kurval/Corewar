@@ -42,6 +42,11 @@
 # define INDIRECT_LABEL 260
 # define ENDLINE 512
 
+# define MALLOC_ERROR "Malloc error"
+
+# define SYNTAX_ERROR 1
+# define INVALID_INSTR 2
+
 /*
 ** T_champ
 ** Done: Indicates if champion values have been saved
@@ -129,6 +134,15 @@ typedef struct	s_token
 	struct s_token	*next;
 }				t_token;
 
+typedef struct	s_op
+{
+	char		*instr_name;
+	int			argc;
+	int			*argv;
+	int			instr_code;
+	struct s_op	*next;
+}				t_op;
+
 /*
 ** T_asm
 ** Contains lists and other important information needed in this project
@@ -139,6 +153,7 @@ typedef struct	s_token
 
 typedef struct	s_asm
 {
+	t_op		*op;
 	t_champ		champ;
 	t_statement	*statements;
 	t_token		*tokens;
@@ -156,14 +171,25 @@ int				skip_valid_chars(char *line, int i);
 t_token			*tokenize(char *line, t_cursor cursor, char *edge_chars);
 int				find_first_char(char *str, int start, char *chars);
 int				find_last_char(char *str, int start, char *chars);
-char			*merge_strs(char *s1, char *s2);
+char			*add_str_to_str(char *s1, char *s2);
 void			handle_error(char *msg);
-void			check_params(int ac, char **av);
+void			check_args(int ac, char **av);
 void			lexical_error_tmp(t_cursor cursor);
 void			check_for_lexical_error(char *line, t_cursor cursor,
 				int *token_end, char *edge_chars);
 int				ft_isnum(char *str);
 int				asm_gnl(const int fd, char **line);
 int				count_string_chars(char *str);
+t_op			*get_op(void);
 void			make_cor_file(char *s_filename, t_asm assembler);
+void			check_token_order(t_token *token);
+char			*pad_nbr(int nbr, int size);
+char			*token_type_str(int type);
+int				find_first_str(char *haystack, int start, char *needle);
+char			*add_strs_to_str(char *str, char **strs);
+char			*join_free_strs(char *s1, char *s2);
+void			del_array(char **array);
+void			handle_error_msg(int error, t_token *token);
+void			check_token_validity(t_token *token, t_op *op);
+
 #endif
