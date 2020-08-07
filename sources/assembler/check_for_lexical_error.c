@@ -16,7 +16,7 @@ static void	case_label(int *i, int *has_label_or_direct, char *line,
 t_cursor cursor)
 {
 	if (!is_valid_char(line[*i + 1]))
-		lexical_error_tmp(cursor);
+		lexical_error(cursor);
 	*has_label_or_direct = LABEL;
 	*i = *i + 1;
 }
@@ -38,7 +38,7 @@ int *token_content_start)
 		ft_isdigit(line[i]))
 			has_label_or_direct = DIRECT;
 		else
-			lexical_error_tmp(cursor);
+			lexical_error(cursor);
 	}
 	else if (line[i] == LABEL_CHAR)
 		case_label(&i, &has_label_or_direct, line, cursor);

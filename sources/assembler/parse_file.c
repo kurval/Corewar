@@ -43,8 +43,8 @@ char			*token_type_str(int type)
 		return ("SEPARATOR");
 	if (type == STRING)
 		return ("STRING");
-	if (type == CMD_STR)
-		return ("CMD_STR");
+	if (overlap(type, CMD_STR))
+		return (type == COMMAND_NAME ? "COMMAND_NAME" : "COMMAND_COMMENT");
 	if (type == DIRECT_LABEL)
 		return ("DIRECT_LABEL");
 	if (type == INDIRECT_LABEL)
@@ -88,6 +88,14 @@ void			free_tokens(t_token *tokens)
 	}
 }
 
+void			initialize_champ(t_champ *champ)
+{
+	champ->done = 0;
+	champ->name = NULL;
+	champ->message = NULL;
+	champ->code = NULL;
+}
+
 void			parse_file(int fd, t_asm *assembler)
 {
 	char		*line;
@@ -96,12 +104,15 @@ void			parse_file(int fd, t_asm *assembler)
 
 	cursor.row = 1;
 	edge_chars = create_edge_chars();
+	initialize_champ(&assembler->champ);
 	while (asm_gnl(fd, &line))
 	{
 		cursor.col = 0;
 		assembler->tokens = tokenize(line, cursor, edge_chars);
 		check_token_order(assembler->tokens);
 		check_token_validity(assembler->tokens, assembler->op);
+		//ENABLE CHECK_STATEMENT_ORDER ONCE CHAMPION INFO SAVING IS READY
+		//check_statement_order(assembler->tokens, &assembler->champ);
 		ft_strdel(&line);
 		//print_tokens(assembler->tokens);
 		//assembler->statements = function that saves the

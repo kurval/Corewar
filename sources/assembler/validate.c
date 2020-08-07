@@ -12,16 +12,6 @@
 
 #include "asm.h"
 
-/*
-** Temporary lexical error for testing
-*/
-
-void	lexical_error_tmp(t_cursor cursor)
-{
-	ft_printf("(tmp msg) Lexical error [%d:%d]\n", cursor.row, cursor.col + 1);
-	exit(1);
-}
-
 int		validate_number(char *line, int start, t_cursor cursor)
 {
 	int i;
@@ -29,7 +19,7 @@ int		validate_number(char *line, int start, t_cursor cursor)
 	i = start;
 	i = (line[i] == '-' ? start + 1 : start);
 	if (!ft_isdigit(line[i]))
-		lexical_error_tmp(cursor);
+		lexical_error(cursor);
 	while (ft_isdigit(line[i]))
 		i++;
 	return (i);
@@ -74,7 +64,7 @@ void	validate_characters(char *line, int col, int row, int *end_point)
 				break ;
 			}
 			else
-				lexical_error_tmp(cursor);
+				lexical_error(cursor);
 		}
 		cursor.col++;
 	}

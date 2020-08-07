@@ -13,19 +13,6 @@
 #include "asm.h"
 
 /*
-** Handle_error
-** 1. Print error msg followed by a \n to stderr
-** 2. Exit with EXIT_FAILURE
-*/
-
-void		handle_error(char *msg)
-{
-	ft_putstr_fd(msg, 2);
-	ft_putstr_fd("\n", 2);
-	exit(EXIT_FAILURE);
-}
-
-/*
 ** Check_args
 ** 1. Check that there are two arguments (e.g. "./asm champ.s")
 ** 2. Check that the file has the extension .s

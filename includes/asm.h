@@ -41,6 +41,8 @@
 # define DIRECT_LABEL 258
 # define INDIRECT_LABEL 260
 # define ENDLINE 512
+# define COMMAND_NAME 1152
+# define COMMAND_COMMENT 2176
 
 # define MALLOC_ERROR "Malloc error"
 
@@ -174,7 +176,7 @@ int				find_last_char(char *str, int start, char *chars);
 char			*add_str_to_str(char *s1, char *s2);
 void			handle_error(char *msg);
 void			check_args(int ac, char **av);
-void			lexical_error_tmp(t_cursor cursor);
+void			lexical_error(t_cursor cursor);
 void			check_for_lexical_error(char *line, t_cursor cursor,
 				int *token_end, char *edge_chars);
 int				ft_isnum(char *str);
@@ -191,5 +193,6 @@ char			*join_free_strs(char *s1, char *s2);
 void			del_array(char **array);
 void			handle_error_msg(int error, t_token *token);
 void			check_token_validity(t_token *token, t_op *op);
+void			check_statement_order(t_token *token, t_champ *champ);
 
 #endif
