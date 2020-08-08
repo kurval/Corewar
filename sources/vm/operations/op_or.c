@@ -1,32 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.c                                          :+:      :+:    :+:   */
+/*   op_or.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/02 15:30:41 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/08 12:38:14 by vkurkela         ###   ########.fr       */
+/*   Created: 2020/08/08 11:45:46 by vkurkela          #+#    #+#             */
+/*   Updated: 2020/08/08 11:45:48 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/corewar.h"
-#include "../../libft/libft.h"
-
-int	main(int ac, char **av)
-{
-	t_vm vm;
-	t_arena arena;
-
-	if (ac >= 2)
-	{
-		init_vm(&vm);
-		init_arena(&arena);
-		validate_chapions(av);
-		parse_input(av, &vm);
-		run_cycles(&vm);
-		ft_printf("\nCurrent cycle %d\n", vm.current_cycle);
-		//print_arena(&arena);
-	}
-	return (0);
-}
+#include "../../../includes/corewar.h"
