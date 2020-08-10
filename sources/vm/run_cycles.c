@@ -6,27 +6,64 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/08 11:37:15 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/10 20:13:08 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
 
 /*
+ ** Setting a new opcode and wait_cycles after cursor
+ ** has moved. During the very first execution cycle,
+ ** all carriages will receive an opcode value.
+ ** If read value is not a valid operation code,
+ ** save value and set wait_cycles = 0 (1 because it
+ ** gets decreased on the next statement)
+*/
+/*
+static void set_opcode(t_vm *vm, t_process *proc)
+{
+    proc->current_opcode = vm->arena[proc->current_position];
+    if (proc->opcode == 0 || proc->opcode > NB_OPERATIONS)
+		proc->wait_cycles = 1;
+	else
+		proc->wait_cycles = NEED STRUCT FOR EACH OPERATION TO CHECK WAIT TIME FOR CURRENT OPCODE     etc.
+}
+*/
+
+/*
  ** If wait_cycles == 0 it's time to execute the operation, that is saved in the cursor.
- ** If saved operation code is a valid code and operation requires encoding byte, validate it.
- ** If encoding byte is valid and there are registries among the arguments, validate registry numbers.
- ** If all the checks were successfully passed, execute the operation and move cursor to the next operation.
- ** If operation code is not valid, move cursor to the next byte.
- ** If operation code is valid, but encoding byte is invalid or one of arguments is not valid. ->
- ** Cursor must be moved to the next operation without execution.
+ ** - If saved operation code is a valid code and operation requires encoding byte, validate it.
+ ** - If encoding byte is valid and there are registries among the arguments, validate registry numbers.
+ ** - If all the checks were successfully passed, execute the operation and move cursor to the next operation.
+ ** - If operation code is not valid, move cursor to the next byte.
+ ** - If operation code is valid, but encoding byte is invalid or one of arguments is not valid.
+ ** --> Cursor must be moved to the next operation without execution.
  ** To get to the next operation, cursor must skip operation byte, encoding byte (if present),
  ** and arguments saved in the encoding byte.
 */
+
 /*
 static void	execute_operation(t_vm *vm, t_process *proc)
 {
+    int i;
 
+    if (!proc->wait_cycles)
+		set_opcode(vm, proc);
+    proc->wait_cycles -= 1;
+
+    //Execute the operation
+    if (!proc->wait_cycles)
+    {
+        If all the checks were successfully passed
+            execute the operation STRUCT FOR OPERATION FUNCTIONS
+        else
+            If operation code is not valid, move cursor to the next byte.
+            proc->jump = 1;
+
+        move cursor to the next operation:
+            proc->current_position = NEED FUNCTION TO MOVE CURSOR current_position + jump
+    }
 }
 */
 

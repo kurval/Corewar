@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/10 15:18:11 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/10 18:51:24 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,10 @@
 # include "op.h"
 # include "corewar_error.h"
 # include "../libft/libft.h"
-# include "../libft/get_next_line.h"
-# include "../libft/printf/includes/printf.h"
 # include <stdio.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 typedef struct		s_arena
 {
@@ -64,7 +62,7 @@ typedef struct		s_player
 
 typedef struct		s_vm
 {
-	t_arena			a;
+	t_arena			*arena;
 	t_player		p[MAX_PLAYERS];
 	int				last_live_id;
 	int				cycles;
@@ -81,7 +79,7 @@ typedef struct		s_vm
 
 void				init_vm(t_vm *vm);
 void				run_cycles(t_vm *cor);
-void				init_arena(t_arena *arena);
+void    			init_arena(t_vm *vm, t_arena *arena);
 void				print_arena(t_arena *arena);
 void    			dump_memory(t_arena *arena);
 

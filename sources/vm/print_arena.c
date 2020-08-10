@@ -6,14 +6,14 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:47:04 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/10 15:26:05 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/10 18:53:45 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
 #include "../../libft/libft.h"
 
-void    init_arena(t_arena *arena)
+void    init_arena(t_vm *vm, t_arena *arena)
 {
     int i;
 
@@ -23,6 +23,7 @@ void    init_arena(t_arena *arena)
         arena->arena[i] = 0;
         i++;
     }
+    vm->arena = arena;
 }
 
 void    print_arena(t_arena *arena)
