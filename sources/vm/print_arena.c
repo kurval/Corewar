@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:47:04 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/08 12:33:55 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/10 15:26:05 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,27 @@ void    print_arena(t_arena *arena)
     i = 0;
     while (i < MEM_SIZE)
     {
-        ft_printf("%3X", arena->arena[i]);
+        ft_printf("%.2X ", arena->arena[i]);
         i++;
         if (i % 64 == 0)
             ft_printf("\n");
+    }
+}
+
+void    dump_memory(t_arena *arena)
+{
+    int i;
+
+    i = 0;
+    ft_printf("0x%#.4x : ", i);
+    while (i < MEM_SIZE)
+    {
+        ft_printf("%.2X ", arena->arena[i]);
+        i++;
+        if (i % 32 == 0)
+        {
+            ft_printf("\n");
+            i < MEM_SIZE ? ft_printf("%#.4x : ", i) : 0;
+        }
     }
 }

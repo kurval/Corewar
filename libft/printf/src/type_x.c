@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/26 20:33:12 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/08 12:31:22 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/10 15:13:44 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ static void	flag_hex4(t_info *info, char flag)
 	}
 	if (info->nb && info->output_u == 0)
 		return ;
-	if (info->output_u < 16)
-		ft_putstrb("0", info->bytes);
 	ft_itoa_baseb(info->output_u, 16, info->bytes, flag);
 }
 
@@ -78,6 +76,5 @@ void		flag_hex(va_list args, t_info *info, char flag)
 	info->precision < info->width && info->precision <= info->len) ?\
 	info->len + 2 : info->len;
 	info->nb && info->output_u == 0 ? info->len = 0 : 0;
-	info->output_u < 16 ? info->len = info->len + 1 : 0;
 	flag_hex2(info, flag);
 }
