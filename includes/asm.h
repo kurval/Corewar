@@ -49,6 +49,8 @@
 # define SYNTAX_ERROR 1
 # define INVALID_INSTR 2
 
+# define NUMBER -1
+
 /*
 ** T_champ
 ** Done: Indicates if champion values have been saved
@@ -194,5 +196,7 @@ void			del_array(char **array);
 void			handle_error_msg(int error, t_token *token);
 void			check_token_validity(t_token *token, t_op *op);
 void			check_statement_order(t_token *token, t_champ *champ);
+void		insert_bytes_number(int fd, int nbr, int size);
+void		insert_bytes_string(int fd, char *str, int size);
 
 #endif
