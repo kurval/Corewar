@@ -88,14 +88,6 @@ void			free_tokens(t_token *tokens)
 	}
 }
 
-void			initialize_champ(t_champ *champ)
-{
-	champ->done = 0;
-	champ->name = NULL;
-	champ->message = NULL;
-	champ->code = NULL;
-}
-
 void			parse_file(int fd, t_asm *assembler)
 {
 	char		*line;
@@ -104,23 +96,17 @@ void			parse_file(int fd, t_asm *assembler)
 
 	cursor.row = 1;
 	edge_chars = create_edge_chars();
-	initialize_champ(&assembler->champ);
+	init_champ(&assembler->champ);
 	while (asm_gnl(fd, &line))
 	{
 		cursor.col = 0;
 		assembler->tokens = tokenize(line, cursor, edge_chars);
 		check_token_order(assembler->tokens);
 		check_token_validity(assembler->tokens, assembler->op);
-		//ENABLE CHECK_STATEMENT_ORDER ONCE CHAMPION INFO SAVING IS READY
-		//check_statement_order(assembler->tokens, &assembler->champ);
+		check_statement_order(assembler->tokens, &assembler->champ);
 		ft_strdel(&line);
 		//print_tokens(assembler->tokens);
-		//assembler->statements = function that saves the
-		//						  token list into a statement
-		//or
-		// assembler->champ = function that saves the token
-		//					  list containing champ info
-		//					  into champion struct
+		set_champ(&assembler->champ, assembler->tokens);
 		free_tokens(assembler->tokens);
 		assembler->tokens = NULL;
 		cursor.row++;
