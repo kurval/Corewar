@@ -50,52 +50,38 @@
 # define INVALID_INSTR 2
 
 /*
-** T_champ
-** Done: Indicates if champion values have been saved
-*/
-
-typedef struct	s_champ
-{
-	char	*name;
-	char	*message;
-	int		done;
-	char	*code;
-}				t_champ;
-
-/*
-** T_argument
+** T_arg
 ** Type: Either T_REG, T_IND or T_DIR
 ** Content: Might have to change this later - not sure if it works
 ** Size: Size of argument in bytes
 */
 
-typedef struct	s_argument
+typedef struct	s_arg
 {
 	int		type;
-	void	*content;
+	char	*content;
 	int		size;
-}				t_argument;
+}				t_arg;
 
 /*
-** T_statement
+** T_stmt (statement)
 ** Name: Command name, for example "live" or "sti"
 ** Args: Args[0] will be the first argument, args[MAX_ARGS_NUMBER - 1] is null.
-**       If there are less than MAX_ARGS_NUMBER -1 arguments, pad with null.
+**       If there are less than MAX_ARGS_NUMBER - 1 arguments, pad with null.
 ** Size: Statement code size + argument sizes in bytes
 ** Place: Iterator place. For example for the first stament, this value will be
 **        0. If the 1st statement size is 7, this value will be 7 for the second
 **        argument.
 */
 
-typedef struct	s_statement
+typedef struct	s_stmt
 {
-	int					code;
-	char				*name;
-	t_argument			args[MAX_ARGS_NUMBER];
-	int					size;
-	int					place;
-	struct s_statement	*next;
-}				t_statement;
+	char			*name;
+	t_arg			*args[MAX_ARGS_NUMBER];
+	int				size;
+	int				place;
+	struct s_stmt	*next;
+}				t_stmt;
 
 /*
 ** T_label
@@ -108,6 +94,20 @@ typedef struct	s_label
 	int				place;
 	struct s_label	*next;
 }				t_label;
+
+/*
+** T_champ
+** Done: Indicates if champion values have been saved
+*/
+
+typedef struct	s_champ
+{
+	char	*name;
+	char	*comment;
+	int		done;
+	t_label	*labels;
+	t_stmt	*stmts;
+}				t_champ;
 
 /*
 ** T_cursor
@@ -156,9 +156,8 @@ typedef struct	s_op
 typedef struct	s_asm
 {
 	t_op		*op;
-	t_champ		champ;
-	t_statement	*statements;
 	t_token		*tokens;
+	t_champ		champ;
 }				t_asm;
 
 int				overlap(int type1, int type2);
@@ -194,5 +193,7 @@ void			del_array(char **array);
 void			handle_error_msg(int error, t_token *token);
 void			check_token_validity(t_token *token, t_op *op);
 void			check_statement_order(t_token *token, t_champ *champ);
+void			init_champ(t_champ *champ);
+void			set_champ(t_champ *champ, t_token *token);
 
 #endif

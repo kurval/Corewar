@@ -59,7 +59,7 @@ void		check_statement_order(t_token *token, t_champ *champ)
 		{
 			if (token->type == COMMAND_NAME && champ->name)
 				handle_error_msg(SYNTAX_ERROR, token);
-			if (token->type == COMMAND_COMMENT && champ->message)
+			if (token->type == COMMAND_COMMENT && champ->comment)
 				handle_error_msg(SYNTAX_ERROR, token);
 		}
 		else if (!champ->done)
