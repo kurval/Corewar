@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/12 14:39:19 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/12 14:52:18 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 /*
 static void set_opcode(t_vm *vm, t_process *proc)
 {
-    proc->current_opcode = vm->arena[proc->current_position];
+    proc->opcode = vm->arena[proc->current_position];
     if (proc->opcode == 0 || proc->opcode > NB_OPERATIONS)
 		proc->wait_cycles = 1;
 	else

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/12 14:35:24 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/12 14:52:03 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,9 @@ typedef struct		s_arena
 **	Cursors contain following information:
 **	id - unique.
 **	carry - affects zjmp operation, initialised with value false.
-**	current_opcode - operation code, before the battle starts it is not initialised.
-**	cycle_live_reported - number of cycle in which current cursor performed operation live last time.
+**	opcode - operation code, before the battle starts it is not initialised.
+**	last_live - number of cycle in which current cursor performed operation
+**	>live last time.
 **	wait_cycles - amount of cycles to wait before operation execution.
 **	current_position - address in memory
 **	jump - amount of bytes cursor must jump to get to the next operation
@@ -42,8 +43,8 @@ typedef struct		s_process
 {
 	int				id;
 	int				carry;
-	unsigned int	current_opcode;
-	int				cycle_live_reported;
+	unsigned int	opcode;
+	int				last_live;
 	int				wait_cycles;
 	int				current_position;
 	int				jump;
@@ -92,6 +93,7 @@ typedef struct		s_player
 **	>This variable is initialised with the value of constant CYCLES_TO_DIE (1536).
 **	dump_cycle - number of cycle to dump memory (if present)
 **	checks - amount of checks performed
+**	cycles - is used to track periods
 */
 
 typedef struct		s_vm
