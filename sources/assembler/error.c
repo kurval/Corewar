@@ -12,6 +12,20 @@
 
 #include "asm.h"
 
+/*
+** Handle_error
+** 1. Print error msg followed by a \n to stderr
+** 2. Exit with EXIT_FAILURE
+*/
+
+void	handle_error(char *msg)
+{
+	ft_putstr_fd(msg, 2);
+	ft_putstr_fd("\n", 2);
+	//system("leaks asm");
+	exit(EXIT_FAILURE);
+}
+
 char	*pad_nbr(int nbr, int size)
 {
 	char	*padded_nbr;
@@ -31,6 +45,26 @@ char	*pad_nbr(int nbr, int size)
 	else
 		padded_nbr = s2;
 	return (padded_nbr);
+}
+
+void	handle_invalid_label(t_arg *arg, char *label_name)
+{
+	char	*msg;
+	char	**strs;
+
+	if (!(strs = (char **)malloc(sizeof(char *) * 7)) ||
+	!(strs[0] = ft_strdup(label_name)) ||
+	!(strs[1] = ft_strdup("while attempting to dereference token")))
+		handle_error(MALLOC_ERROR);
+	strs[2] = pad_nbr(arg->cursor->row, 3);
+	strs[3] = pad_nbr(arg->cursor->col + 1, 3);
+	if (!(strs[4] = ft_strdup(token_type_str(arg->type))) ||
+	!(strs[5] = ft_strdup(arg->content)))
+		handle_error(MALLOC_ERROR);
+	strs[6] = NULL;
+	msg = add_strs_to_str("No such label %s %s [TOKEN][%s:%s] %s \"%s\"", strs);
+	del_array(strs);
+	handle_error(msg);
 }
 
 void	handle_error_msg(int error, t_token *token)
@@ -69,18 +103,4 @@ void	lexical_error(t_cursor cursor)
 	msg = add_strs_to_str("Lexical error at [%s:%s]", cursor_str);
 	del_array(cursor_str);
 	handle_error(msg);
-}
-
-/*
-** Handle_error
-** 1. Print error msg followed by a \n to stderr
-** 2. Exit with EXIT_FAILURE
-*/
-
-void	handle_error(char *msg)
-{
-	ft_putstr_fd(msg, 2);
-	ft_putstr_fd("\n", 2);
-	//system("leaks asm");
-	exit(EXIT_FAILURE);
 }

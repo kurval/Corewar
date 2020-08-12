@@ -16,7 +16,8 @@ t_cursor		*copy_cursor(t_cursor cursor)
 {
 	t_cursor *new;
 
-	new = (t_cursor *)malloc(sizeof(t_cursor));
+	if (!(new = (t_cursor *)malloc(sizeof(t_cursor))))
+		handle_error(MALLOC_ERROR);
 	new->col = cursor.col;
 	new->row = cursor.row;
 	return (new);

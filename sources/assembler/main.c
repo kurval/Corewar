@@ -38,7 +38,7 @@ static void		print_stmt(t_stmt *stmt)
 		i = 0;
 		while (stmt->args[i])
 		{
-			printf("\t\targ\n\t\ttype: %s\n\t\tcontent: %s\n\t\tsize %d\n\n",
+			printf("\t\targ\n\t\ttype: %s\n\t\tcontent: %s\n\t\tsize: %d\n\n",
 			token_type_str(stmt->args[i]->type), stmt->args[i]->content,
 			stmt->args[i]->size);
 			i++;
