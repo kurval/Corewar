@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/12 14:52:03 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/12 18:12:15 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,16 @@ typedef struct		s_arena
 }					t_arena;
 
 /*
-**	Cursors contain following information:
-**	id - unique.
-**	carry - affects zjmp operation, initialised with value false.
-**	opcode - operation code, before the battle starts it is not initialised.
-**	last_live - number of cycle in which current cursor performed operation
-**	>live last time.
-**	wait_cycles - amount of cycles to wait before operation execution.
-**	current_position - address in memory
-**	jump - amount of bytes cursor must jump to get to the next operation
-**	reg[REG_NUMBER] - registries of current cursor
+** Cursors contain following information:
+** id - unique.
+** carry - affects zjmp operation, initialised with value false.
+** opcode - operation code, before the battle starts it is not initialised.
+** last_live - number of cycle in which current cursor performed operation
+** >live last time.
+** wait_cycles - amount of cycles to wait before operation execution.
+** current_position - address in memory
+** jump - amount of bytes cursor must jump to get to the next operation
+** reg[REG_NUMBER] - registries of current cursor
 */
 
 typedef struct		s_process
@@ -56,12 +56,12 @@ typedef struct		s_process
 }					t_process;
 
 /*
-**	Players contain following information:
-**	id - unique ID
-**	name - champion name
-**	comment[COMMENT_LENGTH + 1] - champion comment
-**	executable_size - executable code size
-**	code - executable code
+** Players contain following information:
+** id - unique ID
+** name - champion name
+** comment[COMMENT_LENGTH + 1] - champion comment
+** executable_size - executable code size
+** code - executable code
 */
 
 typedef struct		s_player
@@ -82,24 +82,43 @@ typedef struct		s_player
 }					t_player;
 
 /*
-**	Game parameters contain following information:
-**	last_live_id - player last reported alive
-**	>It is initialised with the highest player id,
-**	>and is updated every time operation live is performed.
-**	current_cycle - cycles counter
-**	lives - counter for operation live, to check how many times
-**	>this operation was performed during the last cycles_to_die cycles.
-**	ctd - cycles_to_die — length of current check period in cycles.
-**	>This variable is initialised with the value of constant CYCLES_TO_DIE (1536).
-**	dump_cycle - number of cycle to dump memory (if present)
-**	checks - amount of checks performed
-**	cycles - is used to track periods
+** Operations contain following information:
+** - instr_name - operation name
+** - argc - number of arguments
+** - argv - arguments tab
+** - instr_code - operation code
+** - wait_cycles - cycles untill execution
+*/
+
+typedef struct	s_op
+{
+	char		*instr_name;
+	int			argc;
+	int			*argv;
+	int			instr_code;
+	int			wait_cycles;
+}				t_op;
+
+/*
+** Game parameters contain following information:
+** last_live_id - player last reported alive
+** >It is initialised with the highest player id,
+** >and is updated every time operation live is performed.
+** current_cycle - cycles counter
+** lives - counter for operation live, to check how many times
+** >this operation was performed during the last cycles_to_die cycles.
+** ctd - cycles_to_die — length of current check period in cycles.
+** >This variable is initialised with the value of constant CYCLES_TO_DIE (1536).
+** dump_cycle - number of cycle to dump memory (if present)
+** checks - amount of checks performed
+** cycles - is used to track periods
 */
 
 typedef struct		s_vm
 {
 	t_arena			*arena;
 	t_player		p[MAX_PLAYERS];
+	t_op			operations[16];
 	int				last_live_id;
 	int				cycles;
 	int				current_cycle;
@@ -124,6 +143,7 @@ void    			dump_memory(t_arena *arena);
 */
 
 void				ft_errno(char *id);
+void				get_op(t_op *op);
 
 /*
 **					PARSE INPUT FUNCTIONS

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/12 14:52:18 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/12 18:28:53 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void set_opcode(t_vm *vm, t_process *proc)
     if (proc->opcode == 0 || proc->opcode > NB_OPERATIONS)
 		proc->wait_cycles = 1;
 	else
-		proc->wait_cycles = NEED STRUCT FOR EACH OPERATION TO CHECK WAIT TIME FOR CURRENT OPCODE     etc.
+		proc->wait_cycles = vm->operations[opcode - 1];
 }
 */
 
@@ -119,7 +119,7 @@ static void perform_check(t_vm *vm)
 void    run_cycles(t_vm *vm)
 {
     // this while loop continues as long as there's processes left in a list.
-    // !! We don't have proclist yet. So we'll use cycle_to_die instead 
+    // !! We don't have proclist yet. So we'll use cycle_to_die instead
     while(vm->ctd > 0)
     {
         vm->current_cycle++;
@@ -130,7 +130,7 @@ void    run_cycles(t_vm *vm)
         - Execute the operation
         while (processes)
         {
-            execute_statements()
+            execute_statements(vm, proclist, operations)
             next->process
         }
         */
@@ -138,7 +138,7 @@ void    run_cycles(t_vm *vm)
         // After it's value becomes less than 1, the check is performed each cycle.
         if (vm->ctd <= 0 || vm->cycles == vm->ctd)
             perform_check(vm);
-
+            
         // check flag -dump
         // At the end of nbr_cycles of executions, dump the memory on the standard output and quit the game.
         // The memory must be dumped in the hexadecimal format with 32 octets per line.
