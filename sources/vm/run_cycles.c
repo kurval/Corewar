@@ -6,19 +6,19 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/10 20:13:08 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/12 14:39:19 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
 
 /*
- ** Setting a new opcode and wait_cycles after cursor
- ** has moved. During the very first execution cycle,
- ** all carriages will receive an opcode value.
- ** If read value is not a valid operation code,
- ** save value and set wait_cycles = 0 (1 because it
- ** gets decreased on the next statement)
+** Setting a new opcode and wait_cycles after cursor
+** has moved. During the very first execution cycle,
+** all carriages will receive an opcode value.
+** If read value is not a valid operation code,
+** save value and set wait_cycles = 0 (1 because it
+** gets decreased on the next statement)
 */
 /*
 static void set_opcode(t_vm *vm, t_process *proc)
@@ -32,15 +32,15 @@ static void set_opcode(t_vm *vm, t_process *proc)
 */
 
 /*
- ** If wait_cycles == 0 it's time to execute the operation, that is saved in the cursor.
- ** - If saved operation code is a valid code and operation requires encoding byte, validate it.
- ** - If encoding byte is valid and there are registries among the arguments, validate registry numbers.
- ** - If all the checks were successfully passed, execute the operation and move cursor to the next operation.
- ** - If operation code is not valid, move cursor to the next byte.
- ** - If operation code is valid, but encoding byte is invalid or one of arguments is not valid.
- ** --> Cursor must be moved to the next operation without execution.
- ** To get to the next operation, cursor must skip operation byte, encoding byte (if present),
- ** and arguments saved in the encoding byte.
+** If wait_cycles == 0 it's time to execute the operation, that is saved in the cursor.
+** - If saved operation code is a valid code and operation requires encoding byte, validate it.
+** - If encoding byte is valid and there are registries among the arguments, validate registry numbers.
+** - If all the checks were successfully passed, execute the operation and move cursor to the next operation.
+** - If operation code is not valid, move cursor to the next byte.
+** - If operation code is valid, but encoding byte is invalid or one of arguments is not valid.
+** --> Cursor must be moved to the next operation without execution.
+** To get to the next operation, cursor must skip operation byte, encoding byte (if present),
+** and arguments saved in the encoding byte.
 */
 
 /*
@@ -68,10 +68,10 @@ static void	execute_operation(t_vm *vm, t_process *proc)
 */
 
 /*
- ** During the check dead cursors are removed from the list.
- ** Cursor is considered dead, if it performed operation
- ** live more than cycles_to_die or more cycles ago.
- ** Also, if cycles_to_die <= 0 all carriages are considered dead.
+** During the check dead cursors are removed from the list.
+** Cursor is considered dead, if it performed operation
+** live more than cycles_to_die or more cycles ago.
+** Also, if cycles_to_die <= 0 all carriages are considered dead.
 */
 
 /*
@@ -91,10 +91,10 @@ static void check_dead_processes(t_vm *vm, t_process *proc)
 */
 
 /*
- ** If during last cycles_to_die cycles operation live was performed
- ** NBR_LIVE times or more, cycles_to_die is decreased with CYCLE_DELTA.
- ** If after MAX_CHECKS checks cycles_to_die was not changed, it gets decreased.
- ** Also reset period counter and lives performed in current period.
+** If during last cycles_to_die cycles operation live was performed
+** NBR_LIVE times or more, cycles_to_die is decreased with CYCLE_DELTA.
+** If after MAX_CHECKS checks cycles_to_die was not changed, it gets decreased.
+** Also reset period counter and lives performed in current period.
 */
 
 static void perform_check(t_vm *vm)
@@ -112,8 +112,8 @@ static void perform_check(t_vm *vm)
 }
 
 /*
- ** This is the battle function which continues as long as
- ** there are processes left.
+** This is the battle function which continues as long as
+** there are processes left.
 */
 
 void    run_cycles(t_vm *vm)
