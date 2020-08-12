@@ -32,14 +32,26 @@ int		open_corefile(char *s_filename, int filename_len)
 	return (fd);
 }
 
+void	insert_champion_info(t_champ champ, int fd)
+{
+	int	exec_code_size;
+
+	insert_bytes_string(fd, champ.name, PROG_NAME_LENGTH);
+	insert_bytes_number(fd, 0, 4);
+	exec_code_size = champ.stmts->place + champ.stmts->size;
+	insert_bytes_number(fd, exec_code_size, 4);
+	insert_bytes_string(fd, champ.comment, COMMENT_LENGTH);
+	insert_bytes_number(fd, 0, 4);
+}
+
 void	make_cor_file(char *s_filename, t_asm assembler)
 {
 	int		fd;
 	char	*msg;
 
 	fd = open_corefile(s_filename, ft_strlen(s_filename) - 2);
-	insert_bytes_number(fd, COREWAR_EXEC_MAGIC, 4); //magic header
-	//insert champion info, remember null and exec-code-size
+	insert_bytes_number(fd, COREWAR_EXEC_MAGIC, 4);
+	insert_champion_info(assembler.champ, fd);
 	insert_statements(assembler.champ.stmts, assembler.champ.labels,
 	assembler.op, fd);
 	if (close(fd) == -1)

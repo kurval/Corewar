@@ -52,3 +52,22 @@ int	count_string_chars(char *str)
 	}
 	return (count);
 }
+
+char	*copy_string_content(char *string)
+{
+	int 	len;
+	int		start;
+	char	*copy;
+
+	start = 0;
+	len = ft_strlen(string);
+	if (string[len - 1] == '"')
+		len--;
+	if (string[0] == '"')
+	{
+		len--;
+		start = 1;
+	}
+	copy = ft_strsub(string, start, len);
+	return (copy);
+}

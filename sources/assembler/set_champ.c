@@ -102,13 +102,13 @@ void			set_champ(t_champ *champ, t_token *token)
 	if (token->type == COMMAND_NAME)
 	{
 		token = token->next;
-		if (!(champ->name = ft_strdup(token->content)))
+		if (!(champ->name = copy_string_content(token->content)))
 			handle_error(MALLOC_ERROR);
 	}
 	else if (token->type == COMMAND_COMMENT)
 	{
 		token = token->next;
-		if (!(champ->comment = ft_strdup(token->content)))
+		if (!(champ->comment = copy_string_content(token->content)))
 			handle_error(MALLOC_ERROR);
 	}
 	else if (token->type == LABEL)

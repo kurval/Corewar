@@ -210,5 +210,6 @@ char			*make_rev_binary_str(int nbr);
 t_cursor		*copy_cursor(t_cursor cursor);
 void			labels_to_rel_adrs(t_label *labels, t_stmt *stmt);
 void			handle_invalid_label(t_arg *arg, char *label_name);
+char			*copy_string_content(char *string);
 
 #endif

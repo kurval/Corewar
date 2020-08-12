@@ -12,12 +12,6 @@
 
 #include "asm.h"
 
-int		convert_label_location(char *name, t_label *labels, int stmt_place)
-{
-	// This is not ready
-	return (10);
-}
-
 int		get_instr_code(t_stmt *statement, t_op *op)
 {
 	while (op)
@@ -39,15 +33,13 @@ void	write_argument(t_arg *arg, int stmt_place, t_label *labels, int fd)
 	{
 		if (overlap(arg->type, ARG_LABEL))
 		{
-			number = convert_label_location(arg->content, labels, stmt_place);
-			insert_bytes_number(fd, number, arg->size);
+			//number = convert_label_location(arg->content, labels, stmt_place);
+			//insert_bytes_number(fd, number, arg->size);
+			ft_printf("Label type\n");
 		}
-		else
-		{
-			number = (arg->type == T_DIR ? ft_atoi(&arg->content[1]) :
-			ft_atoi(arg->content));
-			insert_bytes_number(fd, ft_atoi(&arg->content[1]), arg->size);
-		}
+		number = (arg->type == T_DIR ? ft_atoi(&arg->content[1]) :
+		ft_atoi(arg->content));
+		insert_bytes_number(fd, ft_atoi(&arg->content[1]), arg->size);
 	}
 }
 
