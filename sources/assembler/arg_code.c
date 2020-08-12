@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   arg_code.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atuomine <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/08/11 14:01:39 by atuomine          #+#    #+#             */
+/*   Updated: 2020/08/11 14:01:40 by atuomine         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "asm.h"
 
-static char *get_bin_code(t_arg *arg)
+static char	*get_bin_code(t_arg *arg)
 {
 	if (overlap(arg->type, T_REG))
 		return ("01");
@@ -12,8 +24,7 @@ static char *get_bin_code(t_arg *arg)
 		return ("00");
 }
 
-
-int	needs_arg_code(t_stmt *stmt)
+int			needs_arg_code(t_stmt *stmt)
 {
 	if (!ft_strequ("live", stmt->name) && !ft_strequ("zjmp", stmt->name) &&
 		!ft_strequ("fork", stmt->name) && !ft_strequ("lfork", stmt->name))
@@ -22,7 +33,7 @@ int	needs_arg_code(t_stmt *stmt)
 		return (0);
 }
 
-int	get_arg_code(t_stmt *stmt)
+int			get_arg_code(t_stmt *stmt)
 {
 	int		i;
 	int		bit_loc;

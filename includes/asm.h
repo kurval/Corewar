@@ -206,4 +206,6 @@ void			insert_statements(t_stmt *stmt, t_label *labels,
 int				get_arg_code(t_stmt *stmt);
 int				convert_dec(char *binary, int size);
 char			*make_rev_binary_str(int nbr);
+t_cursor		*copy_cursor(t_cursor cursor);
+
 #endif

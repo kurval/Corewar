@@ -27,6 +27,7 @@ int		open_corefile(char *s_filename, int filename_len)
 		msg = add_str_to_str("Can't create file %s", c_filename);
 		handle_error(msg);
 	}
+	ft_printf("Writing output program to %s\n", c_filename);
 	free(c_filename);
 	return (fd);
 }

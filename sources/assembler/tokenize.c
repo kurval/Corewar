@@ -12,16 +12,6 @@
 
 #include "asm.h"
 
-t_cursor		*copy_cursor(t_cursor cursor)
-{
-	t_cursor *new;
-
-	new = (t_cursor *)malloc(sizeof(t_cursor));
-	new->col = cursor.col;
-	new->row = cursor.row;
-	return (new);
-}
-
 int				determine_token_type(char *content, int content_len)
 {
 	if (content[0] == DIRECT_CHAR)
@@ -84,6 +74,16 @@ t_cursor cursor, char *line)
 	return (head);
 }
 
+static int		find_token_start(char *line, t_cursor *cursor)
+{
+	cursor->col = skip_whitespaces(line, cursor->col);
+	if (line[cursor->col] == '\n' || line[cursor->col] == COMMENT_CHAR ||
+	!line[cursor->col])
+		return (0);
+	else
+		return (1);
+}
+
 t_token			*tokenize(char *line, t_cursor cursor, char *edge_chars)
 {
 	t_token *token;
@@ -94,9 +94,7 @@ t_token			*tokenize(char *line, t_cursor cursor, char *edge_chars)
 	head = NULL;
 	while (line[cursor.col])
 	{
-		cursor.col = skip_whitespaces(line, cursor.col);
-		if (line[cursor.col] == '\n' || line[cursor.col] == COMMENT_CHAR ||
-		!line[cursor.col])
+		if (!find_token_start(line, &cursor))
 			break ;
 		if (!(token_end = validate_cmd_str(line, cursor)))
 			check_for_lexical_error(line, cursor, &token_end, edge_chars);
