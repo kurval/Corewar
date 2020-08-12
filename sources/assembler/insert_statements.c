@@ -54,17 +54,17 @@ void	write_statement(t_stmt *stmt, int fd, t_label *labels)
 	}
 }
 
-void	insert_statements(t_champ champ, t_op *op, int fd)
+void	insert_statements(t_stmt *stmt, t_label *labels, t_op *op, int fd)
 {
-	t_stmt	*statement;
 	char	*bytes;
 
-	statement = champ.stmts;
-	while (statement)
+	if (stmt)
 	{
-		statement->arg_code = get_arg_code(statement);
-		statement->instr_code = get_instr_code(statement, op);
-		write_statement(statement, fd, champ.labels);
-		statement = statement->next;
+		if (stmt->next)
+			insert_statements(stmt->next, labels, op, fd);
+		stmt->arg_code = get_arg_code(stmt);
+		stmt->instr_code = get_instr_code(stmt, op);
+		write_statement(stmt, fd, labels);
+		stmt = stmt->next;
 	}
 }

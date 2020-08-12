@@ -12,25 +12,6 @@ static char *get_bin_code(t_arg *arg)
 		return ("00");
 }
 
-static int	convert_binary(char *binary)
-{
-	int multiplier;
-	int i;
-	int result;
-
-	multiplier = 1;
-	i = 7;
-	result = 0;
-	while (i >= 0)
-	{
-		if (binary[i] == '1')
-			result = result + multiplier;
-		i--;
-		multiplier = multiplier * 2;
-	}
-	ft_strdel(&binary);
-	return (result);
-}
 
 int	needs_arg_code(t_stmt *stmt)
 {
@@ -61,7 +42,7 @@ int	get_arg_code(t_stmt *stmt)
 			bit_loc = bit_loc + 2;
 			i++;
 		}
-		return (convert_binary(binary));
+		return (convert_dec(binary, 8));
 	}
 	else
 		return (0);

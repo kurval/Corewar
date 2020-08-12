@@ -39,7 +39,8 @@ void	make_cor_file(char *s_filename, t_asm assembler)
 	fd = open_corefile(s_filename, ft_strlen(s_filename) - 2);
 	insert_bytes_number(fd, COREWAR_EXEC_MAGIC, 4); //magic header
 	//insert champion info, remember null and exec-code-size
-	insert_statements(assembler.champ, assembler.op, fd);
+	insert_statements(assembler.champ.stmts, assembler.champ.labels,
+	assembler.op, fd);
 	if (close(fd) == -1)
 	{
 		msg = add_str_to_str("Can't close source file %s", s_filename);

@@ -12,12 +12,24 @@
 
 #include "asm.h"
 
+static	int	handle_negative(int number)
+{
+	char	*binary;
+	int		result;
+
+	binary = make_rev_binary_str(number);
+	result = convert_dec(binary, 16);
+	return (result + 1);
+}
+
 static char	*get_bytes(int fd, int number, int byte_nbr)
 {
 	int		byte;
 	char	*output;
 	int		i;
 
+	if (number < 0)
+		number = handle_negative(number);
 	output = (char *)malloc(sizeof(char) * byte_nbr);
 	i = byte_nbr - 1;
 	while (byte || i > -1)

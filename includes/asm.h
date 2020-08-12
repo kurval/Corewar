@@ -201,6 +201,9 @@ void			insert_bytes_number(int fd, int nbr, int size);
 void			insert_bytes_string(int fd, char *str, int size);
 void			init_champ(t_champ *champ);
 void			set_champ(t_champ *champ, t_token *token);
-void			insert_statements(t_champ champ, t_op *op, int fd);
+void			insert_statements(t_stmt *stmt, t_label *labels,
+				t_op *op, int fd);
 int				get_arg_code(t_stmt *stmt);
+int				convert_dec(char *binary, int size);
+char			*make_rev_binary_str(int nbr);
 #endif
