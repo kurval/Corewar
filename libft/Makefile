@@ -48,7 +48,7 @@ clean:
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@${MAKE} -C printf fclean
+	#@${MAKE} -C printf fclean
 
 re: fclean all
 

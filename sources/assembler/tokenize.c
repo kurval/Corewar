@@ -25,17 +25,13 @@ t_cursor		*copy_cursor(t_cursor cursor)
 int				determine_token_type(char *content, int content_len)
 {
 	if (content[0] == DIRECT_CHAR)
-	{
-		if (content[1] == LABEL_CHAR)
-			return (DIRECT_LABEL);
-		else
-			return (DIRECT);
-	}
+		return (content[1] == LABEL_CHAR ? DIRECT_LABEL : DIRECT);
 	else if (content[0] == LABEL_CHAR)
 		return (INDIRECT_LABEL);
-	else if (ft_strequ(content, NAME_CMD_STRING) ||
-	ft_strequ(content, COMMENT_CMD_STRING))
-		return (CMD_STR);
+	else if (ft_strequ(content, NAME_CMD_STRING))
+		return (COMMAND_NAME);
+	else if (ft_strequ(content, COMMENT_CMD_STRING))
+		return (COMMAND_COMMENT);
 	else if (content[0] == '"')
 		return (STRING);
 	else if (content[0] == 'r' && content_len > 1 && content_len < 4 &&
@@ -74,12 +70,11 @@ t_cursor cursor, char *line)
 
 	while (line[cursor.col] && line[cursor.col] != '\n')
 		cursor.col++;
+	if (!line[cursor.col])
+		return (head);
 	endline = (t_token *)malloc(sizeof(t_token));
 	endline->next = NULL;
-	if (!line[cursor.col])
-		endline->content = NULL;
-	else
-		endline->content = ft_strdup("\n");
+	endline->content = ft_strdup("\n");
 	endline->type = ENDLINE;
 	endline->cursor = copy_cursor(cursor);
 	if (!head)

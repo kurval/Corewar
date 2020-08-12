@@ -10,14 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "asm.h"
+#include "../../includes/asm.h"
 
 char			*create_edge_chars(void)
 {
 	char *chars;
 
-	chars = (char *)malloc(sizeof(char) * 11);
-	chars = ft_strdup(" \t\n\r\v\f");
+	chars = (char *)malloc(sizeof(char) * 12);
+	chars = ft_strcpy(chars, " \t\n\r\v\f");
 	chars[6] = LABEL_CHAR;
 	chars[7] = COMMENT_CHAR;
 	chars[8] = SEPARATOR_CHAR;
@@ -43,8 +43,8 @@ char			*token_type_str(int type)
 		return ("SEPARATOR");
 	if (type == STRING)
 		return ("STRING");
-	if (type == CMD_STR)
-		return ("CMD_STR");
+	if (overlap(type, CMD_STR))
+		return (type == COMMAND_NAME ? "COMMAND_NAME" : "COMMAND_COMMENT");
 	if (type == DIRECT_LABEL)
 		return ("DIRECT_LABEL");
 	if (type == INDIRECT_LABEL)
@@ -71,22 +71,44 @@ void			print_tokens(t_token *tokens)
 	ft_putchar('\n');
 }
 
-void			parse_file(int fd)
+void			free_tokens(t_token *tokens)
+{
+	t_token *current;
+	t_token *next;
+
+	current = tokens;
+	while (current)
+	{
+		next = current->next;
+		if (current->content)
+			free(current->content);
+		free(current->cursor);
+		free(current);
+		current = next;
+	}
+}
+
+void			parse_file(int fd, t_asm *assembler)
 {
 	char		*line;
 	t_cursor	cursor;
-	t_token		*tokens;
-	t_statement *statement;
 	char		*edge_chars;
 
 	cursor.row = 1;
 	edge_chars = create_edge_chars();
+	init_champ(&assembler->champ);
 	while (asm_gnl(fd, &line))
 	{
 		cursor.col = 0;
-		tokens = tokenize(line, cursor, edge_chars);
-		free(line);
-		print_tokens(tokens);
+		assembler->tokens = tokenize(line, cursor, edge_chars);
+		check_token_order(assembler->tokens);
+		check_token_validity(assembler->tokens, assembler->op);
+		check_statement_order(assembler->tokens, &assembler->champ);
+		ft_strdel(&line);
+		//print_tokens(assembler->tokens);
+		set_champ(&assembler->champ, assembler->tokens);
+		free_tokens(assembler->tokens);
+		assembler->tokens = NULL;
 		cursor.row++;
 	}
 	free(edge_chars);

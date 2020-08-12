@@ -1,3 +1,63 @@
-.name "asd
-aaaaa
-asdsdf"
+.name 	"42"
+.comment        "Just a basic Winner Program"
+
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree
+live	%42		# entree

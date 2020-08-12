@@ -12,26 +12,50 @@
 
 #include "asm.h"
 
-int	find_last_char(char *str, int start, char *chars)
+int	find_first_str(char *haystack, int start, char *needle)
 {
-	int	c;
+	int needle_start;
+	int	needle_len;
 	int	i;
 	int	j;
 
-	c = -1;
+	needle_len = ft_strlen(needle);
 	i = start;
-	while (str && str[i])
+	while (haystack && haystack[i])
+	{
+		needle_start = i;
+		j = 0;
+		while (haystack[i] && needle && needle[j] && haystack[i] == needle[j])
+		{
+			i++;
+			j++;
+		}
+		if (j == needle_len)
+			return (needle_start);
+		if (haystack[i])
+			i++;
+	}
+	return (-1);
+}
+
+int	find_last_char(char *str, int start, char *chars)
+{
+	int	i;
+	int	j;
+
+	i = start;
+	while (str && i >= 0)
 	{
 		j = 0;
 		while (chars && chars[j])
 		{
 			if (str[i] == chars[j])
-				c = i;
+				return (i);
 			j++;
 		}
-		i++;
+		i--;
 	}
-	return (c);
+	return (-1);
 }
 
 int	find_first_char(char *str, int start, char *chars)
