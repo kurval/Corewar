@@ -16,8 +16,6 @@
 ** Set_champ
 ** The function sets the champion information (name, comment, labels and stmts
 ** (statements)) and done to one if name and comment have been saved.
-** NOTE: The function is not yet complete. The places of the labels need to be
-** saved.
 */
 
 static t_arg	*get_arg(char *stmt_name, t_token *token)
