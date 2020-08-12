@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/12 18:12:15 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/12 18:49:47 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ typedef struct	s_op
 ** dump_cycle - number of cycle to dump memory (if present)
 ** checks - amount of checks performed
 ** cycles - is used to track periods
+** operations - list of all operations and info of each one
 */
 
 typedef struct		s_vm
