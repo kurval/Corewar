@@ -26,26 +26,15 @@
 /*
 #include <stdio.h>
 
-static void		print_champ(t_champ *champ)
+static void		print_stmt(t_stmt *stmt)
 {
-	t_label	*label;
-	t_stmt	*stmt;
-	int		i;
+	int	i;
 
-	printf("champ\nname: %s\ncomment: %s\ndone: %d\nlabels:\n",
-	champ->name, champ->comment, champ->done);
-	label = champ->labels;
-	while (label)
+	if (stmt)
 	{
-		printf("\tlabel\n\tname: %s\n\tplace: %d\n\n",
-		label->name, label->place);
-		label = label->next;
-	}
-	printf("stmts:\n");
-	stmt = champ->stmts;
-	while (stmt)
-	{
-		printf("\tstmt\n\tname: %s\n\targs:\n\n", stmt->name);
+		if (stmt->next)
+			print_stmt(stmt->next);
+		printf("\tstmt\n\tname: %s\n\targs:\n", stmt->name);
 		i = 0;
 		while (stmt->args[i])
 		{
@@ -55,8 +44,27 @@ static void		print_champ(t_champ *champ)
 			i++;
 		}
 		printf("\tsize: %d\n\tplace: %d\n\n", stmt->size, stmt->place);
-		stmt = stmt->next;
 	}
+}
+
+static void		print_label(t_label *label)
+{
+	if (label)
+	{
+		if (label->next)
+			print_label(label->next);
+		printf("\tlabel\n\tname: %s\n\tplace: %d\n\n",
+		label->name, label->place);
+	}
+}
+
+static void		print_champ(t_champ *champ)
+{
+	printf("champ\nname: %s\ncomment: %s\ndone: %d\nlabels:\n",
+	champ->name, champ->comment, champ->done);
+	print_label(champ->labels);
+	printf("stmts:\n");
+	print_stmt(champ->stmts);
 }
 */
 
