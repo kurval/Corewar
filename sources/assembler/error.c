@@ -38,6 +38,9 @@ void	handle_error_msg(int error, t_token *token)
 	char	*msg;
 	char	**strs;
 
+	if (!token)
+		handle_error(ft_strjoin("Syntax error - unexpected end of input",
+		" (Perhaps you forgot to end with a newline ?)"));
 	if (!(strs = (char **)malloc(sizeof(char *) * 6)) ||
 	!(strs[0] = ft_strdup((overlap(SYNTAX_ERROR, error) ? "Syntax error" :
 	"Invalid instruction"))))

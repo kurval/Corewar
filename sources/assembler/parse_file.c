@@ -101,11 +101,11 @@ void			parse_file(int fd, t_asm *assembler)
 	{
 		cursor.col = 0;
 		assembler->tokens = tokenize(line, cursor, edge_chars);
+		//print_tokens(assembler->tokens);
 		check_token_order(assembler->tokens);
 		check_token_validity(assembler->tokens, assembler->op);
 		check_statement_order(assembler->tokens, &assembler->champ);
 		ft_strdel(&line);
-		//print_tokens(assembler->tokens);
 		set_champ(&assembler->champ, assembler->tokens);
 		free_tokens(assembler->tokens);
 		assembler->tokens = NULL;

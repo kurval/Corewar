@@ -96,6 +96,8 @@ int *token_end, char *edge_chars)
 		else
 		{
 			*token_end = find_first_char(line, token_content_start, edge_chars);
+			if (*token_end == -1)
+				*token_end = ft_strlen(line);
 			validate_characters(line, token_content_start, cursor.row,
 			token_end);
 			if (!label_or_dir && line[*token_end] == LABEL_CHAR)

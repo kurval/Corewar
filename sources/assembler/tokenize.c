@@ -95,7 +95,8 @@ t_token			*tokenize(char *line, t_cursor cursor, char *edge_chars)
 	while (line[cursor.col])
 	{
 		cursor.col = skip_whitespaces(line, cursor.col);
-		if (line[cursor.col] == '\n' || line[cursor.col] == COMMENT_CHAR)
+		if (line[cursor.col] == '\n' || line[cursor.col] == COMMENT_CHAR ||
+		!line[cursor.col])
 			break ;
 		if (!(token_end = validate_cmd_str(line, cursor)))
 			check_for_lexical_error(line, cursor, &token_end, edge_chars);
