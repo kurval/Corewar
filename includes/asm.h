@@ -52,6 +52,17 @@
 # define NUMBER -1
 
 /*
+** T_cursor
+** The current location row and column
+*/
+
+typedef struct	s_cursor
+{
+	int	row;
+	int	col;
+}				t_cursor;
+
+/*
 ** T_arg
 ** Type: Either T_REG, T_IND or T_DIR
 ** Content: Might have to change this later - not sure if it works
@@ -60,9 +71,10 @@
 
 typedef struct	s_arg
 {
-	int		type;
-	char	*content;
-	int		size;
+	int			type;
+	char		*content;
+	int			size;
+	t_cursor	*cursor;
 }				t_arg;
 
 /*
@@ -112,17 +124,6 @@ typedef struct	s_champ
 	t_label	*labels;
 	t_stmt	*stmts;
 }				t_champ;
-
-/*
-** T_cursor
-** The current location row and column
-*/
-
-typedef struct	s_cursor
-{
-	int	row;
-	int	col;
-}				t_cursor;
 
 /*
 ** T_token
@@ -207,5 +208,7 @@ int				get_arg_code(t_stmt *stmt);
 int				convert_dec(char *binary, int size);
 char			*make_rev_binary_str(int nbr);
 t_cursor		*copy_cursor(t_cursor cursor);
+void			labels_to_rel_adrs(t_label *labels, t_stmt *stmt);
+void			handle_invalid_label(t_arg *arg, char *label_name);
 
 #endif

@@ -35,6 +35,7 @@ static t_arg	*get_arg(char *stmt_name, t_token *token)
 		arg->size = 2;
 	else
 		arg->size = 4;
+	arg->cursor = copy_cursor(*token->cursor);
 	return (arg);
 }
 
