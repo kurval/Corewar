@@ -81,6 +81,6 @@ void	handle_error(char *msg)
 {
 	ft_putstr_fd(msg, 2);
 	ft_putstr_fd("\n", 2);
-	//system("leaks asm");
+	system("leaks asm");
 	exit(EXIT_FAILURE);
 }

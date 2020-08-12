@@ -83,6 +83,8 @@ typedef struct	s_stmt
 	int				size;
 	int				place;
 	struct s_stmt	*next;
+	int				arg_code;
+	int				instr_code;
 }				t_stmt;
 
 /*
@@ -199,5 +201,6 @@ void			insert_bytes_number(int fd, int nbr, int size);
 void			insert_bytes_string(int fd, char *str, int size);
 void			init_champ(t_champ *champ);
 void			set_champ(t_champ *champ, t_token *token);
-
+void			insert_statements(t_champ champ, t_op *op, int fd);
+int				get_arg_code(t_stmt *stmt);
 #endif
