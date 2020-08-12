@@ -16,8 +16,6 @@
 ** Set_champ
 ** The function sets the champion information (name, comment, labels and stmts
 ** (statements)) and done to one if name and comment have been saved.
-** NOTE: The function is not yet complete. The places of the labels need to be
-** saved.
 */
 
 static t_arg	*get_arg(char *stmt_name, t_token *token)
@@ -90,7 +88,7 @@ static void		set_label(t_champ *champ, t_token *token)
 	if (!(label = (t_label *)malloc(sizeof(t_label))) ||
 	!(label->name = ft_strdup(token->content)))
 		handle_error(MALLOC_ERROR);
-	label->place = 0;
+	label->place = -1;
 	if (!champ->labels)
 		label->next = NULL;
 	else
@@ -118,7 +116,11 @@ void			set_champ(t_champ *champ, t_token *token)
 		token = token->next;
 	}
 	if (token->type == INSTRUCTION)
+	{
 		set_stmt(champ, token);
+		if (champ->labels && champ->labels->place == -1)
+			champ->labels->place = champ->stmts->place;
+	}
 	if (champ->name && champ->comment && !champ->done)
 		champ->done = 1;
 }
