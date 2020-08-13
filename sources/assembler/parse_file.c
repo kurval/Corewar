@@ -112,5 +112,6 @@ void			parse_file(int fd, t_asm *assembler)
 		cursor.row++;
 	}
 	free(edge_chars);
+	check_str_len(assembler->champ.name, assembler->champ.comment);
 	labels_to_rel_adrs(assembler->champ.labels, assembler->champ.stmts);
 }

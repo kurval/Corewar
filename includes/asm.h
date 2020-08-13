@@ -65,7 +65,6 @@ typedef struct	s_cursor
 /*
 ** T_arg
 ** Type: Either T_REG, T_IND or T_DIR
-** Content: Might have to change this later - not sure if it works
 ** Size: Size of argument in bytes
 */
 
@@ -113,7 +112,7 @@ typedef struct	s_label
 
 /*
 ** T_champ
-** Done: Indicates if champion values have been saved
+** Done: Indicates if the champion values name and comment have been saved
 */
 
 typedef struct	s_champ
@@ -129,8 +128,8 @@ typedef struct	s_champ
 ** T_token
 ** Contains information on each .s file component
 ** Example line: .name "Matti"
-** token 1: | type: CMD_STR | content: .name   | cursor: [row 1 pos 0] |
-** token 2: | type: STRING  | content: "Matti" | cursor: [row 1 pos 6] |
+** token 1: | type: COMMAND_NAME | content: .name   | cursor: [row 1 col 0] |
+** token 2: | type: STRING  | content: "Matti" | cursor: [row 1 col 6] |
 */
 
 typedef struct	s_token
@@ -153,9 +152,9 @@ typedef struct	s_op
 /*
 ** T_asm
 ** Contains lists and other important information needed in this project
-** champ: champion name and comment
-** statements: A list of all the statements
-** tokens: A list of all the tokens
+** Tokens: A list of all the tokens
+** Champ: Champion name, comment, labels and statements (a list of all the
+** statements)
 */
 
 typedef struct	s_asm
@@ -211,5 +210,6 @@ t_cursor		*copy_cursor(t_cursor cursor);
 void			labels_to_rel_adrs(t_label *labels, t_stmt *stmt);
 void			handle_invalid_label(t_arg *arg, char *label_name);
 char			*copy_string_content(char *string);
+void			check_str_len(char *name, char *comment);
 
 #endif
