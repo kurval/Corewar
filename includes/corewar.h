@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/12 18:49:47 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/13 13:43:11 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+
+# define MASK1 192
+# define MASK2 48
+# define MASK3 12
 
 typedef struct		s_arena
 {
@@ -145,6 +149,7 @@ void    			dump_memory(t_arena *arena);
 
 void				ft_errno(char *id);
 void				get_op(t_op *op);
+int					validate_encoding(t_vm *vm, int encode_byte, int opcode);
 
 /*
 **					PARSE INPUT FUNCTIONS

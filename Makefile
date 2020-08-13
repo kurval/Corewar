@@ -6,7 +6,7 @@
 #    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/08/12 16:49:26 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/08/13 12:00:32 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@ COREWAR = corewar
 
 VM_SRC_PATH = ./sources/vm/
 SRC_FILES = ft_errno.c init_vm.c parse_input.c validate_champions.c \
-			run_cycles.c print_arena.c get_op.c
+			run_cycles.c print_arena.c get_op.c validate_encoding.c
 SRC = $(addprefix $(VM_SRC_PATH), $(SRC_FILES))
 
 MAIN_PATH = ./sources/vm/
