@@ -6,16 +6,16 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 14:52:15 by jmetelin          #+#    #+#             */
-/*   Updated: 2020/08/12 18:28:22 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/13 20:19:46 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
 
-static int	*get_args(int instr_code, int argc)
+static void	get_args(int instr_code, t_op *instr)
 {
-	int			*args;
-	static int	argv[16][3] = {{T_DIR, 0, 0}, {T_DIR | T_IND, T_REG, 0},
+	int			i;
+	static int	args[16][3] = {{T_DIR, 0, 0}, {T_DIR | T_IND, T_REG, 0},
 	{T_REG, T_IND | T_REG, 0}, {T_REG, T_REG, T_REG}, {T_REG, T_REG, T_REG},
 	{T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG},
 	{T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG},
@@ -25,11 +25,9 @@ static int	*get_args(int instr_code, int argc)
 	{T_DIR | T_IND, T_REG, 0}, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG},
 	{T_DIR, 0, 0}, {T_REG, 0, 0}};
 
-	if (!(args = (int *)malloc(sizeof(int) * argc)))
-		exit(1);
-	while (--argc >= 0)
-		args[argc] = argv[instr_code][argc];
-	return (args);
+	i = -1;
+	while (++i < 3)
+		instr->argv[i] = args[instr_code][i];
 }
 
 static t_op	get_instr(int instr_code)
@@ -43,7 +41,7 @@ static t_op	get_instr(int instr_code)
 
 	instr.instr_name = instr_name[instr_code];
 	instr.argc = argc[instr_code];
-	instr.argv = get_args(instr_code, argc[instr_code]);
+	get_args(instr_code, &instr);
 	instr.wait_cycles = cycles[instr_code];
 	instr.instr_code = instr_code;
 	return (instr);

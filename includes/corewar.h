@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/13 13:43:11 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/13 20:12:06 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ typedef struct	s_op
 {
 	char		*instr_name;
 	int			argc;
-	int			*argv;
+	int			argv[3];
 	int			instr_code;
 	int			wait_cycles;
 }				t_op;

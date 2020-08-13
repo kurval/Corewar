@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:30:41 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/13 13:49:11 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/13 20:31:32 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	main(int ac, char **av)
 		validate_chapions(av);
 		parse_input(av, &vm);
 		run_cycles(&vm);
-		ft_printf("\nCurrent cycle %d\n", vm.current_cycle);
 		//print_arena(&arena);
 	}
 	return (0);
