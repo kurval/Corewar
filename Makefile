@@ -6,7 +6,7 @@
 #    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/08/14 17:48:08 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/08/14 21:14:34 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,13 +16,12 @@ COREWAR = corewar
 VM_SRC_PATH = ./sources/vm/
 SRC_FILES = ft_errno.c init_vm.c parse_input.c validate_champions.c \
 			run_cycles.c print_arena.c get_op.c validate_encoding.c \
-			free_all.c
-			#operations/op_add.c operations/op_aff.c operations/op_and.c \
-			#operations/op_fork.c operations/op_ld.c operations/op_ldi.c \
-			#operations/op_lfork.c operations/op_live.c operations/op_lld.c \
-			#operations/op_lldi.c operations/op_or.c operations/op_st.c \
-			#operations/op_sti.c operations/op_sub.c operations/op_xor.c \
-			#operations/op_zjmp.c
+			operations/op_add.c operations/op_aff.c operations/op_and.c \
+			operations/op_fork.c operations/op_ld.c operations/op_ldi.c \
+			operations/op_lfork.c operations/op_live.c operations/op_lld.c \
+			operations/op_lldi.c operations/op_or.c operations/op_st.c \
+			operations/op_sti.c operations/op_sub.c operations/op_xor.c \
+			operations/op_zjmp.c free_all.c assign_opfunctions.c
 SRC = $(addprefix $(VM_SRC_PATH), $(SRC_FILES))
 
 MAIN_PATH = ./sources/vm/

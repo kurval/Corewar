@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/14 18:46:26 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/14 21:51:20 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void set_opcode(t_vm *vm, t_process *proc)
     if (proc->opcode == 0 || proc->opcode > NB_OPERATIONS)
 		proc->wait_cycles = 1;
 	else
-		proc->wait_cycles = vm->operations[opcode - 1].wait_cycles;
+		proc->wait_cycles = vm->operations[proc->opcode - 1].wait_cycles;
 }
 */
 
@@ -60,7 +60,10 @@ static void	execute_operation(t_vm *vm, t_process *proc)
         If (proc->opcode && proc->opcode <= NB_OPERATIONS)
         {
             // If all the checks were successfully passed we can execute operation with pointer to operationfunction
-            if (check_encoding() && get_args())
+            // check encoding byte if present and check arguments
+            if (vm->operations[proc->opcode - 1].encode)
+                ret = check_encoding()
+            if (ret && get_args())
                 vm->operations[proc->opcode - 1].f(vm, proc);
         }
         else

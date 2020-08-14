@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 14:52:15 by jmetelin          #+#    #+#             */
-/*   Updated: 2020/08/14 19:09:22 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/14 21:34:17 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static t_op	get_instr(int instr_code)
 	instr.instr_code = instr_code + 1;
 	instr.dir_size = labels[instr_code];
 	instr.encode = encoding[instr_code];
+	instr.f = assign_opfunctions(instr_code + 1);
 	return (instr);
 }
 
