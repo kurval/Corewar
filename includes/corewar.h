@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/14 16:44:17 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/14 16:46:34 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,19 +183,5 @@ void				op_sti(t_vm *vm, t_process *proc);
 void				op_sub(t_vm *vm, t_process *proc);
 void				op_xor(t_vm *vm, t_process *proc);
 void				op_zjmp(t_vm *vm, t_process *proc);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #endif
