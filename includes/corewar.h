@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/14 16:46:34 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/14 17:47:47 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,28 +86,6 @@ typedef struct		s_player
 }					t_player;
 
 /*
-** Operations contain following information:
-** - instr_name : operation name
-** - argc : number of arguments
-** - argv : arguments tab
-** - instr_code : operation code
-** - wait_cycles : cycles untill execution
-** - dir_size : 2 or 4 bytes
-** - encode : 1 present 0 no encoding byte
-*/
-
-typedef struct	s_op
-{
-	char		*instr_name;
-	int			argc;
-	int			argv[3];
-	int			instr_code;
-	int			wait_cycles;
-	int			dir_size;
-	int			encode;
-}				t_op;
-
-/*
 ** Game parameters contain following information:
 ** - last_live_id : player last reported alive
 ** 	>It is initialised with the highest player id,
@@ -127,7 +105,7 @@ typedef struct		s_vm
 {
 	t_arena			*arena;
 	t_player		p[MAX_PLAYERS];
-	t_op			operations[16];
+	struct s_op		*operations;
 	int				last_live_id;
 	int				cycles;
 	int				current_cycle;
@@ -136,6 +114,29 @@ typedef struct		s_vm
 	int				ctd;
 	int				dump_cycle;
 }					t_vm;
+
+/*
+** Operations contain following information:
+** - instr_name : operation name
+** - argc : number of arguments
+** - argv : arguments tab
+** - instr_code : operation code
+** - wait_cycles : cycles untill execution
+** - dir_size : 2 or 4 bytes
+** - encode : 1 present 0 no encoding byte
+*/
+
+typedef struct	s_op
+{
+	char		*instr_name;
+	int			argc;
+	int			argv[3];
+	int			instr_code;
+	int			wait_cycles;
+	int			dir_size;
+	int			encode;
+	void		(*f)(t_vm *vm, t_process *proc);
+}				t_op;
 
 /*
 **					VM FUNCTIONS
@@ -154,6 +155,7 @@ void    			dump_memory(t_arena *arena);
 void				ft_errno(char *id);
 void				get_op(t_op *op);
 int					validate_encoding(t_vm *vm, int encode_byte, int opcode);
+void				free_all(t_vm *vm);
 
 /*
 **					PARSE INPUT FUNCTIONS

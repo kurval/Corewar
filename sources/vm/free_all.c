@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_vm.c                                          :+:      :+:    :+:   */
+/*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/02 15:33:54 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/14 17:40:48 by vkurkela         ###   ########.fr       */
+/*   Created: 2020/08/14 17:42:55 by vkurkela          #+#    #+#             */
+/*   Updated: 2020/08/14 17:50:30 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
 
-void	init_vm(t_vm *vm)
+static void free_operations(t_vm *vm)
 {
-	vm->checks = 0;
-	vm->current_cycle = 0;
-	vm->cycles = 0;
-	vm->last_live_id = 0;
-	vm->ctd = CYCLE_TO_DIE;
-	vm->lives = 0;
-	vm->dump_cycle = 0;
-	vm->arena = NULL;
-	if (!(vm->operations = (t_op*)malloc(sizeof(t_op) * 16)))
-		exit(1);
+    free(vm->operations);
+}
+
+void    free_all(t_vm *vm)
+{
+    free_operations(vm);
 }

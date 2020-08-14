@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/12 18:38:04 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/14 17:09:11 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,21 @@ static void	execute_operation(t_vm *vm, t_process *proc)
 		set_opcode(vm, proc);
     proc->wait_cycles -= 1;
 
-    //Execute the operation
+    //If wait_cycles == 0 it's time to execute the operation
     if (!proc->wait_cycles)
     {
-        If all the checks were successfully passed
-            execute the operation STRUCT FOR OPERATION FUNCTIONS
+        // Check if operation code is not valid
+        If (proc->opcode && proc->opcode <= NB_OPERATIONS)
+        {
+            // If all the checks were successfully passed we can execute operation with pointer to operationfunction
+            if (check_encoding() && get_args())
+                vm->operations[proc->opcode - 1].f(vm, proc);
+        }
         else
-            If operation code is not valid, move cursor to the next byte.
+            // If operation code is not valid, move cursor to the next byte.
             proc->jump = 1;
-
-        move cursor to the next operation:
-            proc->current_position = NEED FUNCTION TO MOVE CURSOR current_position + jump
+        // move cursor
+        proc->current_position = NEED FUNCTION TO MOVE CURSOR current_position + jump
     }
 }
 */

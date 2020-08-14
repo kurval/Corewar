@@ -6,12 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:47:04 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/10 18:53:45 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/14 17:50:02 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
-#include "../../libft/libft.h"
 
 void    init_arena(t_vm *vm, t_arena *arena)
 {

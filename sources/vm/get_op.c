@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 14:52:15 by jmetelin          #+#    #+#             */
-/*   Updated: 2020/08/14 10:56:20 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/14 17:55:05 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static t_op	get_instr(int instr_code)
 	instr.argc = argc[instr_code];
 	get_args(instr_code, &instr);
 	instr.wait_cycles = cycles[instr_code];
-	instr.instr_code = instr_code;
+	instr.instr_code = instr_code + 1;
 	instr.dir_size = labels[instr_code];
 	instr.encode = encoding[instr_code];
 	return (instr);
