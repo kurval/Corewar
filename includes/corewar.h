@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/14 16:30:54 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/14 16:44:17 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ typedef struct		s_arena
 
 /*
 ** Cursors contain following information:
-** id - unique.
-** carry - affects zjmp operation, initialised with value false.
-** opcode - operation code, before the battle starts it is not initialised.
-** last_live - number of cycle in which current cursor performed operation
-** >live last time.
-** wait_cycles - amount of cycles to wait before operation execution.
-** current_position - address in memory
-** jump - amount of bytes cursor must jump to get to the next operation
-** reg[REG_NUMBER] - registries of current cursor
+** - id : unique.
+** - carry : affects zjmp operation, initialised with value false.
+** - opcode: operation code, before the battle starts it is not initialised.
+** - last_live : number of cycle in which current cursor performed operation
+** 	>live last time.
+** - wait_cycles : amount of cycles to wait before operation execution.
+** - current_position : address in memory
+** - jump : amount of bytes cursor must jump to get to the next operation
+** - reg[REG_NUMBER] : registries of current cursor
 */
 
 typedef struct		s_process
@@ -61,11 +61,11 @@ typedef struct		s_process
 
 /*
 ** Players contain following information:
-** id - unique ID
-** name - champion name
-** comment[COMMENT_LENGTH + 1] - champion comment
-** executable_size - executable code size
-** code - executable code
+** - id : unique ID
+** - name : champion name
+** - comment[COMMENT_LENGTH + 1]:  champion comment
+** - executable_size : executable code size
+** - code : executable code
 */
 
 typedef struct		s_player
@@ -87,13 +87,13 @@ typedef struct		s_player
 
 /*
 ** Operations contain following information:
-** - instr_name - operation name
-** - argc - number of arguments
-** - argv - arguments tab
-** - instr_code - operation code
-** - wait_cycles - cycles untill execution
-** - dir_size - 2 or 4 bytes
-** - encode - 1 present 0 no encoding byte
+** - instr_name : operation name
+** - argc : number of arguments
+** - argv : arguments tab
+** - instr_code : operation code
+** - wait_cycles : cycles untill execution
+** - dir_size : 2 or 4 bytes
+** - encode : 1 present 0 no encoding byte
 */
 
 typedef struct	s_op
@@ -109,18 +109,18 @@ typedef struct	s_op
 
 /*
 ** Game parameters contain following information:
-** last_live_id - player last reported alive
-** >It is initialised with the highest player id,
-** >and is updated every time operation live is performed.
-** current_cycle - cycles counter
-** lives - counter for operation live, to check how many times
-** >this operation was performed during the last cycles_to_die cycles.
-** ctd - cycles_to_die — length of current check period in cycles.
-** >This variable is initialised with the value of constant CYCLES_TO_DIE (1536).
-** dump_cycle - number of cycle to dump memory (if present)
-** checks - amount of checks performed
-** cycles - is used to track periods
-** operations - list of all operations and info of each one
+** - last_live_id : player last reported alive
+** 	>It is initialised with the highest player id,
+** 	>and is updated every time operation live is performed.
+** - current_cycle : cycles counter
+** - lives : counter for operation live, to check how many times
+** 	>this operation was performed during the last cycles_to_die cycles.
+** - ctd (cycles_to_die) : length of current check period in cycles.
+** 	>This variable is initialised with the value of constant CYCLES_TO_DIE (1536).
+** - dump_cycle : number of cycle to dump memory (if present)
+** - checks : amount of checks performed
+** - cycles : is used to track periods
+** - operations : list of all operations and info of each one
 */
 
 typedef struct		s_vm
