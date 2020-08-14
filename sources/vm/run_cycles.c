@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/14 17:09:11 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/14 18:46:26 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ static void	execute_operation(t_vm *vm, t_process *proc)
 {
     int i;
 
+    // Setting a new opcode and wait_cycles after cursor has moved
     if (!proc->wait_cycles)
 		set_opcode(vm, proc);
     proc->wait_cycles -= 1;
@@ -83,10 +84,10 @@ static void check_dead_processes(t_vm *vm, t_process *proc)
 {
     while(processes)
     {
-        if (vm->last_live <= vm->current_cycle - vm->ctd ||\
+        if (proc->last_live <= vm->current_cycle - vm->ctd ||\
         vm->ctd <= 0)
         {
-            //kill_process
+            // remove current process from list
         }
         else
             next->process
