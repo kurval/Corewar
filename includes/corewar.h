@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/13 20:12:06 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/14 16:30:54 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ typedef struct		s_player
 ** - argv - arguments tab
 ** - instr_code - operation code
 ** - wait_cycles - cycles untill execution
+** - dir_size - 2 or 4 bytes
+** - encode - 1 present 0 no encoding byte
 */
 
 typedef struct	s_op
@@ -101,6 +103,8 @@ typedef struct	s_op
 	int			argv[3];
 	int			instr_code;
 	int			wait_cycles;
+	int			dir_size;
+	int			encode;
 }				t_op;
 
 /*
@@ -158,5 +162,40 @@ int					validate_encoding(t_vm *vm, int encode_byte, int opcode);
 void				validate_chapions(char **s);
 
 void				parse_input(char **av, t_vm *vm);
+
+/*
+**					OPERATION FUNCTIONS
+*/
+
+void				op_add(t_vm *vm, t_process *proc);
+void				op_aff(t_vm *vm, t_process *proc);
+void				op_and(t_vm *vm, t_process *proc);
+void				op_fork(t_vm *vm, t_process *proc);
+void				op_ld(t_vm *vm, t_process *proc);
+void				op_ldi(t_vm *vm, t_process *proc);
+void				op_lfork(t_vm *vm, t_process *proc);
+void				op_live(t_vm *vm, t_process *proc);
+void				op_lld(t_vm *vm, t_process *proc);
+void				op_lldi(t_vm *vm, t_process *proc);
+void				op_or(t_vm *vm, t_process *proc);
+void				op_st(t_vm *vm, t_process *proc);
+void				op_sti(t_vm *vm, t_process *proc);
+void				op_sub(t_vm *vm, t_process *proc);
+void				op_xor(t_vm *vm, t_process *proc);
+void				op_zjmp(t_vm *vm, t_process *proc);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 #endif

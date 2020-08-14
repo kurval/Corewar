@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 14:52:15 by jmetelin          #+#    #+#             */
-/*   Updated: 2020/08/13 20:19:46 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/14 10:56:20 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,16 @@ static t_op	get_instr(int instr_code)
 	static int	argc[16] = {1, 2, 2, 3, 3, 3, 3, 3, 1, 3, 3, 1, 2, 3, 1, 1};
 	static int	cycles[16] = {10, 5, 5, 10, 10, 6, 6, 6, 20, 25, 25, 800, 10, \
 	50, 1000, 2};
+	static int	labels[16] = {4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 2, 2, 4, 2, 2, 4};
+	static int	encoding[16] = {0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 0, 1};
 
 	instr.instr_name = instr_name[instr_code];
 	instr.argc = argc[instr_code];
 	get_args(instr_code, &instr);
 	instr.wait_cycles = cycles[instr_code];
 	instr.instr_code = instr_code;
+	instr.dir_size = labels[instr_code];
+	instr.encode = encoding[instr_code];
 	return (instr);
 }
 

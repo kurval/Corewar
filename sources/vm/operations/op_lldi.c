@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   op_sub.c                                           :+:      :+:    :+:   */
+/*   op_lldi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/08 11:45:59 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/14 16:13:12 by vkurkela         ###   ########.fr       */
+/*   Created: 2020/08/08 11:45:42 by vkurkela          #+#    #+#             */
+/*   Updated: 2020/08/14 16:19:12 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/corewar.h"
 
-void    op_sub(t_vm *vm, t_process *proc)
+void    op_lldi(t_vm *vm, t_process *proc)
 {
     
 }
