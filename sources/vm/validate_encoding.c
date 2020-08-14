@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/13 11:32:29 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/14 17:50:10 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/14 19:11:24 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,11 @@ static int check_op_args(t_vm *vm, int *args, int opcode)
 
 /*
 ** This function validates if encoding byte
-** has valid argument types.
+** has valid argument types and also saves
+** types for current cursor.
 */
 
-static int check_types(int *args)
+static int check_types(int *args, t_process *proc)
 {
     int i;
 
@@ -46,11 +47,11 @@ static int check_types(int *args)
     while (i < 3)
     {
         if (args[i] == REG_CODE)
-            args[i] = T_REG;
+            proc->args[i] = T_REG;
         else if (args[i] == DIR_CODE)
-            args[i] = T_DIR;
+            proc->args[i] = T_DIR;
         else if (args[i] == IND_CODE)
-            args[i] = T_IND;
+            proc->args[i] = T_IND;
         else if (args[i] != 0)
             return (0);
         i++;
@@ -58,7 +59,7 @@ static int check_types(int *args)
     return (1);
 }
 
-int    validate_encoding(t_vm *vm, int encode_byte, int opcode)
+int    validate_encoding(t_vm *vm, int encode_byte, int opcode, t_process *proc)
 {
     int arg[3];
 
@@ -66,5 +67,5 @@ int    validate_encoding(t_vm *vm, int encode_byte, int opcode)
     arg[1] = (encode_byte & MASK2) >> 4;
     arg[2] = (encode_byte & MASK3) >> 2;
 
-    return (check_types(arg) && check_op_args(vm, arg, opcode));
+    return (check_types(arg, proc) && check_op_args(vm, arg, opcode));
 }

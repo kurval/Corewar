@@ -6,13 +6,13 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/05 14:52:15 by jmetelin          #+#    #+#             */
-/*   Updated: 2020/08/14 17:55:05 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/14 19:09:22 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
 
-static void	get_args(int instr_code, t_op *instr)
+static void	get_arguments(int instr_code, t_op *instr)
 {
 	int			i;
 	static int	args[16][3] = {{T_DIR, 0, 0}, {T_DIR | T_IND, T_REG, 0},
@@ -43,7 +43,7 @@ static t_op	get_instr(int instr_code)
 
 	instr.instr_name = instr_name[instr_code];
 	instr.argc = argc[instr_code];
-	get_args(instr_code, &instr);
+	get_arguments(instr_code, &instr);
 	instr.wait_cycles = cycles[instr_code];
 	instr.instr_code = instr_code + 1;
 	instr.dir_size = labels[instr_code];

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/14 17:47:47 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/14 19:16:38 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,12 @@ typedef struct		s_arena
 ** - current_position : address in memory
 ** - jump : amount of bytes cursor must jump to get to the next operation
 ** - reg[REG_NUMBER] : registries of current cursor
+** - args[3] : current cursors argument types
 */
 
 typedef struct		s_process
 {
+	int				args[3];
 	int				id;
 	int				carry;
 	unsigned int	opcode;
@@ -56,7 +58,7 @@ typedef struct		s_process
 	int				cycles;
 	int				live;
 	char			*p_name;
-	void			*next;
+	struct s_process*next;
 }					t_process;
 
 /*
@@ -154,15 +156,15 @@ void    			dump_memory(t_arena *arena);
 
 void				ft_errno(char *id);
 void				get_op(t_op *op);
-int					validate_encoding(t_vm *vm, int encode_byte, int opcode);
+int					validate_encoding(t_vm *vm, int encode_byte, int opcode, t_process *proc);
 void				free_all(t_vm *vm);
+void				get_args(t_vm *vm, t_process *proc);
 
 /*
 **					PARSE INPUT FUNCTIONS
 */
 
 void				validate_chapions(char **s);
-
 void				parse_input(char **av, t_vm *vm);
 
 /*
