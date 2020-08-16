@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
+#    By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/08/21 16:02:28 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/08/22 11:01:25 by bkonjuha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,7 @@ SRC_FILES = ft_errno.c init_vm.c parse_input.c validate_champions.c \
 			operations/op_lfork.c operations/op_live.c operations/op_lld.c \
 			operations/op_lldi.c operations/op_or.c operations/op_st.c \
 			operations/op_sti.c operations/op_sub.c operations/op_xor.c \
-			operations/op_zjmp.c free_all.c assign_opfunctions.c load_champions.c \
-			get_addr.c get_args.c testing.c proc_functions.c operations/utils.c \
-			winner.c
+			operations/op_zjmp.c free_all.c assign_opfunctions.c load_champions.c
 SRC = $(addprefix $(VM_SRC_PATH), $(SRC_FILES))
 
 MAIN_PATH = ./sources/vm/

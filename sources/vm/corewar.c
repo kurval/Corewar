@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:30:41 by bkonjuha          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/08/21 16:03:35 by vkurkela         ###   ########.fr       */
+=======
+/*   Updated: 2020/08/16 14:24:12 by bkonjuha         ###   ########.fr       */
+>>>>>>> Parse Champions and allocate to arena
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +29,6 @@ int	main(int ac, char **av)
 		validate_chapions(av);
 		parse_input(av, &vm);
 		load_champions(&vm);
-		init_processes(&vm);
 		run_cycles(&vm);
 		decleare_winner(&vm);
 		free_all(&vm);
