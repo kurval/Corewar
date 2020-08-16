@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:30:41 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/22 16:46:19 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 16:47:22 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int	main(int ac, char **av)
 		load_champions(&vm);
 		run_cycles(&vm);
 		decleare_winner(&vm);
+		ft_printf("\nCurrent cycle %d\n", vm.current_cycle);
+		//print_arena(&arena);
 		free_all(&vm);
 	}
 	return (0);

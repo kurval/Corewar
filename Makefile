@@ -5,12 +5,11 @@
 #                                                     +:+ +:+         +:+      #
 #    By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/08/22 16:45:32 by bkonjuha         ###   ########.fr        #
+#    Created: 2020/08/22 11:01:42 by bkonjuha          #+#    #+#              #
+#    Updated: 2020/08/22 16:47:17 by bkonjuha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-ASM = asm
 COREWAR = corewar
 
 VM_SRC_PATH = ./sources/vm/
