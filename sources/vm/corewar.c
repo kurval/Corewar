@@ -6,11 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:30:41 by bkonjuha          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/08/21 16:03:35 by vkurkela         ###   ########.fr       */
-=======
-/*   Updated: 2020/08/16 14:24:12 by bkonjuha         ###   ########.fr       */
->>>>>>> Parse Champions and allocate to arena
+/*   Updated: 2020/08/22 11:02:42 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +27,8 @@ int	main(int ac, char **av)
 		load_champions(&vm);
 		run_cycles(&vm);
 		decleare_winner(&vm);
+		ft_printf("\nCurrent cycle %d\n", vm.current_cycle);
+		//print_arena(&arena);
 		free_all(&vm);
 	}
 	return (0);
