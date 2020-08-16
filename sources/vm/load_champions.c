@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.c                                          :+:      :+:    :+:   */
+/*   load_champions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/02 15:30:41 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/17 11:39:32 by bkonjuha         ###   ########.fr       */
+/*   Created: 2020/08/10 14:15:31 by bkonjuha          #+#    #+#             */
+/*   Updated: 2020/08/16 14:27:54 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
 
-int	main(int ac, char **av)
+static int	player_count(t_vm *vm)
 {
-	t_vm	vm;
-	t_arena	arena;
+	int i;
 
-	if (ac >= 2)
+	i = 0;
+	while (vm->p[i].id)
+		i++;
+	return (i);
+}
+
+void	load_champions(t_vm *vm)
+{
+	int i;
+	int location;
+	int space;
+
+	i = -1;
+	location = 0;
+	space = MEM_SIZE / player_count(vm);
+	while (vm->p[++i].id)
 	{
-		init_vm(&vm);
-		init_arena(&vm, &arena);
-		get_op(vm.operations);
-		validate_chapions(av);
-		parse_input(av, &vm);
-		load_champions(&vm);
-		run_cycles(&vm);
-		ft_printf("\nCurrent cycle %d\n", vm.current_cycle);
-		//print_arena(&arena);
-		free_all(&vm);
+		ft_memcpy(&(vm->a->arena[location]), &(vm->p[i].code), vm->p[i].h.prog_size);
+		ft_memset(&(vm->a->owner[location]), vm->p[i].id, vm->p[i].h.prog_size);
+		location += space;
 	}
-	return (0);
+	print_arena(vm->a);
 }

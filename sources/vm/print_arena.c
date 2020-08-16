@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_arena.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:47:04 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/14 17:50:02 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/16 14:24:29 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void    init_arena(t_vm *vm, t_arena *arena)
         arena->arena[i] = 0;
         i++;
     }
-    vm->arena = arena;
+    vm->a = arena;
 }
 
 void    print_arena(t_arena *arena)

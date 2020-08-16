@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/16 20:31:04 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/17 11:39:56 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 typedef struct		s_arena
 {
 	unsigned char	arena[MEM_SIZE];
+	int				owner[MEM_SIZE];
 }					t_arena;
 
 /*
@@ -73,17 +74,9 @@ typedef struct		s_process
 typedef struct		s_player
 {
 	int				id;
-	char			*name;
-	int				executable_size;
-	char			*code;
+	char			code[CHAMP_MAX_SIZE];
 	int				live;
-	//				Meant for T_Header VVVV
-	unsigned int	magic;
-	char			prog_name[PROG_NAME_LENGTH + 1];
-	unsigned int	prog_size;
-	char			comment[COMMENT_LENGTH + 1];
-	//				Meant for t_header /\/\/
-	header_t		header;
+	header_t		h;
 	t_process		proc;
 }					t_player;
 
@@ -105,7 +98,7 @@ typedef struct		s_player
 
 typedef struct		s_vm
 {
-	t_arena			*arena;
+	t_arena			*a;
 	t_player		p[MAX_PLAYERS];
 	struct s_op		*operations;
 	int				last_live_id;
@@ -168,6 +161,7 @@ int					get_addr(int addr);
 
 void				validate_chapions(char **s);
 void				parse_input(char **av, t_vm *vm);
+void				load_champions(t_vm *vm);
 
 /*
 **					OPERATION FUNCTIONS
