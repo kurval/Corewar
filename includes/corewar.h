@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/14 21:01:39 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/16 20:31:04 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,6 +160,7 @@ int					validate_encoding(t_vm *vm, int encode_byte, int opcode, t_process *proc
 void				free_all(t_vm *vm);
 void				get_args(t_vm *vm, t_process *proc);
 void				*assign_opfunctions(int opcode);
+int					get_addr(int addr);
 
 /*
 **					PARSE INPUT FUNCTIONS
