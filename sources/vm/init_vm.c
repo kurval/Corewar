@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_vm.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:33:54 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/22 13:48:54 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/22 16:28:16 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,13 @@ void	init_vm(t_vm *vm)
 	vm->ctd = CYCLE_TO_DIE;
 	vm->lives = 0;
 	vm->dump_cycle = 0;
+<<<<<<< HEAD
 	vm->nb_players = 0;
 	vm->nb_procs = 0;
 	vm->id_counter = 1;
+=======
+>>>>>>> Parse Champions and allocate to arena
 	vm->a = NULL;
-	vm->proc_list = NULL;
 	if (!(vm->operations = (t_op*)malloc(sizeof(t_op) * 16)))
 		exit(1);
 	while (++i < 4)
