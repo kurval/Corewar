@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/14 21:51:20 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/17 20:30:24 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,7 @@ static void	execute_operation(t_vm *vm, t_process *proc)
         {
             // If all the checks were successfully passed we can execute operation with pointer to operationfunction
             // check encoding byte if present and check arguments
-            if (vm->operations[proc->opcode - 1].encode)
-                ret = check_encoding()
-            if (ret && get_args())
+            if (get_args())
                 vm->operations[proc->opcode - 1].f(vm, proc);
         }
         else
