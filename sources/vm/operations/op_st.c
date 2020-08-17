@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   op_st.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/07/29 09:48:36 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/07/29 16:52:57 by vkurkela         ###   ########.fr       */
+/*   Created: 2020/08/08 11:45:51 by vkurkela          #+#    #+#             */
+/*   Updated: 2020/08/14 21:05:55 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/corewar.h"
+#include "../../../includes/corewar.h"
 
-int main(int ac, **av)
+void    op_st(t_vm *vm, t_process *proc)
 {
-    return(0);
+    if (proc == NULL)
+        ;
+    ft_printf("function st !%d\n", vm->lives);
 }

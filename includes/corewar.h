@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/07/29 16:11:28 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/17 11:39:56 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,44 @@
 # define COREWAR_H
 
 # include "op.h"
+# include "corewar_error.h"
+# include "../libft/libft.h"
+# include <stdio.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
+
+# define MASK1 192
+# define MASK2 48
+# define MASK3 12
 
 typedef struct		s_arena
 {
 	unsigned char	arena[MEM_SIZE];
+	int				owner[MEM_SIZE];
 }					t_arena;
+
+/*
+** Cursors contain following information:
+** - id : unique.
+** - carry : affects zjmp operation, initialised with value false.
+** - opcode: operation code, before the battle starts it is not initialised.
+** - last_live : number of cycle in which current cursor performed operation
+** 	>live last time.
+** - wait_cycles : amount of cycles to wait before operation execution.
+** - current_position : address in memory
+** - jump : amount of bytes cursor must jump to get to the next operation
+** - reg[REG_NUMBER] : registries of current cursor
+** - args[3] : current cursors argument types
+*/
 
 typedef struct		s_process
 {
+	int				args[3];
 	int				id;
 	int				carry;
-	unsigned int	current_opcode;
-	int				cycle_live_reported;
+	unsigned int	opcode;
+	int				last_live;
 	int				wait_cycles;
 	int				current_position;
 	int				jump;
@@ -33,29 +59,129 @@ typedef struct		s_process
 	int				cycles;
 	int				live;
 	char			*p_name;
-	t_process		*next;
+	struct s_process*next;
 }					t_process;
 
+/*
+** Players contain following information:
+** - id : unique ID
+** - name : champion name
+** - comment[COMMENT_LENGTH + 1]:  champion comment
+** - executable_size : executable code size
+** - code : executable code
+*/
 
 typedef struct		s_player
 {
 	int				id;
-	char			*name;
-	char			*comment;
-	int				executable_size;
-	char			*code;
+	char			code[CHAMP_MAX_SIZE];
 	int				live;
+	header_t		h;
 	t_process		proc;
 }					t_player;
 
+/*
+** Game parameters contain following information:
+** - last_live_id : player last reported alive
+** 	>It is initialised with the highest player id,
+** 	>and is updated every time operation live is performed.
+** - current_cycle : cycles counter
+** - lives : counter for operation live, to check how many times
+** 	>this operation was performed during the last cycles_to_die cycles.
+** - ctd (cycles_to_die) : length of current check period in cycles.
+** 	>This variable is initialised with the value of constant CYCLES_TO_DIE (1536).
+** - dump_cycle : number of cycle to dump memory (if present)
+** - checks : amount of checks performed
+** - cycles : is used to track periods
+** - operations : list of all operations and info of each one
+*/
+
 typedef struct		s_vm
 {
-	t_arena			a;
+	t_arena			*a;
 	t_player		p[MAX_PLAYERS];
+	struct s_op		*operations;
 	int				last_live_id;
 	int				cycles;
 	int				current_cycle;
 	int				checks;
+	int				lives;
+	int				ctd;
+	int				dump_cycle;
 }					t_vm;
+
+/*
+** Operations contain following information:
+** - instr_name : operation name
+** - argc : number of arguments
+** - argv : arguments tab
+** - instr_code : operation code
+** - wait_cycles : cycles untill execution
+** - dir_size : 2 or 4 bytes
+** - encode : 1 present 0 no encoding byte
+*/
+
+typedef struct	s_op
+{
+	char		*instr_name;
+	int			argc;
+	int			argv[3];
+	int			instr_code;
+	int			wait_cycles;
+	int			dir_size;
+	int			encode;
+	void		(*f)(t_vm *vm, t_process *proc);
+}				t_op;
+
+/*
+**					VM FUNCTIONS
+*/
+
+void				init_vm(t_vm *vm);
+void				run_cycles(t_vm *cor);
+void    			init_arena(t_vm *vm, t_arena *arena);
+void				print_arena(t_arena *arena);
+void    			dump_memory(t_arena *arena);
+
+/*
+**					HELPER FUNCTIONS
+*/
+
+void				ft_errno(char *id);
+void				get_op(t_op *op);
+int					validate_encoding(t_vm *vm, int encode_byte, int opcode, t_process *proc);
+void				free_all(t_vm *vm);
+void				get_args(t_vm *vm, t_process *proc);
+void				*assign_opfunctions(int opcode);
+int					get_addr(int addr);
+
+/*
+**					PARSE INPUT FUNCTIONS
+*/
+
+void				validate_chapions(char **s);
+void				parse_input(char **av, t_vm *vm);
+void				load_champions(t_vm *vm);
+
+/*
+**					OPERATION FUNCTIONS
+*/
+
+void				op_add(t_vm *vm, t_process *proc);
+void				op_aff(t_vm *vm, t_process *proc);
+void				op_and(t_vm *vm, t_process *proc);
+void				op_fork(t_vm *vm, t_process *proc);
+void				op_ld(t_vm *vm, t_process *proc);
+void				op_ldi(t_vm *vm, t_process *proc);
+void				op_lfork(t_vm *vm, t_process *proc);
+void				op_live(t_vm *vm, t_process *proc);
+void				op_lld(t_vm *vm, t_process *proc);
+void				op_lldi(t_vm *vm, t_process *proc);
+void				op_or(t_vm *vm, t_process *proc);
+void				op_st(t_vm *vm, t_process *proc);
+void				op_sti(t_vm *vm, t_process *proc);
+void				op_sub(t_vm *vm, t_process *proc);
+void				op_xor(t_vm *vm, t_process *proc);
+void				op_zjmp(t_vm *vm, t_process *proc);
 
 #endif
