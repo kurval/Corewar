@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   proc_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 16:55:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 13:48:07 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/22 16:31:23 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,43 +38,12 @@ static void del_node(t_process **proc)
 	*proc = NULL;
 }
 
-/*
-** Check if node is not the first on the list:
-** >point prev to current->next
-** If node is the first on the list:
-** >point the head to current->next
-*/
-
-void    remove_proc(t_vm *vm, t_process **proc_list, t_process **current, t_process **previous)
+void    remove_proc(t_process **proc_list, t_process **current, t_process **previous)
 {
-    vm->nb_procs--;
-    if (*previous)
+    if (*previous && (*current)->next)
         (*previous)->next = (*current)->next;
-    else if (*proc_list == *current)
+    else
         *proc_list = (*current)->next;
     del_node(current);
     *current = (*previous) ? (*previous)->next : *proc_list;
-}
-
-/*
-** copies given process
-** usen in fork and lfork operations
-*/
-
-t_process *copy_proc(t_vm *vm, t_process *og_proc)
-{
-    t_process   *new;
-    int         i;
-
-    new = new_proc();
-    vm->nb_procs++;
-    new->id = vm->id_counter++;
-    new->carry = og_proc->carry;
-    new->last_live = og_proc->last_live;
-    new->jump = 0;
-    new->wait_cycles = 0;
-    i = -1;
-	while (++i < REG_NUMBER)
-        new->reg[i] = og_proc->reg[i];
-    return (new);
 }
