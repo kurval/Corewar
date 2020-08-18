@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/18 10:23:25 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/18 19:29:46 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,15 @@
 ** save value and set wait_cycles = 0 (1 because it
 ** gets decreased on the next statement)
 */
-/*
+
 static void set_opcode(t_vm *vm, t_process *proc)
 {
-    proc->opcode = vm->arena[proc->pc];
+    proc->opcode = vm->a->arena[proc->pc];
     if (proc->opcode == 0 || proc->opcode > NB_OPERATIONS)
 		proc->wait_cycles = 1;
 	else
 		proc->wait_cycles = vm->operations[proc->opcode - 1].wait_cycles;
 }
-*/
 
 /*
 ** If wait_cycles == 0 it's time to execute the operation, that is saved in the cursor.
@@ -43,35 +42,23 @@ static void set_opcode(t_vm *vm, t_process *proc)
 ** and arguments saved in the encoding byte.
 */
 
-/*
 static void	execute_operation(t_vm *vm, t_process *proc)
 {
-    int i;
-
-    // Setting a new opcode and wait_cycles after cursor has moved
     if (!proc->wait_cycles)
 		set_opcode(vm, proc);
     proc->wait_cycles -= 1;
-
-    //If wait_cycles == 0 it's time to execute the operation
     if (!proc->wait_cycles)
     {
-        // Check if operation code is not valid
-        If (proc->opcode && proc->opcode <= NB_OPERATIONS)
+        if (proc->opcode && proc->opcode <= NB_OPERATIONS)
         {
-            // If all the checks were successfully passed we can execute operation with pointer to operationfunction
-            // check encoding byte if present and check arguments
-            if (get_args())
+            if (get_args(vm, proc))
                 vm->operations[proc->opcode - 1].f(vm, proc);
         }
         else
-            // If operation code is not valid, move cursor to the next byte.
             proc->jump = 1;
-        // move cursor
-        proc->pc = NEED FUNCTION TO MOVE CURSOR pc + jump
+        proc->pc = get_addr(proc->pc + proc->jump);
     }
 }
-*/
 
 /*
 ** During the check dead cursors are removed from the list.
@@ -80,21 +67,25 @@ static void	execute_operation(t_vm *vm, t_process *proc)
 ** Also, if cycles_to_die <= 0 all carriages are considered dead.
 */
 
-/*
-static void check_dead_processes(t_vm *vm, t_process *proc)
+static void check_dead_processes(t_vm *vm, t_process **proc)
 {
-    while(processes)
+    t_process *current;
+    t_process *previous;
+    
+    current = *proc;
+    previous = NULL;
+    while(current)
     {
-        if (proc->last_live <= vm->current_cycle - vm->ctd ||\
+        if (current->last_live <= vm->current_cycle - vm->ctd ||\
         vm->ctd <= 0)
-        {
-            // remove current process from list
-        }
+            remove_proc(proc, &current, &previous);
         else
-            next->process
+        {
+            previous = current;
+            current = current->next;
+        }
     }
 }
-*/
 
 /*
 ** If during last cycles_to_die cycles operation live was performed
@@ -103,9 +94,9 @@ static void check_dead_processes(t_vm *vm, t_process *proc)
 ** Also reset period counter and lives performed in current period.
 */
 
-static void perform_check(t_vm *vm)
+static void perform_check(t_vm *vm, t_process **proc)
 {
-    // check_dead_processes()
+    check_dead_processes(vm, proc);
     if (vm->lives >= NBR_LIVE || vm->checks >= MAX_CHECKS)
 	{
         vm->ctd -= CYCLE_DELTA;
@@ -122,35 +113,22 @@ static void perform_check(t_vm *vm)
 ** there are processes left.
 */
 
-void    run_cycles(t_vm *vm)
+void    run_cycles(t_vm *vm, t_process *proc_list)
 {
-    // this while loop continues as long as there's processes left in a list.
-    // !! We don't have proclist yet. So we'll use cycle_to_die instead
-    while(vm->ctd > 0)
+    t_process *current;
+
+    while((current = proc_list))
     {
         vm->current_cycle++;
         vm->cycles++;
-        /* In each cycle vm checks the whole list of cursors (execute_statements function)
-        - Assigns a new opcode
-        - Decrease wait_cycles
-        - Execute the operation
-        while (processes)
+        while (current)
         {
-            execute_statements(vm, proclist, operations)
-            next->process
+            execute_operation(vm, current);
+            current = current->next;
         }
-        */
-        // The check is performed once in cycles_to_die cycles if cycles_to_die > 0.
-        // After it's value becomes less than 1, the check is performed each cycle.
         if (vm->ctd <= 0 || vm->cycles == vm->ctd)
-            perform_check(vm);
-            
-        // check flag -dump
-        // At the end of nbr_cycles of executions, dump the memory on the standard output and quit the game.
-        // The memory must be dumped in the hexadecimal format with 32 octets per line.
-        /*
+            perform_check(vm, &proc_list);
         if (vm->current_cycle == vm->dump_cycle)
-			dump(vm);
-        */
+			dump_memory(vm->a);
     }
 }

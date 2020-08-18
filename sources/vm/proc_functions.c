@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.c                                          :+:      :+:    :+:   */
+/*   proc_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/02 15:30:41 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/18 19:46:49 by vkurkela         ###   ########.fr       */
+/*   Created: 2020/08/18 16:55:01 by vkurkela          #+#    #+#             */
+/*   Updated: 2020/08/18 19:45:35 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
 
-int	main(int ac, char **av)
+static void del_node(t_process **proc)
 {
-	t_vm	vm;
-	t_arena	arena;
+    free(*proc);
+	*proc = NULL;
+}
 
-	if (ac >= 2)
-	{
-		init_vm(&vm);
-		init_arena(&vm, &arena);
-		get_op(vm.operations);
-		validate_chapions(av);
-		parse_input(av, &vm);
-		load_champions(&vm);
-		test(&vm);
-		ft_printf("\nCurrent cycle %d\n", vm.current_cycle);
-		// print_arena(&arena);
-		free_all(&vm);
-	}
-	return (0);
+void    remove_proc(t_process **proc_list, t_process **current, t_process **previous)
+{
+    if (*previous && (*current)->next)
+        (*previous)->next = (*current)->next;
+    else
+        *proc_list = (*current)->next;
+    del_node(current);
+    *current = (*previous) ? (*previous)->next : *proc_list;
 }
