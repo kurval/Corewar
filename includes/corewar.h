@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/18 10:28:02 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/18 10:54:24 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct		s_arena
 ** - jump : amount of bytes cursor must jump to get to the next operation
 ** - reg[REG_NUMBER] : registries of current cursor
 ** - args[3] : current cursors argument types
+** - values[3] : current cursors argument values
 */
 
 typedef struct		s_process

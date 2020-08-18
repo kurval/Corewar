@@ -6,11 +6,16 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 18:48:48 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/18 10:26:17 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/18 10:59:33 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
+
+/*
+** Returns short from unsigned char.
+** 2 bytes
+*/
 
 static short	short_arg(t_vm *vm, int idx)
 {
@@ -20,6 +25,11 @@ static short	short_arg(t_vm *vm, int idx)
     res += vm->a->arena[get_addr(idx + 1)];
 	return (res);
 }
+
+/*
+** Returns int from unsigned char.
+** 4 bytes
+*/
 
 static int		int_arg(t_vm *vm, int idx)
 {
@@ -81,6 +91,11 @@ static int  count_moves(t_vm *vm, t_process *proc)
     return valid;
 }
 
+/*
+** This function checks that arguments are valid
+** and saves values of current cursor's arguments.
+** Also counts the steps to move to next operation.
+*/
 
 int    get_args(t_vm *vm, t_process *proc)
 {
