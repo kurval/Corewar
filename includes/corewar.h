@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/22 16:51:07 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 16:51:28 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,10 @@
 # define MASK1 192
 # define MASK2 48
 # define MASK3 12
+
+# define RED	"\033[1m\033[31m"
+# define GREEN	"\033[1m\033[32m"
+# define RESET	"\033[0m"
 
 typedef struct		s_arena
 {
