@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/13 11:32:29 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/14 21:40:05 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/17 18:28:09 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,13 +59,12 @@ static int check_types(int *args, t_process *proc)
     return (1);
 }
 
-int    validate_encoding(t_vm *vm, int encode_byte, int opcode, t_process *proc)
+int    validate_encoding(t_vm *vm, int encode_byte, t_process *proc)
 {
     int arg[3];
 
     arg[0] = (encode_byte & MASK1) >> 6;
     arg[1] = (encode_byte & MASK2) >> 4;
     arg[2] = (encode_byte & MASK3) >> 2;
-
-    return (check_types(arg, proc) && check_op_args(vm, arg, opcode));
+    return (check_types(arg, proc) && check_op_args(vm, arg, proc->opcode));
 }

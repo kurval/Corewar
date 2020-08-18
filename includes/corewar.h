@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/17 11:39:56 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/18 10:28:02 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct		s_arena
 ** - last_live : number of cycle in which current cursor performed operation
 ** 	>live last time.
 ** - wait_cycles : amount of cycles to wait before operation execution.
-** - current_position : address in memory
+** - pc : current position address in memory
 ** - jump : amount of bytes cursor must jump to get to the next operation
 ** - reg[REG_NUMBER] : registries of current cursor
 ** - args[3] : current cursors argument types
@@ -48,12 +48,13 @@ typedef struct		s_arena
 typedef struct		s_process
 {
 	int				args[3];
+	int				values[3];
 	int				id;
 	int				carry;
 	unsigned int	opcode;
 	int				last_live;
 	int				wait_cycles;
-	int				current_position;
+	int				pc;
 	int				jump;
 	int				reg[REG_NUMBER];
 	int				cycles;
@@ -149,11 +150,11 @@ void    			dump_memory(t_arena *arena);
 
 void				ft_errno(char *id);
 void				get_op(t_op *op);
-int					validate_encoding(t_vm *vm, int encode_byte, int opcode, t_process *proc);
+int					validate_encoding(t_vm *vm, int encode_byte, t_process *proc);
 void				free_all(t_vm *vm);
-void				get_args(t_vm *vm, t_process *proc);
 void				*assign_opfunctions(int opcode);
 int					get_addr(int addr);
+int					get_args(t_vm *vm, t_process *proc);
 
 /*
 **					PARSE INPUT FUNCTIONS
@@ -183,5 +184,11 @@ void				op_sti(t_vm *vm, t_process *proc);
 void				op_sub(t_vm *vm, t_process *proc);
 void				op_xor(t_vm *vm, t_process *proc);
 void				op_zjmp(t_vm *vm, t_process *proc);
+
+/*
+**					FOR TESTING PURPOSES
+*/
+
+void				test(t_vm *vm);
 
 #endif
