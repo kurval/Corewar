@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_args.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 18:48:48 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/20 00:05:45 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/22 11:04:48 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,32 @@ static short	short_arg(t_vm *vm, int idx)
 */
 
 int		int_arg(t_vm *vm, int idx)
+{
+	int		res;
+	int		i;
+
+	res = vm->a->arena[get_addr(idx)];
+	i = 0;
+	while (++i < 4)
+		res = res * 256 + vm->a->arena[get_addr(idx + i)];
+	return (res);
+}
+
+/*
+** Getting values depending type and labels
+** and also validate registry numbers if present
+*/
+
+static int  get_values(t_vm *vm, t_process *proc, int arg_num)
+{
+    short res;
+
+    res = vm->a->arena[get_addr(idx)] * 256;
+    res += vm->a->arena[get_addr(idx + 1)];
+	return (res);
+}
+
+static int		int_arg(t_vm *vm, int idx)
 {
 	int		res;
 	int		i;

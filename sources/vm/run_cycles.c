@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   run_cycles.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 16:17:18 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/22 16:29:57 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 
 static void set_opcode(t_vm *vm, t_process *proc)
 {
-    proc->opcode = vm->a->arena[proc->pc];
-    if (proc->opcode == 0 || proc->opcode > REG_NUMBER)
+    proc->opcode = vm->arena[proc->pc];
+    if (proc->opcode == 0 || proc->opcode > NB_OPERATIONS)
 		proc->wait_cycles = 1;
 	else
 		proc->wait_cycles = vm->operations[proc->opcode - 1].wait_cycles;
@@ -56,7 +56,8 @@ static void	execute_operation(t_vm *vm, t_process *proc)
         }
         else
             proc->jump = 1;
-        proc->pc = get_addr(proc->pc + proc->jump);
+        // move cursor
+        proc->pc = NEED FUNCTION TO MOVE CURSOR pc + jump
     }
 }
 
@@ -71,7 +72,7 @@ static void check_dead_processes(t_vm *vm, t_process **proc_list)
 {
     t_process *current;
     t_process *previous;
-    
+
     current = *proc_list;
     previous = NULL;
     while(current)
