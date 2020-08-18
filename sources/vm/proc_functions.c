@@ -6,7 +6,11 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 16:55:01 by vkurkela          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/08/22 16:50:59 by bkonjuha         ###   ########.fr       */
+=======
+/*   Updated: 2020/08/22 11:11:27 by bkonjuha         ###   ########.fr       */
+>>>>>>> adding some comments
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +54,7 @@ void    remove_proc(t_vm *vm, t_process **proc_list, t_process **current, t_proc
     vm->nb_procs--;
     if (*previous)
         (*previous)->next = (*current)->next;
-    else
+    else if (*proc_list == *current)
         *proc_list = (*current)->next;
     del_node(current);
     *current = (*previous) ? (*previous)->next : *proc_list;
