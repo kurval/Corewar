@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/17 20:30:24 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/18 10:23:25 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 /*
 static void set_opcode(t_vm *vm, t_process *proc)
 {
-    proc->opcode = vm->arena[proc->current_position];
+    proc->opcode = vm->arena[proc->pc];
     if (proc->opcode == 0 || proc->opcode > NB_OPERATIONS)
 		proc->wait_cycles = 1;
 	else
@@ -68,7 +68,7 @@ static void	execute_operation(t_vm *vm, t_process *proc)
             // If operation code is not valid, move cursor to the next byte.
             proc->jump = 1;
         // move cursor
-        proc->current_position = NEED FUNCTION TO MOVE CURSOR current_position + jump
+        proc->pc = NEED FUNCTION TO MOVE CURSOR pc + jump
     }
 }
 */

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/17 21:59:02 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/18 10:28:02 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct		s_arena
 ** - last_live : number of cycle in which current cursor performed operation
 ** 	>live last time.
 ** - wait_cycles : amount of cycles to wait before operation execution.
-** - current_position : address in memory
+** - pc : current position address in memory
 ** - jump : amount of bytes cursor must jump to get to the next operation
 ** - reg[REG_NUMBER] : registries of current cursor
 ** - args[3] : current cursors argument types
@@ -54,7 +54,7 @@ typedef struct		s_process
 	unsigned int	opcode;
 	int				last_live;
 	int				wait_cycles;
-	int				current_position;
+	int				pc;
 	int				jump;
 	int				reg[REG_NUMBER];
 	int				cycles;
@@ -184,5 +184,11 @@ void				op_sti(t_vm *vm, t_process *proc);
 void				op_sub(t_vm *vm, t_process *proc);
 void				op_xor(t_vm *vm, t_process *proc);
 void				op_zjmp(t_vm *vm, t_process *proc);
+
+/*
+**					FOR TESTING PURPOSES
+*/
+
+void				test(t_vm *vm);
 
 #endif

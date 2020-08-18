@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 18:48:48 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/17 22:45:43 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/18 10:26:17 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@ static int  get_values(t_vm *vm, t_process *proc, int arg_num)
     ret = 1;
     if (proc->args[arg_num] == T_REG)
     {
-        proc->values[arg_num] = vm->a->arena[get_addr(proc->current_position + proc->jump)];
+        proc->values[arg_num] = vm->a->arena[get_addr(proc->pc + proc->jump)];
         if (proc->values[arg_num] < 1 ||  proc->values[arg_num] > REG_NUMBER)
             ret = 0;
     }
     else if (proc->args[arg_num] == T_DIR && vm->operations[proc->opcode - 1].dir_size == 4)
-        proc->values[arg_num] = int_arg(vm, proc->current_position + proc->jump);
+        proc->values[arg_num] = int_arg(vm, proc->pc + proc->jump);
     else if (proc->args[arg_num] == T_IND || proc->args[arg_num] == T_DIR)
-        proc->values[arg_num] = short_arg(vm, proc->current_position + proc->jump);
+        proc->values[arg_num] = short_arg(vm, proc->pc + proc->jump);
     return (ret);
 }
 
@@ -88,6 +88,8 @@ int    get_args(t_vm *vm, t_process *proc)
 
     valid = 1;
     if (vm->operations[proc->opcode - 1].encode)
-        valid = validate_encoding(vm, vm->a->arena[get_addr(proc->current_position + 1)], proc);
+        valid = validate_encoding(vm, vm->a->arena[get_addr(proc->pc + 1)], proc);
+    else
+        proc->args[0] = T_DIR;
     return (valid && count_moves(vm, proc));
 }
