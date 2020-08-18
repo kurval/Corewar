@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/18 10:54:24 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/18 19:32:04 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define MASK1 192
 # define MASK2 48
 # define MASK3 12
+# define NB_OPERATIONS 16
 
 typedef struct		s_arena
 {
@@ -140,7 +141,7 @@ typedef struct	s_op
 */
 
 void				init_vm(t_vm *vm);
-void				run_cycles(t_vm *cor);
+void				run_cycles(t_vm *vm, t_process *proc_list);
 void    			init_arena(t_vm *vm, t_arena *arena);
 void				print_arena(t_arena *arena);
 void    			dump_memory(t_arena *arena);
@@ -156,6 +157,8 @@ void				free_all(t_vm *vm);
 void				*assign_opfunctions(int opcode);
 int					get_addr(int addr);
 int					get_args(t_vm *vm, t_process *proc);
+void				remove_proc(t_process **proc_list, t_process **current, t_process **previous);
+
 
 /*
 **					PARSE INPUT FUNCTIONS
