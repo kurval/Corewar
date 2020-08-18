@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/22 11:06:05 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 11:08:58 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,6 @@
 # define MASK2 48
 # define MASK3 12
 # define NB_OPERATIONS 16
-
-# define RED	"\033[1m\033[31m"
-# define GREEN	"\033[1m\033[32m"
-# define RESET	"\033[0m"
 
 typedef struct		s_arena
 {
@@ -151,8 +147,8 @@ typedef struct		s_op
 */
 
 void				init_vm(t_vm *vm);
-void				run_cycles(t_vm *vm);
-void				init_arena(t_vm *vm, t_arena *arena);
+void				run_cycles(t_vm *vm, t_process *proc_list);
+void    			init_arena(t_vm *vm, t_arena *arena);
 void				print_arena(t_arena *arena);
 void				dump_memory(t_arena *arena);
 

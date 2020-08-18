@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 11:06:23 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 11:06:54 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 
 static void set_opcode(t_vm *vm, t_process *proc)
 {
-    proc->opcode = vm->arena[proc->pc];
+    proc->opcode = vm->a->arena[proc->pc];
     if (proc->opcode == 0 || proc->opcode > NB_OPERATIONS)
 		proc->wait_cycles = 1;
 	else
@@ -56,8 +56,7 @@ static void	execute_operation(t_vm *vm, t_process *proc)
         }
         else
             proc->jump = 1;
-        // move cursor
-        proc->pc = NEED FUNCTION TO MOVE CURSOR pc + jump
+        proc->pc = get_addr(proc->pc + proc->jump);
     }
 }
 
@@ -68,18 +67,18 @@ static void	execute_operation(t_vm *vm, t_process *proc)
 ** Also, if cycles_to_die <= 0 all carriages are considered dead.
 */
 
-static void check_dead_processes(t_vm *vm, t_process **proc_list)
+static void check_dead_processes(t_vm *vm, t_process **proc)
 {
     t_process *current;
     t_process *previous;
 
-    current = *proc_list;
+    current = *proc;
     previous = NULL;
     while(current)
     {
         if (current->last_live <= vm->current_cycle - vm->ctd ||\
         vm->ctd <= 0)
-            remove_proc(proc_list, &current, &previous);
+            remove_proc(proc, &current, &previous);
         else
         {
             previous = current;
@@ -95,9 +94,9 @@ static void check_dead_processes(t_vm *vm, t_process **proc_list)
 ** Also reset period counter and lives performed in current period.
 */
 
-static void perform_check(t_vm *vm, t_process **proc_list)
+static void perform_check(t_vm *vm, t_process **proc)
 {
-    check_dead_processes(vm, proc_list);
+    check_dead_processes(vm, proc);
     if (vm->lives >= NBR_LIVE || vm->checks >= MAX_CHECKS)
 	{
         vm->ctd -= CYCLE_DELTA;
@@ -118,11 +117,11 @@ static void perform_check(t_vm *vm, t_process **proc_list)
 **  >format with 32 octets per line.
 */
 
-void    run_cycles(t_vm *vm)
+void    run_cycles(t_vm *vm, t_process *proc_list)
 {
     t_process *current;
 
-    while((current = vm->proc_list))
+    while((current = proc_list))
     {
         vm->current_cycle++;
         vm->cycles++;
