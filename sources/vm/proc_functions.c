@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   proc_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 16:55:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 13:48:07 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/22 16:50:59 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void    remove_proc(t_vm *vm, t_process **proc_list, t_process **current, t_proc
     vm->nb_procs--;
     if (*previous)
         (*previous)->next = (*current)->next;
-    else if (*proc_list == *current)
+    else
         *proc_list = (*current)->next;
     del_node(current);
     *current = (*previous) ? (*previous)->next : *proc_list;
