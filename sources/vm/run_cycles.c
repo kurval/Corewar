@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 11:04:15 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 11:06:23 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,12 @@ void    run_cycles(t_vm *vm)
             current = current->next;
         }
         if (vm->ctd <= 0 || vm->cycles == vm->ctd)
-            perform_check(vm, &vm->proc_list);
+            perform_check(vm);
+
+        // check flag -dump
+        // At the end of nbr_cycles of executions, dump the memory on the standard output and quit the game.
+        // The memory must be dumped in the hexadecimal format with 32 octets per line.
+        /*
         if (vm->current_cycle == vm->dump_cycle)
 			dump_memory(vm->a);
     }
