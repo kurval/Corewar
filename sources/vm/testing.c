@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   testing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 10:26:39 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/21 15:35:15 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/22 11:05:18 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void test(t_vm *vm)
 
     // add test row here for invoke your function
     tests[i++] = test1(vm);
-    
+
     i = 0;
     while (i < testnum)
     {
