@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 11:06:54 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 11:11:20 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,8 @@ static void perform_check(t_vm *vm, t_process **proc)
 
 /*
 ** This is the battle function which continues as long as there are processes left.
-** - We go through list of cursors in every cycle to determine if statement should be executed.
-** - The check is performed once in cycles_to_die cycles if cycles_to_die > 0.
+** - List of cursors is checked every cycle.
+**  >The check is performed once in cycles_to_die cycles if cycles_to_die > 0.
 **  >After it's value becomes less than 1, the check is performed each cycle.
 ** - If -dump flag is present The memory must be dumped in the hexadecimal
 **  >format with 32 octets per line.
