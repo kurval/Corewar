@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/18 19:29:46 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/18 23:01:35 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void set_opcode(t_vm *vm, t_process *proc)
 ** - If all the checks were successfully passed, execute the operation and move cursor to the next operation.
 ** - If operation code is not valid, move cursor to the next byte.
 ** - If operation code is valid, but encoding byte is invalid or one of arguments is not valid.
-** --> Cursor must be moved to the next operation without execution.
+**  >Cursor must be moved to the next operation without execution.
 ** To get to the next operation, cursor must skip operation byte, encoding byte (if present),
 ** and arguments saved in the encoding byte.
 */
@@ -109,8 +109,12 @@ static void perform_check(t_vm *vm, t_process **proc)
 }
 
 /*
-** This is the battle function which continues as long as
-** there are processes left.
+** This is the battle function which continues as long as there are processes left.
+** - List of cursors is checked every cycle.
+**  >The check is performed once in cycles_to_die cycles if cycles_to_die > 0.
+**  >After it's value becomes less than 1, the check is performed each cycle.
+** - If -dump flag is present The memory must be dumped in the hexadecimal
+**  >format with 32 octets per line.
 */
 
 void    run_cycles(t_vm *vm, t_process *proc_list)
