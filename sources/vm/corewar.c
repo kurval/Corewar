@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:30:41 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/18 19:46:49 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/18 20:06:50 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,7 @@ int	main(int ac, char **av)
 		validate_chapions(av);
 		parse_input(av, &vm);
 		load_champions(&vm);
-		test(&vm);
-		ft_printf("\nCurrent cycle %d\n", vm.current_cycle);
-		// print_arena(&arena);
+		test(&vm); // for testing
 		free_all(&vm);
 	}
 	return (0);
