@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/19 16:54:45 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/20 00:24:18 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,9 @@ typedef struct		s_arena
 ** - reg[REG_NUMBER] : registries of current cursor
 ** - args[3] : current cursors argument types
 ** - values[3] : current cursors argument values
+**	>T_REG registry number
+**	>T_DIR A number, saved on 2 or 4 bytes, depending on label
+**	>T_IND relative address number
 */
 
 typedef struct		s_process
@@ -162,7 +165,8 @@ void				*assign_opfunctions(int opcode);
 int					get_addr(int addr);
 int					get_args(t_vm *vm, t_process *proc);
 void				remove_proc(t_process **proc_list, t_process **current, t_process **previous);
-
+int					get_op_values(t_vm *vm, t_process *proc, int type, int value);
+int					int_arg(t_vm *vm, int idx);
 
 /*
 **					PARSE INPUT FUNCTIONS

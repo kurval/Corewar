@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 18:48:48 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/18 10:59:33 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/20 00:05:45 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static short	short_arg(t_vm *vm, int idx)
 ** 4 bytes
 */
 
-static int		int_arg(t_vm *vm, int idx)
+int		int_arg(t_vm *vm, int idx)
 {
 	int		res;
 	int		i;
