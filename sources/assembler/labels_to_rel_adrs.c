@@ -20,7 +20,7 @@ static void	label_to_rel_adr(t_label *label, int stmt_place, t_arg *arg)
 	while (*tmp != LABEL_CHAR)
 		tmp++;
 	tmp++;
-	while (label && !ft_strnequ(label->name, tmp, ft_strlen(label->name) - 1))
+	while (label && !ft_strequ(label->name, tmp))
 		label = label->next;
 	if (!label)
 		handle_invalid_label(arg, tmp);

@@ -85,9 +85,11 @@ static void		set_stmt(t_champ *champ, t_token *token)
 static void		set_label(t_champ *champ, t_token *token)
 {
 	t_label *label;
+	size_t	name_len;
 
+	name_len = ft_strlen(token->content) - 1;
 	if (!(label = (t_label *)malloc(sizeof(t_label))) ||
-	!(label->name = ft_strdup(token->content)))
+	!(label->name = ft_strsub(token->content, 0, name_len)))
 		handle_error(MALLOC_ERROR);
 	label->place = -1;
 	if (!champ->labels)

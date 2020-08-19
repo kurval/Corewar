@@ -12,31 +12,35 @@
 
 #include "asm.h"
 
-static	int	handle_negative(int number)
+static	unsigned int	handle_negative(int number)
 {
-	char	*binary;
-	int		result;
+	char			*binary;
+	unsigned int	result;
 
-	binary = make_rev_binary_str(number);
-	result = convert_dec(binary, 16);
+	binary = make_rev_binary_str(number, 32);
+	result = convert_dec(binary, 32);
 	return (result + 1);
 }
 
-static char	*get_bytes(int fd, int number, int byte_nbr)
+static char				*get_bytes(int fd, int number, int byte_nbr)
 {
-	int		byte;
-	char	*output;
-	int		i;
+	int				byte;
+	char			*output;
+	int				i;
+	unsigned int	uint_number;
 
 	if (number < 0)
-		number = handle_negative(number);
+		uint_number = handle_negative(number);
+	else
+		uint_number = (unsigned int)number;
 	output = (char *)malloc(sizeof(char) * byte_nbr);
 	i = byte_nbr - 1;
-	while (byte || i > -1)
+	byte = 1;
+	while ((byte && i > -1) || i > -1)
 	{
-		byte = (number & 0xFF);
+		byte = (uint_number & 0xFF);
 		output[i] = (char)byte;
-		number = (number >> 8);
+		uint_number = (uint_number >> 8);
 		i--;
 	}
 	return (output);
@@ -47,7 +51,7 @@ static char	*get_bytes(int fd, int number, int byte_nbr)
 **	in bytes in big endian style.
 */
 
-void		insert_bytes_number(int fd, int nbr, int size)
+void					insert_bytes_number(int fd, int nbr, int size)
 {
 	char *bytes;
 
@@ -61,7 +65,7 @@ void		insert_bytes_number(int fd, int nbr, int size)
 **	is lower than size, the rest is padded with null bytes.
 */
 
-void		insert_bytes_string(int fd, char *str, int size)
+void					insert_bytes_string(int fd, char *str, int size)
 {
 	int strlen;
 

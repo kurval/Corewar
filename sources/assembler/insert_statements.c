@@ -31,15 +31,9 @@ void	write_argument(t_arg *arg, int stmt_place, t_label *labels, int fd)
 		insert_bytes_number(fd, ft_atoi(&arg->content[1]), 1);
 	else
 	{
-		if (overlap(arg->type, ARG_LABEL))
-		{
-			//number = convert_label_location(arg->content, labels, stmt_place);
-			//insert_bytes_number(fd, number, arg->size);
-			ft_printf("Label type\n");
-		}
 		number = (arg->type == T_DIR ? ft_atoi(&arg->content[1]) :
 		ft_atoi(arg->content));
-		insert_bytes_number(fd, ft_atoi(&arg->content[1]), arg->size);
+		insert_bytes_number(fd, number, arg->size);
 	}
 }
 
