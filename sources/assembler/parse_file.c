@@ -88,6 +88,18 @@ void			free_tokens(t_token *tokens)
 	}
 }
 
+void			print_labels(t_label *labels)
+{
+	t_label *curr;
+
+	curr = labels;
+	while (curr)
+	{
+		ft_printf("label %s place %d\n", curr->name, curr->place);
+		curr = curr->next;
+	}
+}
+
 void			parse_file(int fd, t_asm *assembler)
 {
 	char		*line;
@@ -113,5 +125,6 @@ void			parse_file(int fd, t_asm *assembler)
 	}
 	free(edge_chars);
 	check_str_len(assembler->champ.name, assembler->champ.comment);
+	//print_labels(assembler->champ.labels);
 	labels_to_rel_adrs(assembler->champ.labels, assembler->champ.stmts);
 }

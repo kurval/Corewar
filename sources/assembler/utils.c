@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-int	skip_whitespaces(char *line, int i)
+int		skip_whitespaces(char *line, int i)
 {
 	while (line[i])
 	{
@@ -23,7 +23,7 @@ int	skip_whitespaces(char *line, int i)
 	return (i);
 }
 
-int	ft_isnum(char *str)
+int		ft_isnum(char *str)
 {
 	int	i;
 
@@ -37,7 +37,7 @@ int	ft_isnum(char *str)
 	return (1);
 }
 
-int	count_string_chars(char *str)
+int		count_string_chars(char *str)
 {
 	int i;
 	int count;
@@ -55,7 +55,7 @@ int	count_string_chars(char *str)
 
 char	*copy_string_content(char *string)
 {
-	int 	len;
+	int		len;
 	int		start;
 	char	*copy;
 

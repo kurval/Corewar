@@ -204,8 +204,8 @@ void			set_champ(t_champ *champ, t_token *token);
 void			insert_statements(t_stmt *stmt, t_label *labels,
 				t_op *op, int fd);
 int				get_arg_code(t_stmt *stmt);
-int				convert_dec(char *binary, int size);
-char			*make_rev_binary_str(int nbr);
+unsigned int	convert_dec(char *binary, int size);
+char			*make_rev_binary_str(int nbr, int size);
 t_cursor		*copy_cursor(t_cursor cursor);
 void			labels_to_rel_adrs(t_label *labels, t_stmt *stmt);
 void			handle_invalid_label(t_arg *arg, char *label_name);

@@ -12,11 +12,11 @@
 
 #include "asm.h"
 
-int		convert_dec(char *binary, int size)
+unsigned int		convert_dec(char *binary, int size)
 {
-	int multiplier;
-	int i;
-	int result;
+	int				multiplier;
+	int				i;
+	unsigned int	result;
 
 	multiplier = 1;
 	i = size - 1;
@@ -32,13 +32,13 @@ int		convert_dec(char *binary, int size)
 	return (result);
 }
 
-char	*make_rev_binary_str(int nbr)
+char				*make_rev_binary_str(int nbr, int size)
 {
 	char	*binary;
 	int		i;
 
-	binary = ft_strnew(16);
-	i = 15;
+	binary = ft_strnew(size);
+	i = size - 1;
 	while (i >= 0)
 	{
 		binary[i] = (nbr % 2 ? '0' : '1');
