@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 10:26:39 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/19 16:59:50 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/19 21:37:30 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,11 @@ static int test1(t_vm *vm)
 	new = (t_process*)malloc(sizeof(t_process));
 	new->opcode = 11;
 	new->pc = 0;
-    //new->carry = 1;
+    new->carry = 1;
     new->next = NULL;
+    new->reg[1] = 10;
+    new->reg[2] = 6;
+    new->reg[1] = 10;
 	// ft_printf("Valid? %d\n", get_args(vm, new));
 	// ft_printf("ARG1 %d\n", new->values[0]);
 	// ft_printf("ARG2 %d\n", new->values[1]);
