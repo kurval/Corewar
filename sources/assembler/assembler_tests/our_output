@@ -23,14 +23,14 @@
 23 Writing output program to tests/test23.cor
 24 Writing output program to tests/test24.cor
 25 Writing output program to tests/test25.cor
-26 Lexical error at [1:1]
+26 Writing output program to tests/test26.cor
 27 Writing output program to tests/test27.cor
 28 Writing output program to tests/test28.cor
 29 Writing output program to tests/test29.cor
 30 Writing output program to tests/test30.cor
 31 Writing output program to tests/test31.cor
 32 Writing output program to tests/test32.cor
-33 Lexical error at [426:21]
+33 Writing output program to tests/test33.cor
 34 Writing output program to tests/test34.cor
 35 Writing output program to tests/test35.cor
 36 Writing output program to tests/test36.cor
@@ -38,7 +38,7 @@
 38 Writing output program to tests/test38.cor
 39 Writing output program to tests/test39.cor
 40 Writing output program to tests/test40.cor
-41 Lexical error at [5:23]
+41 Writing output program to tests/test41.cor
 42 Writing output program to tests/test42.cor
 43 Writing output program to tests/test43.cor
 44 Writing output program to tests/test44.cor
@@ -50,14 +50,16 @@
 50 Writing output program to tests/test50.cor
 51 Writing output program to tests/test51.cor
 52 Writing output program to tests/test52.cor
-53 Lexical error at [1:1]
+53 Writing output program to tests/test53.cor
 54 Writing output program to tests/test54.cor
 55 Writing output program to tests/test55.cor
 56 Writing output program to tests/test56.cor
 57 Writing output program to tests/test57.cor
 58 Writing output program to tests/test58.cor
 59 Writing output program to tests/test59.cor
-60 Lexical error at [64:11]
+60 Writing output program to tests/test60.cor
 61 Writing output program to tests/test61.cor
 62 Writing output program to tests/test62.cor
 63 Writing output program to tests/test63.cor
+64 Writing output program to tests/test64.cor
+65 Writing output program to tests/test65.cor

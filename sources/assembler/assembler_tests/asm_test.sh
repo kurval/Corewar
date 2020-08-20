@@ -11,7 +11,7 @@ EXE=../asm
 ORIG_EXE=../../../resources/asm
 
 TEST_NBR=1
-TEST_COUNT=63
+TEST_COUNT=65
 
 if [ $# -ne 1 ];
 then
