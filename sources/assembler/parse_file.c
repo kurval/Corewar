@@ -27,35 +27,6 @@ char			*create_edge_chars(void)
 	return (chars);
 }
 
-char			*token_type_str(int type)
-{
-	if (type == REGISTER)
-		return ("REGISTER");
-	if (type == DIRECT)
-		return ("DIRECT");
-	if (type == INDIRECT)
-		return ("INDIRECT");
-	if (type == INSTRUCTION)
-		return ("INSTRUCTION");
-	if (type == LABEL)
-		return ("LABEL");
-	if (type == SEPARATOR)
-		return ("SEPARATOR");
-	if (type == STRING)
-		return ("STRING");
-	if (overlap(type, CMD_STR))
-		return (type == COMMAND_NAME ? "COMMAND_NAME" : "COMMAND_COMMENT");
-	if (type == DIRECT_LABEL)
-		return ("DIRECT_LABEL");
-	if (type == INDIRECT_LABEL)
-		return ("INDIRECT_LABEL");
-	if (type == INDIRECT)
-		return ("INDIRECT");
-	if (type == ENDLINE)
-		return ("ENDLINE");
-	return (NULL);
-}
-
 void			print_tokens(t_token *tokens)
 {
 	t_token *current;
@@ -100,12 +71,29 @@ void			print_labels(t_label *labels)
 	}
 }
 
+/*
+**	Fixes label place for the following cases:
+**		- Multiple labels in a row
+**		- Label at the end of file
+*/
+
+static void		fix_label_place(t_champ *champ)
+{
+	if (champ->labels && champ->labels->place == -1)
+	{
+		if (!champ->stmts)
+			champ->labels->place = 0;
+		else
+			champ->labels->place = champ->stmts->place + champ->stmts->size;
+	}
+}
+
 void			parse_file(int fd, t_asm *assembler)
 {
 	char		*line;
 	t_cursor	cursor;
 	char		*edge_chars;
-
+	
 	cursor.row = 1;
 	edge_chars = create_edge_chars();
 	init_champ(&assembler->champ);
@@ -119,6 +107,7 @@ void			parse_file(int fd, t_asm *assembler)
 		check_statement_order(assembler->tokens, &assembler->champ);
 		ft_strdel(&line);
 		set_champ(&assembler->champ, assembler->tokens);
+		fix_label_place(&assembler->champ);
 		free_tokens(assembler->tokens);
 		assembler->tokens = NULL;
 		cursor.row++;
