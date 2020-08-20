@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:12 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/20 00:12:25 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/20 10:24:01 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,4 @@ void    op_and(t_vm *vm, t_process *proc)
     res = value1 & value2;
     proc->reg[proc->values[2] - 1] = res;
     proc->carry = (res == 0) ? 1 : 0;
-    if (vm)
-        return ;
 }
