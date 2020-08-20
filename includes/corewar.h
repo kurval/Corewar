@@ -69,6 +69,7 @@ typedef struct		s_process
 	int				cycles;
 	int				live;
 	char			*p_name;
+	void			*player;
 	struct s_process*next;
 }					t_process;
 
@@ -88,6 +89,7 @@ typedef struct		s_player
 	int				live;
 	header_t		h;
 	t_process		proc;
+	char			*name;
 }					t_player;
 
 /*
@@ -99,7 +101,8 @@ typedef struct		s_player
 ** - lives : counter for operation live, to check how many times
 ** 	>this operation was performed during the last cycles_to_die cycles.
 ** - ctd (cycles_to_die) : length of current check period in cycles.
-** 	>This variable is initialised with the value of constant CYCLES_TO_DIE (1536).
+** 	>This variable is initialised with the value of constant CYCLES_TO_DIE
+**  (1536).
 ** - dump_cycle : number of cycle to dump memory (if present)
 ** - checks : amount of checks performed
 ** - cycles : is used to track periods
@@ -133,7 +136,7 @@ typedef struct		s_vm
 ** - encode : 1 present 0 no encoding byte
 */
 
-typedef struct	s_op
+typedef struct		s_op
 {
 	char		*instr_name;
 	int			argc;
@@ -143,7 +146,7 @@ typedef struct	s_op
 	int			dir_size;
 	int			encode;
 	void		(*f)(t_vm *vm, t_process *proc);
-}				t_op;
+}					t_op;
 
 /*
 **					VM FUNCTIONS
@@ -151,9 +154,9 @@ typedef struct	s_op
 
 void				init_vm(t_vm *vm);
 void				run_cycles(t_vm *vm, t_process *proc_list);
-void    			init_arena(t_vm *vm, t_arena *arena);
+void				init_arena(t_vm *vm, t_arena *arena);
 void				print_arena(t_arena *arena);
-void    			dump_memory(t_arena *arena);
+void				dump_memory(t_arena *arena);
 
 /*
 **					HELPER FUNCTIONS
@@ -169,7 +172,6 @@ int					get_args(t_vm *vm, t_process *proc);
 void				remove_proc(t_process **proc_list, t_process **current, t_process **previous);
 int					int_arg(t_vm *vm, int idx);
 int					get_op_values(t_vm *vm, t_process *proc, int arg);
-
 
 /*
 **					PARSE INPUT FUNCTIONS
