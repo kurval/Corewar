@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../../../includes/corewar.h"
+#include <stdio.h>
 
 /*
 ** 1. Updates when cursor last reported alive.
@@ -19,6 +20,14 @@
 
 void	op_live(t_vm *vm, t_process *proc)
 {
+	/*
+	//For testing purposes.
+	t_player	player;
+
+	player.id = 0;
+	player.name = "Name";
+	proc->player = &player;
+	*/
 	if (proc == NULL)
 		return ; //What should it do?
 	//ft_printf("function live !%d\n", vm->lives);
@@ -27,6 +36,6 @@ void	op_live(t_vm *vm, t_process *proc)
 	//If cursor's r1 == Argument1, set player as last reported alive.
 	if (proc->reg[0] == get_op_values(vm, proc, proc->args[0], proc->values[0]))
 		vm->last_live_id = proc->id;
-	ft_printf("A process shows that player %d (%s) is alive\n", proc->id,
-	proc->p_name);
+	printf("A process shows that player %d (%s) is alive\n",
+	((t_player *)proc->player)->id, ((t_player *)proc->player)->name);
 }
