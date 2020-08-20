@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:38 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/20 15:40:06 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/20 15:46:35 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,6 @@
 
 void	op_live(t_vm *vm, t_process *proc)
 {
-	/*
-	//For testing purposes.
-	t_player	player;
-
-	player.id = 0;
-	player.name = "Name";
-	proc->player = &player;
-	*/
 	int value1;
 
 	vm->lives++;
@@ -35,6 +27,4 @@ void	op_live(t_vm *vm, t_process *proc)
 	value1 = get_op_values(vm, proc, 1);
 	if (proc->reg[0] == value1 * -1)
 		vm->last_live_id = value1;
-	ft_printf("A process shows that player %d (%s) is alive\n",
-	((t_player *)proc->player)->id, ((t_player *)proc->player)->name);
 }
