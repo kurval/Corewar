@@ -6,11 +6,27 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 23:25:59 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/20 14:22:01 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/20 23:42:20 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/corewar.h"
+
+/*
+** Sests value from registry into the arena as unsigned char.
+*/
+
+void    load_into_memory(t_vm *vm, unsigned int addr, void *content)
+{
+    int i;
+
+    i = -1;
+    while (++i < REG_SIZE)
+    {
+        vm->a->arena[get_addr(addr
+        + i)] = ((unsigned char *)content)[REG_SIZE - i - 1];
+    }
+}
 
 /*
 ** This function returns value depending on type:
