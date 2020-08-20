@@ -16,14 +16,15 @@ char			*create_edge_chars(void)
 {
 	char *chars;
 
-	chars = (char *)malloc(sizeof(char) * 12);
+	chars = (char *)malloc(sizeof(char) * 13);
 	chars = ft_strcpy(chars, " \t\n\r\v\f");
 	chars[6] = LABEL_CHAR;
 	chars[7] = COMMENT_CHAR;
 	chars[8] = SEPARATOR_CHAR;
 	chars[9] = DIRECT_CHAR;
 	chars[10] = '-';
-	chars[11] = '\0';
+	chars[11] = ALT_COMMENT_CHAR;
+	chars[12] = '\0';
 	return (chars);
 }
 
