@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/20 00:24:18 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/20 14:03:00 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,7 @@ typedef struct		s_player
 ** - checks : amount of checks performed
 ** - cycles : is used to track periods
 ** - operations : list of all operations and info of each one
+** - nb_players : number of champions
 */
 
 typedef struct		s_vm
@@ -118,6 +119,7 @@ typedef struct		s_vm
 	int				lives;
 	int				ctd;
 	int				dump_cycle;
+	int				nb_players;
 }					t_vm;
 
 /*
