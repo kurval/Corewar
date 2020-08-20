@@ -12,9 +12,18 @@
 
 #include "../../../includes/corewar.h"
 
-void    op_ld(t_vm *vm, t_process *proc)
+/*
+** Load value from Argument1 into registry number Argument2.
+** If Argument1 type is T_IND, value to be loaded is read from memory. Address
+** is calculated as follows: current_position + (Argument1 % IDX_MOD)
+** If result is 0, set carry to 1. If result is !0, set carry to 0.
+*/
+
+void	op_ld(t_vm *vm, t_process *proc)
 {
-    if (proc == NULL)
-        ;
-    ft_printf("function ld !%d\n", vm->lives);
+	int	result;
+
+	result = get_op_values(vm, proc, 1);
+	proc->reg[get_op_values(vm, proc, 2) - 1] = result;
+	proc->carry = (result == 0 ? 1 : 0);
 }
