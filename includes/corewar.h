@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/20 14:03:00 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/20 14:17:41 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,8 +167,9 @@ void				*assign_opfunctions(int opcode);
 int					get_addr(int addr);
 int					get_args(t_vm *vm, t_process *proc);
 void				remove_proc(t_process **proc_list, t_process **current, t_process **previous);
-int					get_op_values(t_vm *vm, t_process *proc, int type, int value);
 int					int_arg(t_vm *vm, int idx);
+int					get_op_values(t_vm *vm, t_process *proc, int arg);
+
 
 /*
 **					PARSE INPUT FUNCTIONS
