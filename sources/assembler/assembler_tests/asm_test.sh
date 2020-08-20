@@ -3,6 +3,7 @@
 OPTION=$1
 
 RED='\033[0;31m'
+YELLOW='\033[0;33m'
 GREEN='\033[0;32m'
 NOCOL='\033[0m'
 
@@ -10,7 +11,7 @@ EXE=../asm
 ORIG_EXE=../../../resources/asm
 
 TEST_NBR=1
-TEST_COUNT=22
+TEST_COUNT=63
 
 if [ $# -ne 1 ];
 then
@@ -25,8 +26,9 @@ else
 		rm orig_cor_files/*.cor
 		while [ $TEST_NBR -le $TEST_COUNT ]
 		do
-			$ORIG_EXE test$TEST_NBR.s >> orig_output 2>&1
-			mv test$TEST_NBR.cor orig_cor_files/orig$TEST_NBR.cor
+			echo -n "$TEST_NBR " >> orig_output
+			$ORIG_EXE tests/test$TEST_NBR.s >> orig_output 2>&1
+			mv tests/test$TEST_NBR.cor orig_cor_files/orig$TEST_NBR.cor > /dev/null
 			TEST_NBR=$(( TEST_NBR + 1 ))
 		done
 	}
@@ -38,8 +40,9 @@ else
 		while [ $TEST_NBR -le $TEST_COUNT ]
 		do
 			echo -ne "Creating .cor files... ${TEST_NBR}/${TEST_COUNT}\r"
-			$EXE test$TEST_NBR.s >> our_output 2>&1
-			mv test$TEST_NBR.cor our_cor_files/our$TEST_NBR.cor
+			echo -n "$TEST_NBR " >> our_output
+			$EXE tests/test$TEST_NBR.s >> our_output 2>&1
+			mv tests/test$TEST_NBR.cor our_cor_files/our$TEST_NBR.cor 2> /dev/null
 			TEST_NBR=$(( TEST_NBR + 1 ))
 		done
 		echo -ne '\n'
@@ -51,7 +54,8 @@ else
 		then
     		echo -e "${GREEN}Program output messages are equal${NOCOL}"
 		else
-			echo -e "${RED}Differences in output messages - compare orig_output and our_output${NOCOL}"
+			echo -e "${YELLOW}Differences in output messages - comparing contents${NOCOL}"
+			./linechecker our_output orig_output
 		fi
 
 
