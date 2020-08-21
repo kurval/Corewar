@@ -12,9 +12,20 @@
 
 #include "../../../includes/corewar.h"
 
-void    op_lldi(t_vm *vm, t_process *proc)
+/*
+** ldi without % IDX_MOD (for the part (current_position + Argument1 +
+** Argument2), for argument value if argument is T_IND, % IDX_MOD is still
+** performed.
+** If value written to the third argument is !0, carry is set to 0; if value
+** written to the third argument is 0, carry is set to 1.
+*/
+
+void	op_lldi(t_vm *vm, t_process *proc)
 {
-    if (proc == NULL)
-        ;
-    ft_printf("function lldi !%d\n", vm->lives);
+	int	res;
+
+	res = int_arg(vm, proc->pc + get_op_values(vm, proc, 1) +
+	get_op_values(vm, proc, 2));
+	proc->reg[proc->values[2] - 1] = res;
+	proc->carry = (!res ? 1 : 0);
 }

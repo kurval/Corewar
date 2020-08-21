@@ -12,9 +12,20 @@
 
 #include "../../../includes/corewar.h"
 
-void    op_lld(t_vm *vm, t_process *proc)
+/*
+** ld without % IDX_MOD.
+** Original corewar works wrong: if argument type is T_IND it reads 2 bytes into
+** T_REG instead of 4.
+*/
+
+void	op_lld(t_vm *vm, t_process *proc)
 {
-    if (proc == NULL)
-        ;
-    ft_printf("function lld !%d\n", vm->lives);
+	int	res;
+
+	if (proc->args[0] == T_IND)
+		res = int_arg(vm, proc->pc + proc->values[0]);
+	else
+		res = get_op_values(vm, proc, 1);
+	proc->reg[proc->values[1] - 1] = res;
+	proc->carry = (!res ? 1 : 0);
 }
