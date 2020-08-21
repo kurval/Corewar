@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/19 21:47:47 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/21 15:42:29 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,18 +67,18 @@ static void	execute_operation(t_vm *vm, t_process *proc)
 ** Also, if cycles_to_die <= 0 all carriages are considered dead.
 */
 
-static void check_dead_processes(t_vm *vm, t_process **proc)
+static void check_dead_processes(t_vm *vm, t_process **proc_list)
 {
     t_process *current;
     t_process *previous;
     
-    current = *proc;
+    current = *proc_list;
     previous = NULL;
     while(current)
     {
         if (current->last_live <= vm->current_cycle - vm->ctd ||\
         vm->ctd <= 0)
-            remove_proc(proc, &current, &previous);
+            remove_proc(proc_list, &current, &previous);
         else
         {
             previous = current;
@@ -94,9 +94,9 @@ static void check_dead_processes(t_vm *vm, t_process **proc)
 ** Also reset period counter and lives performed in current period.
 */
 
-static void perform_check(t_vm *vm, t_process **proc)
+static void perform_check(t_vm *vm, t_process **proc_list)
 {
-    check_dead_processes(vm, proc);
+    check_dead_processes(vm, proc_list);
     if (vm->lives >= NBR_LIVE || vm->checks >= MAX_CHECKS)
 	{
         vm->ctd -= CYCLE_DELTA;
@@ -117,11 +117,11 @@ static void perform_check(t_vm *vm, t_process **proc)
 **  >format with 32 octets per line.
 */
 
-void    run_cycles(t_vm *vm, t_process *proc_list)
+void    run_cycles(t_vm *vm)
 {
     t_process *current;
 
-    while((current = proc_list))
+    while((current = vm->proc_list))
     {
         vm->current_cycle++;
         vm->cycles++;
@@ -131,7 +131,7 @@ void    run_cycles(t_vm *vm, t_process *proc_list)
             current = current->next;
         }
         if (vm->ctd <= 0 || vm->cycles == vm->ctd)
-            perform_check(vm, &proc_list);
+            perform_check(vm, &vm->proc_list);
         if (vm->current_cycle == vm->dump_cycle)
 			dump_memory(vm->a);
     }
