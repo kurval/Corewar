@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   corewar.c                                          :+:      :+:    :+:   */
+/*   winner.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/02 15:30:41 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/21 16:03:35 by vkurkela         ###   ########.fr       */
+/*   Created: 2020/08/21 15:52:01 by vkurkela          #+#    #+#             */
+/*   Updated: 2020/08/21 16:22:09 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
 
-int	main(int ac, char **av)
+void    decleare_winner(t_vm *vm)
 {
-	t_vm	vm;
-	t_arena	arena;
+    int win_nb;
+    int i;
 
-	if (ac >= 2)
-	{
-		init_vm(&vm);
-		init_arena(&vm, &arena);
-		get_op(vm.operations);
-		validate_chapions(av);
-		parse_input(av, &vm);
-		load_champions(&vm);
-		init_processes(&vm);
-		run_cycles(&vm);
-		decleare_winner(&vm);
-		free_all(&vm);
-	}
-	return (0);
+    win_nb = vm->last_live_id;
+    i = -1;
+    while (vm->p[++i].id)
+    {
+        if (vm->p[i].id == win_nb)
+        {
+            ft_printf("Contestant %d, \"%s\", has won !\n", win_nb, vm->p[i].h.prog_name);
+            return ;
+        }
+    }
+    ft_printf("No winner...\n");
 }
