@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/21 13:39:11 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/21 15:39:46 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ typedef struct		s_op
 */
 
 void				init_vm(t_vm *vm);
-void				run_cycles(t_vm *vm, t_process *proc_list);
+void				run_cycles(t_vm *vm);
 void				init_arena(t_vm *vm, t_arena *arena);
 void				print_arena(t_arena *arena);
 void				dump_memory(t_arena *arena);
