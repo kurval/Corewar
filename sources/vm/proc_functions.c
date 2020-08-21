@@ -6,16 +6,16 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 16:55:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/21 13:41:17 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/21 23:00:58 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
 
-static t_process *add_proc(t_process *new, t_process *list)
+static void add_to_list(t_process *new, t_process **list)
 {
-	new->next = list;
-	return (new);
+	new->next = *list;
+    *list = new;
 }
 
 static t_process *new_proc()
@@ -73,6 +73,6 @@ void    init_processes(t_vm *vm)
         new->pc = i * MEM_SIZE / vm->nb_players;
         player_nb = -1 * vm->p[i].id;
         new->reg[0] = player_nb;
-        vm->proc_list = add_proc(new, vm->proc_list);
+        add_to_list(new, &vm->proc_list);
     }
 }
