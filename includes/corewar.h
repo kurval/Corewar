@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/21 15:39:46 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/21 16:02:12 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,6 +172,7 @@ int					int_arg(t_vm *vm, int idx);
 int					get_op_values(t_vm *vm, t_process *proc, int arg);
 void				load_into_memory(t_vm *vm, unsigned int addr, void *content);
 void    			init_processes(t_vm *vm);
+void				decleare_winner(t_vm *vm);
 
 /*
 **					PARSE INPUT FUNCTIONS
