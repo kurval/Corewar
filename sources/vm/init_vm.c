@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_vm.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:33:54 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/16 14:22:46 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/21 13:10:17 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ void	init_vm(t_vm *vm)
 	vm->ctd = CYCLE_TO_DIE;
 	vm->lives = 0;
 	vm->dump_cycle = 0;
+	vm->nb_players = 0;
 	vm->a = NULL;
+	vm->proc_list = NULL;
 	if (!(vm->operations = (t_op*)malloc(sizeof(t_op) * 16)))
 		exit(1);
 	while (++i < 4)
