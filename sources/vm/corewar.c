@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:30:41 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/21 15:40:08 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/21 15:45:37 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	main(int ac, char **av)
 		parse_input(av, &vm);
 		load_champions(&vm);
 		init_processes(&vm);
-		run_cycles(&vm);
 		test(&vm); // for testing
+		run_cycles(&vm);
 		free_all(&vm);
 	}
 	return (0);
