@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/20 23:42:37 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/21 13:39:11 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct		s_process
 {
 	int				args[3];
 	int				values[3];
-	int				id;
+	unsigned int	id;
 	int				carry;
 	unsigned int	opcode;
 	int				last_live;
@@ -66,9 +66,6 @@ typedef struct		s_process
 	int				pc;
 	int				jump;
 	int				reg[REG_NUMBER];
-	int				cycles;
-	int				live;
-	char			*p_name;
 	void			*player;
 	struct s_process*next;
 }					t_process;
@@ -123,6 +120,7 @@ typedef struct		s_vm
 	int				ctd;
 	int				dump_cycle;
 	int				nb_players;
+	t_process		*proc_list;
 }					t_vm;
 
 /*
@@ -173,6 +171,7 @@ void				remove_proc(t_process **proc_list, t_process **current, t_process **prev
 int					int_arg(t_vm *vm, int idx);
 int					get_op_values(t_vm *vm, t_process *proc, int arg);
 void				load_into_memory(t_vm *vm, unsigned int addr, void *content);
+void    			init_processes(t_vm *vm);
 
 /*
 **					PARSE INPUT FUNCTIONS
