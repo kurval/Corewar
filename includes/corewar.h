@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/21 16:02:12 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/22 12:31:02 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # define MASK1 192
 # define MASK2 48
 # define MASK3 12
-# define NB_OPERATIONS 16
 
 # define RED	"\033[1m\033[31m"
 # define GREEN	"\033[1m\033[32m"
@@ -59,11 +58,11 @@ typedef struct		s_process
 	int				args[3];
 	int				values[3];
 	unsigned int	id;
-	int				carry;
+	unsigned int	carry;
 	unsigned int	opcode;
-	int				last_live;
-	int				wait_cycles;
-	int				pc;
+	unsigned int	last_live;
+	unsigned int	wait_cycles;
+	unsigned int	pc;
 	int				jump;
 	int				reg[REG_NUMBER];
 	void			*player;
@@ -77,16 +76,14 @@ typedef struct		s_process
 ** - comment[COMMENT_LENGTH + 1]:  champion comment
 ** - executable_size : executable code size
 ** - code : executable code
+** - Other information can be found in op.h header struct
 */
 
 typedef struct		s_player
 {
 	int				id;
 	char			code[CHAMP_MAX_SIZE];
-	int				live;
 	header_t		h;
-	t_process		proc;
-	char			*name;
 }					t_player;
 
 /*
@@ -105,6 +102,7 @@ typedef struct		s_player
 ** - cycles : is used to track periods
 ** - operations : list of all operations and info of each one
 ** - nb_players : number of champions
+** - nb_procs : number of process
 */
 
 typedef struct		s_vm
@@ -112,14 +110,15 @@ typedef struct		s_vm
 	t_arena			*a;
 	t_player		p[MAX_PLAYERS];
 	struct s_op		*operations;
-	int				last_live_id;
-	int				cycles;
-	int				current_cycle;
-	int				checks;
-	int				lives;
+	unsigned int	last_live_id;
+	unsigned int	cycles;
+	unsigned int	current_cycle;
+	unsigned int	checks;
+	unsigned int	lives;
 	int				ctd;
-	int				dump_cycle;
-	int				nb_players;
+	unsigned int	dump_cycle;
+	unsigned int	nb_players;
+	unsigned int	nb_procs;
 	t_process		*proc_list;
 }					t_vm;
 
@@ -136,14 +135,14 @@ typedef struct		s_vm
 
 typedef struct		s_op
 {
-	char		*instr_name;
-	int			argc;
-	int			argv[3];
-	int			instr_code;
-	int			wait_cycles;
-	int			dir_size;
-	int			encode;
-	void		(*f)(t_vm *vm, t_process *proc);
+	char			*instr_name;
+	int				argc;
+	int				argv[3];
+	unsigned int	instr_code;
+	unsigned int	wait_cycles;
+	unsigned int	dir_size;
+	unsigned int	encode;
+	void			(*f)(t_vm *vm, t_process *proc);
 }					t_op;
 
 /*
@@ -167,12 +166,15 @@ void				free_all(t_vm *vm);
 void				*assign_opfunctions(int opcode);
 int					get_addr(int addr);
 int					get_args(t_vm *vm, t_process *proc);
-void				remove_proc(t_process **proc_list, t_process **current, t_process **previous);
+void				remove_proc(t_vm *vm, t_process **proc_list, t_process **current, t_process **previous);
 int					int_arg(t_vm *vm, int idx);
 int					get_op_values(t_vm *vm, t_process *proc, int arg);
 void				load_into_memory(t_vm *vm, unsigned int addr, void *content);
 void    			init_processes(t_vm *vm);
 void				decleare_winner(t_vm *vm);
+void				add_to_list(t_process *new, t_process **list);
+t_process			*new_proc();
+t_process			*copy_proc(t_vm *vm, t_process *og_proc);
 
 /*
 **					PARSE INPUT FUNCTIONS

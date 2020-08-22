@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:33:54 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/21 13:10:17 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/22 12:21:37 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 static void	initialize_players(t_player *p)
 {
 	p->id = 0;
-	p->live = 0;
 	p->h.magic = 0;
 	p->h.prog_size = 0;
 	ft_bzero(&(p->code), CHAMP_MAX_SIZE);
@@ -36,6 +35,7 @@ void	init_vm(t_vm *vm)
 	vm->lives = 0;
 	vm->dump_cycle = 0;
 	vm->nb_players = 0;
+	vm->nb_procs = 0;
 	vm->a = NULL;
 	vm->proc_list = NULL;
 	if (!(vm->operations = (t_op*)malloc(sizeof(t_op) * 16)))
