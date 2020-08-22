@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/22 16:53:01 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 16:57:20 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,6 @@ typedef struct		s_vm
 	unsigned int	dump_cycle;
 	unsigned int	nb_players;
 	unsigned int	nb_procs;
-	unsigned int	id_counter;
 	t_process		*proc_list;
 }					t_vm;
 
