@@ -3,14 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/08/21 12:23:55 by vkurkela         ###   ########.fr       */
-=======
-/*   Updated: 2020/08/16 14:14:43 by bkonjuha         ###   ########.fr       */
->>>>>>> Parse Champions and allocate to arena
+/*   Updated: 2020/08/22 11:14:24 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +23,15 @@ static void	introduce_champs(t_vm *vm)
 		ft_printf("* Player %d, Weighing in at %d BYTES, \"%s\": (\"%s\")\n",
 			i + 1, vm->p[i].h.prog_size, vm->p[i].h.prog_name, vm->p[i].h.comment);
 	}
-
 }
 
-static void	get_player(char *s, t_player *p, int num)
+static void	get_player(char *s, t_player *p, int num[4])
 {
 	int fd;
 	int len;
+	int	i;
 
+	i = 0;
 	if ((fd = open(s, O_RDONLY)) != -1)
 	{
 		read(fd, &(p->h.magic), 4);
@@ -43,18 +40,40 @@ static void	get_player(char *s, t_player *p, int num)
 		read(fd, &(p->h.comment), COMMENT_LENGTH);
 		lseek(fd, 4, SEEK_CUR);
 		len = read(fd, &(p->code), CHAMP_MAX_SIZE);
-		p->id = num;
+		while (!num[i])
+			i++;
+		p->id = num[i];
 		p->h.prog_size = len;
 	}
+}
+
+static int	get_n_flag(char *s, id[4])
+{
+	int num;
+
+	if(ft_strlen(s) < 2 && ft_isdigit(*s))
+		num = ft_atoi(s);
+	if (num > 4 || num < 1)
+		ft_errno(N_FLAG_ERROR);
+	if (!id[num - 1])
+		ft_errno(DUPLICATE_N);
+	id[num - 1] = 0;
+	return (num);
 }
 
 void		parse_input(char **av, t_vm *vm)
 {
 	int i;
+	int	id[4];
 
 	i = 0;
+	id = {1, 2, 3, 4};
 	while (av[++i])
-		get_player(av[i], &(vm->p[i - 1]), i);
+	{
+		if (ft_strequ("-n" , av[i++]))
+			id = get_n_flag(av[i++])
+		get_player(av[i], &(vm->p[i - 1]), id);
+	}
 	if (i > 4)
 		ft_errno(CHAMP_NUM_ERROR);
 	introduce_champs(vm);
