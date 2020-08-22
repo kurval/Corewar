@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:33:54 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/22 16:57:49 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 17:33:14 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	init_vm(t_vm *vm)
 	vm->nb_procs = 0;
 	vm->id_counter = 1;
 	vm->a = NULL;
+	vm->proc_list = NULL;
 	if (!(vm->operations = (t_op*)malloc(sizeof(t_op) * 16)))
 		exit(1);
 	while (++i < 4)
