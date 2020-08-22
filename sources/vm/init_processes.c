@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 11:07:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 16:56:48 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 16:57:45 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void    init_processes(t_vm *vm)
     {
         new = new_proc();
         vm->nb_procs++;
-        new->id = i + 1;
+        new->id = vm->id_counter++;
         new->jump = 0;
         new->wait_cycles = 0;
         new->last_live = 0;

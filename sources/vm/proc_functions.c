@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 16:55:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 16:56:31 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 16:57:53 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ static void del_node(t_process **proc)
 
 void    remove_proc(t_vm *vm, t_process **proc_list, t_process **current, t_process **previous)
 {
-    if (--vm->nb_procs && *previous)
+    vm->nb_procs--;
+    if (*previous)
         (*previous)->next = (*current)->next;
     else if (*proc_list == *current)
         *proc_list = (*current)->next;
@@ -66,7 +67,8 @@ t_process *copy_proc(t_vm *vm, t_process *og_proc)
     int         i;
 
     new = new_proc();
-    new->id = vm->nb_procs++;
+    vm->nb_procs++;
+    new->id = vm->id_counter++;
     new->carry = og_proc->carry;
     new->last_live = og_proc->last_live;
     new->jump = 0;
