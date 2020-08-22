@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:39:30 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/22 10:46:11 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 15:15:43 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # define ARENA_ERROR "ERROR: Can't initialize Arena"
 
 # define INPUT_ERROR "ERROR: Invalid input parameter"
+
+# define OPEN_ERROR "ERROR: Cannot open file"
+
+# define CHAMP_ERROR "ERROR: Invalid Champion"
 
 # define CHAMP_NUM_ERROR "ERROR: Too many champions"
 

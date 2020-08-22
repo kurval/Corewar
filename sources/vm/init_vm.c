@@ -6,11 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:33:54 by bkonjuha          #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2020/08/21 13:10:17 by vkurkela         ###   ########.fr       */
-=======
-/*   Updated: 2020/08/16 14:22:46 by bkonjuha         ###   ########.fr       */
->>>>>>> Parse Champions and allocate to arena
+/*   Updated: 2020/08/22 11:20:40 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
