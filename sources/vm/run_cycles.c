@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 16:55:49 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 16:58:45 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,15 +130,7 @@ void    run_cycles(t_vm *vm)
             execute_operation(vm, current);
             current = current->next;
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
         if (vm->ctd <= 0 || vm->cycles == (unsigned int)vm->ctd)
-=======
-        if (vm->ctd <= 0 || vm->cycles == vm->ctd)
->>>>>>> upted paring, does not declare winner
-=======
-        if (vm->ctd <= 0 || vm->cycles == (unsigned int)vm->ctd)
->>>>>>> adding fork and lfork and changes to corewar.h
             perform_check(vm, &vm->proc_list);
         if (vm->current_cycle == vm->dump_cycle)
 			dump_memory(vm);

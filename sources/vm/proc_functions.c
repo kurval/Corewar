@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 16:55:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 16:57:53 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 16:59:58 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,17 +74,7 @@ t_process *copy_proc(t_vm *vm, t_process *og_proc)
     new->jump = 0;
     new->wait_cycles = 0;
     i = -1;
-    while(++i < vm->nb_players)
-    {
-        new = new_proc();
-        new->id = i + 1;
-        new->jump = 0;
-        new->wait_cycles = 0;
-        new->last_live = 0;
-        new->carry = 0;
-        new->pc = i * MEM_SIZE / vm->nb_players;
-        player_nb = -1 * vm->p[i].id;
-        new->reg[0] = player_nb;
-        add_to_list(new, &vm->proc_list);
-    }
+	while (++i < REG_NUMBER)
+        new->reg[i] = og_proc->reg[i];
+    return (new);
 }
