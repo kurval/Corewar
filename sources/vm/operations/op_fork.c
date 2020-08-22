@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:18 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 12:15:45 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/22 13:48:31 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,4 @@ void    op_fork(t_vm *vm, t_process *proc)
     new = copy_proc(vm, proc);
     new->pc = get_addr(proc->pc + (value1 % IDX_MOD));
     add_to_list(new, &vm->proc_list);
-    
 }

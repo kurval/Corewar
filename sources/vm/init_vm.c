@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:33:54 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/22 12:21:37 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/22 13:48:54 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	init_vm(t_vm *vm)
 	vm->dump_cycle = 0;
 	vm->nb_players = 0;
 	vm->nb_procs = 0;
+	vm->id_counter = 1;
 	vm->a = NULL;
 	vm->proc_list = NULL;
 	if (!(vm->operations = (t_op*)malloc(sizeof(t_op) * 16)))
