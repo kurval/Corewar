@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_processes.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 11:07:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 13:49:38 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/22 16:57:45 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

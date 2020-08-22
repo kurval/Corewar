@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 16:55:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 18:52:18 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 18:54:14 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void    init_processes(t_vm *vm)
     t_process *new;
 
     i = -1;
+<<<<<<< HEAD
     while(++i < vm->nb_players)
     {
         new = new_proc();
@@ -79,4 +80,9 @@ void    init_processes(t_vm *vm)
         new->reg[0] = player_nb;
         add_to_list(new, &vm->proc_list);
     }
+=======
+	while (++i < REG_NUMBER)
+        new->reg[i] = og_proc->reg[i];
+    return (new);
+>>>>>>> origin/vm
 }

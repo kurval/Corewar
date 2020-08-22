@@ -22,6 +22,21 @@ echo "PARSE VALID PLAYERS"
 echo "-------------------"
 for t in ${!PLAYERS[@]}; do
 	temp=${PLAYERS[$t]}
+	timeout() {
+		time=$1
+		expect -c "set echo \"-noecho\"; set timeout $time; spawn -noecho $COREWAR $temp ; expect timeout { exit 1 } eof { exit 0 }"
+
+		if [ $? = 1 ] ; then
+			echo "Timeout after ${time} seconds"
+		fi
+
+	}
+	timeout 1s $COREWAR $temp
+	 if [ $? = 124 ] ; then
+		echo "it timed out, do something..."
+	else
+		echo "didn't time out"
+fi
 	VAR=$($COREWAR $temp | grep Player)
 	if [ "$VAR" ]; then
 		printf "${GREEN}\xE2\x9C\x94${NC}"

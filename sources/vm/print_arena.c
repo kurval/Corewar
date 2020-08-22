@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_arena.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:47:04 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 16:13:59 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/22 18:10:25 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void    init_arena(t_vm *vm, t_arena *arena)
     while (i < MEM_SIZE)
     {
         arena->arena[i] = 0;
+        arena->owner[i] = 0;
         i++;
     }
     vm->a = arena;
@@ -33,6 +34,12 @@ void    print_arena(t_arena *arena)
     while (i < MEM_SIZE)
     {
         ft_printf("%.2X ", arena->arena[i]);
+        if (arena->owner[i] == 2)
+            ft_printf("\033[0;31m");
+        if (arena->owner[i] == 1)
+            ft_printf("\033[0;32m");
+        if (arena->owner[i] == 0)
+            ft_printf("\033[0m");
         i++;
         if (i % 64 == 0)
             ft_printf("\n");
