@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/22 17:26:19 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 18:10:29 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 static void	introduce_champs(t_vm *vm)
 {
 	int i;
+	int	num;
 
 	i = -1;
+	num = 0;
 	ft_putendl("Introducing contestants...");
 	while (++i < 4)
 	{
@@ -24,9 +26,10 @@ static void	introduce_champs(t_vm *vm)
 		{
 			ft_printf("* Player %d, Weighing in at %d BYTES, \"%s\": (\"%s\")\n",
 				i + 1, vm->p[i].h.prog_size, vm->p[i].h.prog_name, vm->p[i].h.comment);
+			num++;
 		}
 	}
-    vm->nb_players = i;
+    vm->nb_players = num;
 }
 
 static void	get_player(char *s, t_player *p, int num)
