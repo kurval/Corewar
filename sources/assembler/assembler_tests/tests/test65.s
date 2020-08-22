@@ -21,9 +21,8 @@ live:
 		live %1
 		fork %-10
 
-testlabel:
-protection:
-othertestlabel: zjmp %:live
+testlabel: protection: othertestlabel:
+			zjmp %:live
 	          ld %25, r4
 	          st r4, -500
 	          st r4, -500
