@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:39:30 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/16 13:43:22 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 10:46:11 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,9 @@
 # define INPUT_ERROR "ERROR: Invalid input parameter"
 
 # define CHAMP_NUM_ERROR "ERROR: Too many champions"
+
+# define N_FLAG_ERROR "ERROR: -n flag number out of bounds"
+
+# define DUPLICATE_N "ERROR: Champion ID already in use"
 
 #endif
