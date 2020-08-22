@@ -6,7 +6,7 @@
 #    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/08/21 16:02:28 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/08/22 11:07:53 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ SRC_FILES = ft_errno.c init_vm.c parse_input.c validate_champions.c \
 			operations/op_sti.c operations/op_sub.c operations/op_xor.c \
 			operations/op_zjmp.c free_all.c assign_opfunctions.c load_champions.c \
 			get_addr.c get_args.c testing.c proc_functions.c operations/utils.c \
-			winner.c
+			winner.c init_processes.c
 SRC = $(addprefix $(VM_SRC_PATH), $(SRC_FILES))
 
 MAIN_PATH = ./sources/vm/

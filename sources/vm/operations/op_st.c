@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:51 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/20 23:38:42 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/22 12:00:21 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void    op_st(t_vm *vm, t_process *proc)
         proc->reg[proc->values[1] - 1] = value1;
     else if (proc->args[1] == T_IND)
     {
-        addr = proc->pc + (proc->values[1] % IDX_MOD);
+        addr = get_addr(proc->pc + (proc->values[1] % IDX_MOD));
         load_into_memory(vm, addr, (void *)&value1);
     }
         

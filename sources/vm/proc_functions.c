@@ -6,19 +6,23 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 16:55:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/21 23:00:58 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/22 12:29:15 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
 
-static void add_to_list(t_process *new, t_process **list)
+/*
+** Adding process start of the list
+*/
+
+void add_to_list(t_process *new, t_process **list)
 {
 	new->next = *list;
     *list = new;
 }
 
-static t_process *new_proc()
+t_process *new_proc()
 {
     t_process *new;
 
@@ -41,9 +45,9 @@ static void del_node(t_process **proc)
 ** >point the head to current->next
 */
 
-void    remove_proc(t_process **proc_list, t_process **current, t_process **previous)
+void    remove_proc(t_vm *vm, t_process **proc_list, t_process **current, t_process **previous)
 {
-    if (*previous)
+    if (--vm->nb_procs && *previous)
         (*previous)->next = (*current)->next;
     else if (*proc_list == *current)
         *proc_list = (*current)->next;
@@ -52,27 +56,23 @@ void    remove_proc(t_process **proc_list, t_process **current, t_process **prev
 }
 
 /*
-** Initializing process list.
+** copies given process
+** usen in fork and lfork operations
 */
 
-void    init_processes(t_vm *vm)
+t_process *copy_proc(t_vm *vm, t_process *og_proc)
 {
-    int i;
-    int player_nb;
-    t_process *new;
+    t_process   *new;
+    int         i;
 
+    new = new_proc();
+    new->id = vm->nb_procs++;
+    new->carry = og_proc->carry;
+    new->last_live = og_proc->last_live;
+    new->jump = 0;
+    new->wait_cycles = 0;
     i = -1;
-    while(++i < vm->nb_players)
-    {
-        new = new_proc();
-        new->id = i + 1;
-        new->jump = 0;
-        new->wait_cycles = 0;
-        new->last_live = 0;
-        new->carry = 0;
-        new->pc = i * MEM_SIZE / vm->nb_players;
-        player_nb = -1 * vm->p[i].id;
-        new->reg[0] = player_nb;
-        add_to_list(new, &vm->proc_list);
-    }
+	while (++i < REG_NUMBER)
+        new->reg[i] = og_proc->reg[i];
+    return (new);
 }
