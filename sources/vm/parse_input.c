@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/22 18:10:29 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 18:32:51 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ static int			get_next_unused_id(int arr[MAX_PLAYERS])
 		i++;
 	if (i == MAX_PLAYERS)
 		ft_errno(CHAMP_NUM_ERROR);
-	return (arr[i]);
+	arr[i] = 0;
+	return (i + 1);
 }
 
 void		parse_input(char **av, t_vm *vm)
