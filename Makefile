@@ -6,10 +6,11 @@
 #    By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/08/22 16:32:46 by bkonjuha         ###   ########.fr        #
+#    Updated: 2020/08/22 16:33:50 by bkonjuha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+ASM = asm
 COREWAR = corewar
 
 VM_SRC_PATH = ./sources/vm/
@@ -21,7 +22,8 @@ SRC_FILES = ft_errno.c init_vm.c parse_input.c validate_champions.c \
 			operations/op_lldi.c operations/op_or.c operations/op_st.c \
 			operations/op_sti.c operations/op_sub.c operations/op_xor.c \
 			operations/op_zjmp.c free_all.c assign_opfunctions.c load_champions.c \
-			get_addr.c get_args.c testing.c proc_functions.c
+			get_addr.c get_args.c testing.c proc_functions.c operations/utils.c \
+			winner.c
 SRC = $(addprefix $(VM_SRC_PATH), $(SRC_FILES))
 
 MAIN_PATH = ./sources/vm/
@@ -51,7 +53,7 @@ COLOR_DEFAULT = \033[1;34m
 
 all: $(COREWAR)
 
-$(COREWAR): $(HEADERS) $(LIBFT) $(PRINTF)
+$(COREWAR): $(HEADERS) $(LIBFT) $(PRINTF) $(SRC)
 		@$(COMPILE) $(C) $(SRC) $(LIBFT) $(PRINTF) -o $(COREWAR)
 		# @$(COMPILE) $(A) $(SRC) $(LIBFT) $(PRINTF) -o $(ASM)
 		@echo "[$(COLOR_PENDING)Putting everything togeather$(COLOR_RESET)]"
