@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:45:03 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/04 20:50:42 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 15:15:59 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ static int	ends_with_cor(char *s)
 static int	is_valid_length(char *s)
 {
 	int fd;
-	long long num;
+	int num;
 
+	num = -1;
 	if((fd = open(s, O_RDONLY)) < 0)
-		ft_errno(INPUT_ERROR);
-	else if((num = lseek(fd, 0, SEEK_END) - COREWAR_EXEC_MAGIC) > CHAMP_MAX_SIZE)
-		ft_errno(INPUT_ERROR);
-	ft_printf("It's fine\n");
+		ft_errno(OPEN_ERROR);
+	else if((num = lseek(fd, 0, SEEK_END) - sizeof(header_t)) > CHAMP_MAX_SIZE)
+		ft_errno(CHAMP_ERROR);
 	close(fd);
 	return (1);
 }
@@ -45,6 +45,8 @@ void			validate_chapions(char **s)
 	i = 0;
 	while (s[++i])
 	{
+		if (ft_strequ(s[i], "-n") && i++)
+			continue ;
 		if (!ends_with_cor(s[i]) || !is_valid_length(s[i]))
 			ft_errno(INPUT_ERROR);
 	}

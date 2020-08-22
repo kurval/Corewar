@@ -6,10 +6,11 @@
 #    By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/08/22 16:52:26 by bkonjuha         ###   ########.fr        #
+#    Updated: 2020/08/22 16:55:06 by bkonjuha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+ASM = asm
 COREWAR = corewar
 
 VM_SRC_PATH = ./sources/vm/
@@ -52,7 +53,7 @@ COLOR_DEFAULT = \033[1;34m
 
 all: $(COREWAR)
 
-$(COREWAR): $(HEADERS) $(LIBFT) $(PRINTF)
+$(COREWAR): $(HEADERS) $(LIBFT) $(PRINTF) $(SRC)
 		@$(COMPILE) $(C) $(SRC) $(LIBFT) $(PRINTF) -o $(COREWAR)
 		# @$(COMPILE) $(A) $(SRC) $(LIBFT) $(PRINTF) -o $(ASM)
 		@echo "[$(COLOR_PENDING)Putting everything togeather$(COLOR_RESET)]"

@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 16:51:56 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 16:54:54 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,12 @@ static void	execute_operation(t_vm *vm, t_process *proc)
 ** Also, if cycles_to_die <= 0 all carriages are considered dead.
 */
 
-static void check_dead_processes(t_vm *vm, t_process **proc)
+static void check_dead_processes(t_vm *vm, t_process **proc_list)
 {
     t_process *current;
     t_process *previous;
 
-    current = *proc;
+    current = *proc_list;
     previous = NULL;
     while(current)
     {
@@ -94,9 +94,9 @@ static void check_dead_processes(t_vm *vm, t_process **proc)
 ** Also reset period counter and lives performed in current period.
 */
 
-static void perform_check(t_vm *vm, t_process **proc)
+static void perform_check(t_vm *vm, t_process **proc_list)
 {
-    check_dead_processes(vm, proc);
+    check_dead_processes(vm, proc_list);
     if (vm->lives >= NBR_LIVE || vm->checks >= MAX_CHECKS)
 	{
         vm->ctd -= CYCLE_DELTA;
@@ -110,18 +110,18 @@ static void perform_check(t_vm *vm, t_process **proc)
 
 /*
 ** This is the battle function which continues as long as there are processes left.
-** - List of cursors is checked every cycle.
-**  >The check is performed once in cycles_to_die cycles if cycles_to_die > 0.
+** - We go through list of cursors in every cycle to determine if statement should be executed.
+** - The check is performed once in cycles_to_die cycles if cycles_to_die > 0.
 **  >After it's value becomes less than 1, the check is performed each cycle.
 ** - If -dump flag is present The memory must be dumped in the hexadecimal
 **  >format with 32 octets per line.
 */
 
-void    run_cycles(t_vm *vm, t_process *proc_list)
+void    run_cycles(t_vm *vm)
 {
     t_process *current;
 
-    while((current = proc_list))
+    while((current = vm->proc_list))
     {
         vm->current_cycle++;
         vm->cycles++;
@@ -130,7 +130,11 @@ void    run_cycles(t_vm *vm, t_process *proc_list)
             execute_operation(vm, current);
             current = current->next;
         }
+<<<<<<< HEAD
         if (vm->ctd <= 0 || vm->cycles == (unsigned int)vm->ctd)
+=======
+        if (vm->ctd <= 0 || vm->cycles == vm->ctd)
+>>>>>>> upted paring, does not declare winner
             perform_check(vm, &vm->proc_list);
         if (vm->current_cycle == vm->dump_cycle)
 			dump_memory(vm);
