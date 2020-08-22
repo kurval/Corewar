@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_arena.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:47:04 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/16 14:24:29 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/22 16:13:59 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void    print_arena(t_arena *arena)
     }
 }
 
-void    dump_memory(t_arena *arena)
+void    dump_memory(t_vm *vm)
 {
     int i;
 
@@ -47,7 +47,7 @@ void    dump_memory(t_arena *arena)
     ft_printf("0x%#.4x : ", i);
     while (i < MEM_SIZE)
     {
-        ft_printf("%.2X ", arena->arena[i]);
+        ft_printf("%.2X ", vm->a->arena[i]);
         i++;
         if (i % 32 == 0)
         {
@@ -55,4 +55,5 @@ void    dump_memory(t_arena *arena)
             i < MEM_SIZE ? ft_printf("%#.4x : ", i) : 0;
         }
     }
+    free_all(vm);
 }

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 17:42:55 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/21 23:01:53 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/22 16:11:27 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@ static void free_operations(t_vm *vm)
 void    free_all(t_vm *vm)
 {
     free_operations(vm);
+    exit(1);
 }

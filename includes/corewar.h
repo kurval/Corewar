@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/22 13:41:55 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/22 16:13:17 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ void				init_vm(t_vm *vm);
 void				run_cycles(t_vm *vm);
 void				init_arena(t_vm *vm, t_arena *arena);
 void				print_arena(t_arena *arena);
-void				dump_memory(t_arena *arena);
+void				dump_memory(t_vm *vm);
 
 /*
 **					HELPER FUNCTIONS
