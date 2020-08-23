@@ -6,8 +6,8 @@
 # ORIG_EXE = path to the comparison executable
 # Paths need to be relative to assembler_tests folder
 
-EXE=../asm
-ORIG_EXE=../../../resources/asm
+EXE=../sources/assembler/asm
+ORIG_EXE=../resources/asm
 
 LINECHECKER=./linechecker
 

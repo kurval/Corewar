@@ -1,7 +1,7 @@
 #include <sys/stat.h> 
 #include <fcntl.h>
-#include "../../../libft/libft.h"
-#include "../../../libft/printf/includes/printf.h"
+#include "../libft/libft.h"
+#include "../libft/printf/includes/printf.h"
 
 #define GREEN 0
 #define RED 1

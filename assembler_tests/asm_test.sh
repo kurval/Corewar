@@ -6,8 +6,10 @@
 # ORIG_EXE = path to school-given asm
 # Paths need to be relative to assembler_tests folder
 
-EXE=../asm
-ORIG_EXE=../../../resources/asm
+EXE=../sources/assembler/asm
+ORIG_EXE=../resources/asm
+
+LINECHECKER=./linechecker
 
 # TEST_COUNT represents the number of tests in tests/ folder.
 TEST_COUNT=81
@@ -107,7 +109,7 @@ else
     		echo -e "${GREEN}Program output messages are equal${NOCOL}"
 		else
 			echo -e "${YELLOW}Differences in output messages - comparing contents${NOCOL}"
-			./linechecker our_output orig_output
+			$LINECHECKER our_output orig_output
 		fi
 
 
