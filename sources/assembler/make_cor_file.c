@@ -22,7 +22,7 @@ int		open_corefile(char *s_filename, int filename_len)
 	c_filename = ft_strncpy(c_filename, s_filename, filename_len);
 	ft_strcpy(&c_filename[filename_len], ".cor");
 	c_filename[filename_len + 4] = '\0';
-	if ((fd = open(c_filename, O_WRONLY | O_CREAT, 0755)) == -1)
+	if ((fd = open(c_filename, O_WRONLY | O_CREAT | O_TRUNC, 0755)) == -1)
 	{
 		msg = add_str_to_str("Can't create file %s", c_filename);
 		handle_error(msg);
@@ -36,9 +36,11 @@ void	insert_champion_info(t_champ champ, int fd)
 {
 	int	exec_code_size;
 
+	exec_code_size = 0;
 	insert_bytes_string(fd, champ.name, PROG_NAME_LENGTH);
 	insert_bytes_number(fd, 0, 4);
-	exec_code_size = champ.stmts->place + champ.stmts->size;
+	if (champ.stmts)
+		exec_code_size = champ.stmts->place + champ.stmts->size;
 	insert_bytes_number(fd, exec_code_size, 4);
 	insert_bytes_string(fd, champ.comment, COMMENT_LENGTH);
 	insert_bytes_number(fd, 0, 4);
@@ -52,7 +54,8 @@ void	make_cor_file(char *s_filename, t_asm assembler)
 	fd = open_corefile(s_filename, ft_strlen(s_filename) - 2);
 	insert_bytes_number(fd, COREWAR_EXEC_MAGIC, 4);
 	insert_champion_info(assembler.champ, fd);
-	insert_statements(assembler.champ.stmts, assembler.champ.labels,
+	if (assembler.champ.stmts)
+		insert_statements(assembler.champ.stmts, assembler.champ.labels,
 	assembler.op, fd);
 	if (close(fd) == -1)
 	{

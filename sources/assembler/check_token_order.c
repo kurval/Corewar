@@ -89,7 +89,7 @@ void		check_token_order(t_token *token)
 {
 	int	i;
 
-	if (overlap(token->type, CMD_STR))
+	if (token && overlap(token->type, CMD_STR))
 	{
 		token = token->next;
 		if (!token || token->type != STRING)
@@ -98,7 +98,7 @@ void		check_token_order(t_token *token)
 	}
 	else
 	{
-		if (token->type == LABEL)
+		if (token && token->type == LABEL)
 			token = token->next;
 		if (token && token->type == INSTRUCTION)
 		{

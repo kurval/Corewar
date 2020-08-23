@@ -54,7 +54,7 @@ void	validate_characters(char *line, int col, int row, int *end_point)
 	cursor.row = row;
 	while (line[cursor.col] && (cursor.col < *end_point || *end_point == -1))
 	{
-		if (line[cursor.col] == COMMENT_CHAR || line[cursor.col] == '\n')
+		if (is_comment_char(line[cursor.col]) || line[cursor.col] == '\n')
 			break ;
 		if (!is_valid_char(line[cursor.col]))
 		{
