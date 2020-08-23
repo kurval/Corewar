@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 18:54:11 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/23 12:13:44 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 static void set_opcode(t_vm *vm, t_process *proc)
 {
     proc->opcode = vm->a->arena[proc->pc];
-    if (proc->opcode == 0 || proc->opcode > NB_OPERATIONS)
+    if (proc->opcode == 0 || proc->opcode > REG_NUMBER)
 		proc->wait_cycles = 1;
 	else
 		proc->wait_cycles = vm->operations[proc->opcode - 1].wait_cycles;
@@ -78,7 +78,7 @@ static void check_dead_processes(t_vm *vm, t_process **proc_list)
     {
         if (current->last_live <= vm->current_cycle - vm->ctd ||\
         vm->ctd <= 0)
-            remove_proc(proc_list, &current, &previous);
+            remove_proc(vm, proc_list, &current, &previous);
         else
         {
             previous = current;
@@ -130,7 +130,7 @@ void    run_cycles(t_vm *vm)
             execute_operation(vm, current);
             current = current->next;
         }
-        if (vm->ctd <= 0 || vm->cycles == vm->ctd)
+        if (vm->ctd <= 0 || vm->cycles == (unsigned int)vm->ctd)
             perform_check(vm, &vm->proc_list);
         if (vm->current_cycle == vm->dump_cycle)
 			dump_memory(vm);

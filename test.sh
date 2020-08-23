@@ -32,6 +32,9 @@ for t in ${!PLAYERS[@]}; do
 		if [ $? = 1 ] ; then
 			printf "⌛"
 			continue
+		elif [ $? = 139 ] ; then
+			printf "💥"
+			continue
 		fi
 	}
 	timeout 1s
@@ -63,6 +66,9 @@ for t in ${!PLAYERS[@]}; do
 		expect -c "set echo \"-noecho\"; set timeout $time; spawn $COREWAR $temp ; expect timeout { exit 1 } eof { exit 0 }" > /dev/null
 		if [ $? = 1 ] ; then
 			printf "⌛"
+			continue
+		elif [ $? = 139 ]; then
+			printf "💥"
 			continue
 		fi
 	}
@@ -96,6 +102,9 @@ for t in ${!PLAYERS[@]}; do
 		expect -c "set echo \"-noecho\"; set timeout $time; spawn $COREWAR $temp ; expect timeout { exit 1 } eof { exit 0 }" > /dev/null
 		if [ $? = 1 ] ; then
 			printf "⌛"
+			continue
+		elif [ $? = 139 ]; then
+			printf "💥"
 			continue
 		fi
 	}
