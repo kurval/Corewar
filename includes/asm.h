@@ -43,6 +43,7 @@
 # define ENDLINE 512
 # define COMMAND_NAME 1152
 # define COMMAND_COMMENT 2176
+# define END 4608
 
 # define MALLOC_ERROR "Malloc error"
 

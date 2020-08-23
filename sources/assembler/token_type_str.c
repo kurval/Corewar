@@ -36,7 +36,7 @@ char			*token_type_str(int type)
 		return ("INDIRECT_LABEL");
 	if (type == INDIRECT)
 		return ("INDIRECT");
-	if (type == ENDLINE)
-		return ("ENDLINE");
+	if (overlap(type, ENDLINE))
+		return (type == ENDLINE ? "ENDLINE" : "END");
 	return (NULL);
 }
