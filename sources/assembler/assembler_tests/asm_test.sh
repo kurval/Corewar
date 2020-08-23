@@ -1,6 +1,21 @@
 #!/bin/bash
 
+# ---- Editable area ----
+
+# EXE = path to our asm executable
+# ORIG_EXE = path to school-given asm
+# Paths need to be relative to assembler_tests folder
+
+EXE=../asm
+ORIG_EXE=../../../resources/asm
+
+# TEST_COUNT represents the number of tests in tests/ folder.
+TEST_COUNT=81
+
+# ---- Do not edit after this point unless you know what you're doing! ----
+
 OPTION=$1
+TEST_NBR=1
 
 RED='\033[0;31m'
 YELLOW='\033[0;33m'
@@ -8,19 +23,11 @@ GREEN='\033[0;32m'
 BLUE='\033[0;36m'
 NOCOL='\033[0m'
 
-# EXE = path to our asm executable
-# ORIG_EXE = path to school-given asm
-EXE=../asm
-ORIG_EXE=../../../resources/asm
-
-# TEST_COUNT represents the number of tests in tests/ folder.
-TEST_NBR=1
-TEST_COUNT=81
-
 if [ $# -ne 1 ];
 then
 	echo -e "+---------------------------------------------------------------------------------------+"
-	echo -e "| ${YELLOW}USAGE${NOCOL}                                                                                 |"
+	echo -e "|                                                                                       |"
+	echo -e "| ${YELLOW}USAGE ${RED}(NOTE: RUN INSIDE assembler_tests folder)${NOCOL}                                       |"
 	echo -e "|                                                                                       |"
 	echo -e "| ${BLUE}./asm_test.sh --compare${NOCOL}                                                               |"
 	echo -e "|      -> compare our asm output to original asm output                                 |" 
@@ -31,10 +38,14 @@ then
 	echo -e "|                                                                                       |"
 	echo -e "| Your asm needs to be compiled before you run tests.                                   |"
 	echo -e "| Check that file path variables (${GREEN}EXE${NOCOL} and ${GREEN}ORIG_EXE${NOCOL}) are correctly set.                  |"
+	echo -e "| (relative path from assembler_tests folder)                                           |"
 	echo -e "|                                                                                       |"
 	echo -e "| ${YELLOW}How to add more tests:${NOCOL}                                                                |"
 	echo -e "| If file name doesn't matter, you can add a file with a new number in ${GREEN}tests${NOCOL} folder.    |"
 	echo -e "| Remember to change ${GREEN}TEST_COUNT${NOCOL} variable to reflect the number of files in the folder.  |"
+	echo -e "| After adding new files, run ${BLUE}./asm_test.sh --create${NOCOL} to create new reference files.     |"
+	echo -e "| NOTE THAT --create ONLY WORKS IF YOU CAN RUN THE ORIGINAL ASSEMBLER!                  |"
+	echo -e "|                                                                                       |"
 	echo -e "+---------------------------------------------------------------------------------------|"
 	exit 1
 else
@@ -44,8 +55,13 @@ else
 		echo "Creating new reference files..." 
 		echo "Don't panic in case of segfaults, original asm is not very good."
 		echo "Segfaults can be ignored."
+		if [ -d "orig_cor_files" ];
+		then
+			rm orig_cor_files/*.cor
+		else
+			mkdir orig_cor_files
+		fi
 		rm orig_output
-		rm orig_cor_files/*.cor
 		while [ $TEST_NBR -le $TEST_COUNT ]
 		do
 			echo -n "$TEST_NBR " >> orig_output
@@ -62,8 +78,13 @@ else
 	elif [ "$OPTION" == "--compare" ];
 	then
 	{
+		if [ -d "our_cor_files" ];
+		then
+			rm our_cor_files/*.cor
+		else
+			mkdir our_cor_files
+		fi
 		rm our_output
-		rm our_cor_files/*.cor
 		while [ $TEST_NBR -le $TEST_COUNT ]
 		do
 			echo -ne "Creating .cor files... ${TEST_NBR}/${TEST_COUNT}\r"
@@ -124,8 +145,31 @@ else
 		done
 	}
 	else
-		echo -e "${RED}INVALID OPTION${NOCOL}"
-		echo -e "usage: ./asm_test.sh --compare -> compare our asm output to original asm output"
-		echo -e "usage: ./asm_test.sh --create -> ${RED}DO NOT USE ON WINDOWS${NOCOL} - create reference output files with the original asm"
+		echo "";
+		echo -e ${RED}INVALID OPTION${NOCOL}
+		echo "";
+		echo -e "+---------------------------------------------------------------------------------------+"
+		echo -e "|                                                                                       |"
+		echo -e "| ${YELLOW}USAGE ${RED}(NOTE: RUN INSIDE assembler_tests folder)${NOCOL}                                       |"
+		echo -e "|                                                                                       |"
+		echo -e "| ${BLUE}./asm_test.sh --compare${NOCOL}                                                               |"
+		echo -e "|      -> compare our asm output to original asm output                                 |" 
+		echo -e "|                                                                                       |"                                           
+		echo -e "| ${BLUE}./asm_test.sh --create ${NOCOL}                                                               |"
+		echo -e "|      -> ${RED}DO NOT USE ON WINDOWS${NOCOL} - create reference output                               |"
+		echo -e "|         files with the original asm                                                   |"
+		echo -e "|                                                                                       |"
+		echo -e "| Your asm needs to be compiled before you run tests.                                   |"
+		echo -e "| Check that file path variables (${GREEN}EXE${NOCOL} and ${GREEN}ORIG_EXE${NOCOL}) are correctly set.                  |"
+		echo -e "| (relative path from assembler_tests folder)                                           |"
+		echo -e "|                                                                                       |"
+		echo -e "| ${YELLOW}How to add more tests:${NOCOL}                                                                |"
+		echo -e "| If file name doesn't matter, you can add a file with a new number in ${GREEN}tests${NOCOL} folder.    |"
+		echo -e "| Remember to change ${GREEN}TEST_COUNT${NOCOL} variable to reflect the number of files in the folder.  |"
+		echo -e "| After adding new files, run ${BLUE}./asm_test.sh --create${NOCOL} to create new reference files.     |"
+		echo -e "| NOTE THAT --create ONLY WORKS IF YOU CAN RUN THE ORIGINAL ASSEMBLER!                  |"
+		echo -e "|                                                                                       |"
+		echo -e "+---------------------------------------------------------------------------------------|"
+		exit 1
 	fi
 fi

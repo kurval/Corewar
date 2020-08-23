@@ -1,0 +1,160 @@
+1 - tests_filename/asd.ss
+Differences in output messages - comparing contents
+------------------------------------------------------------------------------
+line 1 - Warning! One got an error, one created cor file
+Ours > 1 Source file tests_filename/asd.ss doesn't have the extension .s
+Orig > 1 Writing output program to tests_filename/asd.cor
+------------------------------------------------------------------------------
+Comparing cor files
+Missing .cor file
+==========================================================================================
+2 - tests_filename/double..s
+Program output messages are equal
+Comparing cor files
+2 OK
+==========================================================================================
+3 - tests_filename/filename.s.a
+Differences in output messages - comparing contents
+------------------------------------------------------------------------------
+line 1 - Warning! One got an error, one created cor file
+Ours > 3 Source file tests_filename/filename.s.a doesn't have the extension .s
+Orig > 3 Writing output program to tests_filename/filename.s.cor
+------------------------------------------------------------------------------
+Comparing cor files
+Missing .cor file
+==========================================================================================
+4 - tests_filename/filename.s.s
+Program output messages are equal
+Comparing cor files
+4 OK
+==========================================================================================
+5 - tests_filename/g.ss
+Differences in output messages - comparing contents
+------------------------------------------------------------------------------
+line 1 - Warning! One got an error, one created cor file
+Ours > 5 Source file tests_filename/g.ss doesn't have the extension .s
+Orig > 5 Writing output program to tests_filename/g.cor
+------------------------------------------------------------------------------
+Comparing cor files
+Missing .cor file
+==========================================================================================
+6 - tests_filename/k.a
+Differences in output messages - comparing contents
+------------------------------------------------------------------------------
+line 1 - Warning! One got an error, one created cor file
+Ours > 6 Source file tests_filename/k.a doesn't have the extension .s
+Orig > 6 Writing output program to tests_filename/k.cor
+------------------------------------------------------------------------------
+Comparing cor files
+Missing .cor file
+==========================================================================================
+7 - tests_filename/multiple.dot.name.s
+Program output messages are equal
+Comparing cor files
+7 OK
+==========================================================================================
+8 - tests_filename/no_end
+Differences in output messages - comparing contents
+------------------------------------------------------------------------------
+line 1 - Warning! One got an error, one created cor file
+Ours > 8 Source file tests_filename/no_end doesn't have the extension .s
+Orig > 8 Writing output program to .cor
+------------------------------------------------------------------------------
+Comparing cor files
+8 OK (Both files missing)
+==========================================================================================
+9 - tests_filename/no_end_dot.
+Differences in output messages - comparing contents
+------------------------------------------------------------------------------
+line 1 - Warning! One got an error, one created cor file
+Ours > 9 Source file tests_filename/no_end_dot. doesn't have the extension .s
+Orig > 9 Writing output program to tests_filename/no_end_dot.cor
+------------------------------------------------------------------------------
+Comparing cor files
+Missing .cor file
+==========================================================================================
+10 - tests_filename/orig_cor_files
+Differences in output messages - comparing contents
+------------------------------------------------------------------------------
+line 1 - Ok, both are errors
+Ours > 10 Source file tests_filename/orig_cor_files doesn't have the extension .s
+Orig > 10 Syntax error at token [TOKEN][001:001] END "(null)"
+------------------------------------------------------------------------------
+Comparing cor files
+10 OK (Both files missing)
+==========================================================================================
+11 - tests_filename/orig_output
+Differences in output messages - comparing contents
+------------------------------------------------------------------------------
+line 1 - Ok, both are errors
+Ours > 11 Source file tests_filename/orig_output doesn't have the extension .s
+Orig > 11 Syntax error at token [TOKEN][001:001] INDIRECT "11"
+------------------------------------------------------------------------------
+Comparing cor files
+11 OK (Both files missing)
+==========================================================================================
+12 - tests_filename/orig_output 2
+Differences in output messages - comparing contents
+------------------------------------------------------------------------------
+line 1 - Ok, both are errors
+Ours > 12 Usage: ./asm <sourcefile.s>
+Orig > 12 Can't read source file 2
+------------------------------------------------------------------------------
+Comparing cor files
+12 OK (Both files missing)
+==========================================================================================
+13 - tests_filename/our_cor_files
+Differences in output messages - comparing contents
+------------------------------------------------------------------------------
+line 1 - Ok, both are errors
+Ours > 13 Source file tests_filename/our_cor_files doesn't have the extension .s
+Orig > 13 Syntax error at token [TOKEN][001:001] END "(null)"
+------------------------------------------------------------------------------
+Comparing cor files
+13 OK (Both files missing)
+==========================================================================================
+14 - tests_filename/our_output
+Differences in output messages - comparing contents
+------------------------------------------------------------------------------
+line 1 - Ok, both are errors
+Ours > 14 Source file tests_filename/our_output doesn't have the extension .s
+Orig > 14 Can't read source file tests_filename/our_output
+------------------------------------------------------------------------------
+Comparing cor files
+14 OK (Both files missing)
+==========================================================================================
+15 - tests_filename/our_output 2
+Differences in output messages - comparing contents
+------------------------------------------------------------------------------
+line 1 - Ok, both are errors
+Ours > 15 Usage: ./asm <sourcefile.s>
+Orig > 15 Can't read source file 2
+------------------------------------------------------------------------------
+Comparing cor files
+15 OK (Both files missing)
+==========================================================================================
+16 - tests_filename/q.s
+Program output messages are equal
+Comparing cor files
+16 OK
+==========================================================================================
+17 - tests_filename/s
+Differences in output messages - comparing contents
+------------------------------------------------------------------------------
+line 1 - Warning! One got an error, one created cor file
+Ours > 17 Source file tests_filename/s doesn't have the extension .s
+Orig > 17 Writing output program to .cor
+------------------------------------------------------------------------------
+Comparing cor files
+17 OK (Both files missing)
+==========================================================================================
+18 - tests_filename/wrong_letter.l
+Differences in output messages - comparing contents
+------------------------------------------------------------------------------
+line 1 - Warning! One got an error, one created cor file
+Ours > 18 Source file tests_filename/wrong_letter.l doesn't have the extension .s
+Orig > 18 Writing output program to tests_filename/wrong_letter.cor
+------------------------------------------------------------------------------
+Comparing cor files
+Missing .cor file
+==========================================================================================

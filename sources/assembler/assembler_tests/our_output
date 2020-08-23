@@ -63,19 +63,19 @@
 63 Writing output program to tests/test63.cor
 64 Writing output program to tests/test64.cor
 65 Syntax error at token [TOKEN][024:012] LABEL "protection:"
-66 Syntax error - unexpected end of input (Perhaps you forgot to end with a newline ?)
+66 Syntax error - unexpected end of input
 67 Invalid argument
 68 Syntax error at token [TOKEN][002:003] INSTRUCTION "fork"
 69 Syntax error at token [TOKEN][003:003] INSTRUCTION "fork"
 70 Syntax error at token [TOKEN][002:003] INSTRUCTION "fork"
-71 abort
-72 abort
-73 abort
-74 abort
-75 abort
+71 Syntax error - unexpected end of input
+72 Syntax error - unexpected end of input
+73 Syntax error - unexpected end of input
+74 Syntax error - unexpected end of input
+75 Syntax error - unexpected end of input
 76 Writing output program to tests/test76.cor
 77 Writing output program to tests/test77.cor
 78 Champion name too long (Max length 128)
 79 Champion comment too long (Max length 2048)
-80 Syntax error - unexpected end of input (Perhaps you forgot to end with a newline ?)
+80 Syntax error - unexpected end of input
 81 Can't read source file tests/test81.s
