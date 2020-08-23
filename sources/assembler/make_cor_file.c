@@ -22,7 +22,7 @@ int		open_corefile(char *s_filename, int filename_len)
 	c_filename = ft_strncpy(c_filename, s_filename, filename_len);
 	ft_strcpy(&c_filename[filename_len], ".cor");
 	c_filename[filename_len + 4] = '\0';
-	if ((fd = open(c_filename, O_WRONLY | O_CREAT, 0755)) == -1)
+	if ((fd = open(c_filename, O_WRONLY | O_CREAT | O_TRUNC, 0755)) == -1)
 	{
 		msg = add_str_to_str("Can't create file %s", c_filename);
 		handle_error(msg);

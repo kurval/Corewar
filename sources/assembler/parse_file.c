@@ -43,12 +43,12 @@ void			print_tokens(t_token *tokens)
 	ft_putchar('\n');
 }
 
-void			free_tokens(t_token *tokens)
+void			free_tokens(t_token **tokens)
 {
 	t_token *current;
 	t_token *next;
 
-	current = tokens;
+	current = *tokens;
 	while (current)
 	{
 		next = current->next;
@@ -58,6 +58,7 @@ void			free_tokens(t_token *tokens)
 		free(current);
 		current = next;
 	}
+	*tokens = NULL;
 }
 
 void			print_labels(t_label *labels)
@@ -94,29 +95,26 @@ void			parse_file(int fd, t_asm *assembler)
 	char		*line;
 	t_cursor	cursor;
 	char		*edge_chars;
-	
+
 	cursor.row = 1;
 	edge_chars = create_edge_chars();
 	init_champ(&assembler->champ);
-	while (asm_gnl(fd, &line))
+	while (asm_gnl(fd, &line) && line)
 	{
 		cursor.col = 0;
 		assembler->tokens = tokenize(line, cursor, edge_chars);
-		//print_tokens(assembler->tokens);
 		check_token_order(assembler->tokens);
 		check_token_validity(assembler->tokens, assembler->op);
 		check_statement_order(assembler->tokens, &assembler->champ);
 		ft_strdel(&line);
 		set_champ(&assembler->champ, assembler->tokens);
 		fix_label_place(&assembler->champ);
-		free_tokens(assembler->tokens);
-		assembler->tokens = NULL;
+		free_tokens(&assembler->tokens);
 		cursor.row++;
 	}
 	free(edge_chars);
 	if (!assembler->champ.done)
 		handle_error_msg(SYNTAX_ERROR, NULL);
 	check_str_len(assembler->champ.name, assembler->champ.comment);
-	//print_labels(assembler->champ.labels);
 	labels_to_rel_adrs(assembler->champ.labels, assembler->champ.stmts);
 }

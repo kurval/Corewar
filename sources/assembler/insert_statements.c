@@ -76,8 +76,6 @@ void	insert_statements(t_stmt *stmt, t_label *labels, t_op *op, int fd)
 		stmt->arg_code = get_arg_code(stmt);
 		stmt->instr_code = get_instr_code(stmt, op);
 		write_statement(stmt, fd, labels);
-		//ft_printf("%s (place %d) ", stmt->name, stmt->place);
-		//print_args(stmt);
 		stmt = stmt->next;
 	}
 }
