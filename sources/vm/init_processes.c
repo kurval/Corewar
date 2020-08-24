@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_processes.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/22 11:07:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 16:57:45 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/24 15:51:00 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,5 @@ void    init_processes(t_vm *vm)
             new->reg[j] = 0;
         add_to_list(new, &vm->proc_list);
     }
+    vm->last_live_id = vm->p[i-1].id;
 }

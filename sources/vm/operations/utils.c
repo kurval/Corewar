@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 23:25:59 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/20 23:42:20 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/24 13:51:56 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,16 @@ void    load_into_memory(t_vm *vm, unsigned int addr, void *content)
 
 int    get_op_values(t_vm *vm, t_process *proc, int arg)
 {
-    int value;
-    int type;
+  int value;
+  int type;
 
-    value = proc->values[arg - 1];
-    type = proc->args[arg - 1];
-    if (type == T_REG)
-		return (proc->reg[value - 1]);
-    else if (type == T_IND)
-        return (int_arg(vm, proc->pc + value % IDX_MOD));
-    else if (type == T_DIR)
-		return (value);
-    return (0);
+  value = proc->values[arg - 1];
+  type = proc->args[arg - 1];
+  if (type == T_REG)
+    return (proc->reg[value - 1]);
+  else if (type == T_IND)
+    return (int_arg(vm, proc->pc + value % IDX_MOD));
+  else if (type == T_DIR)
+    return (value);
+  return (0);
 }

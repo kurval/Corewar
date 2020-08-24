@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   load_champions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 14:15:31 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/22 18:54:23 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/24 15:51:00 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
