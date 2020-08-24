@@ -77,7 +77,7 @@ t_cursor cursor, char *line)
 static int		find_token_start(char *line, t_cursor *cursor)
 {
 	cursor->col = skip_whitespaces(line, cursor->col);
-	if (line[cursor->col] == '\n' || line[cursor->col] == COMMENT_CHAR ||
+	if (line[cursor->col] == '\n' || is_comment_char(line[cursor->col]) ||
 	!line[cursor->col])
 		return (0);
 	else

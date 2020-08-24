@@ -52,6 +52,19 @@ void	write_statement(t_stmt *stmt, int fd, t_label *labels)
 	}
 }
 
+void	print_args(t_stmt *stmt)
+{
+	int i;
+
+	i = 0;
+	while (stmt->args[i])
+	{
+		ft_printf("arg %d: %s ", i, stmt->args[i]->content);
+		i++;
+	}
+	ft_printf("\n");
+}
+
 void	insert_statements(t_stmt *stmt, t_label *labels, t_op *op, int fd)
 {
 	char	*bytes;

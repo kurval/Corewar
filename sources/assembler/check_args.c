@@ -27,9 +27,8 @@ void		check_args(int argc, char **argv)
 	if (argc != 2)
 		handle_error("Usage: ./asm <sourcefile.s>");
 	len = ft_strlen(argv[1]);
-	i = find_last_char(argv[1], len - 1, "/");
-	if ((i = find_first_char(argv[1], i + 1, ".")) == -1 || i != len - 2 ||
-	argv[1][i + 1] != 's')
+	i = find_last_char(argv[1], len - 1, ".");
+	if (i == -1 || i != len - 2 || argv[1][i + 1] != 's')
 	{
 		msg = add_str_to_str("Source file %s doesn't have the extension .s",
 		argv[1]);

@@ -22,10 +22,10 @@ static	unsigned int	handle_negative(int number)
 	return (result + 1);
 }
 
-static char				*get_bytes(int fd, int number, int byte_nbr)
+static unsigned char	*get_bytes(int fd, int number, int byte_nbr)
 {
 	int				byte;
-	char			*output;
+	unsigned char	*output;
 	int				i;
 	unsigned int	uint_number;
 
@@ -33,13 +33,13 @@ static char				*get_bytes(int fd, int number, int byte_nbr)
 		uint_number = handle_negative(number);
 	else
 		uint_number = (unsigned int)number;
-	output = (char *)malloc(sizeof(char) * byte_nbr);
+	output = (unsigned char *)malloc(sizeof(unsigned char) * byte_nbr);
 	i = byte_nbr - 1;
 	byte = 1;
 	while ((byte && i > -1) || i > -1)
 	{
 		byte = (uint_number & 0xFF);
-		output[i] = (char)byte;
+		output[i] = (unsigned char)byte;
 		uint_number = (uint_number >> 8);
 		i--;
 	}
@@ -53,7 +53,7 @@ static char				*get_bytes(int fd, int number, int byte_nbr)
 
 void					insert_bytes_number(int fd, int nbr, int size)
 {
-	char *bytes;
+	unsigned char *bytes;
 
 	bytes = get_bytes(fd, nbr, size);
 	write(fd, bytes, size);

@@ -18,7 +18,8 @@ SRC =  main.c parse_file.c utils.c tokenize.c find_first_char.c check_args.c \
 validate.c overlap.c check_for_lexical_error.c asm_gnl.c get_op.c \
 make_cor_file.c check_token_order.c add_str_to_str.c error.c insert_bytes.c \
 init_champ.c set_champ.c arg_code.c insert_statements.c binary.c \
-copy_cursor.c labels_to_rel_adrs.c check_str_len.c
+copy_cursor.c labels_to_rel_adrs.c check_str_len.c token_type_str.c \
+is_comment_char.c
 OBJECT = $(SRC:%.c=%.o)
 LIBRARY = ../../libft/libft.a
 

@@ -16,44 +16,16 @@ char			*create_edge_chars(void)
 {
 	char *chars;
 
-	chars = (char *)malloc(sizeof(char) * 12);
+	chars = (char *)malloc(sizeof(char) * 13);
 	chars = ft_strcpy(chars, " \t\n\r\v\f");
 	chars[6] = LABEL_CHAR;
 	chars[7] = COMMENT_CHAR;
 	chars[8] = SEPARATOR_CHAR;
 	chars[9] = DIRECT_CHAR;
 	chars[10] = '-';
-	chars[11] = '\0';
+	chars[11] = ALT_COMMENT_CHAR;
+	chars[12] = '\0';
 	return (chars);
-}
-
-char			*token_type_str(int type)
-{
-	if (type == REGISTER)
-		return ("REGISTER");
-	if (type == DIRECT)
-		return ("DIRECT");
-	if (type == INDIRECT)
-		return ("INDIRECT");
-	if (type == INSTRUCTION)
-		return ("INSTRUCTION");
-	if (type == LABEL)
-		return ("LABEL");
-	if (type == SEPARATOR)
-		return ("SEPARATOR");
-	if (type == STRING)
-		return ("STRING");
-	if (overlap(type, CMD_STR))
-		return (type == COMMAND_NAME ? "COMMAND_NAME" : "COMMAND_COMMENT");
-	if (type == DIRECT_LABEL)
-		return ("DIRECT_LABEL");
-	if (type == INDIRECT_LABEL)
-		return ("INDIRECT_LABEL");
-	if (type == INDIRECT)
-		return ("INDIRECT");
-	if (type == ENDLINE)
-		return ("ENDLINE");
-	return (NULL);
 }
 
 void			print_tokens(t_token *tokens)
@@ -71,12 +43,12 @@ void			print_tokens(t_token *tokens)
 	ft_putchar('\n');
 }
 
-void			free_tokens(t_token *tokens)
+void			free_tokens(t_token **tokens)
 {
 	t_token *current;
 	t_token *next;
 
-	current = tokens;
+	current = *tokens;
 	while (current)
 	{
 		next = current->next;
@@ -86,6 +58,7 @@ void			free_tokens(t_token *tokens)
 		free(current);
 		current = next;
 	}
+	*tokens = NULL;
 }
 
 void			print_labels(t_label *labels)
@@ -100,6 +73,23 @@ void			print_labels(t_label *labels)
 	}
 }
 
+/*
+**	Fixes label place for the following cases:
+**		- Multiple labels in a row
+**		- Label at the end of file
+*/
+
+static void		fix_label_place(t_champ *champ)
+{
+	if (champ->labels && champ->labels->place == -1)
+	{
+		if (!champ->stmts)
+			champ->labels->place = 0;
+		else
+			champ->labels->place = champ->stmts->place + champ->stmts->size;
+	}
+}
+
 void			parse_file(int fd, t_asm *assembler)
 {
 	char		*line;
@@ -109,22 +99,22 @@ void			parse_file(int fd, t_asm *assembler)
 	cursor.row = 1;
 	edge_chars = create_edge_chars();
 	init_champ(&assembler->champ);
-	while (asm_gnl(fd, &line))
+	while (asm_gnl(fd, &line) && line)
 	{
 		cursor.col = 0;
 		assembler->tokens = tokenize(line, cursor, edge_chars);
-		//print_tokens(assembler->tokens);
 		check_token_order(assembler->tokens);
 		check_token_validity(assembler->tokens, assembler->op);
 		check_statement_order(assembler->tokens, &assembler->champ);
 		ft_strdel(&line);
 		set_champ(&assembler->champ, assembler->tokens);
-		free_tokens(assembler->tokens);
-		assembler->tokens = NULL;
+		fix_label_place(&assembler->champ);
+		free_tokens(&assembler->tokens);
 		cursor.row++;
 	}
 	free(edge_chars);
+	if (!assembler->champ.done)
+		handle_error_msg(SYNTAX_ERROR, NULL);
 	check_str_len(assembler->champ.name, assembler->champ.comment);
-	//print_labels(assembler->champ.labels);
 	labels_to_rel_adrs(assembler->champ.labels, assembler->champ.stmts);
 }
