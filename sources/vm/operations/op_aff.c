@@ -12,9 +12,11 @@
 
 #include "../../../includes/corewar.h"
 
-void    op_aff(t_vm *vm, t_process *proc)
+/*
+** Argument printed out as ASCII character.
+*/
+
+void	op_aff(t_vm *vm, t_process *proc)
 {
-    if (proc == NULL)
-        ;
-    ft_printf("function aff !%d\n", vm->lives);
+	ft_putchar((char)get_op_values(vm, proc, 1));
 }
