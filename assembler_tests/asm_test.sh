@@ -1,15 +1,24 @@
 #!/bin/bash
 
+DIR=$(dirname "$0")
+
+if [ "$DIR" == "" ];
+then
+	DIR="."
+fi
+echo $DIR;
+
 # ---- Editable area ----
 
 # EXE = path to our asm executable
 # ORIG_EXE = path to school-given asm
 # Paths need to be relative to assembler_tests folder
+# DO NOT REMOVE DIR OR THE SCRIPT WILL ONLY WORK INSIDE ASM FOLDER (unless dirname does not work for you)
 
-EXE=../sources/assembler/asm
-ORIG_EXE=../resources/asm
+EXE=$DIR/../sources/assembler/asm
+ORIG_EXE=$DIR/../resources/asm
 
-LINECHECKER=./linechecker
+LINECHECKER=$DIR/./linechecker
 
 # TEST_COUNT represents the number of tests in tests/ folder.
 TEST_COUNT=81
@@ -51,28 +60,32 @@ then
 	echo -e "+---------------------------------------------------------------------------------------|"
 	exit 1
 else
+	if [[ ! -d "$DIR/logs_asm_test" ]];
+	then
+		mkdir logs_asm_test
+	fi
 	if [ "$OPTION" == "--create" ];
 	then
 	{
 		echo "Creating new reference files..." 
 		echo "Don't panic in case of segfaults, original asm is not very good."
 		echo "Segfaults can be ignored."
-		if [ -d "orig_cor_files" ];
+		if [ -d "$DIR/logs_asm_test/orig_cor_files" ];
 		then
-			rm orig_cor_files/*.cor
+			rm $DIR/logs_asm_test/orig_cor_files/*.cor
 		else
-			mkdir orig_cor_files
+			mkdir $DIR/logs_asm_test/orig_cor_files
 		fi
-		rm orig_output
+		rm $DIR/logs_asm_test/orig_output
 		while [ $TEST_NBR -le $TEST_COUNT ]
 		do
-			echo -n "$TEST_NBR " >> orig_output
-			$ORIG_EXE tests/test$TEST_NBR.s >> orig_output 2>&1
+			echo -n "$TEST_NBR " >> $DIR/logs_asm_test/orig_output
+			$ORIG_EXE $DIR/tests/test$TEST_NBR.s >> $DIR/logs_asm_test/orig_output 2>&1
 			if [ $? -gt 2 ];
 			then
-				echo "abort" >> orig_output
+				echo "abort" >> $DIR/logs_asm_test/orig_output
 			fi
-			mv tests/test$TEST_NBR.cor orig_cor_files/orig$TEST_NBR.cor 2> /dev/null
+			mv $DIR/tests/test$TEST_NBR.cor $DIR/logs_asm_test/orig_cor_files/orig$TEST_NBR.cor 2> /dev/null
 			TEST_NBR=$(( TEST_NBR + 1 ))
 		done
 		echo -e ${GREEN}All done!${NOCOL}
@@ -80,36 +93,36 @@ else
 	elif [ "$OPTION" == "--compare" ];
 	then
 	{
-		if [ -d "our_cor_files" ];
+		if [ -d "$DIR/logs_asm_test/our_cor_files" ];
 		then
-			rm our_cor_files/*.cor
+			rm $DIR/logs_asm_test/our_cor_files/*.cor
 		else
-			mkdir our_cor_files
+			mkdir $DIR/logs_asm_test/our_cor_files
 		fi
-		rm our_output
+		rm $DIR/logs_asm_test/our_output
 		while [ $TEST_NBR -le $TEST_COUNT ]
 		do
 			echo -ne "Creating .cor files... ${TEST_NBR}/${TEST_COUNT}\r"
-			echo -n "$TEST_NBR " >> our_output
-			$EXE tests/test$TEST_NBR.s >> our_output 2>&1
+			echo -n "$TEST_NBR " >> $DIR/logs_asm_test/our_output
+			$EXE $DIR/tests/test$TEST_NBR.s >> $DIR/logs_asm_test/our_output 2>&1
 			if [ $? -gt 1 ];
 			then
-				echo "abort" >> our_output
+				echo "abort" >> $DIR/logs_asm_test/our_output
 			fi
-			mv tests/test$TEST_NBR.cor our_cor_files/our$TEST_NBR.cor 2> /dev/null
+			mv $DIR/tests/test$TEST_NBR.cor $DIR/logs_asm_test/our_cor_files/our$TEST_NBR.cor 2> /dev/null
 			TEST_NBR=$(( TEST_NBR + 1 ))
 		done
 		echo -ne '\n'
 
 
 		echo "Comparing program output messages"
-		diff our_output orig_output > /dev/null
+		diff $DIR/logs_asm_test/our_output $DIR/logs_asm_test/orig_output > /dev/null
 		if [ $? -eq 0 ];
 		then
     		echo -e "${GREEN}Program output messages are equal${NOCOL}"
 		else
 			echo -e "${YELLOW}Differences in output messages - comparing contents${NOCOL}"
-			$LINECHECKER our_output orig_output
+			$LINECHECKER $DIR/logs_asm_test/our_output $DIR/logs_asm_test/orig_output
 		fi
 
 
@@ -121,11 +134,11 @@ else
 			then
 				echo -n " "
 			fi
-			if test -f "our_cor_files/our${TEST_NBR}.cor";
+			if test -f "$DIR/logs_asm_test/our_cor_files/our${TEST_NBR}.cor";
 			then
-				if test -f "orig_cor_files/orig${TEST_NBR}.cor";
+				if test -f "$DIR/logs_asm_test/orig_cor_files/orig${TEST_NBR}.cor";
 				then
-					diff our_cor_files/our$TEST_NBR.cor orig_cor_files/orig${TEST_NBR}.cor > /dev/null
+					diff $DIR/logs_asm_test/our_cor_files/our$TEST_NBR.cor $DIR/logs_asm_test/orig_cor_files/orig${TEST_NBR}.cor > /dev/null
 					if [ $? -eq 0 ];
 					then
 						echo -e "${TEST_NBR} ${GREEN}OK${NOCOL}"
@@ -136,7 +149,7 @@ else
 					echo -e "${TEST_NBR} ${YELLOW}Ours made a .cor file, original didn't${NOCOL}"
 				fi
 			else
-				if test -f "orig_cor_files/orig${TEST_NBR}.cor";
+				if test -f "$DIR/logs_asm_test/orig_cor_files/orig${TEST_NBR}.cor";
 				then
 					echo -e "${RED}FAIL - Missing .cor file${NOCOL}"
 				else
@@ -145,6 +158,9 @@ else
 			fi
 			TEST_NBR=$(( TEST_NBR + 1 ))
 		done
+		echo ""
+		echo ".cor files can be found in $DIR/logs_asm_test/our_cor_files and $DIR/logs_asm_test/orig_cor_files."
+		echo "In case of line number errors compare files $DIR/logs_asm_test/our_output and $DIR/logs_asm_test/orig_output"
 	}
 	else
 		echo "";
