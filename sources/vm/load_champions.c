@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/10 14:15:31 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/24 15:51:00 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/24 15:52:23 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ void	load_champions(t_vm *vm)
 		ft_memset(&(vm->a->owner[location]), vm->p[i].id, vm->p[i].h.prog_size);
 		location += space;
 	}
-	print_arena(vm->a);
+	//print_arena(vm->a);
 }
