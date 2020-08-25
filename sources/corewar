@@ -1,0 +1,19 @@
+.\" Manpage for corewar
+.\" Contact bkonjuha@student.hive.fi to correct errors or typos.
+.TH man 8 "25 May 2020" "1.0" "corewar man page"
+.SH COREWAR
+COREWAR
+.SH SYNOPSIS
+COREWAR [file.cor]
+.SH DESCRIPTION
+COREWAR is a 1984 programming game created by D. G. Jones and A. K. Dewdney in which two or more battle programs (called "warriors") compete for control of a virtual computer. These battle programs are written in an abstract assembly language called Redcode.
+.SH OPTIONS
+-n
+
+-dump
+.SH SEE ALSO
+something releated to corewar
+.SH BUGS
+No known bugs EVER. yes you read that right
+.SH AUTHOR
+Besnik Konjuhaj (bkonjuha@student.hive.fi)
