@@ -6,7 +6,7 @@
 #    By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/08/25 07:55:13 by bkonjuha         ###   ########.fr        #
+#    Updated: 2020/08/25 08:56:40 by bkonjuha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,11 @@ PRINTF_PATH = ./libft/printf/
 PRINTF_FILE = libftprintf.a
 PRINTF = $(addprefix $(PRINTF_PATH), $(PRINTF_FILE))
 
+MANPAGE = ./sources/corewar
+MAN_LOCATION = /usr/local/share/man/man8/corewar.8
+GZIP = gzip
+CP = cp
+
 COLOR_RESET = \033[0m
 COLOR_PENDING = \033[0;33m
 COLOR_SUCCESS = \033[0;32m
@@ -55,6 +60,8 @@ all: $(COREWAR)
 
 $(COREWAR): $(HEADERS) $(LIBFT) $(PRINTF) $(SRC)
 		@$(COMPILE) $(C) $(SRC) $(LIBFT) $(PRINTF) -o $(COREWAR)
+		@$(CP) $(MANPAGE) $(MAN_LOCATION)
+		@$(GZIP) $(MAN_LOCATION)
 		# @$(COMPILE) $(A) $(SRC) $(LIBFT) $(PRINTF) -o $(ASM)
 		@echo "[$(COLOR_PENDING)Putting everything togeather$(COLOR_RESET)]"
 		@echo "[$(COLOR_SUCCESS)Executable $(COREWAR) created$(COLOR_RESET)]"
@@ -66,6 +73,9 @@ $(LIBFT) $(PRINTF): $(PRINTF_SRCS)*.c $(LIBFT_PATH)*.c
 
 exec:
 		@$(COMPILE) $(C) $(SRC) $(LIBFT) $(PRINTF) -o $(COREWAR)
+
+mclean:
+		@rm $(MAN_LOCATION).gz
 clean:
 		@make clean -C libft/ >/dev/null
 
@@ -76,4 +86,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY = all clean fclean re
+.PHONY = all clean fclean re exec

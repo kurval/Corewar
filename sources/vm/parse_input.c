@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/25 08:07:09 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/25 08:25:41 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void		parse_input(int ac, char **av, t_vm *vm)
 		if (ft_strequ("-n" , av[i]) && i < ac && i++)
 			num = get_n_flag(av[i++], id_arr);
 		else if (ft_strequ("-dump" , av[i]) && i < ac && i++)
-			get_dump(vm, s[i++]);
+			get_dump(vm, av[i++]);
 		else
 			num = get_next_unused_id(id_arr);
 		get_player(av[i], &(vm->p[num - 1]), num);
