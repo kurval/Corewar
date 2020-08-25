@@ -18,7 +18,8 @@ int		open_corefile(char *s_filename, int filename_len)
 	int		fd;
 	char	*msg;
 
-	c_filename = ft_strnew(filename_len + 5);
+	if (!(c_filename = ft_strnew(filename_len + 5)))
+		handle_error(MALLOC_ERROR);
 	c_filename = ft_strncpy(c_filename, s_filename, filename_len);
 	ft_strcpy(&c_filename[filename_len], ".cor");
 	c_filename[filename_len + 4] = '\0';

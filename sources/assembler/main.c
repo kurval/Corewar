@@ -57,6 +57,6 @@ int				main(int argc, char **argv)
 	check_args(argc, argv);
 	assembler = handle_file(argv[1]);
 	make_cor_file(argv[1], assembler);
-	//system("leaks asm");
+	free_memory(assembler.op, &assembler.champ);
 	return (0);
 }

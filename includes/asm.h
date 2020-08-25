@@ -213,4 +213,6 @@ void			handle_invalid_label(t_arg *arg, char *label_name);
 char			*copy_string_content(char *string);
 void			check_str_len(char *name, char *comment);
 int				is_comment_char(char c);
+void			free_memory(t_op *op, t_champ *champ);
+
 #endif
