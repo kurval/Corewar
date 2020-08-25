@@ -39,4 +39,5 @@ void	init_vm(t_vm *vm)
 		exit(1);
 	while (++i < 4)
 		initialize_players(&(vm->p[i]));
+	vm->proc_list = NULL;
 }
