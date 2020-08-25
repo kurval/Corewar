@@ -11,7 +11,7 @@ fi
 
 # EXE = path to our asm executable
 # ORIG_EXE = path to the comparison executable
-# Paths need to be relative to assembler_tests folder
+# Paths need to be relative to test_scripts folder
 
 EXE=../sources/assembler/asm
 ORIG_EXE=../resources/asm
@@ -44,18 +44,18 @@ then
 	if [ "$OPTION" == "--clean" ];
 	then
 	{
-		DESTDIR=$DIR/logs_asm_test_folder
+		DESTDIR=$DIR/logs/asm_test_folder
 		echo -e "${YELLOW}The following files will be PERMANENTLY deleted:${NOCOL}"
 		echo "   $DESTDIR/*"
 		echo -ne "${RED}"
-		read -p "DO NOT PRESS Y UNLESS ./logs_asm_test_folder/* IS SHOWN! ARE YOU SURE? [y/n] " -n 1 -r
+		read -p "DO NOT PRESS Y IF logs/asm_test_folder IS NOT SHOWN! ARE YOU SURE? [y/n] " -n 1 -r
 		echo
 		if [[ ! $REPLY =~ ^[Yy]$ ]]
 		then
 			exit 1
 		fi
 		echo -e "${NOCOL}"
-		if [[ -d "$DIR/logs_asm_test_folder" ]];
+		if [[ -d "$DIR/logs/asm_test_folder" ]];
 		then
 			rm -rf $DESTDIR/*
 			rm -rf $DESTDIR/.output
@@ -68,30 +68,30 @@ then
 		echo "";
 		echo -e "+---------------------------------------------------------------------------------------+"
 		echo -e "|                                                                                       |"
-		echo -e "| ${YELLOW}USAGE ${RED}(NOTE: RUN INSIDE assembler_tests folder)${NOCOL}                                       |"
+		echo -e "| ${YELLOW}USAGE ${RED}(NOTE: RUN INSIDE test_scripts folder)${NOCOL}                                       |"
 		echo -e "|                                                                                       |"
 		echo -e "| ${BLUE}./asm_test_folder.sh --test [folder name without trailing '/'] ${NOCOL}                       |"
 		echo -e "|      -> compare our asm output to original asm output                                 |" 
 		echo -e "|                                                                                       |"                                           
 		echo -e "| ${BLUE}./asm_test_folder.sh --clean ${NOCOL}                                                         |"
-		echo -e "|      -> Cleans logs_asm_test_folder. ${RED}!!CHECK THAT PROMT SHOWS RIGHT FILE BEFORE SELECTING Y!!${NOCOL} |"
+		echo -e "|      -> Cleans logs/asm_test_folder. ${RED}!!CHECK THAT PROMT SHOWS RIGHT FOLDER BEFORE SELECTING Y!!${NOCOL} |"
 		echo -e "|                                                                                       |"
 		echo -e "| Your asm needs to be compiled before you run tests.                                   |"
 		echo -e "| Check that file path variables (${GREEN}EXE${NOCOL} and ${GREEN}ORIG_EXE${NOCOL}) are correctly set.                  |"
-		echo -e "| (relative path from assembler_tests folder)                                           |"
+		echo -e "| (relative path from test_scripts folder)                                           |"
 		echo -e "|                                                                                       |"
 		echo -e "| ${YELLOW}Notes:${NOCOL}                                                                                |"
-		echo -e "| Set INTERVAL to 0 in the script file if you want a faster test.                       |"
+		echo -e "| Alter INTERVAL in the script file to change test speed (bigger value = slower test)   |"
 		echo -e "|                                                                                       |"
 		echo -e "+---------------------------------------------------------------------------------------|"
 		exit 1
 	fi
 else
-	if [[ ! -d "$DIR/logs_asm_test_folder" ]];
+	if [[ ! -d "$DIR/logs/asm_test_folder" ]];
 	then
-		mkdir logs_asm_test_folder
+		mkdir logs/asm_test_folder
 	fi
-	DESTDIR=$DIR/logs_asm_test_folder/
+	DESTDIR=$DIR/logs/asm_test_folder/
 	if [ "$OPTION" == "--test" ] && test -d "$FOLDER";
 	then
 	{
@@ -99,7 +99,7 @@ else
 		echo "   $FOLDER/*.cor"
 		echo "   $DESTDIR*"
 		echo -ne "${RED}"
-		read -p "ARE YOU SURE? [y/n] " -n 1 -r
+		read -p "DO NOT PRESS Y IF logs/asm_test_folder IS NOT SHOWN! [y/n] " -n 1 -r
 		echo
 		if [[ ! $REPLY =~ ^[Yy]$ ]]
 		then
@@ -238,17 +238,17 @@ else
 		echo "";
 		echo -e "+---------------------------------------------------------------------------------------+"
 		echo -e "|                                                                                       |"
-		echo -e "| ${YELLOW}USAGE ${RED}(NOTE: RUN INSIDE assembler_tests folder)${NOCOL}                                       |"
+		echo -e "| ${YELLOW}USAGE ${RED}(NOTE: RUN INSIDE test_scripts folder)${NOCOL}                                       |"
 		echo -e "|                                                                                       |"
 		echo -e "| ${BLUE}./asm_test_folder.sh --test [folder name without trailing '/'] ${NOCOL}                       |"
 		echo -e "|      -> compare our asm output to original asm output                                 |" 
 		echo -e "|                                                                                       |"                                           
 		echo -e "| ${BLUE}./asm_test_folder.sh --clean ${NOCOL}                                                         |"
-		echo -e "|      -> Cleans logs_asm_test_folder. ${RED}!!CHECK THAT PROMT SHOWS RIGHT FILE BEFORE SELECTING Y!!${NOCOL} |"
+		echo -e "|      -> Cleans logs/asm_test_folder. ${RED}!!CHECK THAT PROMT SHOWS RIGHT FOLDER BEFORE SELECTING Y!!${NOCOL} |"
 		echo -e "|                                                                                       |"
 		echo -e "| Your asm needs to be compiled before you run tests.                                   |"
 		echo -e "| Check that file path variables (${GREEN}EXE${NOCOL} and ${GREEN}ORIG_EXE${NOCOL}) are correctly set.                  |"
-		echo -e "| (relative path from assembler_tests folder)                                           |"
+		echo -e "| (relative path from test_scripts folder)                                           |"
 		echo -e "|                                                                                       |"
 		echo -e "| ${YELLOW}Notes:${NOCOL}                                                                                |"
 		echo -e "| Set INTERVAL to 0 in the script file if you want a faster test.                       |"
