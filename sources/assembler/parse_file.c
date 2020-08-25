@@ -16,7 +16,8 @@ char			*create_edge_chars(void)
 {
 	char *chars;
 
-	chars = (char *)malloc(sizeof(char) * 13);
+	if (!(chars = (char *)malloc(sizeof(char) * 13)))
+		handle_error(MALLOC_ERROR);
 	chars = ft_strcpy(chars, " \t\n\r\v\f");
 	chars[6] = LABEL_CHAR;
 	chars[7] = COMMENT_CHAR;

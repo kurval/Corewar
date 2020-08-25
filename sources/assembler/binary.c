@@ -37,7 +37,8 @@ char				*make_rev_binary_str(int nbr, int size)
 	char	*binary;
 	int		i;
 
-	binary = ft_strnew(size);
+	if (!(binary = ft_strnew(size)))
+		handle_error(MALLOC_ERROR);
 	i = size - 1;
 	while (i >= 0)
 	{

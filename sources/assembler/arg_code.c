@@ -41,7 +41,8 @@ int			get_arg_code(t_stmt *stmt)
 
 	if (needs_arg_code(stmt))
 	{
-		binary = ft_strnew(8);
+		if (!(binary = ft_strnew(8)))
+			handle_error(MALLOC_ERROR);
 		i = 0;
 		bit_loc = 0;
 		while (bit_loc < 8)

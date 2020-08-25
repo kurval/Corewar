@@ -41,12 +41,15 @@ t_token			*make_token(char *line, t_cursor *cursor, int end)
 {
 	t_token	*token;
 
-	token = (t_token *)malloc(sizeof(t_token));
+	if (!(token = (t_token *)malloc(sizeof(t_token))))
+		handle_error(MALLOC_ERROR);
 	token->next = NULL;
 	if (end != -1)
 		token->content = ft_strsub(line, cursor->col, end - cursor->col);
 	else
 		token->content = ft_strdup(&line[cursor->col]);
+	if (!token->content)
+		handle_error(MALLOC_ERROR);
 	token->cursor = copy_cursor(*cursor);
 	token->type = determine_token_type(token->content, end - cursor->col);
 	cursor->col = end;
@@ -62,9 +65,11 @@ t_cursor cursor, char *line)
 		cursor.col++;
 	if (!line[cursor.col])
 		return (head);
-	endline = (t_token *)malloc(sizeof(t_token));
+	if (!(endline = (t_token *)malloc(sizeof(t_token))))
+		handle_error(MALLOC_ERROR);
 	endline->next = NULL;
-	endline->content = ft_strdup("\n");
+	if (!(endline->content = ft_strdup("\n")))
+		handle_error(MALLOC_ERROR);
 	endline->type = ENDLINE;
 	endline->cursor = copy_cursor(cursor);
 	if (!head)

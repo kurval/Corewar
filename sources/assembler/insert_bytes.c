@@ -33,7 +33,8 @@ static unsigned char	*get_bytes(int fd, int number, int byte_nbr)
 		uint_number = handle_negative(number);
 	else
 		uint_number = (unsigned int)number;
-	output = (unsigned char *)malloc(sizeof(unsigned char) * byte_nbr);
+	if (!(output = (unsigned char *)malloc(sizeof(unsigned char) * byte_nbr)))
+		handle_error(MALLOC_ERROR);
 	i = byte_nbr - 1;
 	byte = 1;
 	while ((byte && i > -1) || i > -1)
