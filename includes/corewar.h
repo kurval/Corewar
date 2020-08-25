@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/24 15:51:00 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/25 08:06:25 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,8 +182,9 @@ t_process			*copy_proc(t_vm *vm, t_process *og_proc);
 */
 
 void				validate_chapions(char **s);
-void				parse_input(char **av, t_vm *vm);
+void				parse_input(int ac, char **av, t_vm *vm);
 void				load_champions(t_vm *vm);
+void				get_dump(t_vm *vm, char *s);
 
 /*
 **					OPERATION FUNCTIONS

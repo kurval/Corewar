@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:39:30 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/22 15:15:43 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/25 08:08:16 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,10 @@
 
 # define N_FLAG_ERROR "ERROR: -n flag number out of bounds"
 
+# define DUMP_ERROR "ERROR: -Dump invalid dump flag"
+
 # define DUPLICATE_N "ERROR: Champion ID already in use"
+
+# define DUMP_ERROR_SET "ERROR: Dump already set"
 
 #endif

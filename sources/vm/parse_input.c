@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/23 12:14:25 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/25 08:07:09 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static int			get_next_unused_id(int arr[MAX_PLAYERS])
 	return (i + 1);
 }
 
-void		parse_input(char **av, t_vm *vm)
+void		parse_input(int ac, char **av, t_vm *vm)
 {
 	int i;
 	int	id_arr[MAX_PLAYERS];
@@ -93,8 +93,10 @@ void		parse_input(char **av, t_vm *vm)
 	while (av[++i])
 	{
 		num = 0;
-		if (ft_strequ("-n" , av[i]) && i++)
+		if (ft_strequ("-n" , av[i]) && i < ac && i++)
 			num = get_n_flag(av[i++], id_arr);
+		else if (ft_strequ("-dump" , av[i]) && i < ac && i++)
+			get_dump(vm, s[i++]);
 		else
 			num = get_next_unused_id(id_arr);
 		get_player(av[i], &(vm->p[num - 1]), num);

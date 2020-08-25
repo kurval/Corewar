@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:45:03 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/22 15:15:59 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/25 07:56:35 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void			validate_chapions(char **s)
 	i = 0;
 	while (s[++i])
 	{
-		if (ft_strequ(s[i], "-n") && i++)
+		if ((ft_strequ(s[i], "-n") || ft_strequ(s[i], "-dump")) && i++)
 			continue ;
 		if (!ends_with_cor(s[i]) || !is_valid_length(s[i]))
 			ft_errno(INPUT_ERROR);
