@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   proc_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 16:55:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/23 12:13:17 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/25 17:04:36 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ t_process *copy_proc(t_vm *vm, t_process *og_proc)
     new->id = vm->id_counter++;
     new->carry = og_proc->carry;
     new->last_live = og_proc->last_live;
+    new->player_id = og_proc->player_id;
     new->jump = 0;
     new->wait_cycles = 0;
     i = -1;
