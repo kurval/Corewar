@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/25 09:06:43 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/25 09:36:02 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void	introduce_champs(t_vm *vm)
 		}
 	}
 	vm->nb_players = num;
-	vm->last_live_id = num;
 	vm->cycles_to_die = CYCLE_TO_DIE;
 }
 
