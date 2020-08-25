@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/25 08:06:25 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/25 09:06:31 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ typedef struct		s_vm
 	struct s_op		*operations;
 	unsigned int	last_live_id;
 	unsigned int	cycles;
+	unsigned int	cycles_to_die;
 	unsigned int	current_cycle;
 	unsigned int	checks;
 	unsigned int	lives;
