@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:38 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/24 15:42:00 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/25 16:31:36 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ void	op_live(t_vm *vm, t_process *proc)
 	vm->lives++;
 	proc->last_live = vm->current_cycle;
 	value1 = get_op_values(vm, proc, 1);
-	if (proc->reg[0] == value1)
+	if (proc->reg[0] == value1 && (value1 >= 1 && value1 <= REG_NUMBER))
 		vm->last_live_id = value1 * -1;
 }
