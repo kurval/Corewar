@@ -6,7 +6,7 @@
 #    By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/08/25 08:56:40 by bkonjuha         ###   ########.fr        #
+#    Updated: 2020/08/25 10:56:02 by bkonjuha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,7 @@ mclean:
 clean:
 		@make clean -C libft/ >/dev/null
 
-fclean: clean
+fclean: clean mclean
 		@rm -fv $(COREWAR) > /dev/null
 		# @rm -fv $(ASM) > /dev/null
 		@make fclean -C libft/ >/dev/null
