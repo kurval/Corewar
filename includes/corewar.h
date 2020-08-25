@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/25 09:06:31 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/25 17:35:09 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ typedef struct		s_vm
 	unsigned int	lives;
 	int				ctd;
 	unsigned int	dump_cycle;
+	int				a_flag;
 	unsigned int	nb_players;
 	unsigned int	nb_procs;
 	unsigned int	id_counter;
