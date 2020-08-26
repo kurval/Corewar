@@ -32,4 +32,9 @@ void	op_live(t_vm *vm, t_process *proc)
 		if (vm->p[i].id == value1)
 			vm->last_live_id = value1;
 	}
+	if (vm->a_flag)
+	{
+		ft_printf("A process shows that player %d (%s) is alive\n",
+		proc->player_id, vm->p[proc->player_id - 1].h.prog_name);
+	}
 }

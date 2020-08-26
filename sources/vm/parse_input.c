@@ -99,7 +99,7 @@ void		parse_input(int ac, char **av, t_vm *vm)
 		else if (ft_strequ("-dump" , av[i]) && i < ac && i++)
 			get_dump(vm, av[i++]);
 		else if (ft_strequ("-a", av[i]) && (vm->a_flag = 1))
-			continue;
+			vm->a_flag = 1;
 		else
 			num = get_next_unused_id(id_arr);
 		get_player(av[i], &(vm->p[num - 1]), num);

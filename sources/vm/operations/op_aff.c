@@ -18,5 +18,6 @@
 
 void	op_aff(t_vm *vm, t_process *proc)
 {
-	ft_putchar((char)get_op_values(vm, proc, 1));
+	if (vm->a_flag)
+		ft_putchar((char)get_op_values(vm, proc, 1));
 }
