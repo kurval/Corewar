@@ -78,4 +78,9 @@
 78 Champion name too long (Max length 128)
 79 Champion comment too long (Max length 2048)
 80 abort
-81 Can't read source file ./s_files/test81.s
+81 Syntax error at token [TOKEN][001:001] END "(null)"
+82 Syntax error at token [TOKEN][004:007] END "(null)"
+83 Syntax error at token [TOKEN][004:013] END "(null)"
+84 Writing output program to ./s_files/test84.cor
+85 Writing output program to ./s_files/test85.cor
+86 Syntax error at token [TOKEN][003:015] END "(null)"

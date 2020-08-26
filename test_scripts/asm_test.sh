@@ -21,7 +21,7 @@ ORIG_EXE=$DIR/../resources/asm
 LINECHECKER=$DIR/./linechecker
 
 # TEST_COUNT represents the number of tests in s_files/ folder.
-TEST_COUNT=81
+TEST_COUNT=86
 
 # ---- Do not edit after this point unless you know what you're doing! ----
 
