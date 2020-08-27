@@ -52,12 +52,16 @@ static unsigned char	*get_bytes(int fd, int number, int byte_nbr)
 **	in bytes in big endian style.
 */
 
-void					insert_bytes_number(int fd, int nbr, int size)
+void					insert_bytes_number(int fd, int nbr, int size,
+int state)
 {
-	unsigned char *bytes;
+	unsigned char	*bytes;
+	int				byte_nbr;
 
 	bytes = get_bytes(fd, nbr, size);
-	write(fd, bytes, size);
+	byte_nbr = write(fd, bytes, size);
+	if (overlap(get_flags(), FLAG_X))
+		write_hexdump(bytes, byte_nbr, state);
 	free(bytes);
 }
 
@@ -66,13 +70,17 @@ void					insert_bytes_number(int fd, int nbr, int size)
 **	is lower than size, the rest is padded with null bytes.
 */
 
-void					insert_bytes_string(int fd, char *str, int size)
+void					insert_bytes_string(int fd, char *str, int size,
+int state)
 {
 	int strlen;
+	int	byte_nbr;
 
 	strlen = ft_strlen(str);
-	write(fd, str, strlen);
+	byte_nbr = write(fd, str, strlen);
+	if (overlap(get_flags(), FLAG_X))
+		write_hexdump((unsigned char *)str, byte_nbr, state);
 	size = size - strlen;
 	if (size > 0)
-		insert_bytes_number(fd, 0, size);
+		insert_bytes_number(fd, 0, size, state);
 }

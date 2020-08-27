@@ -45,12 +45,31 @@
 # define COMMAND_COMMENT 2176
 # define END 4608
 
+# define FLAG_CHARS "herx"
+
+# define FLAG_H 1
+# define FLAG_E 2
+# define FLAG_R 4
+# define FLAG_X 8
+
+# define SET 1
+# define GET 0
+
 # define MALLOC_ERROR "Malloc error"
 
 # define SYNTAX_ERROR 1
 # define INVALID_INSTR 2
 
 # define NUMBER -1
+
+# define SET_FLAGS_FOR_BYTES -1337
+
+# define STATE_MAGIC 1
+# define STATE_NAME 2
+# define STATE_COMMENT 4
+# define STATE_EXEC 8
+# define STATE_STMT 16
+# define STATE_FINISH 32
 
 /*
 ** T_cursor
@@ -179,7 +198,7 @@ int				find_first_char(char *str, int start, char *chars);
 int				find_last_char(char *str, int start, char *chars);
 char			*add_str_to_str(char *s1, char *s2);
 void			handle_error(char *msg);
-void			check_args(int ac, char **av);
+char			*check_args(int argc, char **argv, char **dest);
 void			lexical_error(t_cursor cursor);
 void			check_for_lexical_error(char *line, t_cursor cursor,
 				int *token_end, char *edge_chars);
@@ -198,8 +217,8 @@ void			del_array(char **array);
 void			handle_error_msg(int error, t_token *token);
 void			check_token_validity(t_token *token, t_op *op);
 void			check_statement_order(t_token *token, t_champ *champ);
-void			insert_bytes_number(int fd, int nbr, int size);
-void			insert_bytes_string(int fd, char *str, int size);
+void			insert_bytes_number(int fd, int nbr, int size, int state);
+void			insert_bytes_string(int fd, char *str, int size, int state);
 void			init_champ(t_champ *champ);
 void			set_champ(t_champ *champ, t_token *token);
 void			insert_statements(t_stmt *stmt, t_label *labels,
@@ -214,5 +233,8 @@ char			*copy_string_content(char *string);
 void			check_str_len(char *name, char *comment);
 int				is_comment_char(char c);
 void			free_memory(t_op *op, t_champ *champ);
-
+void			write_hexdump(unsigned char *bytes,
+				int byte_nbr, int state);
+void			set_flags(char c);
+int				get_flags(void);
 #endif
