@@ -22,9 +22,8 @@
 ** 6. Return file info in assembler struct
 */
 
-static t_asm	handle_file(char *filename)
+static t_asm	handle_file(char *filename, t_asm assembler)
 {
-	t_asm	assembler;
 	int		fd;
 	char	*msg;
 
@@ -43,6 +42,15 @@ static t_asm	handle_file(char *filename)
 	return (assembler);
 }
 
+char			*get_usage(void)
+{
+	return ("Usage: ./asm [-hefx] <sourcefile.s>\n \
+	-h	prints usage\n \
+	-e	prints all errors instead of only the first one\n \
+	-r	creates .cor file in current location\n \
+	-x	prints hexdump");
+}
+
 /*
 ** Main
 ** 1. Check the args
@@ -53,10 +61,18 @@ static t_asm	handle_file(char *filename)
 int				main(int argc, char **argv)
 {
 	t_asm		assembler;
+	char		*dest;
+	char		*source;
 
-	check_args(argc, argv);
-	assembler = handle_file(argv[1]);
-	make_cor_file(argv[1], assembler);
+	if (!(source = check_args(argc, argv, &dest)))
+		handle_error(get_usage());
+	if (overlap(get_flags(), FLAG_H))
+	{
+		ft_printf(get_usage());
+		exit(0);
+	}
+	assembler = handle_file(source, assembler);
+	make_cor_file(source, assembler);
 	free_memory(assembler.op, &assembler.champ);
 	return (0);
 }

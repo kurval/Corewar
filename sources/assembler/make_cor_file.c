@@ -38,13 +38,13 @@ void	insert_champion_info(t_champ champ, int fd)
 	int	exec_code_size;
 
 	exec_code_size = 0;
-	insert_bytes_string(fd, champ.name, PROG_NAME_LENGTH);
-	insert_bytes_number(fd, 0, 4);
+	insert_bytes_string(fd, champ.name, PROG_NAME_LENGTH, STATE_NAME);
+	insert_bytes_number(fd, 0, 4, 0);
 	if (champ.stmts)
 		exec_code_size = champ.stmts->place + champ.stmts->size;
-	insert_bytes_number(fd, exec_code_size, 4);
-	insert_bytes_string(fd, champ.comment, COMMENT_LENGTH);
-	insert_bytes_number(fd, 0, 4);
+	insert_bytes_number(fd, exec_code_size, 4, STATE_EXEC);
+	insert_bytes_string(fd, champ.comment, COMMENT_LENGTH, STATE_COMMENT);
+	insert_bytes_number(fd, 0, 4, 0);
 }
 
 void	make_cor_file(char *s_filename, t_asm assembler)
@@ -53,11 +53,13 @@ void	make_cor_file(char *s_filename, t_asm assembler)
 	char	*msg;
 
 	fd = open_corefile(s_filename, ft_strlen(s_filename) - 2);
-	insert_bytes_number(fd, COREWAR_EXEC_MAGIC, 4);
+	insert_bytes_number(fd, COREWAR_EXEC_MAGIC, 4, STATE_MAGIC);
 	insert_champion_info(assembler.champ, fd);
 	if (assembler.champ.stmts)
 		insert_statements(assembler.champ.stmts, assembler.champ.labels,
 	assembler.op, fd);
+	if (overlap(get_flags(), FLAG_X))
+		write_hexdump(NULL, 0, STATE_FINISH);
 	if (close(fd) == -1)
 	{
 		msg = add_str_to_str("Can't close source file %s", s_filename);
