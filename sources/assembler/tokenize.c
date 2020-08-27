@@ -63,7 +63,7 @@ t_cursor cursor, char *line)
 
 	while (line[cursor.col] && line[cursor.col] != '\n')
 		cursor.col++;
-	if (!line[cursor.col])
+	if (!line[cursor.col] && head)
 		return (head);
 	if (!(endline = (t_token *)malloc(sizeof(t_token))))
 		handle_error(MALLOC_ERROR);
