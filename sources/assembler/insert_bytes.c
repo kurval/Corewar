@@ -53,14 +53,14 @@ static unsigned char	*get_bytes(int fd, int number, int byte_nbr)
 */
 
 void					insert_bytes_number(int fd, int nbr, int size,
-int state)
+t_state state)
 {
 	unsigned char	*bytes;
 	int				byte_nbr;
 
 	bytes = get_bytes(fd, nbr, size);
 	byte_nbr = write(fd, bytes, size);
-	if (overlap(get_flags(), FLAG_X))
+	if (overlap(get_flags(), flag_x))
 		write_hexdump(bytes, byte_nbr, state);
 	free(bytes);
 }
@@ -71,14 +71,14 @@ int state)
 */
 
 void					insert_bytes_string(int fd, char *str, int size,
-int state)
+t_state state)
 {
 	int strlen;
 	int	byte_nbr;
 
 	strlen = ft_strlen(str);
 	byte_nbr = write(fd, str, strlen);
-	if (overlap(get_flags(), FLAG_X))
+	if (overlap(get_flags(), flag_x))
 		write_hexdump((unsigned char *)str, byte_nbr, state);
 	size = size - strlen;
 	if (size > 0)

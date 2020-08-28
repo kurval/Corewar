@@ -66,7 +66,7 @@ int				main(int argc, char **argv)
 
 	if (!(source = check_args(argc, argv, &dest)))
 		handle_error(get_usage());
-	if (overlap(get_flags(), FLAG_H))
+	if (overlap(get_flags(), flag_h))
 	{
 		ft_printf(get_usage());
 		exit(0);
