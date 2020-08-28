@@ -83,7 +83,7 @@ void	handle_error_msg(int error, t_token *token)
 	!(strs[4] = ft_strdup(token->content)))
 		handle_error(MALLOC_ERROR);
 	strs[5] = NULL;
-	if (token->type != ENDLINE)
+	if (token->type != endline)
 		msg = add_strs_to_str("%s at token [TOKEN][%s:%s] %s \"%s\"", strs);
 	else
 		msg = add_strs_to_str("%s at token [TOKEN][%s:%s] %s", strs);

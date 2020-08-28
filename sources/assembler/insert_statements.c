@@ -23,7 +23,7 @@ int		get_instr_code(t_stmt *statement, t_op *op)
 	return (-1);
 }
 
-void	write_argument(t_arg *arg, t_label *labels, int fd, int state)
+void	write_argument(t_arg *arg, t_label *labels, int fd, t_state state)
 {
 	int number;
 
@@ -37,7 +37,7 @@ void	write_argument(t_arg *arg, t_label *labels, int fd, int state)
 	}
 }
 
-void	write_statement(t_stmt *stmt, int fd, t_label *labels, int state)
+void	write_statement(t_stmt *stmt, int fd, t_label *labels, t_state state)
 {
 	int i;
 
@@ -67,8 +67,8 @@ void	print_args(t_stmt *stmt)
 
 void	insert_statements(t_stmt *stmt, t_label *labels, t_op *op, int fd)
 {
-	char		*bytes;
-	static int	state = STATE_STMT;
+	char			*bytes;
+	static t_state	state = statement;
 
 	if (stmt)
 	{
@@ -78,6 +78,6 @@ void	insert_statements(t_stmt *stmt, t_label *labels, t_op *op, int fd)
 		stmt->instr_code = get_instr_code(stmt, op);
 		write_statement(stmt, fd, labels, state);
 		stmt = stmt->next;
-		state = (state == STATE_STMT ? STATE_STMT + 1 : STATE_STMT);
+		state = (state == statement ? statement + 1 : statement);
 	}
 }

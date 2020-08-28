@@ -23,9 +23,9 @@ void		check_token_validity(t_token *token, t_op *op)
 {
 	int	argc;
 
-	if (token->type == LABEL)
+	if (token->type == label)
 		token = token->next;
-	if (token && token->type == INSTRUCTION)
+	if (token && token->type == instruction)
 	{
 		while (op && !ft_strequ(op->instr_name, token->content))
 			op = op->next;
@@ -34,14 +34,14 @@ void		check_token_validity(t_token *token, t_op *op)
 		token = token->next;
 		argc = 0;
 		while (token && (overlap((T_REG | T_DIR | T_IND), token->type) ||
-		token->type == SEPARATOR) && argc < op->argc)
+		token->type == separator) && argc < op->argc)
 		{
-			if (token->type != SEPARATOR &&
+			if (token->type != separator &&
 			!overlap(op->argv[argc++], token->type))
 				handle_error("Invalid argument");
 			token = token->next;
 		}
-		if (argc != op->argc || token->type != ENDLINE)
+		if (argc != op->argc || token->type != endline)
 			handle_error("Invalid amount of arguments");
 	}
 }
@@ -53,13 +53,13 @@ void		check_token_validity(t_token *token, t_op *op)
 
 void		check_statement_order(t_token *token, t_champ *champ)
 {
-	if (token->type != ENDLINE)
+	if (token->type != endline)
 	{
-		if (overlap(token->type, CMD_STR))
+		if (overlap(token->type, cmd_str))
 		{
-			if (token->type == COMMAND_NAME && champ->name)
+			if (token->type == command_name && champ->name)
 				handle_error_msg(SYNTAX_ERROR, token);
-			if (token->type == COMMAND_COMMENT && champ->comment)
+			if (token->type == command_comment && champ->comment)
 				handle_error_msg(SYNTAX_ERROR, token);
 		}
 		else if (!champ->done)
@@ -70,17 +70,17 @@ void		check_statement_order(t_token *token, t_champ *champ)
 /*
 ** Check_token_order
 ** 1. Checks that the tokens are in a valid order:
-**    (CMD_STR STRING |
-**    (LABEL) (INSTRUCTION T_REG|T_DIR|T_IND
-**    (SEPARATOR T_REG|T_DIR|T_IND (SEPARATOR T_REG|T_DIR|T_IND)))
-**    ENDLINE
+**    (cmd_str string |
+**    (label) (instruction T_REG|T_DIR|T_IND
+**    (separator T_REG|T_DIR|T_IND (separator T_REG|T_DIR|T_IND)))
+**    endline
 ** 2. Prints the correct error msg to STDERR
 */
 
 static int	is_arg_or_sep(int ord, int type)
 {
 	if ((!(ord % 2) && overlap((T_REG | T_DIR | T_IND), type)) ||
-	(ord % 2 && type == SEPARATOR))
+	(ord % 2 && type == separator))
 		return (1);
 	return (0);
 }
@@ -89,18 +89,18 @@ void		check_token_order(t_token *token)
 {
 	int	i;
 
-	if (token && overlap(token->type, CMD_STR))
+	if (token && overlap(token->type, cmd_str))
 	{
 		token = token->next;
-		if (!token || token->type != STRING)
+		if (!token || token->type != string)
 			handle_error_msg(SYNTAX_ERROR, token);
 		token = token->next;
 	}
 	else
 	{
-		if (token && token->type == LABEL)
+		if (token && token->type == label)
 			token = token->next;
-		if (token && token->type == INSTRUCTION)
+		if (token && token->type == instruction)
 		{
 			token = token->next;
 			i = 0;
@@ -110,6 +110,6 @@ void		check_token_order(t_token *token)
 				handle_error_msg(SYNTAX_ERROR, token);
 		}
 	}
-	if (!token || token->type != ENDLINE)
+	if (!token || token->type != endline)
 		handle_error_msg(SYNTAX_ERROR, token);
 }

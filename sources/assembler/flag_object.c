@@ -18,9 +18,9 @@
 **	info from anywhere without the need to pass a variable all over the place.
 */
 
-static int	flag_object(int set, int flag_to_set)
+static t_flag	flag_object(int set, t_flag flag_to_set)
 {
-	static int flags = 0;
+	static t_flag flags = 0;
 
 	if (set)
 		flags = flags | flag_to_set;
@@ -30,13 +30,13 @@ static int	flag_object(int set, int flag_to_set)
 void		set_flags(char c)
 {
 	if (ft_tolower(c) == 'h')
-		flag_object(SET, FLAG_H);
+		flag_object(SET, flag_h);
 	if (ft_tolower(c) == 'e')
-		flag_object(SET, FLAG_E);
+		flag_object(SET, flag_e);
 	if (ft_tolower(c) == 'r')
-		flag_object(SET, FLAG_R);
+		flag_object(SET, flag_r);
 	if (ft_tolower(c) == 'x')
-		flag_object(SET, FLAG_X);
+		flag_object(SET, flag_x);
 }
 
 int			get_flags(void)
