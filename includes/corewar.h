@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/25 17:45:11 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/28 11:57:59 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <ncurses.h>
 
 # define MASK1 192
 # define MASK2 48
@@ -211,9 +212,9 @@ void				op_xor(t_vm *vm, t_process *proc);
 void				op_zjmp(t_vm *vm, t_process *proc);
 
 /*
-**					FOR TESTING PURPOSES
+**					VISUALIZER
 */
 
-void				test(t_vm *vm);
+void				init_visualizer(void);
 
 #endif
