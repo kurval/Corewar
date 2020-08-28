@@ -66,6 +66,11 @@ t_process *copy_proc(t_vm *vm, t_process *og_proc)
     t_process   *new;
     int         i;
 
+	if (vm->nb_procs == INT_MAX)
+	{
+		ft_putendl(NB_PROCS_ERROR);
+		exit(EXIT_FAILURE);
+	}
     new = new_proc();
     vm->nb_procs++;
     new->id = vm->id_counter++;
