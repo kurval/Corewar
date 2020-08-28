@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
+#    By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/08/30 11:08:16 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/08/30 11:20:37 by bkonjuha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,9 @@ SRC_FILES = ft_errno.c initialize.c parse_input.c validate_champions.c \
 			operations/op_zjmp.c free_all.c load_champions.c parse_input2.c \
 			get_addr.c get_args.c proc_functions.c operations/utils.c winner.c \
 			visual/start_visualizer.c visual/create_color_pairs.c visual/draw_arena.c \
-			visual/get_attribute.c visual/print_players.c
-			
+			visual/get_attribute.c visual/print_players.c visual/init_visualizer.c
+
+
 SRC = $(addprefix $(VM_SRC_PATH), $(SRC_FILES))
 
 MAIN_PATH = ./sources/vm/
@@ -63,8 +64,8 @@ all: $(COREWAR)
 
 $(COREWAR): $(HEADERS) $(LIBFT) $(PRINTF) $(SRC)
 		@$(COMPILE) $(NCURSES) $(C) $(SRC) $(LIBFT) $(PRINTF) -o $(COREWAR)
-		@$(CP) $(MANPAGE) $(MAN_LOCATION)
-		@$(GZIP) $(MAN_LOCATION)
+		@$(CP) -f $(MANPAGE) $(MAN_LOCATION)
+		@$(GZIP) -f $(MAN_LOCATION)
 		# @$(COMPILE) $(A) $(SRC) $(LIBFT) $(PRINTF) -o $(ASM)
 		@echo "[$(COLOR_PENDING)Putting everything togeather$(COLOR_RESET)]"
 		@echo "[$(COLOR_SUCCESS)Executable $(COREWAR) created$(COLOR_RESET)]"

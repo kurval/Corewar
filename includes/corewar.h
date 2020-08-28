@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/30 11:13:49 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/30 11:21:17 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ typedef struct		s_vm
 	int				ctd;
 	unsigned int	dump_cycle;
 	int				a_flag;
+	int				v_flag;
 	unsigned int	nb_players;
 	unsigned int	nb_procs;
 	unsigned int	id_counter;
@@ -197,7 +198,7 @@ t_process			*copy_proc(t_vm *vm, t_process *og_proc);
 **					PARSE INPUT FUNCTIONS
 */
 
-void				validate_chapions(char **s);
+int					validate_chapions(char **s);
 void				parse_input(int ac, char **av, t_vm *vm);
 void				load_champions(t_vm *vm);
 void				get_dump(t_vm *vm, char *s);
