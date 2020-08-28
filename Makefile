@@ -6,7 +6,7 @@
 #    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/08/28 11:09:56 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/08/28 12:50:45 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ SRC_FILES = ft_errno.c initialize.c parse_input.c validate_champions.c \
 			operations/op_sti.c operations/op_sub.c operations/op_xor.c \
 			operations/op_zjmp.c free_all.c load_champions.c parse_input2.c \
 			get_addr.c get_args.c proc_functions.c operations/utils.c winner.c \
+			visual/init_visualizer.c
 			
 SRC = $(addprefix $(VM_SRC_PATH), $(SRC_FILES))
 
@@ -37,6 +38,7 @@ HEADER_PATH = ./includes/
 HEADER_FILES = corewar.h corewar_error.h asm.h op.h
 HEADERS = $(addprefix $(HEADER_PATH), $(HEADER_FILES))
 COMPILE = gcc -Wall -Werror -Wextra -g # remove g flag before turning the assignment in
+NCURSES = -lncurses
 
 LIBFT_PATH = ./libft/
 LIBFT_FILE = libft.a
@@ -59,7 +61,7 @@ COLOR_DEFAULT = \033[1;34m
 all: $(COREWAR)
 
 $(COREWAR): $(HEADERS) $(LIBFT) $(PRINTF) $(SRC)
-		@$(COMPILE) $(C) $(SRC) $(LIBFT) $(PRINTF) -o $(COREWAR)
+		@$(COMPILE) $(NCURSES) $(C) $(SRC) $(LIBFT) $(PRINTF) -o $(COREWAR)
 		@$(CP) $(MANPAGE) $(MAN_LOCATION)
 		@$(GZIP) $(MAN_LOCATION)
 		# @$(COMPILE) $(A) $(SRC) $(LIBFT) $(PRINTF) -o $(ASM)
