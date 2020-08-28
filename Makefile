@@ -6,7 +6,7 @@
 #    By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/08/31 10:21:10 by bkonjuha         ###   ########.fr        #
+#    Updated: 2020/08/31 10:21:25 by bkonjuha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRC_FILES = ft_errno.c initialize.c parse_input.c validate_champions.c \
 			operations/op_zjmp.c free_all.c load_champions.c parse_input2.c \
 			get_addr.c get_args.c proc_functions.c operations/utils.c winner.c \
 			visual/start_visualizer.c visual/create_color_pairs.c visual/draw_arena.c \
-			visual/get_attribute.c visual/print_players.c
+			visual/get_attribute.c visual/print_players.c visual/init_visualizer.c
+
 
 SRC = $(addprefix $(VM_SRC_PATH), $(SRC_FILES))
 
