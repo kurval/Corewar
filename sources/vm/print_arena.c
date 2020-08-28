@@ -3,28 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_arena.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:47:04 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 18:10:25 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/28 11:06:20 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
-
-void    init_arena(t_vm *vm, t_arena *arena)
-{
-    int i;
-
-    i = 0;
-    while (i < MEM_SIZE)
-    {
-        arena->arena[i] = 0;
-        arena->owner[i] = 0;
-        i++;
-    }
-    vm->a = arena;
-}
 
 void    print_arena(t_arena *arena)
 {
