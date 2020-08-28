@@ -29,6 +29,8 @@
 # define GREEN	"\033[1m\033[32m"
 # define RESET	"\033[0m"
 
+# define INT_MAX 2147483647
+
 typedef struct		s_arena
 {
 	unsigned char	arena[MEM_SIZE];

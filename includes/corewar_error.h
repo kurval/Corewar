@@ -33,4 +33,6 @@
 
 # define DUMP_ERROR_SET "ERROR: Dump already set"
 
+# define NB_PROCS_ERROR "ERROR: Too many processes"
+
 #endif
