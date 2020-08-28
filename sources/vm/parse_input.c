@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/25 17:35:34 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/28 21:48:11 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 static void	introduce_champs(t_vm *vm)
 {
 	int i;
-	int	num;
 
 	i = -1;
-	num = 0;
 	ft_putendl("Introducing contestants...");
 	while (++i < 4)
 	{
@@ -26,10 +24,8 @@ static void	introduce_champs(t_vm *vm)
 		{
 			ft_printf("* Player %d, Weighing in at %d BYTES, \"%s\": (\"%s\")\n",
 				i + 1, vm->p[i].h.prog_size, vm->p[i].h.prog_name, vm->p[i].h.comment);
-			num++;
 		}
 	}
-	vm->nb_players = num;
 	vm->cycles_to_die = CYCLE_TO_DIE;
 }
 
@@ -52,14 +48,14 @@ static void	get_player(char *s, t_player *p, int num)
 	}
 }
 
-static int	get_n_flag(char *s, int id[4])
+static int	get_n_flag(char *s, int id[4], int champ_count)
 {
 	int num;
 
 	if (!(ft_strlen(s) < 2) || !(ft_isdigit(*s)))
 		ft_errno(N_FLAG_ERROR);
 	num = ft_atoi(s);
-	if (num > MAX_PLAYERS || num < 1)
+	if (num > MAX_PLAYERS || num < 1 || num > champ_count)
 		ft_errno(N_FLAG_ERROR);
 	if (!id[num - 1])
 		ft_errno(DUPLICATE_N);
@@ -95,13 +91,14 @@ void		parse_input(int ac, char **av, t_vm *vm)
 	{
 		num = 0;
 		if (ft_strequ("-n" , av[i]) && i < ac && i++)
-			num = get_n_flag(av[i++], id_arr);
-		else if (ft_strequ("-dump" , av[i]) && i < ac && i++)
-			get_dump(vm, av[i++]);
-		else if (ft_strequ("-a", av[i]) && (vm->a_flag = 1))
-			vm->a_flag = 1;
+			num = get_n_flag(av[i++], id_arr, vm->nb_players);
 		else
 			num = get_next_unused_id(id_arr);
+		if (ft_strequ("-dump" , av[i]) && i < ac && i++)
+			get_dump(vm, av[i++]);
+		else if ((ft_strequ("-a", av[i]) && (vm->a_flag = 1))
+				|| (ft_strequ("-v", av[i]) && (vm->v_flag = 1)))
+			continue;
 		get_player(av[i], &(vm->p[num - 1]), num);
 	}
 	introduce_champs(vm);
