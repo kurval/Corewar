@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_vm.c                                          :+:      :+:    :+:   */
+/*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:33:54 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/22 18:54:25 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/28 11:06:32 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,49 @@ void	init_vm(t_vm *vm)
 		initialize_players(&(vm->p[i]));
 	vm->proc_list = NULL;
 	vm->a_flag = 0;
+}
+
+/*
+** Initializing process list.
+*/
+
+void    init_processes(t_vm *vm)
+{
+    unsigned int    i;
+    int             j;
+    t_process       *new;
+
+    i = -1;
+    j = 0;
+    while(++i < vm->nb_players)
+    {
+        new = new_proc();
+        vm->nb_procs++;
+        new->id = vm->id_counter++;
+        new->jump = 0;
+        new->wait_cycles = 0;
+        new->last_live = 0;
+        new->carry = 0;
+        new->pc = i * MEM_SIZE / vm->nb_players;
+        new->player_id = vm->p[i].id;
+        new->reg[0] = new->player_id * -1;
+        while (++j < REG_NUMBER)
+            new->reg[j] = 0;
+        add_to_list(new, &vm->proc_list);
+    }
+    vm->last_live_id = vm->p[i-1].id;
+}
+
+void    init_arena(t_vm *vm, t_arena *arena)
+{
+    int i;
+
+    i = 0;
+    while (i < MEM_SIZE)
+    {
+        arena->arena[i] = 0;
+        arena->owner[i] = 0;
+        i++;
+    }
+    vm->a = arena;
 }
