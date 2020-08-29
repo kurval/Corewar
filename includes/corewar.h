@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/28 21:47:29 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/31 10:19:58 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,18 @@
 # define MASK2 48
 # define MASK3 12
 
-# define RED	"\033[1m\033[31m"
-# define GREEN	"\033[1m\033[32m"
-# define RESET	"\033[0m"
+# define HEIGHT (MEM_SIZE / 64 + 2)
+# define WIDTH ((MEM_SIZE / 64) * 3 + 4)
+
+# define FRAME	1
+# define M_B	2
+# define Y_B	3
+# define B_B	4
+# define G_B	5
+# define R_B	6
+# define GREEN	7
+# define GRAY	8
+# define BLACK	9
 
 # define INT_MAX 2147483647
 
@@ -153,6 +162,18 @@ typedef struct		s_op
 	void			(*f)(t_vm *vm, t_process *proc);
 }					t_op;
 
+typedef struct		s_attr
+{
+	int				owner;
+}					t_attr;
+
+typedef struct		s_visu
+{
+	WINDOW			*arena;
+	WINDOW			*sidebar;
+	t_attr			attr_arena[MEM_SIZE];
+}					t_visu;
+
 /*
 **					VM FUNCTIONS
 */
@@ -218,6 +239,10 @@ void				op_zjmp(t_vm *vm, t_process *proc);
 **					VISUALIZER
 */
 
-void				init_visualizer(void);
+void				start_visualizer(t_vm *vm);
+void				define_colors(void);
+int					get_attribute(t_visu *visu, int idx);
+void				set_owners(t_vm *vm, t_visu	*visu);
+void				draw_arena(t_vm *vm, t_visu	*visu);
 
 #endif
