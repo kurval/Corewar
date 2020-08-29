@@ -6,11 +6,7 @@
 #    By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-<<<<<<< HEAD
-#    Updated: 2020/08/28 21:50:47 by bkonjuha         ###   ########.fr        #
-=======
-#    Updated: 2020/08/29 13:17:55 by vkurkela         ###   ########.fr        #
->>>>>>> adding visualizer/in progress
+#    Updated: 2020/08/31 10:20:27 by bkonjuha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
