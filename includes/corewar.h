@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/29 13:16:52 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/29 22:53:47 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,17 @@
 # define COREWAR_H
 
 # include "op.h"
+# include "visu.h"
 # include "corewar_error.h"
 # include "../libft/libft.h"
 # include <stdio.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include <ncurses.h>
 
 # define MASK1 192
 # define MASK2 48
 # define MASK3 12
-
-# define HEIGHT (MEM_SIZE / 64 + 2)
-# define WIDTH ((MEM_SIZE / 64) * 3 + 4)
-
-# define FRAME	1
-# define M_B	2
-# define Y_B	3
-# define B_B	4
-# define G_B	5
-# define R_B	6
-# define GREEN	7
-# define GRAY	8
-# define BLACK	9
 
 typedef struct		s_arena
 {
@@ -167,7 +154,10 @@ typedef struct		s_attr
 typedef struct		s_visu
 {
 	WINDOW			*arena;
-	WINDOW			*sidebar;
+	WINDOW			*side1;
+	WINDOW			*side2;
+	WINDOW			*side3;
+	WINDOW			*side4;
 	t_attr			attr_arena[MEM_SIZE];
 }					t_visu;
 
