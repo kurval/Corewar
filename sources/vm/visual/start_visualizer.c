@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 12:50:02 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/29 23:19:12 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/30 11:09:13 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,37 +15,11 @@
 static void	signature(WINDOW *win)
 {
 	wattron(win, COLOR_PAIR(W_B) | A_BOLD);
-	mvwprintw(win, 2, 4, "BY: ATUOMINE | JEMETELIN | BKONJUHA | VKURKELA 2019");
+	mvwprintw(win, 2, 4, "BY: ATUOMINE | JEMETELIN | BKONJUHA | VKURKELA 2020");
 	wattroff(win, COLOR_PAIR(W_B) | A_BOLD);
 	wrefresh(win);
 }
-                                    
-static void print_players(WINDOW *win)
-{
-	wattron(win, COLOR_PAIR(GREEN) | A_BOLD);
-	mvwprintw(win, 2, 4, "%ls", PL1_1);
-	mvwprintw(win, 3, 4, "%ls", PL1_2);
-	mvwprintw(win, 4, 4, "%ls", PL1_3);
-	mvwprintw(win, 5, 4, "%ls", PL1_4);
-	wattron(win, COLOR_PAIR(B_B) | A_BOLD);
-	mvwprintw(win, 7, 4, "%ls", PL2_1);
-	mvwprintw(win, 8, 4, "%ls", PL2_2);
-	mvwprintw(win, 9, 4, "%ls", PL2_3);
-	mvwprintw(win, 10, 4, "%ls", PL2_4);
-	wattron(win, COLOR_PAIR(Y_B) | A_BOLD);
-	mvwprintw(win, 12, 4, "%ls", PL3_1);
-	mvwprintw(win, 13, 4, "%ls", PL3_2);
-	mvwprintw(win, 14, 4, "%ls", PL3_3);
-	mvwprintw(win, 15, 4, "%ls", PL3_4);
-	wattron(win, COLOR_PAIR(R_B) | A_BOLD);
-	mvwprintw(win, 17, 4, "%ls", PL4_1);
-	mvwprintw(win, 18, 4, "%ls", PL4_2);
-	mvwprintw(win, 19, 4, "%ls", PL4_3);
-	mvwprintw(win, 20, 4, "%ls", PL4_4);
-	wattroff(win, COLOR_PAIR(R_B) | A_BOLD);
-	wrefresh(win);
-}                       
-                                                                                                                              
+                                                                                                                                                                  
 static void print_logo(WINDOW *win)
 {
 	wattron(win, COLOR_PAIR(R_B) | A_BLINK);
@@ -118,7 +92,7 @@ void		start_visualizer(t_vm *vm)
 	box_win(visu.side4);
 
 	print_logo(visu.side1);
-	print_players(visu.side2);
+	print_players(vm, visu.side2);
 	signature(visu.side4);
 	refresh();
 	getchar();
