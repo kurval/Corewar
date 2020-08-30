@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 22:48:50 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/29 23:10:27 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/30 20:10:25 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@
 # define HEIGHT (MEM_SIZE / 64 + 2)
 # define WIDTH ((MEM_SIZE / 64) * 3 + 4)
 
-# define FRAME	1
-# define M_B	2
+# define GREEN	1
+# define B_B	2
 # define Y_B	3
-# define B_B	4
-# define G_B	5
-# define R_B	6
+# define R_B	4
+# define M_B	5
+# define G_B	6
 # define W_B	7
-# define GREEN	8
-# define GRAY	9
-# define WHITE	10
+# define GRAY	8
+# define WHITE	9
+# define FRAME	10
 
 # define LOGO1  L" ▄████▄   ▒█████   ██▀███  ▓█████  █     █░ ▄▄▄       ██▀███  "
 # define LOGO2  L"▒██▀ ▀█  ▒██▒  ██▒▓██ ▒ ██▒▓█   ▀ ▓█░ █ ░█░▒████▄    ▓██ ▒ ██▒"
@@ -60,4 +60,19 @@
 # define PL4_2  L"  / _ \\/ /  / _ \\ \\/ / __/ _ \\  / / /"
 # define PL4_3  L" / ___/ /__/ __ |\\  / _// , _/ /_  _/"
 # define PL4_4  L"/_/  /____/_/ |_|/_/___/_/|_|   /_/  "
+
+# define BI1  L"    ____  ___  ______________    ______   _____   ____________ "
+# define BI2  L"   / __ )/   |/_  __/_  __/ /   / ____/  /  _/ | / / ____/ __ \\"
+# define BI3  L"  / __  / /| | / /   / / / /   / __/     / //  |/ / /_  / / / /"
+# define BI4  L" / /_/ / ___ |/ /   / / / /___/ /___   _/ // /|  / __/ / /_/ / "
+# define BI5  L"/_____/_/  |_/_/   /_/ /_____/_____/  /___/_/ |_/_/    \\____/  "
+
+# define WIN1  L"██╗    ██╗██╗███╗   ██╗███████╗"
+# define WIN2  L"██║    ██║██║████╗  ██║██╔════╝"
+# define WIN3  L"██║ █╗ ██║██║██╔██╗ ██║███████╗"
+# define WIN4  L"██║███╗██║██║██║╚██╗██║╚════██║"
+# define WIN5  L"╚███╔███╔╝██║██║ ╚████║███████║"
+# define WIN6  L" ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝╚══════╝"
+                                      
 #endif
+                                                                                                                                              

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:40:33 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/29 22:53:58 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/30 18:57:05 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	normal_color(int owner)
 	return (COLOR_PAIR(G_B));
 }
 
-int			get_attribute(t_visu *visu, int idx)
+int			get_attribute(t_vm *vm, int idx)
 {
-	return (normal_color(visu->attr_arena[idx].owner));
+	return (normal_color(vm->visu->attr_arena[idx].owner));
 }
