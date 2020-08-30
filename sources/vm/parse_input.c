@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/30 11:21:07 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/30 11:22:49 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ static void	introduce_champs(t_vm *vm)
 				i + 1, vm->p[i].h.prog_size, vm->p[i].h.prog_name, vm->p[i].h.comment);
 		}
 	}
-	vm->cycles_to_die = CYCLE_TO_DIE;
 }
 
 static void	get_player(char *s, t_player *p, int num)
