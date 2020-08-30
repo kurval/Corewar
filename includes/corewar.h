@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/29 22:53:47 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/30 11:11:15 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ typedef struct		s_vm
 	struct s_op		*operations;
 	unsigned int	last_live_id;
 	unsigned int	cycles;
-	unsigned int	cycles_to_die;
 	unsigned int	current_cycle;
 	unsigned int	checks;
 	unsigned int	lives;
@@ -231,5 +230,6 @@ void				define_colors(void);
 int					get_attribute(t_visu *visu, int idx);
 void				set_owners(t_vm *vm, t_visu	*visu);
 void				draw_arena(t_vm *vm, t_visu	*visu);
+void				print_players(t_vm *vm, WINDOW *win);
 
 #endif

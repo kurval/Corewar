@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/29 23:21:36 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/30 11:11:08 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static void	introduce_champs(t_vm *vm)
 		}
 	}
 	vm->nb_players = num;
-	vm->cycles_to_die = CYCLE_TO_DIE;
 }
 
 static void	get_player(char *s, t_player *p, int num)
