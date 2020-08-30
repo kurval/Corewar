@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:33:54 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/30 11:11:23 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/30 19:39:32 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	init_vm(t_vm *vm)
 	while (++i < 4)
 		initialize_players(&(vm->p[i]));
 	vm->proc_list = NULL;
+    vm->visu = NULL;
 	vm->a_flag = 0;
 }
 
