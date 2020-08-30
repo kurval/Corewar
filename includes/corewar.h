@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/31 10:21:33 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/31 10:22:27 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct		s_process
 	int				jump;
 	int				reg[REG_NUMBER];
 	unsigned int	player_id;
-	void			*player;
+	struct s_player*player;
 	struct s_process*next;
 }					t_process;
 
@@ -121,6 +121,7 @@ typedef struct		s_vm
 	unsigned int	nb_procs;
 	unsigned int	id_counter;
 	t_process		*proc_list;
+	struct s_visu	*visu;
 }					t_vm;
 
 /*
@@ -228,9 +229,17 @@ void				op_zjmp(t_vm *vm, t_process *proc);
 
 void				start_visualizer(t_vm *vm);
 void				define_colors(void);
-int					get_attribute(t_visu *visu, int idx);
-void				set_owners(t_vm *vm, t_visu	*visu);
-void				draw_arena(t_vm *vm, t_visu	*visu);
-void				print_players(t_vm *vm, WINDOW *win);
+int					get_attribute(t_vm *vm, int idx);
+void				set_owners(t_vm *vm);
+void				draw_arena(t_vm *vm);
+void				print_players(t_vm *vm);
+void				print_winner(t_vm *vm);
+void				box_win(WINDOW *win);
+void 				print_player1(t_vm *vm, int height, int weidth);
+void 				print_player2(t_vm *vm, int height, int weidth);
+void 				print_player3(t_vm *vm, int height, int weidth);
+void 				print_player4(t_vm *vm, int height, int weidth);
+void				print_player_info(t_vm *vm);
+void				print_info(t_vm *vm, t_player *player, int y, int x);
 
 #endif
