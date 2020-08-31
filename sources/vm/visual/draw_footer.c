@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_attribute.c                                    :+:      :+:    :+:   */
+/*   print_banners.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/29 11:40:33 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/31 17:25:35 by vkurkela         ###   ########.fr       */
+/*   Created: 2020/08/31 17:17:49 by vkurkela          #+#    #+#             */
+/*   Updated: 2020/08/31 19:14:20 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/corewar.h"
 
-static int	normal_color(int owner)
+void	draw_footer(t_vm *vm)
 {
-	if (owner == 1)
-		return (COLOR_PAIR(GREEN));
-	if (owner == 2)
-		return (COLOR_PAIR(B_B));
-	if (owner == 3)
-		return (COLOR_PAIR(Y_B));
-	if (owner == 4)
-		return (COLOR_PAIR(R_B));
-	return (COLOR_PAIR(G_B));
-}
+    WINDOW *win;
 
-int			get_attribute(t_vm *vm, int idx)
-{
-	return (normal_color(vm->visu->attr_arena[idx].owner));
+    win = vm->visu->side4;
+    box_win(win);
+	wattron(win, COLOR_PAIR(W_B) | A_BOLD);
+	mvwprintw(win, 2, 4, "BY: ATUOMINE | JEMETELIN | BKONJUHA | VKURKELA 2020");
+	wattroff(win, COLOR_PAIR(W_B) | A_BOLD);
+	wrefresh(win);
 }
+                                                                                                                                                                
