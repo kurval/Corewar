@@ -31,18 +31,18 @@ static void		print_ascii(unsigned char *memory, int len)
 
 static void		set_color_by_state(int state, unsigned char byte)
 {
-	if (state == STATE_MAGIC)
+	if (state == magic)
 		ft_printf("\033[1;36m");
-	else if (state == STATE_NAME || state == STATE_COMMENT)
+	else if (state == name || state == comment)
 	{
 		if (byte)
 			ft_printf("\033[1;34m");
 		else
 			ft_printf("\033[0;34m");
 	}
-	else if (state == STATE_EXEC)
+	else if (state == exec)
 		ft_printf("\033[0;35m");
-	else if (state >= STATE_STMT)
+	else if (state >= statement)
 	{
 		if (state % 2 == 0)
 			ft_printf("\033[1;32m");
@@ -70,14 +70,14 @@ unsigned char *memory)
 }
 
 void			write_hexdump(unsigned char *bytes,
-		int byte_nbr, int state)
+		int byte_nbr, t_state state)
 {
 	int						i;
 	static unsigned int		hx_bytes = 0;
 	static unsigned char	memory[16];
 
 	i = 0;
-	if (state == STATE_FINISH)
+	if (state == finish)
 		return (finish_hexdump(hx_bytes, memory));
 	while (i < byte_nbr)
 	{

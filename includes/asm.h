@@ -24,33 +24,28 @@
 # include "op.h"
 
 /*
-** Defines for different token types.
-** Note that ARG_LABEL is only a mask for dir and indir labels
+** enum for different token types.
+** Note that arg_label is only a mask for dir and indir labels
 ** and not an actual token type.
 */
 
-# define REGISTER T_REG
-# define DIRECT T_DIR
-# define INDIRECT T_IND
-# define INSTRUCTION 8
-# define LABEL 16
-# define SEPARATOR 32
-# define STRING 64
-# define CMD_STR 128
-# define ARG_LABEL 256
-# define DIRECT_LABEL 258
-# define INDIRECT_LABEL 260
-# define ENDLINE 512
-# define COMMAND_NAME 1152
-# define COMMAND_COMMENT 2176
-# define END 4608
-
-# define FLAG_CHARS "herx"
-
-# define FLAG_H 1
-# define FLAG_E 2
-# define FLAG_R 4
-# define FLAG_X 8
+typedef enum	e_type
+{
+	reg = T_REG,
+	direct = T_DIR,
+	indirect = T_IND,
+	instruction = 8,
+	label = 16,
+	separator = 32,
+	string = 64,
+	cmd_str = 128,
+	arg_label = 256,
+	direct_label = 258,
+	indirect_label = 260,
+	endline = 512,
+	command_name = 1152,
+	command_comment = 2176
+}				t_type;
 
 # define SET 1
 # define GET 0
@@ -62,14 +57,35 @@
 
 # define NUMBER -1
 
-# define SET_FLAGS_FOR_BYTES -1337
+# define FLAG_CHARS "herx"
 
-# define STATE_MAGIC 1
-# define STATE_NAME 2
-# define STATE_COMMENT 4
-# define STATE_EXEC 8
-# define STATE_STMT 16
-# define STATE_FINISH 32
+/*
+** t_flag
+** Data type used for flags saving
+*/
+
+typedef enum	e_flag
+{
+	flag_h = 1,
+	flag_e = 2,
+	flag_r = 4,
+	flag_x = 8,
+}				t_flag;
+
+/*
+** t_state
+** Bytecode-writing state used mainly for hexdump
+*/
+
+typedef enum	e_state
+{
+	magic = 1,
+	name = 2,
+	comment = 4,
+	exec = 8,
+	statement = 16,
+	finish = 32,
+}				t_state;
 
 /*
 ** T_cursor
@@ -148,13 +164,13 @@ typedef struct	s_champ
 ** T_token
 ** Contains information on each .s file component
 ** Example line: .name "Matti"
-** token 1: | type: COMMAND_NAME | content: .name   | cursor: [row 1 col 0] |
-** token 2: | type: STRING  | content: "Matti" | cursor: [row 1 col 6] |
+** token 1: | type: command_name | content: .name   | cursor: [row 1 col 0] |
+** token 2: | type: string  | content: "Matti" | cursor: [row 1 col 6] |
 */
 
 typedef struct	s_token
 {
-	int				type;
+	t_type			type;
 	char			*content;
 	t_cursor		*cursor;
 	struct s_token	*next;
@@ -209,7 +225,7 @@ t_op			*get_op(void);
 void			make_cor_file(char *s_filename, t_asm assembler);
 void			check_token_order(t_token *token);
 char			*pad_nbr(int nbr, int size);
-char			*token_type_str(int type);
+char			*token_type_str(t_type type);
 int				find_first_str(char *haystack, int start, char *needle);
 char			*add_strs_to_str(char *str, char **strs);
 char			*join_free_strs(char *s1, char *s2);
@@ -217,8 +233,10 @@ void			del_array(char **array);
 void			handle_error_msg(int error, t_token *token);
 void			check_token_validity(t_token *token, t_op *op);
 void			check_statement_order(t_token *token, t_champ *champ);
-void			insert_bytes_number(int fd, int nbr, int size, int state);
-void			insert_bytes_string(int fd, char *str, int size, int state);
+void			insert_bytes_number(int fd, int nbr, int size,
+				t_state state);
+void			insert_bytes_string(int fd, char *str, int size,
+				t_state state);
 void			init_champ(t_champ *champ);
 void			set_champ(t_champ *champ, t_token *token);
 void			insert_statements(t_stmt *stmt, t_label *labels,
@@ -234,7 +252,7 @@ void			check_str_len(char *name, char *comment);
 int				is_comment_char(char c);
 void			free_memory(t_op *op, t_champ *champ);
 void			write_hexdump(unsigned char *bytes,
-				int byte_nbr, int state);
+				int byte_nbr, t_state state);
 void			set_flags(char c);
 int				get_flags(void);
 #endif

@@ -17,7 +17,7 @@ t_cursor cursor)
 {
 	if (!is_valid_char(line[*i + 1]))
 		lexical_error(cursor);
-	*has_label_or_direct = LABEL;
+	*has_label_or_direct = label;
 	*i = *i + 1;
 }
 
@@ -36,7 +36,7 @@ int *token_content_start)
 			case_label(&i, &has_label_or_direct, line, cursor);
 		else if ((line[i] == '-' && ft_isdigit(line[i + 1])) ||
 		ft_isdigit(line[i]))
-			has_label_or_direct = DIRECT;
+			has_label_or_direct = direct;
 		else
 			lexical_error(cursor);
 	}
@@ -91,7 +91,7 @@ int *token_end, char *edge_chars)
 	if (!check_string_or_separator(line, cursor, token_end))
 	{
 		label_or_dir = check_label_or_dir(line, cursor, &token_content_start);
-		if (label_or_dir == DIRECT || line[token_content_start] == '-')
+		if (label_or_dir == direct || line[token_content_start] == '-')
 			*token_end = validate_number(line, token_content_start, cursor);
 		else
 		{

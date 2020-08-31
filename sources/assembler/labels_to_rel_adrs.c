@@ -24,7 +24,7 @@ static void	label_to_rel_adr(t_label *label, int stmt_place, t_arg *arg)
 		label = label->next;
 	if (!label)
 		handle_invalid_label(arg, tmp);
-	arg->type = (arg->type == DIRECT_LABEL ? T_DIR : T_IND);
+	arg->type = (arg->type == direct_label ? T_DIR : T_IND);
 	if (!(tmp = ft_itoa(label->place - stmt_place)))
 		handle_error(MALLOC_ERROR);
 	ft_strdel(&arg->content);
@@ -47,7 +47,7 @@ void		labels_to_rel_adrs(t_label *labels, t_stmt *stmt)
 		i = 0;
 		while (stmt->args[i])
 		{
-			if (overlap(stmt->args[i]->type, ARG_LABEL))
+			if (overlap(stmt->args[i]->type, arg_label))
 				label_to_rel_adr(labels, stmt->place, stmt->args[i]);
 			i++;
 		}
