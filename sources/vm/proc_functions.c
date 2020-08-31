@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   proc_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 16:55:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/25 17:04:36 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/31 10:36:56 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,6 @@ t_process *copy_proc(t_vm *vm, t_process *og_proc)
     t_process   *new;
     int         i;
 
-	if (vm->nb_procs == INT_MAX)
-	{
-		ft_putendl(NB_PROCS_ERROR);
-		exit(EXIT_FAILURE);
-	}
     new = new_proc();
     vm->nb_procs++;
     new->id = vm->id_counter++;

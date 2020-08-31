@@ -11,9 +11,8 @@ NC='\033[0m'
 
 COREWAR="./corewar"
 N_FLAG="-n"
-PLAYERS=("resources/champs/jumper.cor"
+PLAYERS=(
 "resources/champs/ex.cor"
-"resources/champs/Car.cor"
 "resources/champs/examples/test.cor"
 "resources/champs/examples/turtle.cor")
 declare -i I=0
@@ -85,10 +84,10 @@ done
 # REQUIRES: At least two chapmions and at least one -n flag
 # EXPECTED: Add to the expected variable what should be the output
 
-PLAYERS=("-n 2 resources/champs/jumper.cor resources/champs/ex.cor"
-"resources/champs/ex.cor -n 3 resources/champs/jumper.cor")
+PLAYERS=("-n 2 resources/champs/examples/test.cor resources/champs/ex.cor"
+"resources/champs/ex.cor -n 2 resources/champs/examples/turtle.cor")
 EXPEXTED=("Player 1, Weighing in at 23 BYTES, \"zork\": (\"just a basic living prog\")"
-"Player 3, Weighing in at 320 BYTES, \"Jumper !\": (\"en fait C forker !\")"
+"Player 1, Weighing in at 23 BYTES, \"zork\": (\"just a basic living prog\")"
 )
 echo " "
 echo "-N FLAG VALID TEST"

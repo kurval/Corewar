@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/28 11:57:59 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/31 10:36:24 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,17 @@
 # define COREWAR_H
 
 # include "op.h"
+# include "visu.h"
 # include "corewar_error.h"
 # include "../libft/libft.h"
 # include <stdio.h>
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include <ncurses.h>
 
 # define MASK1 192
 # define MASK2 48
 # define MASK3 12
-
-# define RED	"\033[1m\033[31m"
-# define GREEN	"\033[1m\033[32m"
-# define RESET	"\033[0m"
-
-# define INT_MAX 2147483647
 
 typedef struct		s_arena
 {
@@ -69,7 +63,7 @@ typedef struct		s_process
 	int				jump;
 	int				reg[REG_NUMBER];
 	unsigned int	player_id;
-	void			*player;
+	struct s_player*player;
 	struct s_process*next;
 }					t_process;
 
@@ -116,17 +110,18 @@ typedef struct		s_vm
 	struct s_op		*operations;
 	unsigned int	last_live_id;
 	unsigned int	cycles;
-	unsigned int	cycles_to_die;
 	unsigned int	current_cycle;
 	unsigned int	checks;
 	unsigned int	lives;
 	int				ctd;
 	unsigned int	dump_cycle;
 	int				a_flag;
+	int				v_flag;
 	unsigned int	nb_players;
 	unsigned int	nb_procs;
 	unsigned int	id_counter;
 	t_process		*proc_list;
+	struct s_visu	*visu;
 }					t_vm;
 
 /*
@@ -151,6 +146,21 @@ typedef struct		s_op
 	unsigned int	encode;
 	void			(*f)(t_vm *vm, t_process *proc);
 }					t_op;
+
+typedef struct		s_attr
+{
+	int				owner;
+}					t_attr;
+
+typedef struct		s_visu
+{
+	WINDOW			*arena;
+	WINDOW			*side1;
+	WINDOW			*side2;
+	WINDOW			*side3;
+	WINDOW			*side4;
+	t_attr			attr_arena[MEM_SIZE];
+}					t_visu;
 
 /*
 **					VM FUNCTIONS
@@ -187,7 +197,7 @@ t_process			*copy_proc(t_vm *vm, t_process *og_proc);
 **					PARSE INPUT FUNCTIONS
 */
 
-void				validate_chapions(char **s);
+int					validate_chapions(char **s);
 void				parse_input(int ac, char **av, t_vm *vm);
 void				load_champions(t_vm *vm);
 void				get_dump(t_vm *vm, char *s);
@@ -217,6 +227,19 @@ void				op_zjmp(t_vm *vm, t_process *proc);
 **					VISUALIZER
 */
 
-void				init_visualizer(void);
+void				start_visualizer(t_vm *vm);
+void				define_colors(void);
+int					get_attribute(t_vm *vm, int idx);
+void				set_owners(t_vm *vm);
+void				draw_arena(t_vm *vm);
+void				print_players(t_vm *vm);
+void				print_winner(t_vm *vm);
+void				box_win(WINDOW *win);
+void 				print_player1(t_vm *vm, int height, int weidth);
+void 				print_player2(t_vm *vm, int height, int weidth);
+void 				print_player3(t_vm *vm, int height, int weidth);
+void 				print_player4(t_vm *vm, int height, int weidth);
+void				print_player_info(t_vm *vm);
+void				print_info(t_vm *vm, t_player *player, int y, int x);
 
 #endif
