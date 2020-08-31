@@ -26,6 +26,8 @@
 # define MASK2 48
 # define MASK3 12
 
+# define UINT_MAX 4294967295
+
 typedef struct		s_arena
 {
 	unsigned char	arena[MEM_SIZE];
