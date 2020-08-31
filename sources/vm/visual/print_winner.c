@@ -6,22 +6,12 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 16:35:07 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/31 13:11:01 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/31 19:32:02 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/corewar.h"
-/*
-static void print_winner1(WINDOW *win, char *winner)
-{
-    wattron(win, COLOR_PAIR(GREEN) | A_BOLD);
-	mvwprintw(win, 5, 13, "%ls", PL1_1);
-	mvwprintw(win, 6, 13, "%ls", PL1_2);
-	mvwprintw(win, 7, 13, "%ls", PL1_3);
-	mvwprintw(win, 8, 13, "%ls", PL1_4);
-    mvwprintw(win, 6, 51, "%s", winner);
-}
-*/
+
 static void print_win(WINDOW *win, int height, int weidth)
 {
     int y;
@@ -41,9 +31,12 @@ static void print_win(WINDOW *win, int height, int weidth)
 
 void    print_winner(t_vm *vm)
 {
+    WINDOW *win;
+
+    win = vm->visu->side2;
     vm->last_live_id = 3;
-    werase(vm->visu->side2);
-    box_win(vm->visu->side2);
+    werase(win);
+    box_win(win);
     if (vm->last_live_id == 1)
         print_player1(vm, 6, 4);
     else if (vm->last_live_id == 2)
@@ -52,7 +45,7 @@ void    print_winner(t_vm *vm)
         print_player3(vm, 6, 4);
     else if (vm->last_live_id == 4)
         print_player4(vm, 6, 4);
-    print_win(vm->visu->side2, 13, 4);
+    print_win(win, 13, 4);
     print_info(vm, &vm->p[vm->last_live_id - 1], 7, 4);
-    wrefresh(vm->visu->side2);
+    wrefresh(win);
 }
