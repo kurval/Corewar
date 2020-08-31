@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/31 10:36:24 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/31 12:47:28 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,16 @@ typedef struct		s_process
 ** - executable_size : executable code size
 ** - code : executable code
 ** - Other information can be found in op.h header struct
+** - last_live : last cycle players was alive
+** - period_lives: number of lives in current period
 */
 
 typedef struct		s_player
 {
 	int				id;
 	char			code[CHAMP_MAX_SIZE];
+	unsigned int	last_live;
+	unsigned int	period_lives;
 	header_t		h;
 }					t_player;
 
@@ -243,5 +247,5 @@ void 				print_player3(t_vm *vm, int height, int weidth);
 void 				print_player4(t_vm *vm, int height, int weidth);
 void				print_player_info(t_vm *vm);
 void				print_info(t_vm *vm, t_player *player, int y, int x);
-
+void 				print_battle_info(t_vm *vm, int y, int x);
 #endif
