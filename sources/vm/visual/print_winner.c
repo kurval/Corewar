@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_winner.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 16:35:07 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/30 20:53:45 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/31 10:36:10 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
