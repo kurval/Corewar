@@ -16,16 +16,16 @@
 ** Sests value from registry into the arena as unsigned char.
 */
 
-void    load_into_memory(t_vm *vm, unsigned int addr, void *content)
+void	load_into_memory(t_vm *vm, unsigned int addr, void *content)
 {
-    int i;
+	int i;
 
-    i = -1;
-    while (++i < REG_SIZE)
-    {
-        vm->a->arena[get_addr(addr
-        + i)] = ((unsigned char *)content)[REG_SIZE - i - 1];
-    }
+	i = -1;
+	while (++i < REG_SIZE)
+	{
+		vm->a->arena[get_addr(addr
+		+ i)] = ((unsigned char *)content)[REG_SIZE - i - 1];
+	}
 }
 
 /*
@@ -35,18 +35,18 @@ void    load_into_memory(t_vm *vm, unsigned int addr, void *content)
 ** If type is T_DIR it return number from T_DIR argument
 */
 
-int    get_op_values(t_vm *vm, t_process *proc, int arg)
+int		get_op_values(t_vm *vm, t_process *proc, int arg)
 {
-  int value;
-  int type;
+	int value;
+	int type;
 
-  value = proc->values[arg - 1];
-  type = proc->args[arg - 1];
-  if (type == T_REG)
-    return (proc->reg[value - 1]);
-  else if (type == T_IND)
-    return (int_arg(vm, proc->pc + value % IDX_MOD));
-  else if (type == T_DIR)
-    return (value);
-  return (0);
+	value = proc->values[arg - 1];
+	type = proc->args[arg - 1];
+	if (type == T_REG)
+		return (proc->reg[value - 1]);
+	else if (type == T_IND)
+		return (int_arg(vm, proc->pc + value % IDX_MOD));
+	else if (type == T_DIR)
+		return (value);
+	return (0);
 }

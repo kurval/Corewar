@@ -17,16 +17,16 @@
 ** current_position + ((Argument2 + Argument3) % IDX_MOD)
 */
 
-void    op_sti(t_vm *vm, t_process *proc)
+void	op_sti(t_vm *vm, t_process *proc)
 {
-    int value1;
-    int addr_val1;
-    int addr_val2;
-    unsigned int addr;
+	int				value1;
+	int				addr_val1;
+	int				addr_val2;
+	unsigned int	addr;
 
-    value1 = get_op_values(vm, proc, 1);
-    addr_val1 = get_op_values(vm, proc, 2);
-    addr_val2 = get_op_values(vm, proc, 3);
-    addr = get_addr(proc->pc + ((addr_val1 + addr_val2) % IDX_MOD));
-    load_into_memory(vm, addr, (void *)&value1);
+	value1 = get_op_values(vm, proc, 1);
+	addr_val1 = get_op_values(vm, proc, 2);
+	addr_val2 = get_op_values(vm, proc, 3);
+	addr = get_addr(proc->pc + ((addr_val1 + addr_val2) % IDX_MOD));
+	load_into_memory(vm, addr, (void *)&value1);
 }

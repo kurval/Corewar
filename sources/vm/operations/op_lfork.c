@@ -16,13 +16,13 @@
 ** fork without % IDX_MOD
 */
 
-void    op_lfork(t_vm *vm, t_process *proc)
+void	op_lfork(t_vm *vm, t_process *proc)
 {
-    int             value1;
-    t_process       *new;
+	int			value1;
+	t_process	*new;
 
-    value1 = proc->values[0];
-    new = copy_proc(vm, proc);
-    new->pc = get_addr(proc->pc + value1);
-    add_to_list(new, &vm->proc_list);
+	value1 = proc->values[0];
+	new = copy_proc(vm, proc);
+	new->pc = get_addr(proc->pc + value1);
+	add_to_list(new, &vm->proc_list);
 }

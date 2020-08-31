@@ -14,13 +14,13 @@
 
 /*
 ** if carry == 1 move cursor to:
-** current_position + (T_DIR % IDX_MOD)							
+** current_position + (T_DIR % IDX_MOD)
 */
 
-void    op_zjmp(t_vm *vm, t_process *proc)
+void	op_zjmp(t_vm *vm, t_process *proc)
 {
-    if (proc->carry == 1)
-        proc->jump = (proc->values[0] % IDX_MOD);
-    if (vm)
-        return ;
+	if (proc->carry == 1)
+		proc->jump = (proc->values[0] % IDX_MOD);
+	if (vm)
+		return ;
 }

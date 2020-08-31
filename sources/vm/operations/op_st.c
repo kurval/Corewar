@@ -13,25 +13,24 @@
 #include "../../../includes/corewar.h"
 
 /*
-** If Argument2 is of type T_REG, 
+** If Argument2 is of type T_REG,
 ** >set value from registry <Argument1> into registry <Argument2>
 ** If Argument2 is of type T_IND,
 ** >set value from registry <Argument1> into memory.
 ** Address is calculated as follows: (current_position + (Argument2 % IDX_MOD))
 */
 
-void    op_st(t_vm *vm, t_process *proc)
+void	op_st(t_vm *vm, t_process *proc)
 {
-    int value1;
-    unsigned int addr;
+	int				value1;
+	unsigned int	addr;
 
-    value1 = get_op_values(vm, proc, 1);
-    if (proc->args[1] == T_REG)
-        proc->reg[proc->values[1] - 1] = value1;
-    else if (proc->args[1] == T_IND)
-    {
-        addr = get_addr(proc->pc + (proc->values[1] % IDX_MOD));
-        load_into_memory(vm, addr, (void *)&value1);
-    }
-        
+	value1 = get_op_values(vm, proc, 1);
+	if (proc->args[1] == T_REG)
+		proc->reg[proc->values[1] - 1] = value1;
+	else if (proc->args[1] == T_IND)
+	{
+		addr = get_addr(proc->pc + (proc->values[1] % IDX_MOD));
+		load_into_memory(vm, addr, (void *)&value1);
+	}
 }
