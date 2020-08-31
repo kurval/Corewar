@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:33:54 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/31 12:45:53 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/31 16:56:49 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void		init_vm(t_vm *vm)
 	vm->proc_list = NULL;
 	vm->visu = NULL;
 	vm->a_flag = 0;
+    vm->v_flag = 0;
+    vm->id_counter = 1;
 }
 
 /*
