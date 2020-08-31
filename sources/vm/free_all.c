@@ -12,13 +12,13 @@
 
 #include "../../includes/corewar.h"
 
-static void free_operations(t_vm *vm)
+static void	free_operations(t_vm *vm)
 {
-    free(vm->operations);
+	free(vm->operations);
 }
 
-void    free_all(t_vm *vm)
+void		free_all(t_vm *vm)
 {
-    free_operations(vm);
-    exit(1);
+	free_operations(vm);
+	exit(1);
 }

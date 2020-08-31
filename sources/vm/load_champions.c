@@ -45,8 +45,10 @@ void	load_champions(t_vm *vm)
 	space = MEM_SIZE / vm->nb_players;
 	while (vm->p[++i].id)
 	{
-		load_code(&(vm->a->arena[location]), &(vm->p[i].code[0]), vm->p[i].h.prog_size);
-		load_oweners(&(vm->a->owner[location]), vm->p[i].id, vm->p[i].h.prog_size);
+		load_code(&(vm->a->arena[location]), &(vm->p[i].code[0]),
+		vm->p[i].h.prog_size);
+		load_oweners(&(vm->a->owner[location]), vm->p[i].id,
+		vm->p[i].h.prog_size);
 		location += space;
 	}
 	// print_arena(vm->a);

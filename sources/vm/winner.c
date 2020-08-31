@@ -12,20 +12,21 @@
 
 #include "../../includes/corewar.h"
 
-void    decleare_winner(t_vm *vm)
+void	decleare_winner(t_vm *vm)
 {
-    int win_nb;
-    int i;
+	int win_nb;
+	int i;
 
-    win_nb = vm->last_live_id;
-    i = -1;
-    while (vm->p[++i].id)
-    {
-        if (vm->p[i].id == win_nb)
-        {
-            ft_printf("Contestant %d, \"%s\", has won !\n", win_nb, vm->p[i].h.prog_name);
-            return ;
-        }
-    }
-    ft_printf("No winner...\n");
+	win_nb = vm->last_live_id;
+	i = -1;
+	while (vm->p[++i].id)
+	{
+		if (vm->p[i].id == win_nb)
+		{
+			ft_printf("Contestant %d, \"%s\", has won !\n", win_nb,
+			vm->p[i].h.prog_name);
+			return ;
+		}
+	}
+	ft_printf("No winner...\n");
 }

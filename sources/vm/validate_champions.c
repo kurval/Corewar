@@ -17,7 +17,7 @@ static int	ends_with_cor(char *s)
 	int i;
 
 	i = 0;
-	while(s[i])
+	while (s[i])
 		i++;
 	if (!(ft_strequ(s + i - 4, ".cor")))
 		return (0);
@@ -30,9 +30,9 @@ static int	is_valid_length(char *s)
 	int num;
 
 	num = -1;
-	if((fd = open(s, O_RDONLY)) < 0)
+	if ((fd = open(s, O_RDONLY)) < 0)
 		ft_errno(OPEN_ERROR);
-	else if((num = lseek(fd, 0, SEEK_END) - sizeof(header_t)) > CHAMP_MAX_SIZE)
+	else if ((num = lseek(fd, 0, SEEK_END) - sizeof(header_t)) > CHAMP_MAX_SIZE)
 		ft_errno(CHAMP_ERROR);
 	close(fd);
 	return (1);
@@ -47,8 +47,8 @@ int			validate_chapions(char **s)
 	count = 0;
 	while (s[++i])
 	{
-		if ((ft_strequ(s[i], "-a") || ft_strequ(s[i], "-v")) || ((ft_strequ(s[i], "-n")
-			|| ft_strequ(s[i], "-dump")) && i++))
+		if ((ft_strequ(s[i], "-a") || ft_strequ(s[i], "-v")) ||
+		((ft_strequ(s[i], "-n") || ft_strequ(s[i], "-dump")) && i++))
 			continue ;
 		count += ends_with_cor(s[i]);
 		is_valid_length(s[i]);

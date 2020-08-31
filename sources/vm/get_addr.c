@@ -17,7 +17,7 @@
 ** we have to use modulo 4096 every time we deal with addresses.
 */
 
-int     get_addr(int addr)
+int	get_addr(int addr)
 {
 	addr %= MEM_SIZE;
 	if (addr < 0)

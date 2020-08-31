@@ -18,19 +18,19 @@
 ** operation code.
 */
 
-static int check_op_args(t_vm *vm, int *args, int opcode)
+static int	check_op_args(t_vm *vm, int *args, int opcode)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (i < 3)
-    {
-        if ((!(args[i] & vm->operations[opcode - 1].argv[i]) &&\
-        args[i]) || (!args[i] && vm->operations[opcode - 1].argv[i]))
-            return (0);
-        i++;
-    }
-    return (1);
+	i = 0;
+	while (i < 3)
+	{
+		if ((!(args[i] & vm->operations[opcode - 1].argv[i]) &&\
+		args[i]) || (!args[i] && vm->operations[opcode - 1].argv[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
 /*
@@ -39,32 +39,32 @@ static int check_op_args(t_vm *vm, int *args, int opcode)
 ** types for current cursor.
 */
 
-static int check_types(int *args, t_process *proc)
+static int	check_types(int *args, t_process *proc)
 {
-    int i;
+	int i;
 
-    i = 0;
-    while (i < 3)
-    {
-        if (args[i] == REG_CODE)
-            proc->args[i] = T_REG;
-        else if (args[i] == DIR_CODE)
-            proc->args[i] = T_DIR;
-        else if (args[i] == IND_CODE)
-            proc->args[i] = T_IND;
-        else if (args[i] != 0)
-            return (0);
-        i++;
-    }
-    return (1);
+	i = 0;
+	while (i < 3)
+	{
+		if (args[i] == REG_CODE)
+			proc->args[i] = T_REG;
+		else if (args[i] == DIR_CODE)
+			proc->args[i] = T_DIR;
+		else if (args[i] == IND_CODE)
+			proc->args[i] = T_IND;
+		else if (args[i] != 0)
+			return (0);
+		i++;
+	}
+	return (1);
 }
 
-int    validate_encoding(t_vm *vm, int encode_byte, t_process *proc)
+int			validate_encoding(t_vm *vm, int encode_byte, t_process *proc)
 {
-    int arg[3];
+	int arg[3];
 
-    arg[0] = (encode_byte & MASK1) >> 6;
-    arg[1] = (encode_byte & MASK2) >> 4;
-    arg[2] = (encode_byte & MASK3) >> 2;
-    return (check_types(arg, proc) && check_op_args(vm, arg, proc->opcode));
+	arg[0] = (encode_byte & MASK1) >> 6;
+	arg[1] = (encode_byte & MASK2) >> 4;
+	arg[2] = (encode_byte & MASK3) >> 2;
+	return (check_types(arg, proc) && check_op_args(vm, arg, proc->opcode));
 }
