@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/31 10:36:01 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/31 16:50:48 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,10 @@ static int	get_next_unused_id(int arr[MAX_PLAYERS])
 	int i;
 
 	i = 0;
-	while (i < MAX_PLAYERS && !arr[i])
+	while (i < MAX_PLAYERS && arr[i] == 0)
 		i++;
 	if (i == MAX_PLAYERS)
 		ft_errno(CHAMP_NUM_ERROR);
-	arr[i] = 0;
 	return (i + 1);
 }
 
@@ -101,6 +100,7 @@ void		parse_input(int ac, char **av, t_vm *vm)
 				|| (ft_strequ("-v", av[i]) && (vm->v_flag = 1)))
 			continue;
 		get_player(av[i], &(vm->p[num - 1]), num);
+		id_arr[num -1] = 0;
 	}
 	introduce_champs(vm);
 }
