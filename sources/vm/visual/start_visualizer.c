@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 12:50:02 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/30 20:05:35 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/31 11:43:58 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,7 @@ void		start_visualizer(t_vm *vm)
 	battle_info(vm->visu->side3);
 	signature(vm->visu->side4);
 	print_player_info(vm);
+	print_battle_info(vm, 10, 4);
 
 	sleep (3);
 

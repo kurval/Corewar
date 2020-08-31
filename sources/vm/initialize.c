@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:33:54 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/30 19:39:32 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/31 12:45:53 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void	initialize_players(t_player *p)
 	p->id = 0;
 	p->h.magic = 0;
 	p->h.prog_size = 0;
+    p->last_live = 0;
+	p->period_lives = 0;
 	ft_bzero(&(p->code), CHAMP_MAX_SIZE);
 	ft_bzero(&(p->h.comment), COMMENT_LENGTH);
 	ft_bzero(&(p->h.prog_name), PROG_NAME_LENGTH);

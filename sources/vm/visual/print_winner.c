@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_winner.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 16:35:07 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/31 10:36:10 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/31 13:11:01 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,6 @@ void    print_winner(t_vm *vm)
     else if (vm->last_live_id == 4)
         print_player4(vm, 6, 4);
     print_win(vm->visu->side2, 13, 4);
-    print_info(vm, &vm->p[vm->last_live_id - 1], 6, 4);
+    print_info(vm, &vm->p[vm->last_live_id - 1], 7, 4);
     wrefresh(vm->visu->side2);
 }
