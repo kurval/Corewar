@@ -21,7 +21,6 @@ int	main(int ac, char **av)
 	{
 		init_vm(&vm);
 		init_arena(&vm, &arena);
-		get_op(vm.operations);
 		vm.nb_players = validate_chapions(av);
 		parse_input(ac, av, &vm);
 		load_champions(&vm);

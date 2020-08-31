@@ -37,8 +37,7 @@ void		init_vm(t_vm *vm)
 	vm->lives = 0;
 	vm->dump_cycle = 0;
 	vm->a = NULL;
-	if (!(vm->operations = (t_op*)malloc(sizeof(t_op) * 16)))
-		exit(1);
+	vm->operations = (t_op *)g_ops;
 	while (++i < 4)
 		initialize_players(&(vm->p[i]));
 	vm->proc_list = NULL;

@@ -65,7 +65,7 @@ typedef struct		s_process
 	int				jump;
 	int				reg[REG_NUMBER];
 	unsigned int	player_id;
-	struct s_player*player;
+	struct s_player	*player;
 	struct s_process*next;
 }					t_process;
 
@@ -174,7 +174,7 @@ typedef struct		s_visu
 
 void				init_vm(t_vm *vm);
 void				run_cycles(t_vm *vm);
-void    			init_arena(t_vm *vm, t_arena *arena);
+void				init_arena(t_vm *vm, t_arena *arena);
 void				print_arena(t_arena *arena);
 void				dump_memory(t_vm *vm);
 
@@ -184,16 +184,19 @@ void				dump_memory(t_vm *vm);
 
 void				ft_errno(char *id);
 void				get_op(t_op *op);
-int					validate_encoding(t_vm *vm, int encode_byte, t_process *proc);
+int					validate_encoding(t_vm *vm, int encode_byte,
+					t_process *proc);
 void				free_all(t_vm *vm);
 void				*assign_opfunctions(int opcode);
 int					get_addr(int addr);
 int					get_args(t_vm *vm, t_process *proc);
-void				remove_proc(t_vm *vm, t_process **proc_list, t_process **current, t_process **previous);
+void				remove_proc(t_vm *vm, t_process **proc_list,
+					t_process **current, t_process **previous);
 int					int_arg(t_vm *vm, int idx);
 int					get_op_values(t_vm *vm, t_process *proc, int arg);
-void				load_into_memory(t_vm *vm, unsigned int addr, void *content);
-void    			init_processes(t_vm *vm);
+void				load_into_memory(t_vm *vm, unsigned int addr,
+					void *content);
+void				init_processes(t_vm *vm);
 void				decleare_winner(t_vm *vm);
 void				add_to_list(t_process *new, t_process **list);
 t_process			*new_proc();
@@ -241,11 +244,175 @@ void				draw_arena(t_vm *vm);
 void				print_players(t_vm *vm);
 void				print_winner(t_vm *vm);
 void				box_win(WINDOW *win);
-void 				print_player1(t_vm *vm, int height, int weidth);
-void 				print_player2(t_vm *vm, int height, int weidth);
-void 				print_player3(t_vm *vm, int height, int weidth);
-void 				print_player4(t_vm *vm, int height, int weidth);
+void				print_player1(t_vm *vm, int height, int weidth);
+void				print_player2(t_vm *vm, int height, int weidth);
+void				print_player3(t_vm *vm, int height, int weidth);
+void				print_player4(t_vm *vm, int height, int weidth);
 void				print_player_info(t_vm *vm);
 void				print_info(t_vm *vm, t_player *player, int y, int x);
-void 				print_battle_info(t_vm *vm, int y, int x);
+void				print_battle_info(t_vm *vm, int y, int x);
+
+static const t_op			g_ops[16] = {
+	{
+		.instr_name = "live",
+		.argc = 1,
+		.argv = {T_DIR, 0, 0},
+		.instr_code = 1,
+		.wait_cycles = 10,
+		.dir_size = 4,
+		.encode = 0,
+		.f = op_live
+	},
+	{
+		.instr_name = "ld",
+		.argc = 2,
+		.argv = {T_DIR | T_IND, T_REG, 0},
+		.instr_code = 2,
+		.wait_cycles = 5,
+		.dir_size = 4,
+		.encode = 1,
+		.f = op_ld
+	},
+	{
+		.instr_name = "st",
+		.argc = 2,
+		.argv = {T_REG, T_IND | T_REG, 0},
+		.instr_code = 3,
+		.wait_cycles = 5,
+		.dir_size = 4,
+		.encode = 1,
+		.f = op_st
+	},
+	{
+		.instr_name = "add",
+		.argc = 3,
+		.argv = {T_REG, T_REG, T_REG},
+		.instr_code = 4,
+		.wait_cycles = 10,
+		.dir_size = 4,
+		.encode = 1,
+		.f = op_add
+	},
+	{
+		.instr_name = "sub",
+		.argc = 3,
+		.argv = {T_REG, T_REG, T_REG},
+		.instr_code = 5,
+		.wait_cycles = 10,
+		.dir_size = 4,
+		.encode = 1,
+		.f = op_sub
+	},
+	{
+		.instr_name = "and",
+		.argc = 3,
+		.argv = {T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG},
+		.instr_code = 6,
+		.wait_cycles = 6,
+		.dir_size = 4,
+		.encode = 1,
+		.f = op_and
+	},
+	{
+		.instr_name = "or",
+		.argc = 3,
+		.argv = {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG},
+		.instr_code = 7,
+		.wait_cycles = 6,
+		.dir_size = 4,
+		.encode = 1,
+		.f = op_or
+	},
+	{
+		.instr_name = "xor",
+		.argc = 3,
+		.argv = {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG},
+		.instr_code = 8,
+		.wait_cycles = 6,
+		.dir_size = 4,
+		.encode = 1,
+		.f = op_xor,
+	},
+	{
+		.instr_name = "zjmp",
+		.argc = 1,
+		.argv = {T_DIR, 0, 0},
+		.instr_code = 9,
+		.wait_cycles = 20,
+		.dir_size = 2,
+		.encode = 0,
+		.f = op_zjmp
+	},
+	{
+		.instr_name = "ldi",
+		.argc = 3,
+		.argv = {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG},
+		.instr_code = 10,
+		.wait_cycles = 25,
+		.dir_size = 2,
+		.encode = 1,
+		.f = op_ldi
+	},
+	{
+		.instr_name = "sti",
+		.argc = 3,
+		.argv = {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG},
+		.instr_code = 11,
+		.wait_cycles = 25,
+		.dir_size = 2,
+		.encode = 1,
+		.f = op_sti
+	},
+	{
+		.instr_name = "fork",
+		.argc = 1,
+		.argv = {T_DIR, 0, 0},
+		.instr_code = 12,
+		.wait_cycles = 800,
+		.dir_size = 2,
+		.encode = 0,
+		.f = op_fork
+	},
+	{
+		.instr_name = "lld",
+		.argc = 2,
+		.argv = {T_DIR | T_IND, T_REG, 0},
+		.instr_code = 13,
+		.wait_cycles = 10,
+		.dir_size = 4,
+		.encode = 1,
+		.f = op_lld
+	},
+	{
+		.instr_name = "lldi",
+		.argc = 3,
+		.argv = {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG},
+		.instr_code = 14,
+		.wait_cycles = 50,
+		.dir_size = 2,
+		.encode = 1,
+		.f = op_lldi
+	},
+	{
+		.instr_name = "lfork",
+		.argc = 1,
+		.argv = {T_DIR, 0, 0},
+		.instr_code = 15,
+		.wait_cycles = 1000,
+		.dir_size = 2,
+		.encode = 0,
+		.f = op_lfork
+	},
+	{
+		.instr_name = "aff",
+		.argc = 1,
+		.argv = {T_REG, 0, 0},
+		.instr_code = 16,
+		.wait_cycles = 2,
+		.dir_size = 4,
+		.encode = 1,
+		.f = op_aff
+	}
+};
+
 #endif
