@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 19:24:46 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/30 20:09:43 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/08/31 10:50:30 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,18 @@ void print_info(t_vm *vm, t_player *player, int y, int x)
 
 void    print_player_info(t_vm *vm)
 {
-    int i;
+    unsigned int i;
     int x;
     int y;
 
-	i = -1;
+	i = 0;
     y = 2;
     x = 4;
-	while (vm->p[++i].id)
+	while (i < vm->nb_players)
     {
         print_info(vm, &vm->p[i], y, x);
         y += 5;
+        i++;
     }
     wrefresh(vm->visu->side2);
 }
