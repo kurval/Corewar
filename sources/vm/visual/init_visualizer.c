@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 17:25:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/31 19:31:57 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/01 06:42:05 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	create_windows(t_vm *vm)
 	getmaxyx(stdscr, max_y, max_x);
 	sub_height = max_y / 3;
 	sub_width = max_x - WIDTH;
-	vm->visu->arena = newwin(HEIGHT, WIDTH, 1, 1);
+	vm->visu->arena = newwin(HEIGHT, WIDTH, 0, 0);
 	vm->visu->side1 = newwin(sub_height - 6, sub_width, 0, WIDTH);
 	vm->visu->side2 = newwin(sub_height + 2, sub_width, sub_height - 7, WIDTH);
 	vm->visu->side3 = newwin(sub_height + 4, sub_width, (sub_height * 2) - 6, WIDTH);
@@ -72,4 +72,6 @@ void			init_visualizer(t_vm *vm)
 	define_colors();
     create_windows(vm);
     set_owners(vm);
+    draw_logo(vm);
+	draw_footer(vm);
 }

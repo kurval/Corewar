@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 11:00:28 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/31 19:31:33 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/01 06:38:31 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ void draw_players(t_vm *vm)
 
 	i = -1;
     win = vm->visu->side2;
-    box_win(win);
 	while (++i < vm->nb_players)
     {
 		if (i == 0)
@@ -92,5 +91,6 @@ void draw_players(t_vm *vm)
             print_player4(vm, 17, 4);
     }
     print_player_info(vm);
+    box_win(win);
 	wrefresh(win);
 }

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 13:15:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/31 19:19:09 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/01 06:37:35 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ void	draw_arena(t_vm *vm)
 	int attribute;
 
 	werase(vm->visu->arena);
-	box_win(stdscr);
-	wprintw(vm->visu->arena, "\n");
+	wprintw(vm->visu->arena, "\n\n");
 	i = -1;
 	while (++i < MEM_SIZE / 64)
 	{
@@ -36,5 +35,6 @@ void	draw_arena(t_vm *vm)
 		}
 		wprintw(vm->visu->arena, " \n");
 	}
+	box_win(vm->visu->arena);
 	wrefresh(vm->visu->arena);
 }

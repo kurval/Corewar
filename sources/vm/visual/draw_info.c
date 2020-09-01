@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 19:24:46 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/31 19:31:39 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/01 06:38:14 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ void    print_player_info(t_vm *vm)
 
 static void print_battle_info(t_vm *vm, int y, int x)
 {
-    box_win(vm->visu->side3);
     wattron(vm->visu->side3, COLOR_PAIR(M_B) | A_BOLD);
     mvwprintw(vm->visu->side3, y, x, "CYCLES: ");
     mvwprintw(vm->visu->side3, y, x + 30, "PROCESSES: ");
@@ -69,5 +68,6 @@ void	draw_battle_info(t_vm *vm)
 	mvwprintw(win, 6, 4, "%ls", BI5);
 	wattroff(win, COLOR_PAIR(M_B) | A_BOLD);
     print_battle_info(vm, 10, 4);
+    box_win(vm->visu->side3);
 	wrefresh(win);
 }
