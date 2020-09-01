@@ -32,7 +32,7 @@ static int	is_valid_length(char *s)
 	num = -1;
 	if ((fd = open(s, O_RDONLY)) < 0)
 		ft_errno(OPEN_ERROR);
-	else if ((num = lseek(fd, 0, SEEK_END) - sizeof(header_t)) > CHAMP_MAX_SIZE)
+	else if ((num = lseek(fd, 0, SEEK_END) - sizeof(t_header)) > CHAMP_MAX_SIZE)
 		ft_errno(CHAMP_ERROR);
 	close(fd);
 	return (1);
