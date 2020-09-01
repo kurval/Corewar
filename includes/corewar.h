@@ -17,7 +17,7 @@
 # include "visu.h"
 # include "corewar_error.h"
 # include "../libft/libft.h"
-# include <stdio.h>
+# include <stdio.h> //remove before turning in the assignment
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
@@ -87,7 +87,7 @@ typedef struct		s_player
 	char			code[CHAMP_MAX_SIZE];
 	unsigned int	last_live;
 	unsigned int	period_lives;
-	header_t		h;
+	t_header		h;
 }					t_player;
 
 /*
