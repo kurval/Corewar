@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 16:35:07 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/31 19:32:02 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/01 07:27:51 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,7 @@ void    print_winner(t_vm *vm)
     WINDOW *win;
 
     win = vm->visu->side2;
-    vm->last_live_id = 3;
     werase(win);
-    box_win(win);
     if (vm->last_live_id == 1)
         print_player1(vm, 6, 4);
     else if (vm->last_live_id == 2)
@@ -47,5 +45,6 @@ void    print_winner(t_vm *vm)
         print_player4(vm, 6, 4);
     print_win(win, 13, 4);
     print_info(vm, &vm->p[vm->last_live_id - 1], 7, 4);
+    box_win(win);
     wrefresh(win);
 }

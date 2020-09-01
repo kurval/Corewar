@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/31 19:52:54 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/01 07:03:22 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -253,6 +253,7 @@ void				print_player4(t_vm *vm, int height, int weidth);
 void				print_info(t_vm *vm, t_player *player, int y, int x);
 void				print_player_info(t_vm *vm);
 void				init_visualizer(t_vm *vm);
+void				manage_windows(t_vm *vm);
 
 static const t_op			g_ops[16] = {
 	{

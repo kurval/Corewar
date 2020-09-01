@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 19:24:46 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/01 06:38:14 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/01 08:46:20 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,22 +37,24 @@ void    print_player_info(t_vm *vm)
         print_info(vm, &vm->p[i], y, x);
         y += 5;
     }
-    wrefresh(vm->visu->side2);
 }
 
 static void print_battle_info(t_vm *vm, int y, int x)
 {
-    wattron(vm->visu->side3, COLOR_PAIR(M_B) | A_BOLD);
-    mvwprintw(vm->visu->side3, y, x, "CYCLES: ");
-    mvwprintw(vm->visu->side3, y, x + 30, "PROCESSES: ");
-    wattron(vm->visu->side3, COLOR_PAIR(W_B) | A_BOLD);
-    mvwprintw(vm->visu->side3, y, x + 8, "%d", vm->cycles);
-    mvwprintw(vm->visu->side3, y, x + 41, "%d", vm->nb_procs);
-    mvwprintw(vm->visu->side3, y + 3, x, "CYCLE_TO_DIE: %d", CYCLE_TO_DIE);
-    mvwprintw(vm->visu->side3, y + 3, x + 30, "NBR_LIVE: %d", NBR_LIVE);
-    mvwprintw(vm->visu->side3, y + 6, x, "CYCLE_DELTA: %d", CYCLE_DELTA);
-    mvwprintw(vm->visu->side3, y + 6, x + 30, "MAX_CHECKS: %d", MAX_CHECKS);
-    wattroff(vm->visu->side3, COLOR_PAIR(W_B) | A_BOLD);
+    WINDOW *win;
+
+    win = vm->visu->side3;
+    wattron(win, COLOR_PAIR(M_B) | A_BOLD);
+    mvwprintw(win, y, x, "CYCLES: ");
+    mvwprintw(win, y, x + 30, "PROCESSES: ");
+    wattron(win, COLOR_PAIR(W_B) | A_BOLD);
+    mvwprintw(win, y, x + 8, "%d", vm->current_cycle);
+    mvwprintw(win, y, x + 41, "%d", vm->nb_procs);
+    mvwprintw(win, y + 3, x, "CYCLE_TO_DIE: %d", vm->ctd);
+    mvwprintw(win, y + 3, x + 30, "NBR_LIVE: %d", NBR_LIVE);
+    mvwprintw(win, y + 6, x, "CYCLE_DELTA: %d", CYCLE_DELTA);
+    mvwprintw(win, y + 6, x + 30, "MAX_CHECKS: %d", MAX_CHECKS);
+    wattroff(win, COLOR_PAIR(W_B) | A_BOLD);
 }
 
 void	draw_battle_info(t_vm *vm)
@@ -60,6 +62,7 @@ void	draw_battle_info(t_vm *vm)
     WINDOW *win;
 
     win = vm->visu->side3;
+    werase(win);
 	wattron(win, COLOR_PAIR(M_B) | A_BOLD);
 	mvwprintw(win, 2, 4, "%ls", BI1);
 	mvwprintw(win, 3, 4, "%ls", BI2);
