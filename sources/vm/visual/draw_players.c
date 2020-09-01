@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_players.c                                    :+:      :+:    :+:   */
+/*   draw_players.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 11:00:28 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/31 13:10:58 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/01 08:46:00 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,11 +72,14 @@ void print_player4(t_vm *vm, int height, int weidth)
 	wattroff(vm->visu->side2, COLOR_PAIR(R_B) | A_BOLD);
 }                     
 
-void print_players(t_vm *vm)
+void draw_players(t_vm *vm)
 {
     unsigned int i;
+    WINDOW *win;
 
 	i = -1;
+    win = vm->visu->side2;
+    werase(win);
 	while (++i < vm->nb_players)
     {
 		if (i == 0)
@@ -88,5 +91,7 @@ void print_players(t_vm *vm)
         else if (i == 3)
             print_player4(vm, 17, 4);
     }
-	wrefresh(vm->visu->side2);
+    print_player_info(vm);
+    box_win(win);
+	wrefresh(win);
 }

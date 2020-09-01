@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/31 12:47:28 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/01 09:37:39 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,7 +195,7 @@ void				remove_proc(t_vm *vm, t_process **proc_list,
 int					int_arg(t_vm *vm, int idx);
 int					get_op_values(t_vm *vm, t_process *proc, int arg);
 void				load_into_memory(t_vm *vm, unsigned int addr,
-					void *content);
+					void *content, t_process *proc);
 void				init_processes(t_vm *vm);
 void				decleare_winner(t_vm *vm);
 void				add_to_list(t_process *new, t_process **list);
@@ -239,18 +239,21 @@ void				op_zjmp(t_vm *vm, t_process *proc);
 void				start_visualizer(t_vm *vm);
 void				define_colors(void);
 int					get_attribute(t_vm *vm, int idx);
-void				set_owners(t_vm *vm);
 void				draw_arena(t_vm *vm);
-void				print_players(t_vm *vm);
+void				draw_players(t_vm *vm);
+void				draw_logo(t_vm *vm);
+void				draw_battle_info(t_vm *vm);
+void				draw_footer(t_vm *vm);
 void				print_winner(t_vm *vm);
 void				box_win(WINDOW *win);
 void				print_player1(t_vm *vm, int height, int weidth);
 void				print_player2(t_vm *vm, int height, int weidth);
 void				print_player3(t_vm *vm, int height, int weidth);
 void				print_player4(t_vm *vm, int height, int weidth);
-void				print_player_info(t_vm *vm);
 void				print_info(t_vm *vm, t_player *player, int y, int x);
-void				print_battle_info(t_vm *vm, int y, int x);
+void				print_player_info(t_vm *vm);
+void				init_visualizer(t_vm *vm);
+void				manage_windows(t_vm *vm);
 
 static const t_op			g_ops[16] = {
 	{

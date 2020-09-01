@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 22:48:50 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/30 20:10:25 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/01 06:34:55 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <ncurses.h>
 # include <locale.h>
 
-# define HEIGHT (MEM_SIZE / 64 + 2)
+# define HEIGHT (MEM_SIZE / 64 + 4)
 # define WIDTH ((MEM_SIZE / 64) * 3 + 4)
 
 # define GREEN	1

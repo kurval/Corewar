@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:38 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/31 12:58:08 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/01 07:18:56 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ void	op_live(t_vm *vm, t_process *proc)
 	value1 = get_op_values(vm, proc, 1) * -1;
 	while (++i < vm->nb_players)
 	{
-		vm->p[i].last_live = vm->current_cycle;
-		vm->p[i].period_lives++;
 		if (vm->p[i].id == value1)
+		{
+			vm->p[i].last_live = vm->current_cycle;
+			vm->p[i].period_lives++;
 			vm->last_live_id = value1;
+		}
 	}
 	if (vm->a_flag)
 	{

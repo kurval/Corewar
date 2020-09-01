@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   winner.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/21 15:52:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 16:01:39 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/08/31 19:35:32 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,4 @@ void	decleare_winner(t_vm *vm)
 			return ;
 		}
 	}
-	ft_printf("No winner...\n");
 }

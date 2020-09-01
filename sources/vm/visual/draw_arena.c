@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 13:15:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/30 18:59:35 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/01 09:24:02 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	draw_arena(t_vm *vm)
 	int attribute;
 
 	werase(vm->visu->arena);
-	wprintw(vm->visu->arena, "\n");
+	wprintw(vm->visu->arena, "\n\n");
 	i = -1;
 	while (++i < MEM_SIZE / 64)
 	{
@@ -35,25 +35,6 @@ void	draw_arena(t_vm *vm)
 		}
 		wprintw(vm->visu->arena, " \n");
 	}
+	box_win(vm->visu->arena);
 	wrefresh(vm->visu->arena);
-}
-
-void	set_owners(t_vm *vm)
-{
-	unsigned int i;
-	unsigned int j;
-	unsigned int addr;
-
-	addr = 0;
-	i = -1;
-	while (++i < MEM_SIZE)
-		vm->visu->attr_arena[i].owner = 0;
-	i = -1;
-	while (++i < vm->nb_players)
-	{
-		j = -1;
-		while (++j < vm->p[i].h.prog_size)
-			vm->visu->attr_arena[addr + j].owner = vm->p[i].id;
-		addr += MEM_SIZE / vm->nb_players;
-	}
 }
