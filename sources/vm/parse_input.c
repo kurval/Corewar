@@ -100,7 +100,7 @@ void		parse_input(int ac, char **av, t_vm *vm)
 				|| (ft_strequ("-v", av[i]) && (vm->v_flag = 1)))
 			continue;
 		get_player(av[i], &(vm->p[num - 1]), num);
-		id_arr[num -1] = 0;
+		id_arr[num - 1] = 0;
 	}
 	introduce_champs(vm);
 }

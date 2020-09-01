@@ -43,8 +43,8 @@ void		init_vm(t_vm *vm)
 	vm->proc_list = NULL;
 	vm->visu = NULL;
 	vm->a_flag = 0;
-    vm->v_flag = 0;
-    vm->id_counter = 1;
+	vm->v_flag = 0;
+	vm->id_counter = 1;
 }
 
 /*
