@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/24 15:41:53 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/01 09:37:56 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ void	op_sti(t_vm *vm, t_process *proc)
 	addr_val1 = get_op_values(vm, proc, 2);
 	addr_val2 = get_op_values(vm, proc, 3);
 	addr = get_addr(proc->pc + ((addr_val1 + addr_val2) % IDX_MOD));
-	load_into_memory(vm, addr, (void *)&value1);
+	load_into_memory(vm, addr, (void *)&value1, proc);
 }

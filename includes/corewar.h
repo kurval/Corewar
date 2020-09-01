@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/01 07:03:22 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/01 09:37:39 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,7 +195,7 @@ void				remove_proc(t_vm *vm, t_process **proc_list,
 int					int_arg(t_vm *vm, int idx);
 int					get_op_values(t_vm *vm, t_process *proc, int arg);
 void				load_into_memory(t_vm *vm, unsigned int addr,
-					void *content);
+					void *content, t_process *proc);
 void				init_processes(t_vm *vm);
 void				decleare_winner(t_vm *vm);
 void				add_to_list(t_process *new, t_process **list);

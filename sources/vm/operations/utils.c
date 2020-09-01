@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 23:25:59 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/24 13:51:56 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/01 09:43:19 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,19 @@
 ** Sests value from registry into the arena as unsigned char.
 */
 
-void	load_into_memory(t_vm *vm, unsigned int addr, void *content)
+void	load_into_memory(t_vm *vm, unsigned int addr,\
+		void *content, t_process *proc)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (++i < REG_SIZE)
 	{
-		vm->a->arena[get_addr(addr
-		+ i)] = ((unsigned char *)content)[REG_SIZE - i - 1];
+		vm->a->arena[get_addr(addr + i)] =\
+		((unsigned char *)content)[REG_SIZE - i - 1];
+		if (vm->v_flag)
+			vm->visu->attr_arena[get_addr(addr + i)].owner =\
+			proc->player_id;
 	}
 }
 
