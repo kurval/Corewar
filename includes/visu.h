@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 22:48:50 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/01 06:34:55 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/01 16:55:24 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,18 @@
 # define WIN4  L"██║███╗██║██║██║╚██╗██║╚════██║"
 # define WIN5  L"╚███╔███╔╝██║██║ ╚████║███████║"
 # define WIN6  L" ╚══╝╚══╝ ╚═╝╚═╝  ╚═══╝╚══════╝"
-                                      
+
+# define S1 L"█ █ █ █ █ █ █ █ █ █ █ MAX"
+# define S2 L"█ █ █ █ █ █ █ █ █ █   MAX"
+# define S3 L"█ █ █ █ █ █ █ █ █     MAX"
+# define S4 L"█ █ █ █ █ █ █ █       MAX"
+# define S5 L"█ █ █ █ █ █ █         MAX"
+# define S6 L"█ █ █ █ █ █           MAX"
+# define S7 L"█ █ █ █ █             MAX"
+# define S8 L"█ █ █ █               MAX"
+# define S9 L"█ █ █                 MAX"
+# define S10 L"█ █                   MAX"
+# define S11 L"█                     MAX"
+
 #endif
                                                                                                                                               

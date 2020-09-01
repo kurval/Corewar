@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/01 09:37:39 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/01 17:37:26 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,8 @@ typedef struct		s_visu
 	WINDOW			*side3;
 	WINDOW			*side4;
 	t_attr			attr_arena[MEM_SIZE];
+	int				speed;
+	int				running;
 }					t_visu;
 
 /*
@@ -253,7 +255,7 @@ void				print_player4(t_vm *vm, int height, int weidth);
 void				print_info(t_vm *vm, t_player *player, int y, int x);
 void				print_player_info(t_vm *vm);
 void				init_visualizer(t_vm *vm);
-void				manage_windows(t_vm *vm);
+void				manage_windows(t_vm *vm, int key);
 
 static const t_op			g_ops[16] = {
 	{
