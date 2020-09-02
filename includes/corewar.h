@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/02 13:54:06 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/02 15:01:35 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -250,10 +250,10 @@ void				draw_battle_info(t_vm *vm);
 void				draw_footer(t_vm *vm);
 void				print_winner(t_vm *vm);
 void				box_win(WINDOW *win);
-void				print_player1(t_vm *vm, int height, int weidth);
-void				print_player2(t_vm *vm, int height, int weidth);
-void				print_player3(t_vm *vm, int height, int weidth);
-void				print_player4(t_vm *vm, int height, int weidth);
+void				print_player1(t_vm *vm, int height, int weidth, int color_nb);
+void				print_player2(t_vm *vm, int height, int weidth, int color_nb);
+void				print_player3(t_vm *vm, int height, int weidth, int color_nb);
+void				print_player4(t_vm *vm, int height, int weidth, int color_nb);
 void				print_info(t_vm *vm, t_player *player, int y, int x);
 void				print_player_info(t_vm *vm);
 void				init_visualizer(t_vm *vm);
