@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/01 17:37:26 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/02 10:49:32 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ typedef struct		s_op
 typedef struct		s_attr
 {
 	int				owner;
+	bool			cursor;
 }					t_attr;
 
 typedef struct		s_visu
@@ -165,7 +166,7 @@ typedef struct		s_visu
 	WINDOW			*side2;
 	WINDOW			*side3;
 	WINDOW			*side4;
-	t_attr			attr_arena[MEM_SIZE];
+	t_attr			attributes[MEM_SIZE];
 	int				speed;
 	int				running;
 }					t_visu;

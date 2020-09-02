@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 11:20:24 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/31 17:13:08 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/02 09:47:47 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,4 +25,9 @@ void define_colors(void)
     init_pair(G_B, GRAY, COLOR_BLACK);
     init_pair(W_B, WHITE, COLOR_BLACK);
     init_pair(GREEN, COLOR_GREEN, COLOR_BLACK);
+    init_pair(GREEN_CURSOR, COLOR_BLACK, COLOR_GREEN);
+    init_pair(B_CURSOR, COLOR_BLACK, COLOR_BLUE);
+    init_pair(Y_CURSOR, COLOR_BLACK, COLOR_YELLOW);
+    init_pair(R_CURSOR, COLOR_BLACK, COLOR_RED);
+    init_pair(G_CURSOR, COLOR_BLACK, GRAY);
 }

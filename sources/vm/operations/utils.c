@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 23:25:59 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/01 09:43:19 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/02 10:51:34 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	load_into_memory(t_vm *vm, unsigned int addr,\
 		vm->a->arena[get_addr(addr + i)] =\
 		((unsigned char *)content)[REG_SIZE - i - 1];
 		if (vm->v_flag)
-			vm->visu->attr_arena[get_addr(addr + i)].owner =\
+			vm->visu->attributes[get_addr(addr + i)].owner =\
 			proc->player_id;
 	}
 }

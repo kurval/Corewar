@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 17:25:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/01 17:37:41 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/02 10:50:35 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static void	set_owners(t_vm *vm)
 	addr = 0;
 	i = -1;
 	while (++i < MEM_SIZE)
-		vm->visu->attr_arena[i].owner = 0;
+		vm->visu->attributes[i].owner = 0;
 	i = -1;
 	while (++i < vm->nb_players)
 	{
 		j = -1;
 		while (++j < vm->p[i].h.prog_size)
-			vm->visu->attr_arena[addr + j].owner = vm->p[i].id;
+			vm->visu->attributes[addr + j].owner = vm->p[i].id;
 		addr += MEM_SIZE / vm->nb_players;
 	}
 }

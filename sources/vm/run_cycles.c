@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/01 17:16:30 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/02 11:02:33 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ static void	set_opcode(t_vm *vm, t_process *proc)
 
 static void	execute_operation(t_vm *vm, t_process *proc)
 {
-	if (!proc->wait_cycles)
-		set_opcode(vm, proc);
+	vm->v_flag ? vm->visu->attributes[proc->pc].cursor = true : 0;
+	!proc->wait_cycles ? set_opcode(vm, proc) : 0;
 	proc->wait_cycles -= 1;
 	if (!proc->wait_cycles)
 	{
@@ -145,9 +145,9 @@ void		run_cycles(t_vm *vm)
 		}
 		if (vm->ctd <= 0 || vm->cycles == (unsigned int)vm->ctd)
 			perform_check(vm, &vm->proc_list);
-		if (vm->v_flag)
-			manage_windows(vm, getch());
 		if (vm->current_cycle == vm->dump_cycle)
 			dump_memory(vm);
+		if (vm->v_flag)
+			manage_windows(vm, getch());
 	}
 }
