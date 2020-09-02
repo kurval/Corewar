@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 19:24:46 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/01 16:46:38 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/02 13:50:04 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,14 @@ static void print_battle_info(t_vm *vm, int y, int x)
     mvwprintw(win, y + 4, x + 30, "MAX_CHECKS: %d", MAX_CHECKS);
     mvwprintw(win, y + 7, x, "SPEED: ");
     mvwprintw(win, y + 10, x + 4, "Press '<-' or '->' to adjust speed");
-    mvwprintw(win, y + 12, x + 4, "Press SPACE to pause");
-    mvwprintw(win, y + 14, x + 4, "Press ESC to quit");
+    mvwprintw(win, y + 11, x + 4, "Press SPACE to pause");
+    mvwprintw(win, y + 12, x + 4, "Press 'd' to debug");
+    mvwprintw(win, y + 13, x + 4, "Press ESC to quit");
     wattron(win, COLOR_PAIR(M_B) | A_BOLD);
     mvwprintw(win, y + 10, x, "--> ");
+    mvwprintw(win, y + 11, x, "--> ");
     mvwprintw(win, y + 12, x, "--> ");
-    mvwprintw(win, y + 14, x, "--> ");
+    mvwprintw(win, y + 13, x, "--> ");
     wattroff(win, COLOR_PAIR(M_B) | A_BOLD);
     print_speed(vm, y, x);
 }

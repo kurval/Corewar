@@ -6,16 +6,22 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 19:04:30 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/01 17:53:54 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/02 13:43:00 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/corewar.h"
 
-static void print_pause(WINDOW *win)
+static void print_pause(t_vm *vm)
 {
+	WINDOW *win;
+
+    win = vm->visu->side1;
     wattron(win, COLOR_PAIR(W_B));
-	mvwprintw(win, 13, 30, "**PAUSED**");
+	if (vm->visu->debug)
+		mvwprintw(win, 13, 26, "**DEBUG MODE**");
+	else
+		mvwprintw(win, 13, 30, "**PAUSED**");
 	wattroff(win, COLOR_PAIR(W_B));
 }
 
@@ -38,7 +44,7 @@ void draw_logo(t_vm *vm)
 	mvwprintw(win, 12, 4, "%ls", LOGO10);
 	wattroff(win, COLOR_PAIR(R_B));
     if (!vm->visu->running)
-        print_pause(win);
+        print_pause(vm);
     box_win(win);
 	wrefresh(win);
 }
