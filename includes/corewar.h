@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/02 10:49:32 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/02 13:54:06 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,8 @@ typedef struct		s_visu
 	WINDOW			*side4;
 	t_attr			attributes[MEM_SIZE];
 	int				speed;
-	int				running;
+	bool			running;
+	bool			debug;
 }					t_visu;
 
 /*

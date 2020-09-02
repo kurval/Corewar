@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 22:48:50 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/02 09:42:26 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/02 12:49:26 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 
 # define HEIGHT (MEM_SIZE / 64 + 4)
 # define WIDTH ((MEM_SIZE / 64) * 3 + 4)
+
+# define ESC    27
+# define SPACE  32
 
 # define GREEN	1
 # define B_B	2

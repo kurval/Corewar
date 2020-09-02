@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 12:50:02 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/02 10:50:16 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/02 13:54:36 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,30 @@ static void	get_speed(t_vm *vm, int key)
 		vm->visu->speed -= 10000;
 }
 
-static void	pause_visu(t_vm *vm)
-{
-	vm->visu->running = 0;
-	draw_logo(vm);
-	while (!vm->visu->running)
-	{
-		if (getch() == 32)
-			vm->visu->running = 1;
-	}
-}
-
 static void	exit_visu(t_vm *vm)
 {
 	endwin();
 	ft_printf("Thanks for playing!\n");
 	free_all(vm);
+}
+
+static void	pause_visu(t_vm *vm)
+{
+	int key;
+	
+	vm->visu->running = false;
+	draw_logo(vm);
+	while (!vm->visu->running)
+	{
+		key = getch();
+		if (key == SPACE || key == 'd')
+		{
+			(key == 'd') ? vm->visu->debug = 0 : 0;
+			vm->visu->running = true;
+		}
+		else if (key == ESC)
+			exit_visu(vm);
+	}
 }
 
 void	manage_windows(t_vm *vm, int key)
@@ -45,9 +53,11 @@ void	manage_windows(t_vm *vm, int key)
 	draw_players(vm);
 	draw_battle_info(vm);
 	draw_footer(vm);
-	if (key == 27)
+	if (key == ESC)
 		exit_visu(vm);
-	else if (vm->visu->running && key == 32)
+	else if (key == 'd')
+		vm->visu->debug = (!vm->visu->debug);
+	if (key == SPACE || vm->visu->debug)
 		pause_visu(vm);
 	get_speed(vm, key);
 	usleep (vm->visu->speed);
