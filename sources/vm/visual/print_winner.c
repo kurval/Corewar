@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 16:35:07 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/02 14:58:57 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/02 16:27:24 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,15 @@ void    print_winner(t_vm *vm)
     winner = vm->last_live_id;
     werase(win);
     if (winner == 1)
-        print_player1(vm, 6, 4, winner);
+        print_player1(vm, 4, 4, winner);
     else if (winner == 2)
-        print_player2(vm, 6, 4, winner);
+        print_player2(vm, 4, 4, winner);
     else if (winner == 3)
-        print_player3(vm, 6, 4, winner);
+        print_player3(vm, 4, 4, winner);
     else if (winner == 4)
-        print_player4(vm, 6, 4, winner);
-    print_win(win, 13, 4);
-    print_info(vm, &vm->p[vm->last_live_id - 1], 7, 4);
+        print_player4(vm, 4, 4, winner);
+    print_win(win, 10, 4);
+    print_info(vm, &vm->p[vm->last_live_id - 1], 5, 4);
     box_win(win);
     wrefresh(win);
 }
