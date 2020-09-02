@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 13:15:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/02 10:51:15 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/02 14:27:56 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	draw_line(t_vm *vm, int i)
 	int				attribute;
 
 	j = -1;
-	wprintw(vm->visu->arena, " ");
+	wprintw(vm->visu->arena, "  ");
 	while (++j < MEM_SIZE / 64)
 	{
 		attribute = get_attribute(vm, i * 64 + j);

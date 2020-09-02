@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 22:48:50 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/02 12:49:26 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/02 15:23:59 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,26 +17,27 @@
 # include <locale.h>
 
 # define HEIGHT (MEM_SIZE / 64 + 4)
-# define WIDTH ((MEM_SIZE / 64) * 3 + 4)
+# define WIDTH ((MEM_SIZE / 64) * 3 + 5)
 
 # define ESC    27
 # define SPACE  32
 
+# define G_B	0
 # define GREEN	1
 # define B_B	2
-# define Y_B	3
-# define R_B	4
+# define R_B	3
+# define C_B	4
 # define M_B	5
-# define G_B	6
-# define W_B	7
-# define GREEN_CURSOR 8
-# define B_CURSOR 9
-# define Y_CURSOR 10
-# define R_CURSOR 11
-# define G_CURSOR 12
-# define GRAY	13
-# define WHITE	14
-# define FRAME	15
+# define W_B	6
+# define Y_B	7
+# define G_CURSOR 10
+# define GREEN_CURSOR 11
+# define B_CURSOR 12
+# define R_CURSOR 13
+# define C_CURSOR 14
+# define GRAY	15
+# define WHITE	16
+# define FRAME	17
 
 # define LOGO1  L" ▄████▄   ▒█████   ██▀███  ▓█████  █     █░ ▄▄▄       ██▀███  "
 # define LOGO2  L"▒██▀ ▀█  ▒██▒  ██▒▓██ ▒ ██▒▓█   ▀ ▓█░ █ ░█░▒████▄    ▓██ ▒ ██▒"
