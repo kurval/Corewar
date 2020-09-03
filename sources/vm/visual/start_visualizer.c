@@ -6,18 +6,19 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 12:50:02 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/03 16:59:51 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/03 17:10:58 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/corewar.h"
 
-static void	get_speed(t_vm *vm, int key)
+static int	get_speed(t_vm *vm, int key)
 {
 	if (key == KEY_LEFT && vm->visu->speed < 100000)
 		vm->visu->speed += 10000;
 	else if (key == KEY_RIGHT && vm->visu->speed > 10000)
 		vm->visu->speed -= 10000;
+	return (vm->visu->speed);
 }
 
 static void	exit_visu(t_vm *vm)
@@ -60,8 +61,7 @@ void		manage_windows(t_vm *vm, int key)
 		vm->visu->debug = (!vm->visu->debug);
 	if (key == SPACE || vm->visu->debug)
 		pause_visu(vm);
-	get_speed(vm, key);
-	usleep(vm->visu->speed);
+	usleep(get_speed(vm, key));
 }
 
 void		start_visualizer(t_vm *vm)
