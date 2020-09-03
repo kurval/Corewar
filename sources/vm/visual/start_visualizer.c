@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 12:50:02 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/03 18:08:18 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/03 18:18:34 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static int	get_speed(t_vm *vm, int key)
 
 static void	exit_visu(t_vm *vm)
 {
+	free(vm->visu);
 	free_proc_list(&vm->proc_list);
 	endwin();
 	ft_printf("Thanks for playing!\n");
