@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/02 15:01:35 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/03 16:57:33 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct		s_arena
 ** - reg[REG_NUMBER] : registries of current cursor
 ** - args[3] : current cursors argument types
 ** - values[3] : current cursors argument values
+** - player_id : owner of this process
 **	>T_REG registry number
 **	>T_DIR A number, saved on 2 or 4 bytes, depending on label
 **	>T_IND relative address number
@@ -156,6 +157,8 @@ typedef struct		s_op
 typedef struct		s_attr
 {
 	int				owner;
+	int				live;
+	int				new_mem;
 	bool			cursor;
 }					t_attr;
 
@@ -190,7 +193,6 @@ void				ft_errno(char *id);
 void				get_op(t_op *op);
 int					validate_encoding(t_vm *vm, int encode_byte,
 					t_process *proc);
-void				free_all(t_vm *vm);
 void				*assign_opfunctions(int opcode);
 int					get_addr(int addr);
 int					get_args(t_vm *vm, t_process *proc);
@@ -205,6 +207,7 @@ void				decleare_winner(t_vm *vm);
 void				add_to_list(t_process *new, t_process **list);
 t_process			*new_proc();
 t_process			*copy_proc(t_vm *vm, t_process *og_proc);
+void				free_proc_list(t_process **proc_list);
 
 /*
 **					PARSE INPUT FUNCTIONS
@@ -250,10 +253,14 @@ void				draw_battle_info(t_vm *vm);
 void				draw_footer(t_vm *vm);
 void				print_winner(t_vm *vm);
 void				box_win(WINDOW *win);
-void				print_player1(t_vm *vm, int height, int weidth, int color_nb);
-void				print_player2(t_vm *vm, int height, int weidth, int color_nb);
-void				print_player3(t_vm *vm, int height, int weidth, int color_nb);
-void				print_player4(t_vm *vm, int height, int weidth, int color_nb);
+void				print_player1(t_vm *vm, int height, int weidth,
+					int color_nb);
+void				print_player2(t_vm *vm, int height, int weidth,
+					int color_nb);
+void				print_player3(t_vm *vm, int height, int weidth,
+					int color_nb);
+void				print_player4(t_vm *vm, int height, int weidth,
+					int color_nb);
 void				print_info(t_vm *vm, t_player *player, int y, int x);
 void				print_player_info(t_vm *vm);
 void				init_visualizer(t_vm *vm);

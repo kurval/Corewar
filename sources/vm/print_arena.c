@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:47:04 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/28 11:28:43 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/03 16:57:09 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,21 @@ void	print_arena(t_arena *arena)
 	}
 }
 
+void	free_proc_list(t_process **proc_list)
+{
+	t_process	*current;
+	t_process	*next;
+
+	current = *proc_list;
+	while (current)
+	{
+		next = current->next;
+		free(current);
+		current = next;
+	}
+	*proc_list = NULL;
+}
+
 void	dump_memory(t_vm *vm)
 {
 	int i;
@@ -48,5 +63,6 @@ void	dump_memory(t_vm *vm)
 			i < MEM_SIZE ? ft_printf("%#.4x : ", i) : 0;
 		}
 	}
-	free_all(vm);
+	free_proc_list(&vm->proc_list);
+	exit(1);
 }

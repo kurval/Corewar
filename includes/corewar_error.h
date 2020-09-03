@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar_error.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:39:30 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/25 08:08:16 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/03 16:27:04 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,7 @@
 # define DUMP_ERROR_SET "ERROR: Dump already set"
 
 # define NB_PROCS_ERROR "ERROR: Too many processes"
+
+# define MALLOC_ERROR "ERROR: Malloc failed"
 
 #endif
