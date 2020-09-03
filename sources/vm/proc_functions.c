@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   proc_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 16:55:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/31 10:36:56 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/03 16:31:46 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_process	*new_proc(void)
 	t_process *new;
 
 	if (!(new = (t_process*)malloc(sizeof(t_process))))
-		exit(1);
+		ft_errno(MALLOC_ERROR);
 	new->next = NULL;
 	return (new);
 }
@@ -67,7 +67,8 @@ t_process	*copy_proc(t_vm *vm, t_process *og_proc)
 	t_process	*new;
 	int			i;
 
-	if (vm->nb_procs == UINT_MAX)
+	if (vm->nb_procs == UINT_MAX ||\
+	vm->id_counter + 1 == UINT_MAX)
 	{
 		ft_putendl(NB_PROCS_ERROR);
 		exit(EXIT_FAILURE);

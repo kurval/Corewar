@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/03 13:51:38 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/03 16:11:53 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -193,7 +193,6 @@ void				ft_errno(char *id);
 void				get_op(t_op *op);
 int					validate_encoding(t_vm *vm, int encode_byte,
 					t_process *proc);
-void				free_all(t_vm *vm);
 void				*assign_opfunctions(int opcode);
 int					get_addr(int addr);
 int					get_args(t_vm *vm, t_process *proc);
