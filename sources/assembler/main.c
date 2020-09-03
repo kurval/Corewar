@@ -46,9 +46,9 @@ char			*get_usage(void)
 {
 	return ("Usage: ./asm [-hefx] <sourcefile.s>\n \
 	-h	prints usage\n \
-	-e	prints all errors instead of only the first one\n \
+	-e	prints more errors instead of only the first one\n \
 	-r	creates .cor file in current location\n \
-	-x	prints hexdump");
+	-x	prints hexdump\n");
 }
 
 /*
@@ -66,12 +66,19 @@ int				main(int argc, char **argv)
 
 	if (!(source = check_args(argc, argv, &dest)))
 		handle_error(get_usage());
-	if (overlap(get_flags(), flag_h))
+	if (overlap(g_flags, flag_h))
 	{
 		ft_printf(get_usage());
 		exit(0);
 	}
+	if (overlap(g_flags, flag_e))
+		toggle_error_debug_flag();
 	assembler = handle_file(source, assembler);
+	if (overlap(g_flags, flag_e))
+	{
+		handle_error(EXIT_IF_ERRORS);
+		toggle_error_debug_flag();
+	}
 	make_cor_file(source, assembler);
 	free_memory(assembler.op, &assembler.champ);
 	return (0);

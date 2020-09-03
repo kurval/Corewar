@@ -17,7 +17,7 @@ void	check_str_len(char *name, char *comment)
 	char	*msg;
 	char	*max_len;
 
-	if (ft_strlen(name) > PROG_NAME_LENGTH)
+	if (name && ft_strlen(name) > PROG_NAME_LENGTH)
 	{
 		if (!(max_len = ft_itoa(PROG_NAME_LENGTH)))
 			handle_error(MALLOC_ERROR);
@@ -25,7 +25,7 @@ void	check_str_len(char *name, char *comment)
 		ft_strdel(&max_len);
 		handle_error(msg);
 	}
-	else if (ft_strlen(comment) > COMMENT_LENGTH)
+	else if (comment && ft_strlen(comment) > COMMENT_LENGTH)
 	{
 		if (!(max_len = ft_itoa(COMMENT_LENGTH)))
 			handle_error(MALLOC_ERROR);

@@ -60,7 +60,7 @@ t_state state)
 
 	bytes = get_bytes(fd, nbr, size);
 	byte_nbr = write(fd, bytes, size);
-	if (overlap(get_flags(), flag_x))
+	if (overlap(g_flags, flag_x))
 		write_hexdump(bytes, byte_nbr, state);
 	free(bytes);
 }
@@ -78,7 +78,7 @@ t_state state)
 
 	strlen = ft_strlen(str);
 	byte_nbr = write(fd, str, strlen);
-	if (overlap(get_flags(), flag_x))
+	if (overlap(g_flags, flag_x))
 		write_hexdump((unsigned char *)str, byte_nbr, state);
 	size = size - strlen;
 	if (size > 0)

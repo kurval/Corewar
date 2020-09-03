@@ -19,11 +19,11 @@
 ** 2. Prints the correct error msg to STDERR
 */
 
-void		check_token_validity(t_token *token, t_op *op)
+void			check_token_validity(t_token *token, t_op *op)
 {
 	int	argc;
 
-	if (token->type == label)
+	if (token && token->type == label)
 		token = token->next;
 	if (token && token->type == instruction)
 	{
@@ -34,14 +34,15 @@ void		check_token_validity(t_token *token, t_op *op)
 		token = token->next;
 		argc = 0;
 		while (token && (overlap((T_REG | T_DIR | T_IND), token->type) ||
-		token->type == separator) && argc < op->argc)
+		token->type == separator) && (op && argc < op->argc))
 		{
 			if (token->type != separator &&
 			!overlap(op->argv[argc++], token->type))
 				handle_error("Invalid argument");
 			token = token->next;
 		}
-		if (argc != op->argc || token->type != endline)
+		if ((op && argc != op->argc) || (token && token->type != endline) || \
+		!token)
 			handle_error("Invalid amount of arguments");
 	}
 }
@@ -51,9 +52,9 @@ void		check_token_validity(t_token *token, t_op *op)
 **	and that info is set before other types of tokens.
 */
 
-void		check_statement_order(t_token *token, t_champ *champ)
+void			check_statement_order(t_token *token, t_champ *champ)
 {
-	if (token->type != endline)
+	if (token && token->type != endline)
 	{
 		if (overlap(token->type, cmd_str))
 		{
@@ -63,7 +64,10 @@ void		check_statement_order(t_token *token, t_champ *champ)
 				handle_error_msg(SYNTAX_ERROR, token);
 		}
 		else if (!champ->done)
+		{
 			handle_error_msg(SYNTAX_ERROR, token);
+			champ->done = DEBUG_AFTER_MISSING_INFO;
+		}
 	}
 }
 
@@ -77,7 +81,7 @@ void		check_statement_order(t_token *token, t_champ *champ)
 ** 2. Prints the correct error msg to STDERR
 */
 
-static int	is_arg_or_sep(int ord, int type)
+static int		is_arg_or_sep(int ord, int type)
 {
 	if ((!(ord % 2) && overlap((T_REG | T_DIR | T_IND), type)) ||
 	(ord % 2 && type == separator))
@@ -85,31 +89,36 @@ static int	is_arg_or_sep(int ord, int type)
 	return (0);
 }
 
-void		check_token_order(t_token *token)
+static t_token	*check_instr_token_order(t_token *token)
 {
-	int	i;
+	int i;
 
+	if (token && token->type == label)
+		token = token->next;
+	if (token && token->type == instruction)
+	{
+		token = token->next;
+		i = 0;
+		while (token && is_arg_or_sep(i, token->type) && i++ < 5)
+			token = token->next;
+		if (!(i % 2))
+			handle_error_msg(SYNTAX_ERROR, token);
+	}
+	return (token);
+}
+
+void			check_token_order(t_token *token)
+{
 	if (token && overlap(token->type, cmd_str))
 	{
 		token = token->next;
 		if (!token || token->type != string)
 			handle_error_msg(SYNTAX_ERROR, token);
-		token = token->next;
+		else
+			token = token->next;
 	}
 	else
-	{
-		if (token && token->type == label)
-			token = token->next;
-		if (token && token->type == instruction)
-		{
-			token = token->next;
-			i = 0;
-			while (token && is_arg_or_sep(i, token->type) && i++ < 5)
-				token = token->next;
-			if (!(i % 2))
-				handle_error_msg(SYNTAX_ERROR, token);
-		}
-	}
+		token = check_instr_token_order(token);
 	if (!token || token->type != endline)
 		handle_error_msg(SYNTAX_ERROR, token);
 }

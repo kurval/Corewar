@@ -129,13 +129,14 @@ else
 		do
 			rm $DESTDIR/orig_output 2> /dev/null
 			rm $DESTDIR/our_output 2> /dev/null
-
-
+			ORIG_ABORT=0
+			OUR_ABORT=0
 			echo -n "$TEST_NBR " > $DESTDIR/orig_output
 			$ORIG_EXE $f >> $DESTDIR/orig_output 2>&1
 			if [ $? -gt 1 ];
 			then
 				echo "abort" >> $DESTDIR/orig_output
+				ORIG_ABORT=1
 			fi
 			cp $FOLDER/*.cor $DESTDIR/orig.cor.temp 2> /dev/null
 			mv $FOLDER/*.cor $DESTDIR/orig_cor_files/. 2> /dev/null
@@ -147,6 +148,7 @@ else
 			if [ $? -gt 1 ];
 			then
 				echo "abort" >> $DESTDIR/orig_output
+				OUR_ABORT=1
 			fi
 			cp $FOLDER/*.cor $DESTDIR/our.cor.temp 2> /dev/null
 			mv $FOLDER/*.cor $DESTDIR/our_cor_files/. 2> /dev/null
@@ -178,31 +180,39 @@ else
 					if [ $? -eq 0 ];
 					then
 						echo -ne "${TEST_NBR} $f " >> $DESTDIR/.summary
-						echo -e "${GREEN}OK${NOCOL}" | tee -a $DESTDIR/.summary
+						echo -ne "${GREEN}OK${NOCOL}" | tee -a $DESTDIR/.summary
 						PASS=$(( PASS + 1 ))
 					else
 						echo -ne "${TEST_NBR} $f " >> $DESTDIR/.summary
-						echo -e "${RED}FAIL - Different outputs in cor files${NOCOL}" | tee -a $DESTDIR/.summary
+						echo -ne "${RED}FAIL - Different outputs in cor files${NOCOL}" | tee -a $DESTDIR/.summary
 						FAIL=$(( FAIL + 1 ))
 					fi
 				else
 					echo -ne "${TEST_NBR} $f " >> $DESTDIR/.summary
-					echo -e "${BLUE}Ours made a .cor file, original didn't${NOCOL}" | tee -a $DESTDIR/.summary
+					echo -ne "${BLUE}Ours made a .cor file, original didn't${NOCOL}" | tee -a $DESTDIR/.summary
 					MISSING_ORIG=$(( MISSING_ORIG + 1 ))
 				fi
 			else
 				if test -f "$DESTDIR/orig.cor.temp";
 				then
 					echo -ne "${TEST_NBR} $f " >> $DESTDIR/.summary
-					echo -e "${RED}Missing .cor file${NOCOL}" | tee -a $DESTDIR/.summary
+					echo -ne "${RED}Missing .cor file${NOCOL}" | tee -a $DESTDIR/.summary
 					MISSING_OUR=$(( MISSING_OUR + 1 ))
 				else
 					echo -ne "${TEST_NBR} $f " >> $DESTDIR/.summary
-					echo -e "${GREEN}OK${NOCOL} (Both files missing)" | tee -a $DESTDIR/.summary
+					echo -ne "${GREEN}OK${NOCOL} (Both files missing)" | tee -a $DESTDIR/.summary
 					PASS=$(( PASS + 1 ))
 				fi
 			fi
-
+			if [ $OUR_ABORT -eq 1 ];
+			then
+				echo -ne "${RED} OURS ABORTED${NOCOL}" | tee -a $DESTDIR/.summary
+			fi
+			if [ $ORIG_ABORT -eq 1 ];
+			then
+				echo -ne "${YELLOW} ORIGINAL ABORTED${NOCOL}" | tee -a $DESTDIR/.summary
+			fi
+			echo "" | tee -a $DESTDIR/.summary
 			rm $DESTDIR/our.cor.temp 2> /dev/null
 			rm $DESTDIR/orig.cor.temp 2> /dev/null
 				TEST_NBR=$(( TEST_NBR + 1 ))

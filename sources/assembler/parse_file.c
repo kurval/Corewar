@@ -114,8 +114,8 @@ void			parse_file(int fd, t_asm *assembler)
 		cursor.row++;
 	}
 	free(edge_chars);
-	if (!assembler->champ.done)
-		handle_error_msg(SYNTAX_ERROR, NULL);
+	if (assembler->champ.done != 1)
+		handle_error("Champion name or comment missing");
 	check_str_len(assembler->champ.name, assembler->champ.comment);
 	labels_to_rel_adrs(assembler->champ.labels, assembler->champ.stmts);
 }
