@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 12:50:02 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/02 16:29:20 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/03 12:38:35 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	exit_visu(t_vm *vm)
 static void	pause_visu(t_vm *vm)
 {
 	int key;
-	
+
 	vm->visu->running = false;
 	draw_logo(vm);
 	while (!vm->visu->running)
@@ -46,7 +46,7 @@ static void	pause_visu(t_vm *vm)
 	}
 }
 
-void	manage_windows(t_vm *vm, int key)
+void		manage_windows(t_vm *vm, int key)
 {
 	draw_logo(vm);
 	draw_arena(vm);
@@ -60,7 +60,7 @@ void	manage_windows(t_vm *vm, int key)
 	if (key == SPACE || vm->visu->debug)
 		pause_visu(vm);
 	get_speed(vm, key);
-	usleep (vm->visu->speed);
+	usleep(vm->visu->speed);
 }
 
 void		start_visualizer(t_vm *vm)
@@ -71,5 +71,5 @@ void		start_visualizer(t_vm *vm)
 	run_cycles(vm);
 	print_winner(vm);
 	getchar();
-    exit_visu(vm);
+	exit_visu(vm);
 }

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/02 15:01:35 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/03 13:51:38 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct		s_arena
 ** - reg[REG_NUMBER] : registries of current cursor
 ** - args[3] : current cursors argument types
 ** - values[3] : current cursors argument values
+** - player_id : owner of this process
 **	>T_REG registry number
 **	>T_DIR A number, saved on 2 or 4 bytes, depending on label
 **	>T_IND relative address number
@@ -156,6 +157,8 @@ typedef struct		s_op
 typedef struct		s_attr
 {
 	int				owner;
+	int				live;
+	int				new_mem;
 	bool			cursor;
 }					t_attr;
 
