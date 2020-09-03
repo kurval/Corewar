@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 12:50:02 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/03 12:38:35 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/03 16:29:15 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ static void	get_speed(t_vm *vm, int key)
 		vm->visu->speed -= 10000;
 }
 
-static void	exit_visu(t_vm *vm)
+static void	exit_visu(void)
 {
 	endwin();
 	ft_printf("Thanks for playing!\n");
-	free_all(vm);
+	exit(1);
 }
 
 static void	pause_visu(t_vm *vm)
@@ -42,7 +42,7 @@ static void	pause_visu(t_vm *vm)
 			vm->visu->running = true;
 		}
 		else if (key == ESC)
-			exit_visu(vm);
+			exit_visu();
 	}
 }
 
@@ -54,7 +54,7 @@ void		manage_windows(t_vm *vm, int key)
 	draw_battle_info(vm);
 	draw_footer(vm);
 	if (key == ESC)
-		exit_visu(vm);
+		exit_visu();
 	else if (key == 'd')
 		vm->visu->debug = (!vm->visu->debug);
 	if (key == SPACE || vm->visu->debug)
@@ -66,10 +66,10 @@ void		manage_windows(t_vm *vm, int key)
 void		start_visualizer(t_vm *vm)
 {
 	if (!(vm->visu = (t_visu*)malloc(sizeof(t_visu))))
-		exit(1);
+		ft_errno(MALLOC_ERROR);
 	init_visualizer(vm);
 	run_cycles(vm);
 	print_winner(vm);
 	getchar();
-	exit_visu(vm);
+	exit_visu();
 }

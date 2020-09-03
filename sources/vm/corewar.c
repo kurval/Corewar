@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:30:41 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/31 17:02:08 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/03 16:43:09 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	main(int ac, char **av)
 			start_visualizer(&vm);
 		run_cycles(&vm);
 		decleare_winner(&vm);
-		free_all(&vm);
 	}
 	else
 		ft_putstr("Usage:\n./corewar [-dump] [[-n N] file.cor]\n");
