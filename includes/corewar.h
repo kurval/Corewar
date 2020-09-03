@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/03 16:11:53 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/03 16:57:33 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,6 +207,7 @@ void				decleare_winner(t_vm *vm);
 void				add_to_list(t_process *new, t_process **list);
 t_process			*new_proc();
 t_process			*copy_proc(t_vm *vm, t_process *og_proc);
+void				free_proc_list(t_process **proc_list);
 
 /*
 **					PARSE INPUT FUNCTIONS

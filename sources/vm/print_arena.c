@@ -6,13 +6,13 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:47:04 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/03 16:43:06 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/03 16:57:09 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
 
-void		print_arena(t_arena *arena)
+void	print_arena(t_arena *arena)
 {
 	int i;
 
@@ -32,7 +32,7 @@ void		print_arena(t_arena *arena)
 	}
 }
 
-static void	free_proc_list(t_process **proc_list)
+void	free_proc_list(t_process **proc_list)
 {
 	t_process	*current;
 	t_process	*next;
@@ -47,7 +47,7 @@ static void	free_proc_list(t_process **proc_list)
 	*proc_list = NULL;
 }
 
-void		dump_memory(t_vm *vm)
+void	dump_memory(t_vm *vm)
 {
 	int i;
 
