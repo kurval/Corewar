@@ -20,9 +20,17 @@
 
 void	handle_error(char *msg)
 {
-	ft_putstr_fd(msg, 2);
-	ft_putstr_fd("\n", 2);
-	exit(EXIT_FAILURE);
+	static int exit_status = 0;
+
+	if (msg)
+	{
+		exit_status = 1;
+		ft_putstr_fd(msg, 2);
+		ft_putstr_fd("\n", 2);
+	}
+	if (!(overlap(g_flags, flag_error_debug)) ||
+	(msg == EXIT_IF_ERRORS && exit_status) || ft_strequ(msg, MALLOC_ERROR))
+		exit(EXIT_FAILURE);
 }
 
 char	*pad_nbr(int nbr, int size)
@@ -72,7 +80,11 @@ void	handle_error_msg(int error, t_token *token)
 	char	**strs;
 
 	if (!token)
+	{
 		handle_error("Syntax error - unexpected end of input");
+		if (g_flags & flag_e)
+			return ;
+	}
 	if (!(strs = (char **)malloc(sizeof(char *) * 6)) ||
 	!(strs[0] = ft_strdup((overlap(SYNTAX_ERROR, error) ? "Syntax error" :
 	"Invalid instruction"))))

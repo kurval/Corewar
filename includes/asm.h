@@ -47,16 +47,14 @@ typedef enum	e_type
 	command_comment = 2176
 }				t_type;
 
-# define SET 1
-# define GET 0
-
 # define MALLOC_ERROR "Malloc error"
 
 # define SYNTAX_ERROR 1
 # define INVALID_INSTR 2
+# define DEBUG_AFTER_MISSING_INFO 4
 
 # define NUMBER -1
-
+# define EXIT_IF_ERRORS NULL
 # define FLAG_CHARS "herx"
 
 /*
@@ -70,7 +68,10 @@ typedef enum	e_flag
 	flag_e = 2,
 	flag_r = 4,
 	flag_x = 8,
+	flag_error_debug = 16,
 }				t_flag;
+
+int				g_flags;
 
 /*
 ** t_state
@@ -254,5 +255,6 @@ void			free_memory(t_op *op, t_champ *champ);
 void			write_hexdump(unsigned char *bytes,
 				int byte_nbr, t_state state);
 void			set_flags(char c);
-int				get_flags(void);
+void			toggle_error_debug_flag(void);
+
 #endif

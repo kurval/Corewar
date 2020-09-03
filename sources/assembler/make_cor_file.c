@@ -58,7 +58,7 @@ void	make_cor_file(char *s_filename, t_asm assembler)
 	if (assembler.champ.stmts)
 		insert_statements(assembler.champ.stmts, assembler.champ.labels,
 	assembler.op, fd);
-	if (overlap(get_flags(), flag_x))
+	if (overlap(g_flags, flag_x))
 		write_hexdump(NULL, 0, finish);
 	if (close(fd) == -1)
 	{

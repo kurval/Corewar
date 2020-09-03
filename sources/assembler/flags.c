@@ -12,34 +12,25 @@
 
 #include "asm.h"
 
-/*
-**	Works as a sort of an object mock-up: flags variable is initially set
-**	in check_args. After that get_flags() can be used to access the flags
-**	info from anywhere without the need to pass a variable all over the place.
-*/
-
-static t_flag	flag_object(int set, t_flag flag_to_set)
-{
-	static t_flag flags = 0;
-
-	if (set)
-		flags = flags | flag_to_set;
-	return (flags);
-}
-
 void		set_flags(char c)
 {
+	int	*ptr;
+
+	ptr = &g_flags;
 	if (ft_tolower(c) == 'h')
-		flag_object(SET, flag_h);
+		*ptr = g_flags | flag_h;
 	if (ft_tolower(c) == 'e')
-		flag_object(SET, flag_e);
+		*ptr = g_flags | flag_e;
 	if (ft_tolower(c) == 'r')
-		flag_object(SET, flag_r);
+		*ptr = g_flags | flag_r;
 	if (ft_tolower(c) == 'x')
-		flag_object(SET, flag_x);
+		*ptr = g_flags | flag_x;
 }
 
-int			get_flags(void)
+void		toggle_error_debug_flag(void)
 {
-	return (flag_object(GET, 0));
+	if (g_flags & flag_error_debug)
+		g_flags = g_flags ^ flag_error_debug;
+	else
+		g_flags = g_flags | flag_error_debug;
 }

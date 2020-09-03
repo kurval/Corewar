@@ -23,7 +23,10 @@ static void	label_to_rel_adr(t_label *label, int stmt_place, t_arg *arg)
 	while (label && !ft_strequ(label->name, tmp))
 		label = label->next;
 	if (!label)
+	{
 		handle_invalid_label(arg, tmp);
+		return ;
+	}
 	arg->type = (arg->type == direct_label ? T_DIR : T_IND);
 	if (!(tmp = ft_itoa(label->place - stmt_place)))
 		handle_error(MALLOC_ERROR);

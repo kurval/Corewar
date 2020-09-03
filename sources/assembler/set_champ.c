@@ -44,7 +44,7 @@ static void		set_args(t_stmt *stmt, t_token *token)
 	int	i;
 
 	i = 0;
-	while (token)
+	while (token && i < MAX_ARGS_NUMBER - 1)
 	{
 		if (overlap((T_REG | T_DIR | T_IND), token->type))
 		{
@@ -101,29 +101,29 @@ static void		set_label(t_champ *champ, t_token *token)
 
 void			set_champ(t_champ *champ, t_token *token)
 {
-	if (token->type == command_name)
+	if (token && token->type == command_name)
 	{
 		token = token->next;
 		if (!(champ->name = copy_string_content(token->content)))
 			handle_error(MALLOC_ERROR);
 	}
-	else if (token->type == command_comment)
+	else if (token && token->type == command_comment)
 	{
 		token = token->next;
 		if (!(champ->comment = copy_string_content(token->content)))
 			handle_error(MALLOC_ERROR);
 	}
-	else if (token->type == label)
+	else if (token && token->type == label)
 	{
 		set_label(champ, token);
 		token = token->next;
 	}
-	if (token->type == instruction)
+	if (token && token->type == instruction)
 	{
 		set_stmt(champ, token);
 		if (champ->labels && champ->labels->place == -1)
 			champ->labels->place = champ->stmts->place;
 	}
-	if (champ->name && champ->comment && !champ->done)
+	if (token && champ->name && champ->comment && !champ->done)
 		champ->done = 1;
 }
