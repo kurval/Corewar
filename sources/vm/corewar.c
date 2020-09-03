@@ -32,6 +32,6 @@ int	main(int ac, char **av)
 		free_all(&vm);
 	}
 	else
-		ft_putstr("Usage:\n./corewar [-dump] [[-n N] file.cor]\n");
+		ft_putstr("Usage:\n./corewar [-dump] [-a] [-v] [[-n N] file.cor]\n");
 	return (0);
 }
