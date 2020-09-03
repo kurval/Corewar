@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 17:25:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/02 15:19:49 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/03 12:37:48 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,11 @@ static void	set_owners(t_vm *vm)
 	addr = 0;
 	i = -1;
 	while (++i < MEM_SIZE)
+	{
 		vm->visu->attributes[i].owner = 0;
+		vm->visu->attributes[i].live = 0;
+		vm->visu->attributes[i].new_mem = 0;
+	}
 	i = -1;
 	while (++i < vm->nb_players)
 	{
@@ -32,7 +36,7 @@ static void	set_owners(t_vm *vm)
 	}
 }
 
-void	box_win(WINDOW *win)
+void		box_win(WINDOW *win)
 {
 	wattron(win, COLOR_PAIR(FRAME));
 	box(win, 0, '*');
@@ -49,18 +53,18 @@ static void	create_windows(t_vm *vm)
 
 	max_y = 0;
 	max_x = 0;
-
 	getmaxyx(stdscr, max_y, max_x);
 	sub_height = max_y / 3;
 	sub_width = max_x - WIDTH;
 	vm->visu->arena = newwin(HEIGHT, WIDTH, 0, 0);
 	vm->visu->side1 = newwin(sub_height - 6, sub_width, 0, WIDTH);
 	vm->visu->side2 = newwin(sub_height + 2, sub_width, sub_height - 7, WIDTH);
-	vm->visu->side3 = newwin(sub_height + 4, sub_width, (sub_height * 2) - 6, WIDTH);
+	vm->visu->side3 = newwin(sub_height + 4, sub_width,\
+	(sub_height * 2) - 6, WIDTH);
 	vm->visu->side4 = newwin(5, sub_width, (sub_height * 3) - 3, WIDTH);
 }
 
-void			init_visualizer(t_vm *vm)
+void		init_visualizer(t_vm *vm)
 {
 	setlocale(LC_ALL, "");
 	initscr();
@@ -70,9 +74,9 @@ void			init_visualizer(t_vm *vm)
 	keypad(stdscr, true);
 	nodelay(stdscr, true);
 	define_colors();
-    create_windows(vm);
-    set_owners(vm);
-    vm->visu->speed = 20100;
-    vm->visu->running = true;
+	create_windows(vm);
+	set_owners(vm);
+	vm->visu->speed = 20100;
+	vm->visu->running = true;
 	vm->visu->debug = false;
 }

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 13:15:26 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/02 14:27:56 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/03 12:33:42 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	draw_line(t_vm *vm, int i)
 	wprintw(vm->visu->arena, " \n");
 }
 
-void	draw_arena(t_vm *vm)
+void		draw_arena(t_vm *vm)
 {
 	unsigned int	i;
 
