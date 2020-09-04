@@ -26,7 +26,7 @@ static void	prefix_file_path(char **file_name, char *file_path, int end)
 	*file_name = t2;
 }
 
-void		replace_file_name(char **file, char *file_name)
+static void	replace_file_name(char **file, char *file_name)
 {
 	int	file_name_len;
 	int	file_name_end;
@@ -52,7 +52,7 @@ void		replace_file_name(char **file, char *file_name)
 	ft_strdel(&file_name);
 }
 
-void		replace_file_path(char **file, char *file_path)
+static void	replace_file_path(char **file, char *file_path)
 {
 	char	*t1;
 	char	*t2;

@@ -259,8 +259,6 @@ void			write_hexdump(unsigned char *bytes,
 				int byte_nbr, t_state state);
 void			set_flags(char c);
 void			toggle_error_debug_flag(void);
-void			replace_file_path(char **file, char *file_path);
-void			replace_file_name(char **file, char *file_name);
 int				find_last_str(char *haystack, int start, char *needle);
 void			handle_d_and_f_flags(char **file);
 
