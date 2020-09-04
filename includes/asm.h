@@ -55,7 +55,7 @@ typedef enum	e_type
 
 # define NUMBER -1
 # define EXIT_IF_ERRORS NULL
-# define FLAG_CHARS "herxd"
+# define FLAG_CHARS "hedx"
 
 /*
 ** t_flag
