@@ -44,11 +44,11 @@ static t_asm	handle_file(char *filename, t_asm assembler)
 
 char			*get_usage(void)
 {
-	return ("Usage: ./asm [-hefx] <sourcefile.s>\n \
-	-h	prints usage\n \
-	-e	prints more errors instead of only the first one\n \
-	-r	creates .cor file in current location\n \
-	-x	prints hexdump\n");
+	return ("Usage: ./asm [-h] [-e] [-d dir] [-x] <sourcefile.s>\n \
+	-h     prints usage\n \
+	-e     prints more errors instead of only the first one\n \
+	-d dir creates .cor file in the directory dir\n \
+	-x     prints hexdump\n");
 }
 
 /*
@@ -79,6 +79,8 @@ int				main(int argc, char **argv)
 		handle_error(EXIT_IF_ERRORS);
 		toggle_error_debug_flag();
 	}
+	if (overlap(g_flags, flag_d))
+		replace_file_path(&source, g_flag_d_arg);
 	make_cor_file(source, assembler);
 	free_memory(assembler.op, &assembler.champ);
 	return (0);

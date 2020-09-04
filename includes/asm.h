@@ -55,7 +55,7 @@ typedef enum	e_type
 
 # define NUMBER -1
 # define EXIT_IF_ERRORS NULL
-# define FLAG_CHARS "herx"
+# define FLAG_CHARS "herxd"
 
 /*
 ** t_flag
@@ -66,12 +66,13 @@ typedef enum	e_flag
 {
 	flag_h = 1,
 	flag_e = 2,
-	flag_r = 4,
+	flag_d = 4,
 	flag_x = 8,
 	flag_error_debug = 16,
 }				t_flag;
 
 int				g_flags;
+char			*g_flag_d_arg;
 
 /*
 ** t_state
@@ -256,5 +257,6 @@ void			write_hexdump(unsigned char *bytes,
 				int byte_nbr, t_state state);
 void			set_flags(char c);
 void			toggle_error_debug_flag(void);
+void			replace_file_path(char	**file, char *file_path);
 
 #endif

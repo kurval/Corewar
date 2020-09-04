@@ -21,8 +21,8 @@ void		set_flags(char c)
 		*ptr = g_flags | flag_h;
 	if (ft_tolower(c) == 'e')
 		*ptr = g_flags | flag_e;
-	if (ft_tolower(c) == 'r')
-		*ptr = g_flags | flag_r;
+	if (ft_tolower(c) == 'd')
+		*ptr = g_flags | flag_d;
 	if (ft_tolower(c) == 'x')
 		*ptr = g_flags | flag_x;
 }

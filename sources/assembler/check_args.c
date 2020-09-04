@@ -86,11 +86,18 @@ char		*check_args(int argc, char **argv, char **dest)
 	source = NULL;
 	if (argc < 2)
 		return (NULL);
+	g_flags = 0;
+	g_flag_d_arg = NULL;
 	i = 1;
 	while (i < argc)
 	{
-		process_arg(argv[i], &source);
+		if (overlap(g_flags, flag_d) && !g_flag_d_arg)
+			g_flag_d_arg = argv[i];
+		else
+			process_arg(argv[i], &source);
 		i++;
 	}
+	if (overlap(g_flags, flag_d) && !g_flag_d_arg)
+		handle_error("Option requires an argument -- 'd'");
 	return (source);
 }
