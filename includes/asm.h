@@ -55,7 +55,7 @@ typedef enum	e_type
 
 # define NUMBER -1
 # define EXIT_IF_ERRORS NULL
-# define FLAG_CHARS "hedx"
+# define FLAG_CHARS "hedxf"
 
 /*
 ** t_flag
@@ -68,11 +68,13 @@ typedef enum	e_flag
 	flag_e = 2,
 	flag_d = 4,
 	flag_x = 8,
-	flag_error_debug = 16,
+	flag_f = 16,
+	flag_error_debug = 32,
 }				t_flag;
 
 int				g_flags;
 char			*g_flag_d_arg;
+char			*g_flag_f_arg;
 
 /*
 ** t_state
@@ -257,6 +259,9 @@ void			write_hexdump(unsigned char *bytes,
 				int byte_nbr, t_state state);
 void			set_flags(char c);
 void			toggle_error_debug_flag(void);
-void			replace_file_path(char	**file, char *file_path);
+void			replace_file_path(char **file, char *file_path);
+void			replace_file_name(char **file, char *file_name);
+int				find_last_str(char *haystack, int start, char *needle);
+void			handle_d_and_f_flags(char **file);
 
 #endif

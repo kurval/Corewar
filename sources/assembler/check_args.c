@@ -12,35 +12,53 @@
 
 #include "asm.h"
 
-static int	validate_flag(char *str)
+static void	validate_d_and_f_flags(char ***strs, char flag, char **arg)
 {
-	int i;
-
-	if (str[0] == '-')
+	if (*arg)
+		ft_strdel(&*arg);
+	if (*++(**strs))
 	{
-		i = 1;
-		while (str[i])
-		{
-			if (ft_strchr(FLAG_CHARS, ft_tolower(str[i])))
-				set_flags(str[i]);
-			else
-				handle_error("Invalid flags");
-			i++;
-		}
-		return (1);
+		if (!(*arg = ft_strsub(**strs, 0, ft_strlen(**strs))))
+			handle_error(MALLOC_ERROR);
 	}
-	return (0);
+	else if (*++(*strs))
+	{
+		if (!(*arg = ft_strdup(**strs)))
+			handle_error(MALLOC_ERROR);
+	}
+	else
+	{
+		handle_error(flag == 'd' ? "Option requires an argument -- 'd'" :
+		"Option requires an argument -- 'f'");
+	}
+}
+
+static void	validate_flag(char ***strs)
+{
+	while (*++(**strs))
+	{
+		if (ft_strchr(FLAG_CHARS, ft_tolower(***strs)))
+			set_flags(***strs);
+		else
+			handle_error("Invalid flags");
+		if (***strs == 'd')
+		{
+			validate_d_and_f_flags(strs, ***strs, &g_flag_d_arg);
+			break ;
+		}
+		else if (***strs == 'f')
+		{
+			validate_d_and_f_flags(strs, ***strs, &g_flag_f_arg);
+			break ;
+		}
+	}
 }
 
 /*
 ** Process_arg
-** Checks whether argument has .s in the end. If not,
-** we test whether the argument is a valid flag.
-** If both are false, file name error is printed. Otherwise
-** argument is either saved as a source file or saved as flags.
-** In case of a second .s file argument is encountered, multiple
-** .s file error is printed.
-** "-h.s" would be treated as a valid .s file.
+** Check if the argument has .s in the end. If not, print the file name error.
+** Otherwise, save the argument as a source file. In case of a second .s file
+** argument, print the multiple .s file error.
 */
 
 void		process_arg(char *argv, char **source)
@@ -53,12 +71,8 @@ void		process_arg(char *argv, char **source)
 	dot_loc = find_last_char(argv, len - 1, ".");
 	if (dot_loc == -1 || dot_loc != len - 2 || argv[dot_loc + 1] != 's')
 	{
-		if (!validate_flag(argv))
-		{
-			msg = add_str_to_str("Src file %s doesn't have the extension .s",
-			argv);
-			handle_error(msg);
-		}
+		msg = add_str_to_str("Src file %s doesn't have the extension .s", argv);
+		handle_error(msg);
 	}
 	else
 	{
@@ -71,15 +85,15 @@ void		process_arg(char *argv, char **source)
 
 /*
 ** Check_args
-** 1. Check that there are are arguments
-** 2. Checks each argument with process_arg (read above)
+** 1. Check that there are arguments
+** 2.1 If the argument starts with '-', checked it with validate_flag function
+** 2.2 Else, check the argument with process_arg function (read above)
 */
 
 char		*check_args(int argc, char **argv, char **dest)
 {
 	char	*msg;
 	int		len;
-	int		i;
 	int		dot_loc;
 	char	*source;
 
@@ -88,16 +102,13 @@ char		*check_args(int argc, char **argv, char **dest)
 		return (NULL);
 	g_flags = 0;
 	g_flag_d_arg = NULL;
-	i = 1;
-	while (i < argc)
+	g_flag_f_arg = NULL;
+	while (*++argv)
 	{
-		if (overlap(g_flags, flag_d) && !g_flag_d_arg)
-			g_flag_d_arg = argv[i];
+		if (**argv == '-')
+			validate_flag(&argv);
 		else
-			process_arg(argv[i], &source);
-		i++;
+			process_arg(*argv, &source);
 	}
-	if (overlap(g_flags, flag_d) && !g_flag_d_arg)
-		handle_error("Option requires an argument -- 'd'");
 	return (source);
 }

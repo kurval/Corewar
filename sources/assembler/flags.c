@@ -25,6 +25,8 @@ void		set_flags(char c)
 		*ptr = g_flags | flag_d;
 	if (ft_tolower(c) == 'x')
 		*ptr = g_flags | flag_x;
+	if (ft_tolower(c) == 'f')
+		*ptr = g_flags | flag_f;
 }
 
 void		toggle_error_debug_flag(void)

@@ -44,18 +44,21 @@ static t_asm	handle_file(char *filename, t_asm assembler)
 
 char			*get_usage(void)
 {
-	return ("Usage: ./asm [-h] [-e] [-d dir] [-x] <sourcefile.s>\n \
-	-h     prints usage\n \
-	-e     prints more errors instead of only the first one\n \
-	-d dir creates .cor file in the directory dir\n \
-	-x     prints hexdump\n");
+	return ("Usage: ./asm [-h] [-e] [-d dir] [-x] [-f file] <sourcefile.s>\n \
+	-h      prints usage\n \
+	-e      prints more errors instead of only the first one\n \
+	-d dir  creates .cor file in the directory dir\n \
+	-x      prints hexdump\n \
+	-f file names the .cor file file\n \
+	\n \
+	If a file path is defined in both -d and -f options,\n \
+	the one in -f option is used.\n");
 }
 
 /*
 ** Main
 ** 1. Check the args
-** 2. Save info in file given as argument in assembler struct
-** (3. Temporary automatic leaks test with system function)
+** 2. Save info in the file given as an argument in the assembler struct
 */
 
 int				main(int argc, char **argv)
@@ -68,7 +71,7 @@ int				main(int argc, char **argv)
 		handle_error(get_usage());
 	if (overlap(g_flags, flag_h))
 	{
-		ft_printf(get_usage());
+		ft_putstr_fd(get_usage(), 2);
 		exit(0);
 	}
 	if (overlap(g_flags, flag_e))
@@ -79,8 +82,7 @@ int				main(int argc, char **argv)
 		handle_error(EXIT_IF_ERRORS);
 		toggle_error_debug_flag();
 	}
-	if (overlap(g_flags, flag_d))
-		replace_file_path(&source, g_flag_d_arg);
+	handle_d_and_f_flags(&source);
 	make_cor_file(source, assembler);
 	free_memory(assembler.op, &assembler.champ);
 	return (0);

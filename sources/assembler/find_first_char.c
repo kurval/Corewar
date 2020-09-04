@@ -12,6 +12,29 @@
 
 #include "asm.h"
 
+int	find_last_str(char *haystack, int start, char *needle)
+{
+	int	needle_len;
+	int	i;
+	int	j;
+
+	needle_len = ft_strlen(needle);
+	i = start;
+	while (haystack && i >= 0)
+	{
+		j = needle_len - 1;
+		while (i >= 0 && needle && j >= 0 && haystack[i] == needle[j])
+		{
+			i--;
+			j--;
+		}
+		if (j == -1)
+			return (i + 1);
+		i--;
+	}
+	return (-1);
+}
+
 int	find_first_str(char *haystack, int start, char *needle)
 {
 	int needle_start;
