@@ -53,6 +53,8 @@ typedef enum	e_type
 # define INVALID_INSTR 2
 # define DEBUG_AFTER_MISSING_INFO 4
 
+# define INVALID_COUNT 1
+# define INVALID_TYPE 2
 # define NUMBER -1
 # define EXIT_IF_ERRORS NULL
 # define FLAG_CHARS "hedxf"
@@ -261,5 +263,6 @@ void			set_flags(char c);
 void			toggle_error_debug_flag(void);
 int				find_last_str(char *haystack, int start, char *needle);
 void			handle_d_and_f_flags(char **file);
-
+void			handle_invalid_argument(int err_type, char *instr_name,
+				int row, t_token *token);
 #endif

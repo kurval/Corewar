@@ -13,41 +13,6 @@
 #include "asm.h"
 
 /*
-** Check_token_validity
-** 1. Checks that the instruction is valid and has a valid amount of valid
-**    arguments
-** 2. Prints the correct error msg to STDERR
-*/
-
-void			check_token_validity(t_token *token, t_op *op)
-{
-	int	argc;
-
-	if (token && token->type == label)
-		token = token->next;
-	if (token && token->type == instruction)
-	{
-		while (op && !ft_strequ(op->instr_name, token->content))
-			op = op->next;
-		if (!op)
-			handle_error_msg(INVALID_INSTR, token);
-		token = token->next;
-		argc = 0;
-		while (token && (overlap((T_REG | T_DIR | T_IND), token->type) ||
-		token->type == separator) && (op && argc < op->argc))
-		{
-			if (token->type != separator &&
-			!overlap(op->argv[argc++], token->type))
-				handle_error("Invalid argument");
-			token = token->next;
-		}
-		if ((op && argc != op->argc) || (token && token->type != endline) || \
-		!token)
-			handle_error("Invalid amount of arguments");
-	}
-}
-
-/*
 **	Checks that champion info is not set multiple times,
 **	and that info is set before other types of tokens.
 */
@@ -99,9 +64,12 @@ static t_token	*check_instr_token_order(t_token *token)
 	{
 		token = token->next;
 		i = 0;
-		while (token && is_arg_or_sep(i, token->type) && i++ < 5)
+		while (token && is_arg_or_sep(i, token->type))
+		{
+			i++;
 			token = token->next;
-		if (!(i % 2))
+		}
+		if (!(i % 2) && token)
 			handle_error_msg(SYNTAX_ERROR, token);
 	}
 	return (token);
