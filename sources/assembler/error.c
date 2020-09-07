@@ -33,27 +33,6 @@ void	handle_error(char *msg)
 		exit(EXIT_FAILURE);
 }
 
-char	*pad_nbr(int nbr, int size)
-{
-	char	*padded_nbr;
-	char	*s1;
-	char	*s2;
-	int		len;
-
-	if (!(s2 = ft_itoa(nbr)))
-		handle_error(MALLOC_ERROR);
-	if (size - (len = ft_strlen(s2)) > 0)
-	{
-		if (!(s1 = ft_strnew(size - len)))
-			handle_error(MALLOC_ERROR);
-		ft_memset((void *)s1, '0', size - len);
-		padded_nbr = join_free_strs(s1, s2);
-	}
-	else
-		padded_nbr = s2;
-	return (padded_nbr);
-}
-
 void	handle_invalid_label(t_arg *arg, char *label_name)
 {
 	char	*msg;
@@ -72,6 +51,36 @@ void	handle_invalid_label(t_arg *arg, char *label_name)
 	msg = add_strs_to_str("No such label %s %s [TOKEN][%s:%s] %s \"%s\"", strs);
 	del_array(strs);
 	handle_error(msg);
+}
+
+void	handle_invalid_argument(int err_type, char *instr_name, int row,
+t_token *token)
+{
+	char	*msg;
+	char	**strs;
+
+	if (!(strs = (char **)malloc(sizeof(char *) * 4)) ||
+		!(strs[0] =	ft_itoa(row)) ||
+		!(strs[1] = ft_strdup(instr_name)))
+		handle_error(MALLOC_ERROR);
+	if (err_type == INVALID_COUNT)
+	{
+		strs[2] = NULL;
+		msg = add_strs_to_str("row %s: Invalid arg count for \"%s\"", strs);
+	}
+	else if (err_type == INVALID_TYPE)
+	{
+		strs[2] = (token ? ft_strdup(token_type_str(token->type)) :
+		ft_strdup("END"));
+		if (!strs[2])
+			handle_error(MALLOC_ERROR);
+		strs[3] = NULL;
+		msg = add_strs_to_str("row %s: Invalid argument for \"%s\" (type %s)",
+		strs);
+	}
+	del_array(strs);
+	handle_error(msg);
+	ft_strdel(&msg);
 }
 
 void	handle_error_msg(int error, t_token *token)

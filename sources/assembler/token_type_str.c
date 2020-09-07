@@ -17,7 +17,7 @@ char			*token_type_str(t_type type)
 	if (type == reg)
 		return ("REGISTER");
 	if (type == direct)
-		return ("SIRECT");
+		return ("DIRECT");
 	if (type == indirect)
 		return ("INDIRECT");
 	if (type == instruction)
