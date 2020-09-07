@@ -32,7 +32,8 @@ static void	replace_file_name(char **file, char *file_name)
 	int	file_name_end;
 	int	file_end;
 
-	if ((file_name_len = ft_strlen(file_name)) -
+	file_name_len = ft_strlen(file_name);
+	if (file_name_len -
 	(file_name_end = find_last_str(file_name, file_name_len - 1, ".cor")) == 4)
 	{
 		if (!(file_name = file_name_end ?
