@@ -84,3 +84,13 @@
 84 Writing output program to ./s_files/test84.cor
 85 Writing output program to ./s_files/test85.cor
 86 Syntax error at token [TOKEN][003:015] END "(null)"
+87 Writing output program to ./s_files/test87.cor
+88 Writing output program to ./s_files/test88.cor
+89 Writing output program to ./s_files/test89.cor
+90 Writing output program to ./s_files/test90.cor
+91 Invalid parameter 0 type register for instruction live
+92 Invalid parameter 0 type indirect for instruction fork
+93 Invalid parameter 0 type indirect for instruction sub
+94 Invalid parameter 3 type register for instruction sub
+95 Invalid parameter 3 type register for instruction sub
+96 Syntax error at token [TOKEN][004:030] ENDLINE
