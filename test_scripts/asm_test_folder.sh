@@ -19,7 +19,7 @@ ORIG_EXE=../resources/asm
 LINECHECKER=./linechecker
 
 # Time in seconds added to each test for readability. Set to 0 for fast output
-INTERVAL=0
+INTERVAL=1
 
 # ---- Do not edit after this point unless you know what you're doing! ----
 
