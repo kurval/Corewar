@@ -30,6 +30,7 @@ int		open_corefile(char *s_filename, int filename_len)
 	}
 	ft_printf("Writing output program to %s\n", c_filename);
 	free(c_filename);
+	free(s_filename);
 	return (fd);
 }
 

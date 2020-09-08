@@ -12,12 +12,41 @@
 
 #include "asm.h"
 
+void			handle_invalid_argument(int err_type, char *instr_name,
+int row, t_token *token)
+{
+	char	*msg;
+	char	**strs;
+
+	if (!(strs = (char **)malloc(sizeof(char *) * 4)) ||
+		!(strs[0] = ft_itoa(row)) ||
+		!(strs[1] = ft_strdup(instr_name)))
+		handle_error(MALLOC_ERROR);
+	if (err_type == INVALID_COUNT)
+	{
+		strs[2] = NULL;
+		msg = add_strs_to_str("row %s: Invalid arg count for \"%s\"", strs);
+	}
+	else if (err_type == INVALID_TYPE)
+	{
+		strs[2] = (token ? ft_strdup(token_type_str(token->type)) :
+		ft_strdup("END"));
+		if (!strs[2])
+			handle_error(MALLOC_ERROR);
+		strs[3] = NULL;
+		msg = add_strs_to_str("row %s: Invalid argument for \"%s\" (type %s)",
+		strs);
+	}
+	del_array(strs);
+	handle_error_free_msg(msg);
+}
+
 static void		check_instr_validity(t_token *token, t_op **op)
 {
 	while (*op && !ft_strequ((*op)->instr_name, token->content))
 		*op = (*op)->next;
 	if (!(*op))
-		handle_error_msg(INVALID_INSTR, token);	
+		handle_error_msg(INVALID_INSTR, token);
 }
 
 /*

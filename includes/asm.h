@@ -220,6 +220,7 @@ int				find_first_char(char *str, int start, char *chars);
 int				find_last_char(char *str, int start, char *chars);
 char			*add_str_to_str(char *s1, char *s2);
 void			handle_error(char *msg);
+void			handle_error_free_msg(char *msg);
 char			*check_args(int argc, char **argv, char **dest);
 void			lexical_error(t_cursor cursor);
 void			check_for_lexical_error(char *line, t_cursor cursor,
