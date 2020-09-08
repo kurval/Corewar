@@ -48,6 +48,7 @@ static void	replace_file_name(char **file, char *file_name)
 	if (!ft_strchr(file_name, '/') &&
 	(file_end = find_last_char(*file, ft_strlen(*file) - 1, "/") + 1))
 		prefix_file_path(&file_name, *file, file_end);
+	ft_strdel(file);
 	if (!(*file = ft_strjoin(file_name, ".s")))
 		handle_error(MALLOC_ERROR);
 	ft_strdel(&file_name);
