@@ -30,7 +30,16 @@ void	handle_error(char *msg)
 	}
 	if (!(overlap(g_flags, flag_error_debug)) ||
 	(msg == EXIT_IF_ERRORS && exit_status) || ft_strequ(msg, MALLOC_ERROR))
+	{
+		system("leaks asm");
 		exit(EXIT_FAILURE);
+	}
+}
+
+void	handle_error_free_msg(char *msg)
+{
+	handle_error(msg);
+	ft_strdel(&msg);
 }
 
 void	handle_invalid_label(t_arg *arg, char *label_name)
@@ -50,37 +59,7 @@ void	handle_invalid_label(t_arg *arg, char *label_name)
 	strs[6] = NULL;
 	msg = add_strs_to_str("No such label %s %s [TOKEN][%s:%s] %s \"%s\"", strs);
 	del_array(strs);
-	handle_error(msg);
-}
-
-void	handle_invalid_argument(int err_type, char *instr_name, int row,
-t_token *token)
-{
-	char	*msg;
-	char	**strs;
-
-	if (!(strs = (char **)malloc(sizeof(char *) * 4)) ||
-		!(strs[0] =	ft_itoa(row)) ||
-		!(strs[1] = ft_strdup(instr_name)))
-		handle_error(MALLOC_ERROR);
-	if (err_type == INVALID_COUNT)
-	{
-		strs[2] = NULL;
-		msg = add_strs_to_str("row %s: Invalid arg count for \"%s\"", strs);
-	}
-	else if (err_type == INVALID_TYPE)
-	{
-		strs[2] = (token ? ft_strdup(token_type_str(token->type)) :
-		ft_strdup("END"));
-		if (!strs[2])
-			handle_error(MALLOC_ERROR);
-		strs[3] = NULL;
-		msg = add_strs_to_str("row %s: Invalid argument for \"%s\" (type %s)",
-		strs);
-	}
-	del_array(strs);
-	handle_error(msg);
-	ft_strdel(&msg);
+	handle_error_free_msg(msg);
 }
 
 void	handle_error_msg(int error, t_token *token)
@@ -109,7 +88,7 @@ void	handle_error_msg(int error, t_token *token)
 	else
 		msg = add_strs_to_str("%s at token [TOKEN][%s:%s] %s", strs);
 	del_array(strs);
-	handle_error(msg);
+	handle_error_free_msg(msg);
 }
 
 void	lexical_error(t_cursor cursor)
@@ -124,5 +103,5 @@ void	lexical_error(t_cursor cursor)
 	cursor_str[2] = NULL;
 	msg = add_strs_to_str("Lexical error at [%s:%s]", cursor_str);
 	del_array(cursor_str);
-	handle_error(msg);
+	handle_error_free_msg(msg);
 }

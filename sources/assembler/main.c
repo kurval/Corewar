@@ -32,8 +32,15 @@ static t_asm	handle_file(char *filename, t_asm assembler)
 		msg = add_str_to_str("Can't read source file %s", filename);
 		handle_error(msg);
 	}
+	if (overlap(g_flags, flag_e))
+		toggle_error_debug_flag();
 	assembler.op = get_op();
 	parse_file(fd, &assembler);
+	if (overlap(g_flags, flag_e))
+	{
+		handle_error(EXIT_IF_ERRORS);
+		toggle_error_debug_flag();
+	}
 	if (close(fd) == -1)
 	{
 		msg = add_str_to_str("Can't close source file %s", filename);
@@ -72,18 +79,13 @@ int				main(int argc, char **argv)
 	if (overlap(g_flags, flag_h))
 	{
 		ft_putstr_fd(get_usage(), 2);
+		system("leaks asm");
 		exit(0);
 	}
-	if (overlap(g_flags, flag_e))
-		toggle_error_debug_flag();
 	assembler = handle_file(source, assembler);
-	if (overlap(g_flags, flag_e))
-	{
-		handle_error(EXIT_IF_ERRORS);
-		toggle_error_debug_flag();
-	}
 	handle_d_and_f_flags(&source);
 	make_cor_file(source, assembler);
 	free_memory(assembler.op, &assembler.champ);
+	system("leaks asm");
 	return (0);
 }

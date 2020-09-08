@@ -23,7 +23,7 @@ void	check_str_len(char *name, char *comment)
 			handle_error(MALLOC_ERROR);
 		msg = add_str_to_str("Champion name too long (Max length %s)", max_len);
 		ft_strdel(&max_len);
-		handle_error(msg);
+		handle_error_free_msg(msg);
 	}
 	else if (comment && ft_strlen(comment) > COMMENT_LENGTH)
 	{
@@ -32,6 +32,6 @@ void	check_str_len(char *name, char *comment)
 		msg = add_str_to_str("Champion comment too long (Max length %s)",
 		max_len);
 		ft_strdel(&max_len);
-		handle_error(msg);
+		handle_error_free_msg(msg);
 	}
 }

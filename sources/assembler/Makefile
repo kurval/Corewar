@@ -30,8 +30,8 @@ $(LIBRARY):
 			make -C ../../libft/
 
 $(NAME):	$(LIBRARY)
-			gcc -I $(INC) -I $(INC2) -I $(INC3) -c $(SRC)
-			gcc $(OBJECT) $(LIBRARY) -o $(NAME)
+			gcc -g -I $(INC) -I $(INC2) -I $(INC3) -c $(SRC)
+			gcc -g $(OBJECT) $(LIBRARY) -o $(NAME)
 
 clean:
 			/bin/rm -f $(OBJECT)
