@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   insert_bytes.c                                     :+:      :+:    :+:   */
+/*   insert_bytes_number.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atuomine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,44 @@
 
 #include "asm.h"
 
-static	unsigned int	handle_negative(int number)
+unsigned int			convert_dec(char *binary, int size)
+{
+	int				multiplier;
+	int				i;
+	unsigned int	result;
+
+	multiplier = 1;
+	i = size - 1;
+	result = 0;
+	while (i >= 0)
+	{
+		if (binary[i] == '1')
+			result = result + multiplier;
+		i--;
+		multiplier = multiplier * 2;
+	}
+	ft_strdel(&binary);
+	return (result);
+}
+
+static char				*make_rev_binary_str(int nbr, int size)
+{
+	char	*binary;
+	int		i;
+
+	if (!(binary = ft_strnew(size)))
+		handle_error(MALLOC_ERROR);
+	i = size - 1;
+	while (i >= 0)
+	{
+		binary[i] = (nbr % 2 ? '0' : '1');
+		i--;
+		nbr = nbr / 2;
+	}
+	return (binary);
+}
+
+static unsigned int		handle_negative(int number)
 {
 	char			*binary;
 	unsigned int	result;
@@ -63,24 +100,4 @@ t_state state)
 	if (overlap(g_flags, flag_x))
 		write_hexdump(bytes, byte_nbr, state);
 	free(bytes);
-}
-
-/*
-**	Inserts a string (string) in a file (fd). If str length
-**	is lower than size, the rest is padded with null bytes.
-*/
-
-void					insert_bytes_string(int fd, char *str, int size,
-t_state state)
-{
-	int strlen;
-	int	byte_nbr;
-
-	strlen = ft_strlen(str);
-	byte_nbr = write(fd, str, strlen);
-	if (overlap(g_flags, flag_x))
-		write_hexdump((unsigned char *)str, byte_nbr, state);
-	size = size - strlen;
-	if (size > 0)
-		insert_bytes_number(fd, 0, size, state);
 }

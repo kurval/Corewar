@@ -12,22 +12,22 @@
 
 #include "asm.h"
 
-void	free_op(t_op *op)
+static void	free_labels(t_label *labels)
 {
-	t_op *current;
-	t_op *next;
+	t_label *current;
+	t_label *next;
 
-	current = op;
+	current = labels;
 	while (current)
 	{
 		next = current->next;
-		free(current->argv);
+		ft_strdel(&current->name);
 		free(current);
 		current = next;
 	}
 }
 
-void	free_stmts(t_stmt *stmts)
+static void	free_stmts(t_stmt *stmts)
 {
 	t_stmt	*current;
 	t_stmt	*next;
@@ -51,22 +51,22 @@ void	free_stmts(t_stmt *stmts)
 	}
 }
 
-void	free_labels(t_label *labels)
+static void	free_op(t_op *op)
 {
-	t_label *current;
-	t_label *next;
+	t_op *current;
+	t_op *next;
 
-	current = labels;
+	current = op;
 	while (current)
 	{
 		next = current->next;
-		ft_strdel(&current->name);
+		free(current->argv);
 		free(current);
 		current = next;
 	}
 }
 
-void	free_memory(t_op *op, t_champ *champ)
+void		free_memory(t_op *op, t_champ *champ)
 {
 	free_op(op);
 	ft_strdel(&champ->comment);

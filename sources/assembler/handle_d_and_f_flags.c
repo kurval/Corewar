@@ -95,3 +95,24 @@ void		handle_d_and_f_flags(char **file)
 		ft_strdel(&g_flag_f_arg);
 	}
 }
+
+void		validate_d_and_f_flags(char ***strs, char flag, char **arg)
+{
+	if (*arg)
+		ft_strdel(&*arg);
+	if (*++(**strs))
+	{
+		if (!(*arg = ft_strsub(**strs, 0, ft_strlen(**strs))))
+			handle_error(MALLOC_ERROR);
+	}
+	else if (*++(*strs))
+	{
+		if (!(*arg = ft_strdup(**strs)))
+			handle_error(MALLOC_ERROR);
+	}
+	else
+	{
+		handle_error(flag == 'd' ? "Option requires an argument -- 'd'" :
+		"Option requires an argument -- 'f'");
+	}
+}

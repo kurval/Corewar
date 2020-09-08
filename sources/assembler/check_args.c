@@ -12,24 +12,32 @@
 
 #include "asm.h"
 
-static void	validate_d_and_f_flags(char ***strs, char flag, char **arg)
+/*
+** Process_arg
+** Check if the argument has .s in the end. If not, print the file name error.
+** Otherwise, save the argument as a source file. In case of a second .s file
+** argument, print the multiple .s file error.
+*/
+
+static void	process_arg(char *argv, char **source)
 {
-	if (*arg)
-		ft_strdel(&*arg);
-	if (*++(**strs))
+	int		len;
+	int		dot_loc;
+	char	*msg;
+
+	len = ft_strlen(argv);
+	dot_loc = find_last_char(argv, len - 1, ".");
+	if (dot_loc == -1 || dot_loc != len - 2 || argv[dot_loc + 1] != 's')
 	{
-		if (!(*arg = ft_strsub(**strs, 0, ft_strlen(**strs))))
-			handle_error(MALLOC_ERROR);
-	}
-	else if (*++(*strs))
-	{
-		if (!(*arg = ft_strdup(**strs)))
-			handle_error(MALLOC_ERROR);
+		msg = add_str_to_str("Src file %s doesn't have the extension .s", argv);
+		handle_error(msg);
 	}
 	else
 	{
-		handle_error(flag == 'd' ? "Option requires an argument -- 'd'" :
-		"Option requires an argument -- 'f'");
+		if (*source)
+			handle_error("Can only specify one source file.");
+		else if (!(*source = ft_strdup(argv)))
+			handle_error(MALLOC_ERROR);
 	}
 }
 
@@ -51,35 +59,6 @@ static void	validate_flag(char ***strs)
 			validate_d_and_f_flags(strs, ***strs, &g_flag_f_arg);
 			break ;
 		}
-	}
-}
-
-/*
-** Process_arg
-** Check if the argument has .s in the end. If not, print the file name error.
-** Otherwise, save the argument as a source file. In case of a second .s file
-** argument, print the multiple .s file error.
-*/
-
-void		process_arg(char *argv, char **source)
-{
-	int		len;
-	int		dot_loc;
-	char	*msg;
-
-	len = ft_strlen(argv);
-	dot_loc = find_last_char(argv, len - 1, ".");
-	if (dot_loc == -1 || dot_loc != len - 2 || argv[dot_loc + 1] != 's')
-	{
-		msg = add_str_to_str("Src file %s doesn't have the extension .s", argv);
-		handle_error(msg);
-	}
-	else
-	{
-		if (*source)
-			handle_error("Can only specify one source file.");
-		else if (!(*source = ft_strdup(argv)))
-			handle_error(MALLOC_ERROR);
 	}
 }
 

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   asm_gnl.h                                          :+:      :+:    :+:   */
+/*   asm_gnl_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
 #include "asm.h"
 
 /*
@@ -71,7 +70,7 @@ static int	get_line(char **s, char **line)
 ** -1 if an error has happened respectively.
 */
 
-static int	ret_value(char **s, char **line, int ret, int fd)
+int			ret_value(char **s, char **line, int ret, int fd)
 {
 	if (ret < 0)
 		return (-1);
@@ -79,6 +78,22 @@ static int	ret_value(char **s, char **line, int ret, int fd)
 		return (0);
 	else
 		return (get_line(&s[fd], line));
+}
+
+static int	count_string_chars(char *str)
+{
+	int i;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
+	{
+		if (str[i] == '"')
+			count++;
+		i++;
+	}
+	return (count);
 }
 
 /*
@@ -90,7 +105,7 @@ static int	ret_value(char **s, char **line, int ret, int fd)
 ** If line break occurs then function breaks and calls next function.
 */
 
-static int	store_line(char *buff, char **s, int *ret, int fd)
+int			store_line(char *buff, char **s, int *ret, int fd)
 {
 	char		*temp;
 	char		*is_string;
@@ -114,25 +129,4 @@ static int	store_line(char *buff, char **s, int *ret, int fd)
 			return (0);
 	}
 	return (1);
-}
-
-int			asm_gnl(const int fd, char **line)
-{
-	int			ret;
-	char		buff[BUFF_SIZE + 1];
-	static char	*s[FD_MAX];
-	int			value;
-
-	if (fd < 0 || line == NULL)
-		return (-1);
-	*line = NULL;
-	while ((ret = read(fd, buff, BUFF_SIZE)) > 0)
-	{
-		value = store_line(buff, s, &ret, fd);
-		if (value == -1)
-			return (-1);
-		else if (value == 0)
-			break ;
-	}
-	return (ret_value(s, line, ret, fd));
 }

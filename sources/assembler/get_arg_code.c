@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arg_code.c                                         :+:      :+:    :+:   */
+/*   get_arg_code.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atuomine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -24,7 +24,7 @@ static char	*get_bin_code(t_arg *arg)
 		return ("00");
 }
 
-int			needs_arg_code(t_stmt *stmt)
+static int	needs_arg_code(t_stmt *stmt)
 {
 	if (!ft_strequ("live", stmt->name) && !ft_strequ("zjmp", stmt->name) &&
 		!ft_strequ("fork", stmt->name) && !ft_strequ("lfork", stmt->name))

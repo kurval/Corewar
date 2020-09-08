@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   binary.c                                           :+:      :+:    :+:   */
+/*   copy.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atuomine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,39 +12,32 @@
 
 #include "asm.h"
 
-unsigned int		convert_dec(char *binary, int size)
+char		*copy_string_content(char *string)
 {
-	int				multiplier;
-	int				i;
-	unsigned int	result;
+	int		len;
+	int		start;
+	char	*copy;
 
-	multiplier = 1;
-	i = size - 1;
-	result = 0;
-	while (i >= 0)
+	start = 0;
+	len = ft_strlen(string);
+	if (string[len - 1] == '"')
+		len--;
+	if (string[0] == '"')
 	{
-		if (binary[i] == '1')
-			result = result + multiplier;
-		i--;
-		multiplier = multiplier * 2;
+		len--;
+		start = 1;
 	}
-	ft_strdel(&binary);
-	return (result);
+	copy = ft_strsub(string, start, len);
+	return (copy);
 }
 
-char				*make_rev_binary_str(int nbr, int size)
+t_cursor	*copy_cursor(t_cursor cursor)
 {
-	char	*binary;
-	int		i;
+	t_cursor *new;
 
-	if (!(binary = ft_strnew(size)))
+	if (!(new = (t_cursor *)malloc(sizeof(t_cursor))))
 		handle_error(MALLOC_ERROR);
-	i = size - 1;
-	while (i >= 0)
-	{
-		binary[i] = (nbr % 2 ? '0' : '1');
-		i--;
-		nbr = nbr / 2;
-	}
-	return (binary);
+	new->col = cursor.col;
+	new->row = cursor.row;
+	return (new);
 }

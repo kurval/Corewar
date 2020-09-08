@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   labels_to_rel_adrs.c                               :+:      :+:    :+:   */
+/*   parse_file_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jmetelin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: atuomine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/08/12 14:57:26 by jmetelin          #+#    #+#             */
-/*   Updated: 2020/08/12 14:57:26 by jmetelin         ###   ########.fr       */
+/*   Created: 2020/07/29 15:17:19 by atuomine          #+#    #+#             */
+/*   Updated: 2020/07/29 15:17:21 by atuomine         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,46 @@ void		labels_to_rel_adrs(t_label *labels, t_stmt *stmt)
 			i++;
 		}
 		stmt = stmt->next;
+	}
+}
+
+void		check_str_len(char *name, char *comment)
+{
+	char	*msg;
+	char	*max_len;
+
+	if (name && ft_strlen(name) > PROG_NAME_LENGTH)
+	{
+		if (!(max_len = ft_itoa(PROG_NAME_LENGTH)))
+			handle_error(MALLOC_ERROR);
+		msg = add_str_to_str("Champion name too long (Max length %s)", max_len);
+		ft_strdel(&max_len);
+		handle_error_free_msg(msg);
+	}
+	else if (comment && ft_strlen(comment) > COMMENT_LENGTH)
+	{
+		if (!(max_len = ft_itoa(COMMENT_LENGTH)))
+			handle_error(MALLOC_ERROR);
+		msg = add_str_to_str("Champion comment too long (Max length %s)",
+		max_len);
+		ft_strdel(&max_len);
+		handle_error_free_msg(msg);
+	}
+}
+
+/*
+**	Fixes label place for the following cases:
+**		- Multiple labels in a row
+**		- Label at the end of file
+*/
+
+void		fix_label_place(t_champ *champ)
+{
+	if (champ->labels && champ->labels->place == -1)
+	{
+		if (!champ->stmts)
+			champ->labels->place = 0;
+		else
+			champ->labels->place = champ->stmts->place + champ->stmts->size;
 	}
 }

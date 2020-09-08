@@ -206,64 +206,185 @@ typedef struct	s_asm
 	t_champ		champ;
 }				t_asm;
 
+/*
+** asm.c
+*/
+
 int				overlap(int type1, int type2);
-void			parse_file(int fd, t_asm *assembler);
-int				is_valid_char(char c);
-void			validate_characters(char *line, int col, int row,
-				int *end_point);
-int				validate_number(char *line, int start, t_cursor cursor);
-int				validate_cmd_str(char *line, t_cursor cursor);
-int				skip_whitespaces(char *line, int i);
-int				skip_valid_chars(char *line, int i);
-t_token			*tokenize(char *line, t_cursor cursor, char *edge_chars);
-int				find_first_char(char *str, int start, char *chars);
-int				find_last_char(char *str, int start, char *chars);
-char			*add_str_to_str(char *s1, char *s2);
-void			handle_error(char *msg);
-void			handle_error_free_msg(char *msg);
+
+/*
+** check_args.c
+*/
+
 char			*check_args(int argc, char **argv, char **dest);
-void			lexical_error(t_cursor cursor);
-void			check_for_lexical_error(char *line, t_cursor cursor,
-				int *token_end, char *edge_chars);
-int				ft_isnum(char *str);
-int				asm_gnl(const int fd, char **line);
-int				count_string_chars(char *str);
-t_op			*get_op(void);
-void			make_cor_file(char *s_filename, t_asm assembler);
-void			check_token_order(t_token *token);
+
+/*
+** set_flags.c
+*/
+
+void			set_flags(char c);
+void			toggle_error_debug_flag(void);
+
+/*
+** handle_error.c
+*/
+
 char			*pad_nbr(int nbr, int size);
 char			*token_type_str(t_type type);
+void			handle_error_free_msg(char *msg);
+void			handle_error(char *msg);
+
+/*
+** handle_d_and_f_flags.c
+*/
+
+void			validate_d_and_f_flags(char ***strs, char flag, char **arg);
+void			handle_d_and_f_flags(char **file);
+
+/*
+** find.c
+*/
+
+int				find_first_char(char *str, int start, char *chars);
+int				find_last_char(char *str, int start, char *chars);
 int				find_first_str(char *haystack, int start, char *needle);
+int				find_last_str(char *haystack, int start, char *needle);
+
+/*
+** handle_strs.c
+*/
+
+char			*add_str_to_str(char *s1, char *s2);
 char			*add_strs_to_str(char *str, char **strs);
 char			*join_free_strs(char *s1, char *s2);
 void			del_array(char **array);
-void			handle_error_msg(int error, t_token *token);
-void			check_token_validity(t_token *token, t_op *op);
-void			check_statement_order(t_token *token, t_champ *champ);
-void			insert_bytes_number(int fd, int nbr, int size,
-				t_state state);
-void			insert_bytes_string(int fd, char *str, int size,
-				t_state state);
-void			init_champ(t_champ *champ);
-void			set_champ(t_champ *champ, t_token *token);
-void			insert_statements(t_stmt *stmt, t_label *labels,
-				t_op *op, int fd);
-int				get_arg_code(t_stmt *stmt);
-unsigned int	convert_dec(char *binary, int size);
-char			*make_rev_binary_str(int nbr, int size);
-t_cursor		*copy_cursor(t_cursor cursor);
-void			labels_to_rel_adrs(t_label *labels, t_stmt *stmt);
-void			handle_invalid_label(t_arg *arg, char *label_name);
-char			*copy_string_content(char *string);
-void			check_str_len(char *name, char *comment);
+
+/*
+** get_op.c
+*/
+
+t_op			*get_op(void);
+
+/*
+** parse_file.c
+*/
+
+void			parse_file(int fd, t_asm *assembler);
+
+/*
+** asm_gnl_utils.c
+*/
+
+int				store_line(char *buff, char **s, int *ret, int fd);
+int				ret_value(char **s, char **line, int ret, int fd);
+
+/*
+** tokenize.c
+*/
+
+t_token			*tokenize(char *line, t_cursor cursor, char *edge_chars);
+
+/*
+** validate_characters.c
+*/
+
+void			validate_characters(char *line, int col, int row,
+				int *end_point);
 int				is_comment_char(char c);
+int				is_valid_char(char c);
+int				validate_cmd_str(char *line, t_cursor cursor);
+
+/*
+** check_for_lexical_error.c
+*/
+
+void			check_for_lexical_error(char *line, t_cursor cursor,
+				int *token_end, char *edge_chars);
+
+/*
+** handle_error_msg.c
+*/
+
+void			lexical_error(t_cursor cursor);
+void			handle_error_msg(int error, t_token *token);
+void			handle_invalid_argument(int err_type, char *instr_name, int row,
+				t_token *token);
+void			handle_invalid_label(t_arg *arg, char *label_name);
+
+/*
+** handle_tokens.c
+*/
+
+t_token			*make_token(char *line, t_cursor *cursor, int end);
+t_token			*make_endline_token(t_token *head, t_token *token,
+				t_cursor cursor, char *line);
+void			free_tokens(t_token **tokens);
+
+/*
+** copy.c
+*/
+
+t_cursor		*copy_cursor(t_cursor cursor);
+char			*copy_string_content(char *string);
+
+/*
+** check_tokens.c
+*/
+
+void			check_token_order(t_token *token);
+void			check_token_validity(t_token *token, t_op *op);
+
+/*
+** set_champ.c
+*/
+
+void			set_champ(t_champ *champ, t_token *token);
+
+/*
+** parse_file_utils.c
+*/
+
+void			fix_label_place(t_champ *champ);
+void			check_str_len(char *name, char *comment);
+void			labels_to_rel_adrs(t_label *labels, t_stmt *stmt);
+
+/*
+** make_cor_file.c
+*/
+
+void			make_cor_file(char *s_filename, t_asm assembler);
+
+/*
+** insert_bytes_number.c
+*/
+
+void			insert_bytes_number(int fd, int nbr, int size, t_state state);
+unsigned int	convert_dec(char *binary, int size);
+
+/*
+** insert_statements.c
+*/
+
+void			insert_statements(t_stmt *stmt, t_label *labels, t_op *op,
+				int fd);
+
+/*
+** get_arg_code.c
+*/
+
+int				get_arg_code(t_stmt *stmt);
+
+/*
+** write_hexdump.c
+*/
+
+void			write_hexdump(unsigned char *bytes, int byte_nbr,
+				t_state state);
+
+/*
+** free_memory.c
+*/
+
 void			free_memory(t_op *op, t_champ *champ);
-void			write_hexdump(unsigned char *bytes,
-				int byte_nbr, t_state state);
-void			set_flags(char c);
-void			toggle_error_debug_flag(void);
-int				find_last_str(char *haystack, int start, char *needle);
-void			handle_d_and_f_flags(char **file);
-void			handle_invalid_argument(int err_type, char *instr_name,
-				int row, t_token *token);
+
 #endif

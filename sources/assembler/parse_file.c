@@ -10,9 +10,63 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/asm.h"
+#include "asm.h"
 
-char			*create_edge_chars(void)
+/*
+**	Checks that champion info is not set multiple times,
+**	and that info is set before other types of tokens.
+*/
+
+static void	check_statement_order(t_token *token, t_champ *champ)
+{
+	if (token && token->type != endline)
+	{
+		if (overlap(token->type, cmd_str))
+		{
+			if (token->type == command_name && champ->name)
+				handle_error_msg(SYNTAX_ERROR, token);
+			if (token->type == command_comment && champ->comment)
+				handle_error_msg(SYNTAX_ERROR, token);
+		}
+		else if (!champ->done)
+		{
+			handle_error_msg(SYNTAX_ERROR, token);
+			champ->done = DEBUG_AFTER_MISSING_INFO;
+		}
+	}
+}
+
+static int	asm_gnl(const int fd, char **line)
+{
+	int			ret;
+	char		buff[BUFF_SIZE + 1];
+	static char	*s[FD_MAX];
+	int			value;
+
+	if (fd < 0 || line == NULL)
+		return (-1);
+	*line = NULL;
+	while ((ret = read(fd, buff, BUFF_SIZE)) > 0)
+	{
+		value = store_line(buff, s, &ret, fd);
+		if (value == -1)
+			return (-1);
+		else if (value == 0)
+			break ;
+	}
+	return (ret_value(s, line, ret, fd));
+}
+
+static void	init_champ(t_champ *champ)
+{
+	champ->name = NULL;
+	champ->comment = NULL;
+	champ->labels = NULL;
+	champ->stmts = NULL;
+	champ->done = 0;
+}
+
+static char	*create_edge_chars(void)
 {
 	char *chars;
 
@@ -29,69 +83,7 @@ char			*create_edge_chars(void)
 	return (chars);
 }
 
-void			print_tokens(t_token *tokens)
-{
-	t_token *current;
-
-	current = tokens;
-	while (current)
-	{
-		ft_printf("Content: %s\nType: %s\nLoc: [%d:%d]\n\n", current->content,
-		token_type_str(current->type), current->cursor->row,
-		current->cursor->col);
-		current = current->next;
-	}
-	ft_putchar('\n');
-}
-
-void			free_tokens(t_token **tokens)
-{
-	t_token *current;
-	t_token *next;
-
-	current = *tokens;
-	while (current)
-	{
-		next = current->next;
-		if (current->content)
-			free(current->content);
-		free(current->cursor);
-		free(current);
-		current = next;
-	}
-	*tokens = NULL;
-}
-
-void			print_labels(t_label *labels)
-{
-	t_label *curr;
-
-	curr = labels;
-	while (curr)
-	{
-		ft_printf("label %s place %d\n", curr->name, curr->place);
-		curr = curr->next;
-	}
-}
-
-/*
-**	Fixes label place for the following cases:
-**		- Multiple labels in a row
-**		- Label at the end of file
-*/
-
-static void		fix_label_place(t_champ *champ)
-{
-	if (champ->labels && champ->labels->place == -1)
-	{
-		if (!champ->stmts)
-			champ->labels->place = 0;
-		else
-			champ->labels->place = champ->stmts->place + champ->stmts->size;
-	}
-}
-
-void			parse_file(int fd, t_asm *assembler)
+void		parse_file(int fd, t_asm *assembler)
 {
 	char		*line;
 	t_cursor	cursor;

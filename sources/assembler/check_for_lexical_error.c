@@ -12,6 +12,19 @@
 
 #include "asm.h"
 
+static int	validate_number(char *line, int start, t_cursor cursor)
+{
+	int i;
+
+	i = start;
+	i = (line[i] == '-' ? start + 1 : start);
+	if (!ft_isdigit(line[i]))
+		lexical_error(cursor);
+	while (ft_isdigit(line[i]))
+		i++;
+	return (i);
+}
+
 static void	case_label(int *i, int *has_label_or_direct, char *line,
 t_cursor cursor)
 {
@@ -46,7 +59,7 @@ int *token_content_start)
 	return (has_label_or_direct);
 }
 
-int			check_string_or_separator(char *line, t_cursor cursor,
+static int	check_string_or_separator(char *line, t_cursor cursor,
 int *token_end)
 {
 	if (line[cursor.col] == SEPARATOR_CHAR)

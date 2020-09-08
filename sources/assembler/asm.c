@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   asm.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atuomine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,6 +11,23 @@
 /* ************************************************************************** */
 
 #include "asm.h"
+
+/*
+** A simple function to check if the given types overlap.
+** Returns the sum of values that overlap.
+**
+** Examples of usage:
+** Can be used to check if currently checked argument type is valid:
+** overlap(T_REG, token->type);
+** overlap(T_REG | T_IND, token->type);
+**
+** overlap(T_REG | T_IND | T_DIR, T_IND | T_DIR); // returns (T_IND | T_DIR)
+*/
+
+int				overlap(int type1, int type2)
+{
+	return (type1 & type2);
+}
 
 /*
 ** Handle file
@@ -49,7 +66,7 @@ static t_asm	handle_file(char *filename, t_asm assembler)
 	return (assembler);
 }
 
-char			*get_usage(void)
+static char		*get_usage(void)
 {
 	return ("Usage: ./asm [-h] [-e] [-d dir] [-x] [-f file] <sourcefile.s>\n \
 	-h      prints usage\n \

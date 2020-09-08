@@ -14,13 +14,12 @@ NAME = asm
 INC = ../../libft/
 INC2 = ../../includes/
 INC3 = ../../libft/printf/includes/
-SRC =  main.c parse_file.c utils.c tokenize.c find_first_char.c check_args.c \
-validate.c overlap.c check_for_lexical_error.c asm_gnl.c get_op.c \
-make_cor_file.c check_token_order.c add_str_to_str.c error.c insert_bytes.c \
-init_champ.c set_champ.c arg_code.c insert_statements.c binary.c \
-copy_cursor.c labels_to_rel_adrs.c check_str_len.c token_type_str.c \
-is_comment_char.c free_memory.c write_hexdump.c flags.c \
-handle_d_and_f_flags.c check_token_validity.c pad_nbr.c
+SRC = asm.c check_args.c set_flags.c handle_error.c handle_d_and_f_flags.c \
+find.c handle_strs.c get_op.c parse_file.c asm_gnl_utils.c tokenize.c \
+validate_characters.c check_for_lexical_error.c handle_error_msg.c \
+handle_tokens.c copy.c check_tokens.c set_champ.c parse_file_utils.c \
+make_cor_file.c insert_bytes_number.c insert_statements.c get_arg_code.c \
+write_hexdump.c free_memory.c
 OBJECT = $(SRC:%.c=%.o)
 LIBRARY = ../../libft/libft.a
 

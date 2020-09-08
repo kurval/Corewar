@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate.c                                         :+:      :+:    :+:   */
+/*   validate_characters.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atuomine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,19 +11,6 @@
 /* ************************************************************************** */
 
 #include "asm.h"
-
-int		validate_number(char *line, int start, t_cursor cursor)
-{
-	int i;
-
-	i = start;
-	i = (line[i] == '-' ? start + 1 : start);
-	if (!ft_isdigit(line[i]))
-		lexical_error(cursor);
-	while (ft_isdigit(line[i]))
-		i++;
-	return (i);
-}
 
 int		validate_cmd_str(char *line, t_cursor cursor)
 {
@@ -42,6 +29,13 @@ int		validate_cmd_str(char *line, t_cursor cursor)
 int		is_valid_char(char c)
 {
 	if (ft_strchr(LABEL_CHARS, c))
+		return (1);
+	return (0);
+}
+
+int		is_comment_char(char c)
+{
+	if (c == COMMENT_CHAR || c == ALT_COMMENT_CHAR)
 		return (1);
 	return (0);
 }

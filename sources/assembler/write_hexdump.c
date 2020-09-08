@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_cor_file.c                                    :+:      :+:    :+:   */
+/*   write_hexdump.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atuomine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-static void		print_ascii(unsigned char *memory, int len)
+static void	print_ascii(unsigned char *memory, int len)
 {
 	int i;
 
@@ -29,7 +29,7 @@ static void		print_ascii(unsigned char *memory, int len)
 	ft_printf("\033[0m\n");
 }
 
-static void		set_color_by_state(int state, unsigned char byte)
+static void	set_color_by_state(int state, unsigned char byte)
 {
 	if (state == magic)
 		ft_printf("\033[1;36m");
@@ -51,7 +51,7 @@ static void		set_color_by_state(int state, unsigned char byte)
 	}
 }
 
-static void		write_offset(unsigned int hx_bytes)
+static void	write_offset(unsigned int hx_bytes)
 {
 	ft_printf("\033[1;37m");
 	if (hx_bytes == 0)
@@ -62,15 +62,13 @@ static void		write_offset(unsigned int hx_bytes)
 	ft_printf("\033[0m");
 }
 
-static void		finish_hexdump(unsigned int hx_bytes,
-unsigned char *memory)
+static void	finish_hexdump(unsigned int hx_bytes, unsigned char *memory)
 {
 	ft_printf("%*s", 39 - ((hx_bytes % 16) * 2) - hx_bytes % 16 / 2, "");
 	print_ascii(memory, hx_bytes % 16 - 1);
 }
 
-void			write_hexdump(unsigned char *bytes,
-		int byte_nbr, t_state state)
+void		write_hexdump(unsigned char *bytes, int byte_nbr, t_state state)
 {
 	int						i;
 	static unsigned int		hx_bytes = 0;

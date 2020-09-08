@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   set_flags.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: atuomine <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,15 @@
 
 #include "asm.h"
 
-void		set_flags(char c)
+void	toggle_error_debug_flag(void)
+{
+	if (g_flags & flag_error_debug)
+		g_flags = g_flags ^ flag_error_debug;
+	else
+		g_flags = g_flags | flag_error_debug;
+}
+
+void	set_flags(char c)
 {
 	int	*ptr;
 
@@ -27,12 +35,4 @@ void		set_flags(char c)
 		*ptr = g_flags | flag_x;
 	if (ft_tolower(c) == 'f')
 		*ptr = g_flags | flag_f;
-}
-
-void		toggle_error_debug_flag(void)
-{
-	if (g_flags & flag_error_debug)
-		g_flags = g_flags ^ flag_error_debug;
-	else
-		g_flags = g_flags | flag_error_debug;
 }
