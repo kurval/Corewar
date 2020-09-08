@@ -31,7 +31,8 @@ void	handle_error(char *msg)
 	if (!(overlap(g_flags, flag_error_debug)) ||
 	(msg == EXIT_IF_ERRORS && exit_status) || ft_strequ(msg, MALLOC_ERROR))
 	{
-		system("leaks asm");
+		if (overlap(g_flags, flag_l))
+			system("leaks asm");
 		exit(EXIT_FAILURE);
 	}
 }

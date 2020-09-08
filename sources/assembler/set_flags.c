@@ -35,4 +35,6 @@ void	set_flags(char c)
 		*ptr = g_flags | flag_x;
 	if (ft_tolower(c) == 'f')
 		*ptr = g_flags | flag_f;
+	if (ft_tolower(c) == 'l')
+		*ptr = g_flags | flag_l;
 }

@@ -96,13 +96,15 @@ int				main(int argc, char **argv)
 	if (overlap(g_flags, flag_h))
 	{
 		ft_putstr_fd(get_usage(), 2);
-		system("leaks asm");
+		if (overlap(g_flags, flag_l))
+			system("leaks asm");
 		exit(0);
 	}
 	assembler = handle_file(source, assembler);
 	handle_d_and_f_flags(&source);
 	make_cor_file(source, assembler);
 	free_memory(assembler.op, &assembler.champ);
-	system("leaks asm");
+	if (overlap(g_flags, flag_l))
+		system("leaks asm");
 	return (0);
 }

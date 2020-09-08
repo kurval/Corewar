@@ -57,7 +57,7 @@ typedef enum	e_type
 # define INVALID_TYPE 2
 # define NUMBER -1
 # define EXIT_IF_ERRORS NULL
-# define FLAG_CHARS "hedxf"
+# define FLAG_CHARS "hedxfl"
 
 /*
 ** t_flag
@@ -72,6 +72,7 @@ typedef enum	e_flag
 	flag_x = 8,
 	flag_f = 16,
 	flag_error_debug = 32,
+	flag_l = 64,
 }				t_flag;
 
 int				g_flags;
