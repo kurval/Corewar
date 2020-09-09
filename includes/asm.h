@@ -71,8 +71,8 @@ typedef enum	e_flag
 	flag_d = 4,
 	flag_x = 8,
 	flag_f = 16,
-	flag_error_debug = 32,
-	flag_l = 64,
+	flag_l = 32,
+	flag_error_debug = 64,
 }				t_flag;
 
 int				g_flags;

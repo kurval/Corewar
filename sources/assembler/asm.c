@@ -68,15 +68,17 @@ static t_asm	handle_file(char *filename, t_asm assembler)
 
 static char		*get_usage(void)
 {
-	return ("Usage: ./asm [-h] [-e] [-d dir] [-x] [-f file] <sourcefile.s>\n \
-	-h      prints usage\n \
-	-e      prints more errors instead of only the first one\n \
-	-d dir  creates .cor file in the directory dir\n \
-	-x      prints hexdump\n \
-	-f file names the .cor file file\n \
+	return ("Usage:\n \
+	./asm [-h] [-e] [-d DIR] [-x] [-f FILE] [-l] <sourcefile.s>\n \
+	-h      prints the usage\n \
+	-e      prints all the errors instead of only the first one\n \
+	-d DIR  creates the .cor file to the directory DIR\n \
+	-x      prints the hexdump\n \
+	-f FILE names the .cor file FILE\n \
+	-l      prints memory leaks\n \
 	\n \
-	If a file path is defined in both -d and -f options,\n \
-	the one in -f option is used.\n");
+	If a file path is defined in both the -d and -f options,\n \
+	the one in the -f option is used.\n");
 }
 
 /*
