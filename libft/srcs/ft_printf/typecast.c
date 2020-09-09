@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "ft_printf.h"
 
 void	typecast_f(va_list args, t_info *info)
 {

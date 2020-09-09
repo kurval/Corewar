@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "ft_printf.h"
 
 void		width(t_info *info, const char *str, va_list args)
 {

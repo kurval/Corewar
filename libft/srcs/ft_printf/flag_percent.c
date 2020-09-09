@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "ft_printf.h"
 
 void	flag_percent(t_info *info)
 {

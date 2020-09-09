@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "ft_printf.h"
 
 static void	flag_int4(t_info *info)
 {

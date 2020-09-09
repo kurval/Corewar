@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   type_n.c                                           :+:      :+:    :+:   */
+/*   type_c.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/27 11:04:11 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/02/02 19:57:28 by vkurkela         ###   ########.fr       */
+/*   Created: 2020/01/10 11:47:19 by vkurkela          #+#    #+#             */
+/*   Updated: 2020/02/05 10:45:17 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/printf.h"
+#include "ft_printf.h"
 
-void		flag_str_len(va_list args, t_info *info)
+void	flag_char(va_list args, t_info *info)
 {
-	char *output;
+	char output;
 
-	output = va_arg(args, char*);
-	info->len = ft_strlen(output);
-	ft_putnbrb(info->len, info->bytes);
-}
-
-void		flag_num_len(va_list args, t_info *info)
-{
-	long long output;
-
-	output = va_arg(args, int);
-	info->len = ft_numlen(output);
-	ft_putnbrb(info->len, info->bytes);
+	output = (char)va_arg(args, int);
+	info->width && !info->minus ? put_spaces(info->width, 1, info->bytes) : 0;
+	if (info->minus)
+	{
+		ft_putcharb(output, info->bytes);
+		put_spaces(info->width, 1, info->bytes);
+		return ;
+	}
+	ft_putcharb(output, info->bytes);
 }

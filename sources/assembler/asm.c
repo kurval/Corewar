@@ -90,10 +90,9 @@ static char		*get_usage(void)
 int				main(int argc, char **argv)
 {
 	t_asm		assembler;
-	char		*dest;
 	char		*source;
 
-	if (!(source = check_args(argc, argv, &dest)))
+	if (!(source = check_args(argc, argv)))
 		handle_error(get_usage());
 	if (overlap(g_flags, flag_h))
 	{

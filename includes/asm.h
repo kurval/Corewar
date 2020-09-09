@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include "libft.h"
 # include "get_next_line.h"
-# include "printf.h"
+# include "ft_printf.h"
 # include "op.h"
 
 /*
@@ -217,7 +217,7 @@ int				overlap(int type1, int type2);
 ** check_args.c
 */
 
-char			*check_args(int argc, char **argv, char **dest);
+char			*check_args(int argc, char **argv);
 
 /*
 ** set_flags.c

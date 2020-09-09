@@ -1,0 +1,28 @@
+.\" Manpage for asm
+.\" Contact jmetelin@student.hive.fi to correct errors or typos.
+.TH man 8 "25 May 2020" "1.0" "asm man page"
+.SH ASM
+ASM
+.SH SYNOPSIS
+ASM [file.s]
+.SH DESCRIPTION
+ASM is a program that compiles a champion and translates it from the language it's written in (assembly language) into "Bytecode." Bytecode is a machine language, which is directly interpreted by the virtual machine COREWAR.
+.SH OPTIONS
+-h
+
+-e
+
+-d
+
+-x
+
+-f
+
+-l
+
+.SH SEE ALSO
+something releated to asm
+.SH BUGS
+No known bugs EVER. yes you read that right
+.SH AUTHOR
+Janette Metelinen (jmetelin@student.hive.fi)

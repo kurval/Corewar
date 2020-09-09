@@ -16,8 +16,7 @@
 # include "op.h"
 # include "visu.h"
 # include "corewar_error.h"
-# include "../libft/libft.h"
-# include <stdio.h> //remove before turning in the assignment
+# include "libft.h"
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>

@@ -42,7 +42,6 @@ static int	get_line(char **s, char **line)
 {
 	int		len;
 	char	*temp;
-	int		str_char_count;
 
 	len = get_line_len(s);
 	if ((*s)[len] == '\n')
@@ -108,7 +107,6 @@ static int	count_string_chars(char *str)
 int			store_line(char *buff, char **s, int *ret, int fd)
 {
 	char		*temp;
-	char		*is_string;
 
 	buff[*ret] = '\0';
 	if (s[fd] == NULL)

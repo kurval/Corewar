@@ -38,7 +38,6 @@ t_token		*tokenize(char *line, t_cursor cursor, char *edge_chars)
 	t_token *token;
 	t_token *head;
 	int		token_end;
-	int		token_start;
 
 	head = NULL;
 	while (line[cursor.col])

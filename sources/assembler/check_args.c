@@ -69,11 +69,8 @@ static void	validate_flag(char ***strs)
 ** 2.2 Else, check the argument with process_arg function (read above)
 */
 
-char		*check_args(int argc, char **argv, char **dest)
+char		*check_args(int argc, char **argv)
 {
-	char	*msg;
-	int		len;
-	int		dot_loc;
 	char	*source;
 
 	source = NULL;
