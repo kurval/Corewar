@@ -51,5 +51,4 @@ void	load_champions(t_vm *vm)
 		vm->p[i].h.prog_size);
 		location += space;
 	}
-	// print_arena(vm->a);
 }
