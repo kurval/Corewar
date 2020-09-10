@@ -20,7 +20,7 @@
 ** the end of a file we can free the memory of *s beacause.
 */
 
-static int	get_line_len(char **s)
+static int	get_line_len(char **s, int *row)
 {
 	int str_char_count;
 	int len;
@@ -33,17 +33,20 @@ static int	get_line_len(char **s)
 			str_char_count++;
 		len++;
 		while ((*s)[len] == '\n' && str_char_count % 2 != 0)
+		{
 			len++;
+			(*row)++;
+		}
 	}
 	return (len);
 }
 
-static int	get_line(char **s, char **line)
+static int	get_line(char **s, char **line, int *row)
 {
 	int		len;
 	char	*temp;
 
-	len = get_line_len(s);
+	len = get_line_len(s, row);
 	if ((*s)[len] == '\n')
 	{
 		if ((!(*line = ft_strsub(*s, 0, len + 1))) ||\
@@ -69,14 +72,14 @@ static int	get_line(char **s, char **line)
 ** -1 if an error has happened respectively.
 */
 
-int			ret_value(char **s, char **line, int ret, int fd)
+int			ret_value(char **s, char **line, int ret, int *row)
 {
 	if (ret < 0)
 		return (-1);
-	else if (ret == 0 && s[fd] == NULL)
+	else if (ret == 0 && *s == NULL)
 		return (0);
 	else
-		return (get_line(&s[fd], line));
+		return (get_line(s, line, row));
 }
 
 static int	count_string_chars(char *str)

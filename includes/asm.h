@@ -277,7 +277,7 @@ void			parse_file(int fd, t_asm *assembler);
 */
 
 int				store_line(char *buff, char **s, int *ret, int fd);
-int				ret_value(char **s, char **line, int ret, int fd);
+int				ret_value(char **s, char **line, int ret, int *row);
 
 /*
 ** tokenize.c

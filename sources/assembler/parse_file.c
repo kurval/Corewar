@@ -36,7 +36,7 @@ static void	check_statement_order(t_token *token, t_champ *champ)
 	}
 }
 
-static int	asm_gnl(const int fd, char **line)
+static int	asm_gnl(const int fd, char **line, int *row)
 {
 	int			ret;
 	char		buff[BUFF_SIZE + 1];
@@ -54,7 +54,7 @@ static int	asm_gnl(const int fd, char **line)
 		else if (value == 0)
 			break ;
 	}
-	return (ret_value(s, line, ret, fd));
+	return (ret_value(&s[fd], line, ret, row));
 }
 
 static void	init_champ(t_champ *champ)
@@ -92,7 +92,7 @@ void		parse_file(int fd, t_asm *assembler)
 	cursor.row = 1;
 	edge_chars = create_edge_chars();
 	init_champ(&assembler->champ);
-	while (asm_gnl(fd, &line) && line)
+	while (asm_gnl(fd, &line, &cursor.row) && line)
 	{
 		cursor.col = 0;
 		assembler->tokens = tokenize(line, cursor, edge_chars);
