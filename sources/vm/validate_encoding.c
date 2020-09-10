@@ -24,7 +24,7 @@ static int	check_op_args(t_vm *vm, int *args, t_process *proc)
 
 	i = 0;
 	while (i < 3)
-	{	
+	{
 		if ((!(args[i] & vm->operations[proc->opcode - 1].argv[i]) &&\
 		args[i]) || (!args[i] && vm->operations[proc->opcode - 1].argv[i]))
 			return (0);
