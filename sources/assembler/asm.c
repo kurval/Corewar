@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: atuomine <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 15:17:07 by atuomine          #+#    #+#             */
-/*   Updated: 2020/07/29 15:17:10 by atuomine         ###   ########.fr       */
+/*   Updated: 2020/09/11 01:07:26 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,10 +91,21 @@ int				main(int argc, char **argv)
 {
 	t_asm		assembler;
 	char		*source;
+	char		*deasm_file;
 
-	if (!(source = check_args(argc, argv)))
-		handle_error(get_usage());
-	if (overlap(g_flags, flag_h))
+	// if (!(source = check_args(argc, argv, &dest)))
+	// 	handle_error(get_usage());
+	if (ft_strequ(argv[1], "-d"))
+	{
+		if (argc != 3)
+			handle_error("usage ./asm -d champion.cor");
+		if (!(deasm_file = validate_file(argv[2])))
+			handle_error("Could not open file");
+		dasm(argv[2], deasm_file);
+		ft_printf("%s file created", deasm_file);
+		exit(0);
+	}
+	if (overlap(get_flags(), flag_h))
 	{
 		ft_putstr_fd(get_usage(), 2);
 		if (overlap(g_flags, flag_l))

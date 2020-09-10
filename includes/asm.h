@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 17:05:18 by jmetelin          #+#    #+#             */
-/*   Updated: 2020/08/12 16:55:53 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/11 01:08:02 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -387,5 +387,11 @@ void			write_hexdump(unsigned char *bytes, int byte_nbr,
 */
 
 void			free_memory(t_op *op, t_champ *champ);
+void			write_hexdump(unsigned char *bytes,
+				int byte_nbr, t_state state);
+void			set_flags(char c);
+int				get_flags(void);
+char			*validate_file(char *file);
+void			dasm(char *src, const char *dest);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/01 17:16:27 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/11 01:06:51 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static void	get_player(char *s, t_player *p, int num)
 	}
 }
 
-static int	get_n_flag(char *s, int id[4], int champ_count)
+int	get_n_flag(char *s, int id[4], int champ_count)
 {
 	int num;
 
@@ -62,11 +62,10 @@ static int	get_n_flag(char *s, int id[4], int champ_count)
 		ft_errno(N_FLAG_ERROR);
 	if (!id[num - 1])
 		ft_errno(DUPLICATE_N);
-	id[num - 1] = 0;
 	return (num);
 }
 
-static int	get_next_unused_id(int arr[MAX_PLAYERS])
+int	get_next_unused_id(int arr[MAX_PLAYERS])
 {
 	int i;
 
@@ -78,7 +77,7 @@ static int	get_next_unused_id(int arr[MAX_PLAYERS])
 	return (i + 1);
 }
 
-void		parse_input(int ac, char **av, t_vm *vm)
+void		parse_input(char **av, t_vm *vm)
 {
 	int i;
 	int	id_arr[MAX_PLAYERS];
@@ -91,16 +90,7 @@ void		parse_input(int ac, char **av, t_vm *vm)
 	id_arr[3] = 4;
 	while (av[++i])
 	{
-		num = 0;
-		if (ft_strequ("-n", av[i]) && i < ac && i++)
-			num = get_n_flag(av[i++], id_arr, vm->nb_players);
-		else
-			num = get_next_unused_id(id_arr);
-		if (ft_strequ("-dump", av[i]) && i < ac && i++)
-			get_dump(vm, av[i++]);
-		else if ((ft_strequ("-a", av[i]) && (vm->a_flag = 1))
-				|| (ft_strequ("-v", av[i]) && (vm->v_flag = 1)))
-			continue;
+		num = check_flags(av, &i, id_arr, vm);
 		get_player(av[i], &(vm->p[num - 1]), num);
 		id_arr[num - 1] = 0;
 	}

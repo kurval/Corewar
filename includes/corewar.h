@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/04 13:58:09 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/11 01:07:51 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ typedef struct		s_vm
 	unsigned int	dump_cycle;
 	int				a_flag;
 	int				v_flag;
+	int				d_flag;
 	unsigned int	nb_players;
 	unsigned int	nb_procs;
 	unsigned int	id_counter;
@@ -213,9 +214,13 @@ void				free_proc_list(t_process **proc_list);
 */
 
 int					validate_chapions(char **s);
-void				parse_input(int ac, char **av, t_vm *vm);
+void				parse_input(char **av, t_vm *vm);
 void				load_champions(t_vm *vm);
-void				get_dump(t_vm *vm, char *s);
+int					get_dump(t_vm *vm, char *s);
+void				has_magic_header(char *file);
+int					get_next_unused_id(int arr[MAX_PLAYERS]);
+int					get_n_flag(char *s, int id[4], int champ_count);
+int					check_flags(char **ac, int *i, int *num, t_vm *vm);
 
 /*
 **					OPERATION FUNCTIONS
