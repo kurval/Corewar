@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 18:48:48 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/24 15:51:00 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/10 14:29:45 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,12 @@ static int		count_moves(t_vm *vm, t_process *proc)
 	valid = 1;
 	proc->jump = 1;
 	proc->jump += (vm->operations[proc->opcode - 1].encode) ? 1 : 0;
-	while (++i < vm->operations[proc->opcode - 1].argc && valid)
+	// if ((vm->current_cycle == 9720) && proc->opcode == 3 && enc == 0)
+	// 	ft_printf("enc %d\n", enc);
+	while (++i < vm->operations[proc->opcode - 1].argc)
 	{
-		valid = get_values(vm, proc, i);
+		if (valid)
+			valid = get_values(vm, proc, i);
 		(proc->args[i] == T_REG) ? proc->jump += 1 : 0;
 		(proc->args[i] == T_DIR) ? proc->jump += \
 		vm->operations[proc->opcode - 1].dir_size : 0;
@@ -101,6 +104,7 @@ static int		count_moves(t_vm *vm, t_process *proc)
 int				get_args(t_vm *vm, t_process *proc)
 {
 	int valid;
+	int ret;
 
 	valid = 1;
 	if (vm->operations[proc->opcode - 1].encode)
@@ -110,5 +114,6 @@ int				get_args(t_vm *vm, t_process *proc)
 	}
 	else
 		proc->args[0] = T_DIR;
-	return (valid && count_moves(vm, proc));
+	ret = count_moves(vm, proc);
+	return (ret && valid);
 }
