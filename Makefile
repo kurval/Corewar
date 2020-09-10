@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
+#    By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/09/03 16:11:12 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/09/11 01:11:09 by bkonjuha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -71,7 +71,7 @@ COLOR_PENDING = \033[0;33m
 COLOR_SUCCESS = \033[0;32m
 COLOR_DEFAULT = \033[1;34m
 
-all: $(ASM) $(COREWAR)
+all: $(COREWAR)  #$(ASM)
 
 $(ASM): $(LIBFT) $(HEADERS) $(A) $(ASM_SRC)
 		@$(COMPILE) $(INCLUDES) $(A) $(ASM_SRC) $(LIBFT) -o $(ASM)

@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/11 01:07:51 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/11 01:21:06 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,13 +214,14 @@ void				free_proc_list(t_process **proc_list);
 */
 
 int					validate_chapions(char **s);
-void				parse_input(char **av, t_vm *vm);
+void				parse_input(int ac, char **av, t_vm *vm);
 void				load_champions(t_vm *vm);
-int					get_dump(t_vm *vm, char *s);
+void				get_dump(t_vm *vm, char *s);
+void				get_d_flag(t_vm *vm, char *s);
 void				has_magic_header(char *file);
 int					get_next_unused_id(int arr[MAX_PLAYERS]);
 int					get_n_flag(char *s, int id[4], int champ_count);
-int					check_flags(char **ac, int *i, int *num, t_vm *vm);
+void				has_white_space(int fd);
 
 /*
 **					OPERATION FUNCTIONS

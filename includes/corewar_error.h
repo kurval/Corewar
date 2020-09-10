@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:39:30 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/11 01:07:44 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/11 01:26:03 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,9 @@
 # define MALLOC_ERROR "ERROR: Malloc failed"
 
 # define MAGIC_ERROR "ERROR: Invalid magic header"
+
+# define SPACE_ERROR "ERROR: Missign whitespace"
+
+# define SIZE_ERROR "ERROR: Code size does not match given size"
 
 #endif

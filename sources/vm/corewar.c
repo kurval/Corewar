@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:30:41 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/11 01:06:56 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/11 01:12:53 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int ac, char **av)
 		init_vm(&vm);
 		init_arena(&vm, &arena);
 		vm.nb_players = validate_chapions(av);
-		parse_input(av, &vm);
+		parse_input(ac, av, &vm);
 		load_champions(&vm);
 		init_processes(&vm);
 		if (vm.v_flag)

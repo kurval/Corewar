@@ -6,13 +6,17 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 07:53:44 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/11 01:06:01 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/11 01:34:08 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
 
-int		get_dump(t_vm *vm, char *s)
+/*
+**	TODO: Merge get_dump and get_d_flag into one function;
+*/
+
+void	get_dump(t_vm *vm, char *s)
 {
 	int i;
 
@@ -22,7 +26,20 @@ int		get_dump(t_vm *vm, char *s)
 			ft_errno(DUMP_ERROR);
 	if (vm->dump_cycle)
 		ft_errno(DUMP_ERROR_SET);
-	return (ft_atoi(s));
+	vm->dump_cycle = ft_atoi(s);
+}
+
+void	get_d_flag(t_vm *vm, char *s)
+{
+	int i;
+
+	i = -1;
+	while (s[++i])
+		if (!ft_isdigit(s[i]))
+			ft_errno(DUMP_ERROR);
+	if (vm->d_flag)
+		ft_errno(DUMP_ERROR_SET);
+	vm->d_flag = ft_atoi(s);
 }
 
 void	has_magic_header(char *file)
@@ -43,21 +60,17 @@ void	has_magic_header(char *file)
 		ft_errno(OPEN_ERROR);
 }
 
-int		check_flags(char **av, int *i, int id_arr[4], t_vm *vm)
+void	has_white_space(int fd)
 {
-	int num;
+	unsigned char	character;
+	int				i;
 
-	num = 0;
-	if (ft_strequ("-n", av[*i]) && *i++)
-		num = get_n_flag(av[*i += 1], id_arr, vm->nb_players);
-	else
-		num = get_next_unused_id(id_arr);
-	if (ft_strequ("-dump", av[*i]) && *i++)
-		vm->dump_cycle = get_dump(vm, av[*i++]);
-	if (ft_strequ("-d", av[*i]) && *i++)
-		vm->d_flag = get_dump(vm, av[*i += 1]);
-	else if ((ft_strequ("-a", av[*i]) && (vm->a_flag = 1))
-			|| (ft_strequ("-v", av[*i]) && (vm->v_flag = 1)))
-		*i += 1;
-	return (num);
+	i = 0;
+	while (i < 4)
+	{
+		read(fd, &character, 1);
+		if (character)
+			ft_errno(SPACE_ERROR);
+		i++;
+	}
 }
