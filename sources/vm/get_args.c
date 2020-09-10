@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 18:48:48 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/10 14:29:45 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/10 16:27:08 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,6 @@ static int		count_moves(t_vm *vm, t_process *proc)
 	valid = 1;
 	proc->jump = 1;
 	proc->jump += (vm->operations[proc->opcode - 1].encode) ? 1 : 0;
-	// if ((vm->current_cycle == 9720) && proc->opcode == 3 && enc == 0)
-	// 	ft_printf("enc %d\n", enc);
 	while (++i < vm->operations[proc->opcode - 1].argc)
 	{
 		if (valid)
