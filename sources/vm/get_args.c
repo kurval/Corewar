@@ -106,8 +106,8 @@ int				get_args(t_vm *vm, t_process *proc)
 
 	valid_encode = 1;
 	if (vm->operations[proc->opcode - 1].encode)
-		valid_encode = validate_encoding(vm, vm->a->arena[get_addr(proc->pc + 1)],
-		proc);
+		valid_encode = validate_encoding(vm,
+		vm->a->arena[get_addr(proc->pc + 1)], proc);
 	else
 		proc->args[0] = T_DIR;
 	valid_values = count_moves(vm, proc);
