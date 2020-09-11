@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:39:30 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/11 01:26:03 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/11 11:17:46 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,7 @@
 # define SPACE_ERROR "ERROR: Missign whitespace"
 
 # define SIZE_ERROR "ERROR: Code size does not match given size"
+
+#define CODE_ERROR "ERROR: File has a code size that differ from what its header says"
 
 #endif
