@@ -45,6 +45,9 @@ void		init_vm(t_vm *vm)
 	vm->a_flag = 0;
 	vm->v_flag = 0;
 	vm->id_counter = 1;
+	vm->d_flag = 0;
+	vm->nb_players = 0;
+	vm->nb_procs = 0;
 }
 
 /*

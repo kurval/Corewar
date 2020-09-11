@@ -54,7 +54,7 @@ static void	get_player(char *s, t_player *p, int num)
 		ft_errno(CODE_ERROR);
 }
 
-int		get_n_flag(char *s, int id[4], int champ_count)
+int			get_n_flag(char *s, int id[4], int champ_count)
 {
 	int num;
 
@@ -69,7 +69,7 @@ int		get_n_flag(char *s, int id[4], int champ_count)
 	return (num);
 }
 
-int		get_next_unused_id(int arr[MAX_PLAYERS])
+int			get_next_unused_id(int arr[MAX_PLAYERS])
 {
 	int i;
 
@@ -87,11 +87,9 @@ void		parse_input(int ac, char **av, t_vm *vm)
 	int	id_arr[MAX_PLAYERS];
 	int	num;
 
-	i = 0;
-	id_arr[0] = 1;
-	id_arr[1] = 2;
-	id_arr[2] = 3;
-	id_arr[3] = 4;
+	i = 5;
+	while (i-- > 1)
+		id_arr[i - 1] = i;
 	while (av[++i])
 	{
 		num = 0;
@@ -107,7 +105,7 @@ void		parse_input(int ac, char **av, t_vm *vm)
 				|| (ft_strequ("-v", av[i]) && (vm->v_flag = 1)))
 			continue;
 		get_player(av[i], &(vm->p[num - 1]), num);
-		id_arr[num -1] = 0;
+		id_arr[num - 1] = 0;
 	}
 	introduce_champs(vm);
 }

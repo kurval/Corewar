@@ -31,6 +31,9 @@ int	main(int ac, char **av)
 		decleare_winner(&vm);
 	}
 	else
-		ft_putstr("Usage:\n./corewar [-dump N | -d N] [-a] [-v] [[-n N] file.cor]\n");
+	{
+		ft_putstr_fd("Usage:\n./corewar ", 2);
+		ft_putstr_fd("[-dump N | -d N] [-a] [-v] [[-n N] file.cor]\n", 2);
+	}
 	return (0);
 }
