@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/11 10:03:00 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/11 10:17:32 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,7 @@ void		parse_input(int ac, char **av, t_vm *vm)
 			num = get_next_unused_id(id_arr);
 		if (ft_strequ("-dump", av[i]) && i < ac && i++)
 			get_dump(vm, av[i++]);
-		else if (ft_strequ("-d", av[i]) && i < ac && i++)
+		if (ft_strequ("-d", av[i]) && i < ac && i++)
 			get_d_flag(vm, av[i++]);
 		else if ((ft_strequ("-a", av[i]) && (vm->a_flag = 1))
 				|| (ft_strequ("-v", av[i]) && (vm->v_flag = 1)))
