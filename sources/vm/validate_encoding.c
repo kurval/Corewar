@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/13 11:32:29 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/10 23:14:48 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/11 18:41:03 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,12 @@ static void	get_types(t_vm *vm, int *args, t_process *proc)
 		i++;
 	}
 }
+
+/*
+** Using bitmask to extract first three
+** pair of bits which tells us the type
+** of each argument.
+*/
 
 int			validate_encoding(t_vm *vm, int encode_byte, t_process *proc)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/11 11:21:33 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/11 19:05:11 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static void	introduce_champs(t_vm *vm)
 	int i;
 
 	i = -1;
+	if (vm->v_flag)
+		return ;
 	ft_putendl("Introducing contestants...");
 	while (++i < 4)
 	{
@@ -92,7 +94,6 @@ void		parse_input(int ac, char **av, t_vm *vm)
 		id_arr[i - 1] = i;
 	while (av[++i])
 	{
-		num = 0;
 		if (ft_strequ("-n", av[i]) && i < ac && i++)
 			num = get_n_flag(av[i++], id_arr, vm->nb_players);
 		else
