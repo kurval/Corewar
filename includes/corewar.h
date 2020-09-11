@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/11 01:21:06 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/11 09:54:54 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ typedef struct		s_vm
 	unsigned int	dump_cycle;
 	int				a_flag;
 	int				v_flag;
-	int				d_flag;
+	unsigned int	d_flag;
 	unsigned int	nb_players;
 	unsigned int	nb_procs;
 	unsigned int	id_counter;

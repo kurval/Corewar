@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:30:41 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/11 01:12:53 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/11 10:04:57 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ int	main(int ac, char **av)
 		decleare_winner(&vm);
 	}
 	else
-		ft_putstr("Usage:\n./corewar [-dump] [-a] [-v] [[-n N] file.cor]\n");
+		ft_putstr("Usage:\n./corewar [-dump N | -d N] [-a] [-v] [[-n N] file.cor]\n");
 	return (0);
 }
