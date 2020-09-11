@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/11 18:56:54 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/11 19:14:29 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,9 @@ void		parse_input(int ac, char **av, t_vm *vm)
 	int	id_arr[MAX_PLAYERS];
 	int	num;
 
-	i = -1;
-	while (++i < 4)
-		id_arr[i] = i + 1;
-	i = 0;
+	i = 5;
+	while (i-- > 1)
+		id_arr[i - 1] = i;
 	while (av[++i])
 	{
 		if (ft_strequ("-n", av[i]) && i < ac && i++)

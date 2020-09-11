@@ -19,7 +19,7 @@
 
 # define INPUT_ERROR "ERROR: Invalid input parameter"
 
-# define OPEN_ERROR "ERROR: Cannot open file"
+# define OPEN_ERROR "ERROR: Can't open the file"
 
 # define CHAMP_ERROR "ERROR: Invalid Champion"
 
@@ -39,10 +39,10 @@
 
 # define MAGIC_ERROR "ERROR: Invalid magic header"
 
-# define SPACE_ERROR "ERROR: Missign whitespace"
+# define SPACE_ERROR "ERROR: Missing whitespace"
 
-# define SIZE_ERROR "ERROR: Code size does not match given size"
+# define SIZE_ERROR "ERROR: Code size does not match the given size"
 
-#define CODE_ERROR "ERROR: File has a code size that differ from what its header says"
+# define CODE_ERROR "ERROR: The code size differs from what its header says"
 
 #endif
