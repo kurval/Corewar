@@ -211,6 +211,7 @@ typedef struct	s_asm
 ** asm.c
 */
 
+char			*get_usage(void);
 int				overlap(int type1, int type2);
 
 /*
@@ -387,11 +388,17 @@ void			write_hexdump(unsigned char *bytes, int byte_nbr,
 */
 
 void			free_memory(t_op *op, t_champ *champ);
-void			write_hexdump(unsigned char *bytes,
-				int byte_nbr, t_state state);
-void			set_flags(char c);
-int				get_flags(void);
+
+/*
+** validate_file.c
+*/
+
 char			*validate_file(char *file);
+
+/*
+** dasm.c
+*/
+
 void			dasm(char *src, const char *dest);
 
 #endif

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/asm.h"
+#include "asm.h"
 
 static void	write_header(int src_file, int dest_file)
 {
@@ -40,17 +40,19 @@ static void	write_header(int src_file, int dest_file)
 	write(dest_file, "\n", 1);
 }
 
-void		parse_file(int src_file, int dest_file)
-{
-	unsigned int *op;
-	unsigned char character;
-
-	while (read(src_file, &character, 1) > 0)
-	{
-		if (character >= 16)
-			handle_error("ERROR: Cannot read file");
-	}
-}
+/*
+** void		parse_file(int src_file, int dest_file)
+** {
+** 	unsigned int *op;
+** 	unsigned char character;
+**
+** 	while (read(src_file, &character, 1) > 0)
+** 	{
+** 		if (character >= 16)
+** 			handle_error("ERROR: Cannot read file");
+** 	}
+** }
+*/
 
 void		dasm(char *src, const char *dest)
 {

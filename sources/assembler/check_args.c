@@ -47,6 +47,8 @@ static void	validate_flag(char ***strs)
 	{
 		if (ft_strchr(FLAG_CHARS, ft_tolower(***strs)))
 			set_flags(***strs);
+		else if (ft_tolower(***strs) == 'z')
+			handle_error(get_usage());
 		else
 			handle_error("Invalid flags");
 		if (***strs == 'd')

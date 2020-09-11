@@ -26,6 +26,7 @@ char		*join_free_strs(char *s1, char *s2)
 {
 	char	*joined;
 
+	joined = NULL;
 	if (!s2)
 		handle_error(MALLOC_ERROR);
 	else if (s1)

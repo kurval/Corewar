@@ -20,6 +20,8 @@ ASM is a program that compiles a champion and translates it from the language it
 
 -l
 
+-z
+
 .SH SEE ALSO
 something releated to asm
 .SH BUGS

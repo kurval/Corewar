@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/asm.h"
+#include "asm.h"
 
-int		ends_with_cor(char *file)
+static int	ends_with_cor(char *file)
 {
 	int		i;
 
@@ -24,7 +24,7 @@ int		ends_with_cor(char *file)
 	return (i - 4);
 }
 
-char	*validate_file(char *file)
+char		*validate_file(char *file)
 {
 	char	*new_file;
 	char	*filename;

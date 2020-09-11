@@ -21,7 +21,7 @@ ASM_SRC_FILES = check_args.c set_flags.c handle_error.c handle_d_and_f_flags.c \
 			handle_error_msg.c handle_tokens.c copy.c check_tokens.c \
 			set_champ.c parse_file_utils.c make_cor_file.c \
 			insert_bytes_number.c insert_statements.c get_arg_code.c \
-			write_hexdump.c free_memory.c
+			write_hexdump.c free_memory.c validate_file.c dasm.c
 COREWAR_SRC_FILES = ft_errno.c initialize.c parse_input.c validate_champions.c \
 			run_cycles.c print_arena.c validate_encoding.c operations/op_add.c \
 			operations/op_aff.c operations/op_and.c operations/op_fork.c \
@@ -71,7 +71,7 @@ COLOR_PENDING = \033[0;33m
 COLOR_SUCCESS = \033[0;32m
 COLOR_DEFAULT = \033[1;34m
 
-all: $(COREWAR)  #$(ASM)
+all: $(ASM) $(COREWAR)
 
 $(ASM): $(LIBFT) $(HEADERS) $(A) $(ASM_SRC)
 		@$(COMPILE) $(INCLUDES) $(A) $(ASM_SRC) $(LIBFT) -o $(ASM)

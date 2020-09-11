@@ -51,7 +51,7 @@ $(NAME):
 	@mv $(OBJS) objs/
 
 clean:
-	@/bin/rm -f $(OBJS) -r objs/
+	@/bin/rm -rf $(OBJS) objs/
 
 fclean: clean
 	@/bin/rm -f $(NAME)
