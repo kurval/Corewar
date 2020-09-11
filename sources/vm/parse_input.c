@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/11 10:17:32 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/11 11:21:33 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static void	get_player(char *s, t_player *p, int num)
 		p->h.prog_size = len;
 		close(fd);
 	}
+	if (!(p->h.comment[0]) || !(p->h.comment[0]))
+		ft_errno(CODE_ERROR);
 }
 
 int		get_n_flag(char *s, int id[4], int champ_count)
