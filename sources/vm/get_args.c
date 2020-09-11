@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/14 18:48:48 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/10 23:14:58 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/11 16:27:11 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,21 +50,21 @@ int				int_arg(t_vm *vm, int idx)
 
 static int		get_values(t_vm *vm, t_process *proc, int arg_num)
 {
-	int ret;
+	int valid;
 
-	ret = 1;
+	valid = 1;
 	if (proc->args[arg_num] == T_REG)
 	{
 		proc->values[arg_num] = vm->a->arena[get_addr(proc->pc + proc->jump)];
 		if (proc->values[arg_num] < 1 || proc->values[arg_num] > REG_NUMBER)
-			ret = 0;
+			valid = 0;
 	}
 	else if (proc->args[arg_num] == T_DIR &&
 	vm->operations[proc->opcode - 1].dir_size == 4)
 		proc->values[arg_num] = int_arg(vm, proc->pc + proc->jump);
 	else if (proc->args[arg_num] == T_IND || proc->args[arg_num] == T_DIR)
 		proc->values[arg_num] = short_arg(vm, proc->pc + proc->jump);
-	return (ret);
+	return (valid);
 }
 
 /*
@@ -101,17 +101,15 @@ static int		count_moves(t_vm *vm, t_process *proc)
 
 int				get_args(t_vm *vm, t_process *proc)
 {
-	int valid;
-	int ret;
+	int valid_encode;
+	int valid_values;
 
-	valid = 1;
+	valid_encode = 1;
 	if (vm->operations[proc->opcode - 1].encode)
-	{
-		valid = validate_encoding(vm, vm->a->arena[get_addr(proc->pc + 1)],
+		valid_encode = validate_encoding(vm, vm->a->arena[get_addr(proc->pc + 1)],
 		proc);
-	}
 	else
 		proc->args[0] = T_DIR;
-	ret = count_moves(vm, proc);
-	return (ret && valid);
+	valid_values = count_moves(vm, proc);
+	return (valid_values && valid_encode);
 }
