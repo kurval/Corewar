@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:45:03 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/12 14:59:07 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/12 16:20:54 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int			validate_chapions(char **s)
 	while (s[++i])
 	{
 		if ((ft_strequ(s[i], "-a") || ft_strequ(s[i], "-v") ||
-			(ft_strequ(s[i], "-i"))) || ((ft_strequ(s[i], "-n") ||
+			(ft_strequ(s[i], "-l"))) || ((ft_strequ(s[i], "-n") ||
 			ft_strequ(s[i], "-dump") || ft_strequ(s[i], "-d")) && i++))
 			continue ;
 		count += ends_with_cor(s[i]);
