@@ -35,7 +35,7 @@ Error: File ./error_cors/invalid_exec_magic.cor has an invalid header
 4 - ./error_cors/invalid_null_comment.cor
 [0;31mDifferences[0m
 OURS
-ERROR: Missign whitespace
+ERROR: Missing whitespace
 [0;33mReturn value 1[0m
 
 ORIG
@@ -47,7 +47,7 @@ Contestant 1, "aaa", has won !
 5 - ./error_cors/invalid_null_name.cor
 [0;31mDifferences[0m
 OURS
-ERROR: Missign whitespace
+ERROR: Missing whitespace
 [0;33mReturn value 1[0m
 
 ORIG
@@ -59,7 +59,7 @@ Contestant 1, "aaa", has won !
 6 - ./error_cors/missing_code_size.cor
 [0;31mDifferences[0m
 OURS
-ERROR: Missign whitespace
+ERROR: Missing whitespace
 [0;33mReturn value 1[0m
 
 ORIG
@@ -79,7 +79,7 @@ Error: File ./error_cors/missing_exec_magic.cor has an invalid header
 8 - ./error_cors/missing_null_comment.cor
 [0;31mDifferences[0m
 OURS
-ERROR: Missign whitespace
+ERROR: Missing whitespace
 [0;33mReturn value 1[0m
 
 ORIG
@@ -89,7 +89,7 @@ Error: File ./error_cors/missing_null_comment.cor has a code size that differ fr
 9 - ./error_cors/missing_null_name.cor
 [0;31mDifferences[0m
 OURS
-ERROR: Missign whitespace
+ERROR: Missing whitespace
 [0;33mReturn value 1[0m
 
 ORIG
@@ -111,10 +111,8 @@ Error: File ./error_cors/no_arg_type_code.cor has a code size that differ from w
 11 - ./error_cors/no_comment.cor
 [0;31mDifferences[0m
 OURS
-Introducing contestants...
-* Player 1, Weighing in at 0 BYTES, "aaaa": ("")
-Contestant 1, "aaaa", has won !
-[0;33mReturn value 0[0m
+ERROR: The code size differs from what its header says
+[0;33mReturn value 1[0m
 
 ORIG
 Error: File ./error_cors/no_comment.cor is too small to be a champion
@@ -123,10 +121,8 @@ Error: File ./error_cors/no_comment.cor is too small to be a champion
 12 - ./error_cors/no_name.cor
 [0;31mDifferences[0m
 OURS
-Introducing contestants...
-* Player 1, Weighing in at 0 BYTES, "": ("")
-Contestant 1, "", has won !
-[0;33mReturn value 0[0m
+ERROR: The code size differs from what its header says
+[0;33mReturn value 1[0m
 
 ORIG
 Error: File ./error_cors/no_name.cor is too small to be a champion
@@ -145,10 +141,8 @@ Error: File ./error_cors/too_long_comment_space.cor has a code size that differ 
 14 - ./error_cors/too_long_name_space.cor
 [0;31mDifferences[0m
 OURS
-Introducing contestants...
-* Player 1, Weighing in at 380 BYTES, "aaa": ("")
-Contestant 1, "aaa", has won !
-[0;33mReturn value 0[0m
+ERROR: The code size differs from what its header says
+[0;33mReturn value 1[0m
 
 ORIG
 Error: File ./error_cors/too_long_name_space.cor has a code size that differ from what its header says
@@ -169,10 +163,8 @@ Error: File ./error_cors/too_long_null_comment.cor has a code size that differ f
 16 - ./error_cors/too_long_null_name.cor
 [0;31mDifferences[0m
 OURS
-Introducing contestants...
-* Player 1, Weighing in at 12 BYTES, "aaa": ("")
-Contestant 1, "aaa", has won !
-[0;33mReturn value 0[0m
+ERROR: The code size differs from what its header says
+[0;33mReturn value 1[0m
 
 ORIG
 Error: File ./error_cors/too_long_null_name.cor has a code size that differ from what its header says
@@ -193,10 +185,8 @@ Error: File ./error_cors/too_short_comment_space.cor is too small to be a champi
 18 - ./error_cors/too_short_name_space.cor
 [0;31mDifferences[0m
 OURS
-Introducing contestants...
-* Player 1, Weighing in at 0 BYTES, "aaa": ("")
-Contestant 1, "aaa", has won !
-[0;33mReturn value 0[0m
+ERROR: The code size differs from what its header says
+[0;33mReturn value 1[0m
 
 ORIG
 Error: File ./error_cors/too_short_name_space.cor is too small to be a champion
@@ -205,7 +195,7 @@ Error: File ./error_cors/too_short_name_space.cor is too small to be a champion
 19 - ./error_cors/too_short_null_comment.cor
 [0;31mDifferences[0m
 OURS
-ERROR: Missign whitespace
+ERROR: Missing whitespace
 [0;33mReturn value 1[0m
 
 ORIG
@@ -215,7 +205,7 @@ Error: File ./error_cors/too_short_null_comment.cor has a code size that differ 
 20 - ./error_cors/too_short_null_name.cor
 [0;31mDifferences[0m
 OURS
-ERROR: Missign whitespace
+ERROR: Missing whitespace
 [0;33mReturn value 1[0m
 
 ORIG

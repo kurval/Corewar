@@ -62,7 +62,7 @@ Return value 1
 4 - ./error_cors/invalid_null_comment.cor
 Differences
 OURS
-ERROR: Missign whitespace
+ERROR: Missing whitespace
 Return value 1
 
 ORIG
@@ -74,7 +74,7 @@ Return value 43
 5 - ./error_cors/invalid_null_name.cor
 Differences
 OURS
-ERROR: Missign whitespace
+ERROR: Missing whitespace
 Return value 1
 
 ORIG
@@ -86,7 +86,7 @@ Return value 43
 6 - ./error_cors/missing_code_size.cor
 Differences
 OURS
-ERROR: Missign whitespace
+ERROR: Missing whitespace
 Return value 1
 
 ORIG
@@ -106,7 +106,7 @@ Return value 1
 8 - ./error_cors/missing_null_comment.cor
 Differences
 OURS
-ERROR: Missign whitespace
+ERROR: Missing whitespace
 Return value 1
 
 ORIG
@@ -116,7 +116,7 @@ Return value 1
 9 - ./error_cors/missing_null_name.cor
 Differences
 OURS
-ERROR: Missign whitespace
+ERROR: Missing whitespace
 Return value 1
 
 ORIG
@@ -138,10 +138,8 @@ Return value 1
 11 - ./error_cors/no_comment.cor
 Differences
 OURS
-Introducing contestants...
-* Player 1, Weighing in at 0 BYTES, "aaaa": ("")
-Contestant 1, "aaaa", has won !
-Return value 0
+ERROR: The code size differs from what its header says
+Return value 1
 
 ORIG
 Error: File ./error_cors/no_comment.cor is too small to be a champion
@@ -150,10 +148,8 @@ Return value 1
 12 - ./error_cors/no_name.cor
 Differences
 OURS
-Introducing contestants...
-* Player 1, Weighing in at 0 BYTES, "": ("")
-Contestant 1, "", has won !
-Return value 0
+ERROR: The code size differs from what its header says
+Return value 1
 
 ORIG
 Error: File ./error_cors/no_name.cor is too small to be a champion
@@ -172,10 +168,8 @@ Return value 1
 14 - ./error_cors/too_long_name_space.cor
 Differences
 OURS
-Introducing contestants...
-* Player 1, Weighing in at 380 BYTES, "aaa": ("")
-Contestant 1, "aaa", has won !
-Return value 0
+ERROR: The code size differs from what its header says
+Return value 1
 
 ORIG
 Error: File ./error_cors/too_long_name_space.cor has a code size that differ from what its header says
@@ -196,10 +190,8 @@ Return value 1
 16 - ./error_cors/too_long_null_name.cor
 Differences
 OURS
-Introducing contestants...
-* Player 1, Weighing in at 12 BYTES, "aaa": ("")
-Contestant 1, "aaa", has won !
-Return value 0
+ERROR: The code size differs from what its header says
+Return value 1
 
 ORIG
 Error: File ./error_cors/too_long_null_name.cor has a code size that differ from what its header says
@@ -220,10 +212,8 @@ Return value 1
 18 - ./error_cors/too_short_name_space.cor
 Differences
 OURS
-Introducing contestants...
-* Player 1, Weighing in at 0 BYTES, "aaa": ("")
-Contestant 1, "aaa", has won !
-Return value 0
+ERROR: The code size differs from what its header says
+Return value 1
 
 ORIG
 Error: File ./error_cors/too_short_name_space.cor is too small to be a champion
@@ -232,7 +222,7 @@ Return value 1
 19 - ./error_cors/too_short_null_comment.cor
 Differences
 OURS
-ERROR: Missign whitespace
+ERROR: Missing whitespace
 Return value 1
 
 ORIG
@@ -242,7 +232,7 @@ Return value 1
 20 - ./error_cors/too_short_null_name.cor
 Differences
 OURS
-ERROR: Missign whitespace
+ERROR: Missing whitespace
 Return value 1
 
 ORIG

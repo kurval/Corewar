@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/12 16:21:09 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/12 21:48:45 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static void	introduce_champs(t_vm *vm)
 
 static void	get_player(char *s, t_player *p, int num)
 {
-	int fd;
-	int len;
-	int prog_len;
+	int				fd;
+	int				len;
+	unsigned int	prog_len;
 
 	prog_len = 0;
 	if ((fd = open(s, O_RDONLY)) != -1)
@@ -44,7 +44,7 @@ static void	get_player(char *s, t_player *p, int num)
 		read(fd, &(p->h.magic), 4);
 		read(fd, &(p->h.prog_name), PROG_NAME_LENGTH);
 		has_white_space(fd);
-		read(fd, &(prog_len), 4);
+		prog_len = read_n_bytes(fd, 4);
 		read(fd, &(p->h.comment), COMMENT_LENGTH);
 		has_white_space(fd);
 		len = read(fd, &(p->code), CHAMP_MAX_SIZE);
@@ -52,7 +52,8 @@ static void	get_player(char *s, t_player *p, int num)
 		p->h.prog_size = len;
 		close(fd);
 	}
-	if (!(p->h.comment[0]) || !(p->h.comment[0]))
+	if (!(p->h.comment[0]) || !(p->h.comment[0]) ||
+			(prog_len != p->h.prog_size))
 		ft_errno(CODE_ERROR);
 }
 

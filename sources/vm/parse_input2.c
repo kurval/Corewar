@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 07:53:44 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/11 01:34:08 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/12 21:26:49 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,22 @@ void	has_white_space(int fd)
 			ft_errno(SPACE_ERROR);
 		i++;
 	}
+}
+
+int		read_n_bytes(int input, int count)
+{
+	unsigned char	number;
+	int				result;
+	int				i;
+
+	i = 0;
+	number = 0;
+	result = 0;
+	while (i++ < count)
+	{
+		result = result<<8;
+		read(input, &number, 1);
+		result += number;
+	}
+	return (result);
 }

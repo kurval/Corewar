@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/12 16:36:14 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/12 21:27:10 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,6 +223,7 @@ void				has_magic_header(char *file);
 int					get_next_unused_id(int arr[MAX_PLAYERS]);
 int					get_n_flag(char *s, int id[4], int champ_count);
 void				has_white_space(int fd);
+int					read_n_bytes(int input, int count);
 
 /*
 **					OPERATION FUNCTIONS
