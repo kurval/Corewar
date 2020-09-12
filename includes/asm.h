@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 17:05:18 by jmetelin          #+#    #+#             */
-/*   Updated: 2020/09/11 01:08:02 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/12 20:33:46 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -400,5 +400,10 @@ char			*validate_file(char *file);
 */
 
 void			dasm(char *src, const char *dest);
+int				write_operation(int src_file, int dest_file);
+void			write_arguments(int input_file, int output_file, int ins);
+void			write_t_reg(int output, int input);
+void			write_t_dir(int output, int input, int ins);
+void			write_t_ind(int output, int input);
 
 #endif

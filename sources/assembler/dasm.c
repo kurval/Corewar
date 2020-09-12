@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 12:22:34 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/10 23:52:25 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/12 20:25:03 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,19 @@ static void	write_header(int src_file, int dest_file)
 	write(dest_file, "\n", 1);
 }
 
-/*
-** void		parse_file(int src_file, int dest_file)
-** {
-** 	unsigned int *op;
-** 	unsigned char character;
-**
-** 	while (read(src_file, &character, 1) > 0)
-** 	{
-** 		if (character >= 16)
-** 			handle_error("ERROR: Cannot read file");
-** 	}
-** }
-*/
+void		write_op_code(int input_file, int output_file)
+{
+	int op;
+	int count;
+
+	count = 0;
+	op = 0;
+	while ((op = write_operation(input_file, output_file)))
+	{
+		write_arguments(input_file, output_file, op);
+		write(output_file, "\n", 1);
+	}
+}
 
 void		dasm(char *src, const char *dest)
 {
@@ -63,4 +63,5 @@ void		dasm(char *src, const char *dest)
 		handle_error("ERROR: Unable to open file");
 	dest_file = open(dest, O_CREAT | O_RDWR, 0644);
 	write_header(src_file, dest_file);
+	write_op_code(src_file, dest_file);
 }

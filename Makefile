@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
+#    By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/09/12 15:49:27 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/09/12 21:25:37 by bkonjuha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ ASM_SRC_FILES = check_args.c set_flags.c handle_error.c handle_d_and_f_flags.c \
 			handle_error_msg.c handle_tokens.c copy.c check_tokens.c \
 			set_champ.c parse_file_utils.c make_cor_file.c \
 			insert_bytes_number.c insert_statements.c get_arg_code.c \
-			write_hexdump.c free_memory.c validate_file.c dasm.c
+			write_hexdump.c free_memory.c validate_file.c dasm.c dasm2.c dasm3.c
 COREWAR_SRC_FILES = ft_errno.c initialize.c parse_input.c validate_champions.c \
 			run_cycles.c print_arena.c validate_encoding.c operations/op_add.c \
 			operations/op_aff.c operations/op_and.c operations/op_fork.c \

@@ -1,0 +1,224 @@
+
+[0;36m==========================================================================================[0m
+1 - ./error_cors/0_exec_magic.cor
+[0;31mDifferences[0m
+OURS
+ERROR: Invalid magic header
+[0;33mReturn value 1[0m
+
+ORIG
+Error: File ./error_cors/0_exec_magic.cor has an invalid header
+[0;33mReturn value 1[0m
+[0;36m==========================================================================================[0m
+2 - ./error_cors/invalid_code_size.cor
+[0;31mDifferences[0m
+OURS
+Introducing contestants...
+* Player 1, Weighing in at 8 BYTES, "aaa": ("aaaa")
+Contestant 1, "aaa", has won !
+[0;33mReturn value 0[0m
+
+ORIG
+Error: File ./error_cors/invalid_code_size.cor has a code size that differ from what its header says
+[0;33mReturn value 1[0m
+[0;36m==========================================================================================[0m
+3 - ./error_cors/invalid_exec_magic.cor
+[0;31mDifferences[0m
+OURS
+ERROR: Invalid magic header
+[0;33mReturn value 1[0m
+
+ORIG
+Error: File ./error_cors/invalid_exec_magic.cor has an invalid header
+[0;33mReturn value 1[0m
+[0;36m==========================================================================================[0m
+4 - ./error_cors/invalid_null_comment.cor
+[0;31mDifferences[0m
+OURS
+ERROR: Missign whitespace
+[0;33mReturn value 1[0m
+
+ORIG
+Introducing contestants...
+* Player 1, weighing 8 bytes, "aaa" ("aaaa") !
+Contestant 1, "aaa", has won !
+[0;33mReturn value 43[0m
+[0;36m==========================================================================================[0m
+5 - ./error_cors/invalid_null_name.cor
+[0;31mDifferences[0m
+OURS
+ERROR: Missign whitespace
+[0;33mReturn value 1[0m
+
+ORIG
+Introducing contestants...
+* Player 1, weighing 8 bytes, "aaa" ("aaaa") !
+Contestant 1, "aaa", has won !
+[0;33mReturn value 43[0m
+[0;36m==========================================================================================[0m
+6 - ./error_cors/missing_code_size.cor
+[0;31mDifferences[0m
+OURS
+ERROR: Missign whitespace
+[0;33mReturn value 1[0m
+
+ORIG
+Error: File ./error_cors/missing_code_size.cor has a code size that differ from what its header says
+[0;33mReturn value 1[0m
+[0;36m==========================================================================================[0m
+7 - ./error_cors/missing_exec_magic.cor
+[0;31mDifferences[0m
+OURS
+ERROR: Invalid magic header
+[0;33mReturn value 1[0m
+
+ORIG
+Error: File ./error_cors/missing_exec_magic.cor has an invalid header
+[0;33mReturn value 1[0m
+[0;36m==========================================================================================[0m
+8 - ./error_cors/missing_null_comment.cor
+[0;31mDifferences[0m
+OURS
+ERROR: Missign whitespace
+[0;33mReturn value 1[0m
+
+ORIG
+Error: File ./error_cors/missing_null_comment.cor has a code size that differ from what its header says
+[0;33mReturn value 1[0m
+[0;36m==========================================================================================[0m
+9 - ./error_cors/missing_null_name.cor
+[0;31mDifferences[0m
+OURS
+ERROR: Missign whitespace
+[0;33mReturn value 1[0m
+
+ORIG
+Error: File ./error_cors/missing_null_name.cor has a code size that differ from what its header says
+[0;33mReturn value 1[0m
+[0;36m==========================================================================================[0m
+10 - ./error_cors/no_arg_type_code.cor
+[0;31mDifferences[0m
+OURS
+Introducing contestants...
+* Player 1, Weighing in at 14 BYTES, "aaa": ("aaaa")
+Contestant 1, "aaa", has won !
+[0;33mReturn value 0[0m
+
+ORIG
+Error: File ./error_cors/no_arg_type_code.cor has a code size that differ from what its header says
+[0;33mReturn value 1[0m
+[0;36m==========================================================================================[0m
+11 - ./error_cors/no_comment.cor
+[0;31mDifferences[0m
+OURS
+Introducing contestants...
+* Player 1, Weighing in at 0 BYTES, "aaaa": ("")
+Contestant 1, "aaaa", has won !
+[0;33mReturn value 0[0m
+
+ORIG
+Error: File ./error_cors/no_comment.cor is too small to be a champion
+[0;33mReturn value 1[0m
+[0;36m==========================================================================================[0m
+12 - ./error_cors/no_name.cor
+[0;31mDifferences[0m
+OURS
+Introducing contestants...
+* Player 1, Weighing in at 0 BYTES, "": ("")
+Contestant 1, "", has won !
+[0;33mReturn value 0[0m
+
+ORIG
+Error: File ./error_cors/no_name.cor is too small to be a champion
+[0;33mReturn value 1[0m
+[0;36m==========================================================================================[0m
+13 - ./error_cors/too_long_comment_space.cor
+[0;31mDifferences[0m
+OURS
+ERROR: Invalid Champion
+[0;33mReturn value 1[0m
+
+ORIG
+Error: File ./error_cors/too_long_comment_space.cor has a code size that differ from what its header says
+[0;33mReturn value 1[0m
+[0;36m==========================================================================================[0m
+14 - ./error_cors/too_long_name_space.cor
+[0;31mDifferences[0m
+OURS
+Introducing contestants...
+* Player 1, Weighing in at 380 BYTES, "aaa": ("")
+Contestant 1, "aaa", has won !
+[0;33mReturn value 0[0m
+
+ORIG
+Error: File ./error_cors/too_long_name_space.cor has a code size that differ from what its header says
+[0;33mReturn value 1[0m
+[0;36m==========================================================================================[0m
+15 - ./error_cors/too_long_null_comment.cor
+[0;31mDifferences[0m
+OURS
+Introducing contestants...
+* Player 1, Weighing in at 12 BYTES, "aaa": ("aaaa")
+Contestant 1, "aaa", has won !
+[0;33mReturn value 0[0m
+
+ORIG
+Error: File ./error_cors/too_long_null_comment.cor has a code size that differ from what its header says
+[0;33mReturn value 1[0m
+[0;36m==========================================================================================[0m
+16 - ./error_cors/too_long_null_name.cor
+[0;31mDifferences[0m
+OURS
+Introducing contestants...
+* Player 1, Weighing in at 12 BYTES, "aaa": ("")
+Contestant 1, "aaa", has won !
+[0;33mReturn value 0[0m
+
+ORIG
+Error: File ./error_cors/too_long_null_name.cor has a code size that differ from what its header says
+[0;33mReturn value 1[0m
+[0;36m==========================================================================================[0m
+17 - ./error_cors/too_short_comment_space.cor
+[0;31mDifferences[0m
+OURS
+Introducing contestants...
+* Player 1, Weighing in at 0 BYTES, "aaa": ("aaaa")
+Contestant 1, "aaa", has won !
+[0;33mReturn value 0[0m
+
+ORIG
+Error: File ./error_cors/too_short_comment_space.cor is too small to be a champion
+[0;33mReturn value 1[0m
+[0;36m==========================================================================================[0m
+18 - ./error_cors/too_short_name_space.cor
+[0;31mDifferences[0m
+OURS
+Introducing contestants...
+* Player 1, Weighing in at 0 BYTES, "aaa": ("")
+Contestant 1, "aaa", has won !
+[0;33mReturn value 0[0m
+
+ORIG
+Error: File ./error_cors/too_short_name_space.cor is too small to be a champion
+[0;33mReturn value 1[0m
+[0;36m==========================================================================================[0m
+19 - ./error_cors/too_short_null_comment.cor
+[0;31mDifferences[0m
+OURS
+ERROR: Missign whitespace
+[0;33mReturn value 1[0m
+
+ORIG
+Error: File ./error_cors/too_short_null_comment.cor has a code size that differ from what its header says
+[0;33mReturn value 1[0m
+[0;36m==========================================================================================[0m
+20 - ./error_cors/too_short_null_name.cor
+[0;31mDifferences[0m
+OURS
+ERROR: Missign whitespace
+[0;33mReturn value 1[0m
+
+ORIG
+Error: File ./error_cors/too_short_null_name.cor has a code size that differ from what its header says
+[0;33mReturn value 1[0m
+[0;36m==========================================================================================[0m
