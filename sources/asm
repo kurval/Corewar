@@ -1,6 +1,6 @@
 .\" Manpage for asm
 .\" Contact jmetelin@student.hive.fi to correct errors or typos.
-.TH man 8 "25 May 2020" "1.0" "asm man page"
+.TH ASM 8 "25 May 2020" "1.0" "asm man page"
 .SH ASM
 ASM
 .SH SYNOPSIS

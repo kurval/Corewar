@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:33:54 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/10 16:10:56 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/12 16:38:16 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void		init_vm(t_vm *vm)
 	vm->v_flag = 0;
 	vm->id_counter = 1;
 	vm->d_flag = 0;
+	vm->l_flag = 0;
 	vm->nb_players = 0;
 	vm->nb_procs = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:38 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/10 18:43:50 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/12 16:38:39 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void		op_live(t_vm *vm, t_process *proc)
 			vm->last_live_id = value1;
 			if (vm->v_flag)
 				set_live_on(vm, proc, i);
-			if (vm->a_flag)
+			if (vm->l_flag)
 				print_live_text(vm, proc);
 			break ;
 		}

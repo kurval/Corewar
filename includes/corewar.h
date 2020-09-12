@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/12 15:01:33 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/12 16:36:14 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ typedef struct		s_vm
 	unsigned int	dump_cycle;
 	int				a_flag;
 	int				v_flag;
+	int				l_flag;
 	unsigned int	d_flag;
 	unsigned int	nb_players;
 	unsigned int	nb_procs;
