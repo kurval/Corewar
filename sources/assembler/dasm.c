@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 12:22:34 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/13 10:28:05 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/13 11:01:57 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,6 @@ void		dasm(char *src, const char *dest)
 		handle_error("ERROR: Unable to create file");
 	write_header(src_file, dest_file);
 	write_op_code(src_file, dest_file);
+	close(src_file);
+	close(dest_file);
 }
