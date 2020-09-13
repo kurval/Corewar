@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 12:50:02 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/13 20:52:36 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:36:43 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,7 @@ static void	pause_visu(t_vm *vm)
 void		manage_windows(t_vm *vm, int key)
 {
 	if (key == 'd')
-	{
-		vm->visu->debug = (!vm->visu->debug);
-		vm->visu->debug ? werase(vm->visu->side2) : 0;
-	}
+		set_debug(vm);
 	draw_logo(vm);
 	draw_arena(vm);
 	(!vm->visu->debug) ? draw_players(vm) : 0;

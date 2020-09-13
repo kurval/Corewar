@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:46:05 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/13 20:29:01 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:10:34 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,5 @@ void	op_xor(t_vm *vm, t_process *proc)
 	proc->carry = (res == 0) ? 1 : 0;
 	if (vm->v_flag)
 		(vm->visu->debug) ?\
-		log_operation(vm, proc, " proc id executed xor\n", 0) : 0;
+		log_operation(vm, proc, "executed xor\n", 0) : 0;
 }

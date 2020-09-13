@@ -6,7 +6,7 @@
 #    By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/09/13 21:14:14 by vkurkela         ###   ########.fr        #
+#    Updated: 2020/09/13 23:00:28 by vkurkela         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ COREWAR_SRC_FILES = ft_errno.c initialize.c parse_input.c validate_champions.c \
 			visual/draw_arena.c visual/get_attribute.c visual/print_winner.c \
 			visual/init_visualizer.c visual/draw_footer.c visual/draw_player_info.c \
 			visual/draw_players.c visual/draw_logo.c visual/draw_battle_info.c \
-			visual/draw_log.c
+			visual/debugger.c
 
 ASM_SRC = $(addprefix $(ASM_SRC_PATH), $(ASM_SRC_FILES))
 COREWAR_SRC = $(addprefix $(COREWAR_SRC_PATH), $(COREWAR_SRC_FILES))

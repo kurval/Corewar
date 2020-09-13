@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 19:04:30 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/12 15:39:24 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:35:52 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ static void	print_mode_text(t_vm *vm)
 	int		max_x;
 	WINDOW	*win;
 
-	max_y = 0;
-	max_x = 0;
 	win = vm->visu->side1;
 	getmaxyx(win, max_y, max_x);
 	wattron(win, COLOR_PAIR(W_B));
