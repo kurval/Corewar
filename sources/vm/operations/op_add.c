@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:44:03 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/20 14:36:06 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 20:27:54 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,7 @@ void	op_add(t_vm *vm, t_process *proc)
 	sum = value1 + value2;
 	proc->reg[proc->values[2] - 1] = sum;
 	proc->carry = (sum == 0) ? 1 : 0;
+	if (vm->v_flag)
+		(vm->visu->debug) ?\
+		log_operation(vm, proc, " proc id executed add\n", 0) : 0;
 }

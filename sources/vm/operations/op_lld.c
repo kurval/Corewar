@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:42 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/09 21:19:56 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 20:28:38 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,7 @@ void	op_lld(t_vm *vm, t_process *proc)
 		res = get_op_values(vm, proc, 1);
 	proc->reg[proc->values[1] - 1] = res;
 	proc->carry = (!res ? 1 : 0);
+	if (vm->v_flag)
+		(vm->visu->debug) ?\
+		log_operation(vm, proc, " proc id executed lld\n", 0) : 0;
 }

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 16:55:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/10 16:18:13 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 20:45:52 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_process	*copy_proc(t_vm *vm, t_process *og_proc)
 	new->id = vm->id_counter++;
 	new->carry = og_proc->carry;
 	new->last_live = og_proc->last_live;
-	new->player_id = og_proc->player_id;
+	new->parent_id = og_proc->parent_id;
 	new->jump = 0;
 	new->wait_cycles = 0;
 	i = -1;

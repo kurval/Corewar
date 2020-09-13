@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:51 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/09 21:21:31 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 20:28:50 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,7 @@ void	op_st(t_vm *vm, t_process *proc)
 	else if (proc->args[1] == T_IND)
 		load_into_memory(vm, proc->pc + (proc->values[1] % IDX_MOD),\
 		(void *)&value1, proc);
+	if (vm->v_flag)
+		(vm->visu->debug) ?\
+		log_operation(vm, proc, " proc id executed st\n", 0) : 0;
 }

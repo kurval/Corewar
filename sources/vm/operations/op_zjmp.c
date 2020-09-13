@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:46:09 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/24 15:41:44 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 20:29:05 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	op_zjmp(t_vm *vm, t_process *proc)
 {
 	if (proc->carry == 1)
 		proc->jump = (proc->values[0] % IDX_MOD);
-	if (vm)
-		return ;
+	if (vm->v_flag)
+		(vm->visu->debug) ?\
+		log_operation(vm, proc, " proc id executed zjmp\n", 0) : 0;
 }

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:28 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/09 21:31:34 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 20:28:22 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,7 @@ void	op_ldi(t_vm *vm, t_process *proc)
 		get_op_values(vm, proc, 2)) % IDX_MOD);
 	}
 	proc->reg[proc->values[2] - 1] = res;
+	if (vm->v_flag)
+		(vm->visu->debug) ?\
+		log_operation(vm, proc, " proc id executed ldi\n", 0) : 0;
 }
