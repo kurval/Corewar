@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:12 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/24 15:42:09 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 20:28:03 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,7 @@ void	op_and(t_vm *vm, t_process *proc)
 	res = value1 & value2;
 	proc->reg[proc->values[2] - 1] = res;
 	proc->carry = (res == 0) ? 1 : 0;
+	if (vm->v_flag)
+		(vm->visu->debug) ?\
+		log_operation(vm, proc, " proc id executed and\n", 0) : 0;
 }

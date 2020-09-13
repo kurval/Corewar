@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/12 21:27:10 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/13 21:14:43 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct		s_arena
 ** - reg[REG_NUMBER] : registries of current cursor
 ** - args[3] : current cursors argument types
 ** - values[3] : current cursors argument values
-** - player_id : owner of this process
+** - parent_id : owner of this process
 **	>T_REG registry number
 **	>T_DIR A number, saved on 2 or 4 bytes, depending on label
 **	>T_IND relative address number
@@ -64,7 +64,7 @@ typedef struct		s_process
 	unsigned int	pc;
 	int				jump;
 	int				reg[REG_NUMBER];
-	unsigned int	player_id;
+	unsigned int	parent_id;
 	struct s_player	*player;
 	struct s_process*next;
 }					t_process;
@@ -268,6 +268,9 @@ void				print_info(t_vm *vm, t_player *player, int y, int x);
 void				print_player_info(t_vm *vm);
 void				init_visualizer(t_vm *vm);
 void				manage_windows(t_vm *vm, int key);
+void				draw_log(t_vm *vm);
+void 				print_log_text(t_vm *vm, char *str, int color_num);
+void    			log_operation(t_vm *vm, t_process *proc, char *str, int i);
 
 static const t_op			g_ops[16] = {
 	{

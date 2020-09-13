@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:38 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/12 16:38:39 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 20:40:41 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 
 static void	set_live_on(t_vm *vm, t_process *proc, int i)
 {
+	if (vm->visu->debug)
+		log_operation(vm, proc, " is alive\n", i);
 	vm->visu->attributes[proc->pc].owner = vm->p[i].id;
 	vm->visu->attributes[proc->pc].live = LIVE_ON;
 }
 
-static void	print_live_text(t_vm *vm, t_process *proc)
+static void	print_live_text(t_vm *vm, int i)
 {
 	ft_printf("A process shows that player %d (%s) is alive\n",
-	proc->player_id, vm->p[proc->player_id - 1].h.prog_name);
+	vm->p[i].id, vm->p[i].h.prog_name);
 }
 
 /*
@@ -49,7 +51,7 @@ void		op_live(t_vm *vm, t_process *proc)
 			if (vm->v_flag)
 				set_live_on(vm, proc, i);
 			if (vm->l_flag)
-				print_live_text(vm, proc);
+				print_live_text(vm, i);
 			break ;
 		}
 	}

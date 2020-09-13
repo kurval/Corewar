@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 23:25:59 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/03 12:22:51 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 20:40:36 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	load_into_memory(t_vm *vm, unsigned int addr,\
 		if (vm->v_flag)
 		{
 			vm->visu->attributes[get_addr(addr + i)].owner =\
-			proc->player_id;
+			proc->parent_id;
 			vm->visu->attributes[get_addr(addr + i)].new_mem =\
 			NEW_MEM;
 		}

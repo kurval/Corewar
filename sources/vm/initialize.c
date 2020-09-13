@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:33:54 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/12 16:38:16 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 20:40:36 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,8 @@ void		init_processes(t_vm *vm)
 		new->last_live = 0;
 		new->carry = 0;
 		new->pc = i * MEM_SIZE / vm->nb_players;
-		new->player_id = vm->p[i].id;
-		new->reg[0] = new->player_id * -1;
+		new->parent_id = vm->p[i].id;
+		new->reg[0] = new->parent_id * -1;
 		while (++j < REG_NUMBER)
 			new->reg[j] = 0;
 		add_to_list(new, &vm->proc_list);
