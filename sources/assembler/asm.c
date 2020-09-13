@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 15:17:07 by atuomine          #+#    #+#             */
-/*   Updated: 2020/09/13 10:54:05 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/13 10:56:06 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ static void		dasm_main(int argc, char **argv)
 		deasm_file = open_folder(folder, deasm_file);
 	dasm(argv[argc - 1], deasm_file);
 	ft_printf("%s file created\n", deasm_file);
-	system("leaks asm");
 	exit(EXIT_SUCCESS);
 }
 
