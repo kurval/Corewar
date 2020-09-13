@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 15:22:12 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/12 20:55:25 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/13 08:34:07 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,11 @@ void	write_t_reg(int output, int input)
 int		read_n_bytes(int input, int count)
 {
 	unsigned char	number;
-	int				result;
-	int				i;
+	signed char		result;
 
-	i = 0;
 	number = 0;
 	result = 0;
-	while (i++ < count)
+	while (count--)
 	{
 		result = result<<8;
 		read(input, &number, 1);
