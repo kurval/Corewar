@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 12:22:34 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/12 20:25:03 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/13 10:28:05 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,31 @@ void		write_op_code(int input_file, int output_file)
 	op = 0;
 	while ((op = write_operation(input_file, output_file)))
 	{
+		if (op > 15)
+			handle_error("Error: Invalid .cor file");
 		write_arguments(input_file, output_file, op);
 		write(output_file, "\n", 1);
 	}
+}
+
+char		*open_folder(char *folder, char *file)
+{
+	char	*final_name;
+	int		i;
+	int		j;
+
+	final_name = ft_strnew(ft_strlen(folder) + 1 + ft_strlen(file));
+	i = -1;
+	j = -1;
+	while (folder[++i])
+		final_name[++j] = folder[i];
+	final_name[++j] = '/';
+	i = -1;
+	while (file[++i])
+		final_name[++j] = file[i];
+	final_name[++j] = '\0';
+	ft_strdel(&file);
+	return (final_name);
 }
 
 void		dasm(char *src, const char *dest)
@@ -61,7 +83,8 @@ void		dasm(char *src, const char *dest)
 
 	if ((src_file = open(src, O_RDONLY)) < 0)
 		handle_error("ERROR: Unable to open file");
-	dest_file = open(dest, O_CREAT | O_RDWR, 0644);
+	if ((dest_file = open(dest, O_CREAT | O_RDWR, 0644)) < 0)
+		handle_error("ERROR: Unable to create file");
 	write_header(src_file, dest_file);
 	write_op_code(src_file, dest_file);
 }

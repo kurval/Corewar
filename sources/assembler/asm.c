@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 15:17:07 by atuomine          #+#    #+#             */
-/*   Updated: 2020/09/11 01:07:26 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/13 10:54:05 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ char			*get_usage(void)
 	return ("Usage:\n \
 	./asm [-h] [-e] [-d DIR] [-x] [-f FILE] [-l] <sourcefile.s>\n \
 	or:\n \
-	./asm -z <sourcefile.cor>\n \
+	./asm -z [-d DIR] <sourcefile.cor>\n \
 	-h      prints the usage\n \
 	-e      prints all the errors instead of only the first one\n \
 	-d DIR  creates the .cor file to the directory DIR\n \
@@ -88,13 +88,26 @@ char			*get_usage(void)
 static void		dasm_main(int argc, char **argv)
 {
 	char	*deasm_file;
+	char	*folder;
 
-	if (argc != 3)
+	folder = NULL;
+	if (argc != 3 && argc != 5)
 		handle_error(get_usage());
-	if (!(deasm_file = validate_file(argv[2])))
+	if (argc == 5)
+	{
+		argc--;
+		while (--argc)
+			if (ft_strequ(argv[argc], "-d") || ft_strequ(argv[argc], "-D"))
+				folder = argv[argc + 1];
+		argc = 5;
+	}
+	if (!(deasm_file = validate_file(argv[argc - 1])))
 		handle_error("Could not open file");
-	dasm(argv[2], deasm_file);
+	if (folder)
+		deasm_file = open_folder(folder, deasm_file);
+	dasm(argv[argc - 1], deasm_file);
 	ft_printf("%s file created\n", deasm_file);
+	system("leaks asm");
 	exit(EXIT_SUCCESS);
 }
 
@@ -109,7 +122,7 @@ int				main(int argc, char **argv)
 	t_asm		assembler;
 	char		*source;
 
-	if (ft_strequ(argv[1], "-z") || ft_strequ(argv[1], "-Z"))
+	if ((ft_strequ(argv[1], "-z") || ft_strequ(argv[1], "-Z")))
 		dasm_main(argc, argv);
 	else if (!(source = check_args(argc, argv)))
 		handle_error(get_usage());

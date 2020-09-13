@@ -6,13 +6,13 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 14:27:55 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/12 20:36:28 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/13 10:52:59 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-int		write_operation(int input_file, int output_file)
+int			write_operation(int input_file, int output_file)
 {
 	int			ins;
 	static char	*instr_name[16] = {"live", "ld", "st", "add", "sub", "and",
@@ -46,32 +46,58 @@ static char	*ft_itob(int num)
 			b[j] = '0';
 		j++;
 		limit /= 2;
-
 	}
 	return (b);
 }
 
-void	write_arguments(int input_file, int output_file, int ins)
+static int	*get_argc(void)
 {
-	int	argc[16] = {1, 2, 2, 3, 3, 3, 3, 3, 1, 3, 3, 1, 2, 3, 1, 1};
+	int *argc;
+
+	if (!(argc = (int *)malloc(sizeof(int) * 16)))
+		handle_error("Error: Could not allocate variable");
+	argc[0] = 1;
+	argc[1] = 2;
+	argc[2] = 2;
+	argc[3] = 3;
+	argc[4] = 3;
+	argc[5] = 3;
+	argc[6] = 3;
+	argc[7] = 3;
+	argc[8] = 1;
+	argc[9] = 3;
+	argc[10] = 3;
+	argc[11] = 1;
+	argc[12] = 2;
+	argc[13] = 3;
+	argc[14] = 1;
+	argc[15] = 1;
+	return (argc);
+}
+
+void		write_arguments(int input, int output, int ins)
+{
+	int				*argc;
+	int				i;
 	unsigned char	arguments;
-	char *binary;
+	char			*binary;
 
 	arguments = 0;
+	i = 0;
+	argc = get_argc();
 	if (ins == 1 || ins == 9 || ins == 12 || ins > 14)
 		arguments = 128;
 	else
-		read(input_file, &arguments, 1);
+		read(input, &arguments, 1);
 	binary = ft_itob(arguments);
 	while (argc[ins - 1]-- > 0)
 	{
-		if (ft_strnequ(binary, "01", 2))
-			write_t_reg(output_file, input_file);
-		else if (ft_strnequ(binary, "10", 2))
-			write_t_dir(output_file, input_file, ins);
-		else if (ft_strnequ(binary, "11", 2))
-			write(output_file, "—", 1);
-		argc[ins -1] != 0 ? write(output_file, ",", 1) : 0;
-		binary += 2;
+		ft_strnequ(binary + i, "01", 2) ? write_t_reg(output, input) : 0;
+		ft_strnequ(binary + i, "10", 2) ? write_t_dir(output, input, ins) : 0;
+		ft_strnequ(binary + i, "11", 2) ? write_t_ind(output, input) : 0;
+		argc[ins - 1] != 0 ? write(output, ",", 1) : 0;
+		i += 2;
 	}
+	free((void *)argc);
+	ft_strdel(&binary);
 }

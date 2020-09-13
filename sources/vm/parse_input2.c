@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 07:53:44 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/12 21:26:49 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/13 08:39:31 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int		read_n_bytes(int input, int count)
 	result = 0;
 	while (i++ < count)
 	{
-		result = result<<8;
+		result = result << 8;
 		read(input, &number, 1);
 		result += number;
 	}
