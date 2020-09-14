@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:59 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/14 11:05:54 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/14 15:01:15 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,5 @@ void	op_sub(t_vm *vm, t_process *proc)
 	proc->carry = (sub == 0) ? 1 : 0;
 	if (vm->v_flag)
 		(vm->visu->debug) ?\
-		log_operation(vm, proc, 0) : 0;
+		log_operation(vm, proc, W_B) : 0;
 }

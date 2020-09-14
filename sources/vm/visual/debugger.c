@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 11:05:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/14 14:24:13 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/14 15:08:02 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void		print_log_text(t_vm *vm, t_process *proc, char *str, int color_num)
 	getyx(win, y, x);
 	wmove(win, y, x + 1);
 	wattron(win, COLOR_PAIR(M_B) | A_BOLD);
-	wprintw(win, "[CYCLE %8d] ", vm->current_cycle);
+	wprintw(win, "[CYCLE %5d] ", vm->current_cycle);
 	wattroff(win, COLOR_PAIR(M_B) | A_BOLD);
 	if (vm->visu->log_count == 0)
 	{
