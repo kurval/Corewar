@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 17:25:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/13 18:35:29 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/14 14:05:44 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void		init_visualizer(t_vm *vm)
 	create_windows(vm);
 	set_owners(vm);
 	vm->visu->speed = 20100;
-	vm->visu->running = true;
+	vm->visu->running = false;
 	vm->visu->debug = false;
+	vm->visu->log_count = 0;
 }

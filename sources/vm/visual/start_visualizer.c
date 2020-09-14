@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 12:50:02 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/13 22:36:43 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/14 14:36:35 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,16 @@ static void	pause_visu(t_vm *vm)
 {
 	int key;
 
-	vm->visu->running = false;
 	draw_logo(vm);
-	while (!vm->visu->running)
+	while (true)
 	{
 		key = getch();
 		if (key == SPACE || key == 'd')
 		{
-			(key == 'd') ? vm->visu->debug = 0 : 0;
+			if (key == 'd')
+				manage_windows(vm, key);
 			vm->visu->running = true;
+			return ;
 		}
 		else if (key == ESC)
 			exit_visu(vm);
@@ -52,16 +53,21 @@ static void	pause_visu(t_vm *vm)
 void		manage_windows(t_vm *vm, int key)
 {
 	if (key == 'd')
+	{
+		vm->visu->log_count = -1;
 		set_debug(vm);
+	}
+	else if (key == SPACE)
+		vm->visu->running = false;
+	else if (key == ESC)
+		exit_visu(vm);
 	draw_logo(vm);
 	draw_arena(vm);
 	(!vm->visu->debug) ? draw_players(vm) : 0;
 	(vm->visu->debug) ? draw_log(vm) : 0;
 	draw_battle_info(vm);
 	draw_footer(vm);
-	if (key == ESC)
-		exit_visu(vm);
-	else if (key == SPACE || vm->visu->debug)
+	if (!vm->visu->running || vm->visu->debug)
 		pause_visu(vm);
 	usleep(get_speed(vm, key));
 }
