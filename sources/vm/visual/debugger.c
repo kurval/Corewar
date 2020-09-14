@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 11:05:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/14 15:08:02 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/14 17:14:48 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void		print_log_text(t_vm *vm, t_process *proc, char *str, int color_num)
 		return ;
 	}
 	wattron(win, COLOR_PAIR(Y_B) | A_BOLD);
-	wprintw(win, "[PROC ID %8d] ", proc->id);
+	wprintw(win, "[CURSOR ID %6d] ", proc->id);
 	wattroff(win, COLOR_PAIR(Y_B) | A_BOLD);
 	wattron(win, COLOR_PAIR(color_num) | A_BOLD);
 	wprintw(win, "%s%s\n", str, vm->operations[proc->opcode - 1].instr_name);
