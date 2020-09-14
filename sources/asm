@@ -1,30 +1,46 @@
 .\" Manpage for asm
 .\" Contact jmetelin@student.hive.fi to correct errors or typos.
-.TH ASM 8 "25 May 2020" "1.0" "asm man page"
+.TH ASM 8 "14 Sep 2020" "1.0" "asm man page"
 .SH ASM
 ASM
 .SH SYNOPSIS
-ASM [file.s]
+.B     ./asm [-h] [-e] [-d DIR] [-x] [-f FILE] [-l] <sourcefile.s>
+.B or: ./asm -z [-d DIR] <sourcefile.cor>
 .SH DESCRIPTION
 ASM is a program that compiles a champion and translates it from the language it's written in (assembly language) into "Bytecode." Bytecode is a machine language, which is directly interpreted by the virtual machine COREWAR.
 .SH OPTIONS
--h
-
--e
-
--d
-
--x
-
--f
-
--l
-
--z
-
+The following options are available:
+.TP
+.B -h
+prints the usage
+.TP
+.B -e
+prints all the errors instead of only the first one
+.TP
+.B -d DIR
+creates the .cor file to the directory DIR
+.TP
+.B -x
+prints the hexdump
+.TP
+.B -f FILE
+names the .cor file FILE
+.TP
+.B -l
+prints memory leaks
+.TP
+.B -z
+disassembles a .cor file to a .s file
 .SH SEE ALSO
-something releated to asm
+COREWAR(8)
 .SH BUGS
-No known bugs EVER. yes you read that right
-.SH AUTHOR
-Janette Metelinen (jmetelin@student.hive.fi)
+No known bugs EVER. Yes you read that right.
+.SH CONTRIBUTORS
+.TP
+.BI "Besnik Konjuhaj    " (bkonjuha@student.hive.fi)
+.TP
+.BI "Janette Metelinen  " (jmetelin@student.hive.fi)
+.TP
+.BI "Valtteri Kurkela   " (vkurkela@student.hive.fi)
+.TP
+.BI "Anna Tuominen      " (atuomine@student.hive.fi)
