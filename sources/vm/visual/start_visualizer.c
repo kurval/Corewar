@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 12:50:02 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/14 14:36:35 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/14 15:12:51 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	pause_visu(t_vm *vm)
 		if (key == SPACE || key == 'd')
 		{
 			if (key == 'd')
-				manage_windows(vm, key);
+				set_debug(vm);
 			vm->visu->running = true;
 			return ;
 		}
