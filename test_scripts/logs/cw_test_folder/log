@@ -1,0 +1,64 @@
+
+SUMMARY
+
+D before test number means there were stdout/error differences - check log
+
+D 1 - ./cor_files_fast/test1.cor
+D 2 - ./cor_files_fast/test10.cor
+D 3 - ./cor_files_fast/test11.cor
+D 4 - ./cor_files_fast/test12.cor
+
+STDOUT/ERROR DIFFERENCES
+
+==========================================================================================
+1 - ./cor_files_fast/test1.cor
+Differences
+OURS
+ERROR: Invalid ChampionReturn value 1
+
+ORIG
+Error: File ./cor_files_fast/test1.cor has too large a code (993 bytes > 682 bytes)
+Return value 1
+==========================================================================================
+2 - ./cor_files_fast/test10.cor
+Differences
+OURS
+Introducing contestants...
+* Player 1, Weighing in at 20 BYTES, "basic": ("this is a basic stuff")
+Contestant 1, "basic", has won !
+Return value 0
+
+ORIG
+Introducing contestants...
+* Player 1, weighing 20 bytes, "basic" ("this is a basic stuff") !
+Contestant 1, "basic", has won !
+Return value 43
+==========================================================================================
+3 - ./cor_files_fast/test11.cor
+Differences
+OURS
+Introducing contestants...
+* Player 1, Weighing in at 544 BYTES, "Oh, You Fork my TRALALA ...": ("HMMMM, my ding-ding-dong !!")
+Contestant 1, "Oh, You Fork my TRALALA ...", has won !
+Return value 0
+
+ORIG
+Introducing contestants...
+* Player 1, weighing 544 bytes, "Oh, You Fork my TRALALA ..." ("HMMMM, my ding-ding-dong !!") !
+Contestant 1, "Oh, You Fork my TRALALA ...", has won !
+Return value 43
+==========================================================================================
+4 - ./cor_files_fast/test12.cor
+Differences
+OURS
+Introducing contestants...
+* Player 1, Weighing in at 277 BYTES, "top defense plus plus": ("la meilleure defense c'est d'avoir une bonne defense")
+Contestant 1, "top defense plus plus", has won !
+Return value 0
+
+ORIG
+Introducing contestants...
+* Player 1, weighing 277 bytes, "top defense plus plus" ("la meilleure defense c'est d'avoir une bonne defense") !
+Contestant 1, "top defense plus plus", has won !
+Return value 43
+==========================================================================================

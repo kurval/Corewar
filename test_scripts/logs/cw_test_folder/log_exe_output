@@ -1,0 +1,39 @@
+Orig 1
+Error: File ./cor_files_fast/test1.cor has too large a code (993 bytes > 682 bytes)
+[0;33mReturn value 1[0m
+Our 1
+ERROR: Invalid Champion[0;33mReturn value 1[0m
+---
+Orig 2
+Introducing contestants...
+* Player 1, weighing 20 bytes, "basic" ("this is a basic stuff") !
+Contestant 1, "basic", has won !
+[0;33mReturn value 43[0m
+Our 2
+Introducing contestants...
+* Player 1, Weighing in at 20 BYTES, "basic": ("this is a basic stuff")
+Contestant 1, "basic", has won !
+[0;33mReturn value 0[0m
+---
+Orig 3
+Introducing contestants...
+* Player 1, weighing 544 bytes, "Oh, You Fork my TRALALA ..." ("HMMMM, my ding-ding-dong !!") !
+Contestant 1, "Oh, You Fork my TRALALA ...", has won !
+[0;33mReturn value 43[0m
+Our 3
+Introducing contestants...
+* Player 1, Weighing in at 544 BYTES, "Oh, You Fork my TRALALA ...": ("HMMMM, my ding-ding-dong !!")
+Contestant 1, "Oh, You Fork my TRALALA ...", has won !
+[0;33mReturn value 0[0m
+---
+Orig 4
+Introducing contestants...
+* Player 1, weighing 277 bytes, "top defense plus plus" ("la meilleure defense c'est d'avoir une bonne defense") !
+Contestant 1, "top defense plus plus", has won !
+[0;33mReturn value 43[0m
+Our 4
+Introducing contestants...
+* Player 1, Weighing in at 277 BYTES, "top defense plus plus": ("la meilleure defense c'est d'avoir une bonne defense")
+Contestant 1, "top defense plus plus", has won !
+[0;33mReturn value 0[0m
+---
