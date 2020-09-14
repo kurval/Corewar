@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:59 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/20 14:36:37 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:10:34 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,7 @@ void	op_sub(t_vm *vm, t_process *proc)
 	sub = value1 - value2;
 	proc->reg[proc->values[2] - 1] = sub;
 	proc->carry = (sub == 0) ? 1 : 0;
+	if (vm->v_flag)
+		(vm->visu->debug) ?\
+		log_operation(vm, proc, "executed sub\n", 0) : 0;
 }

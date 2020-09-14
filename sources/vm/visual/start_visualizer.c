@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 12:50:02 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/03 18:18:34 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:36:43 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,17 @@ static void	pause_visu(t_vm *vm)
 
 void		manage_windows(t_vm *vm, int key)
 {
+	if (key == 'd')
+		set_debug(vm);
 	draw_logo(vm);
 	draw_arena(vm);
-	draw_players(vm);
+	(!vm->visu->debug) ? draw_players(vm) : 0;
+	(vm->visu->debug) ? draw_log(vm) : 0;
 	draw_battle_info(vm);
 	draw_footer(vm);
 	if (key == ESC)
 		exit_visu(vm);
-	else if (key == 'd')
-		vm->visu->debug = (!vm->visu->debug);
-	if (key == SPACE || vm->visu->debug)
+	else if (key == SPACE || vm->visu->debug)
 		pause_visu(vm);
 	usleep(get_speed(vm, key));
 }

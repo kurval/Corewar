@@ -47,6 +47,8 @@ static void	validate_flag(char ***strs)
 	{
 		if (ft_strchr(FLAG_CHARS, ft_tolower(***strs)))
 			set_flags(***strs);
+		else if (ft_tolower(***strs) == 'z')
+			handle_error(get_usage());
 		else
 			handle_error("Invalid flags");
 		if (***strs == 'd')
@@ -69,11 +71,8 @@ static void	validate_flag(char ***strs)
 ** 2.2 Else, check the argument with process_arg function (read above)
 */
 
-char		*check_args(int argc, char **argv, char **dest)
+char		*check_args(int argc, char **argv)
 {
-	char	*msg;
-	int		len;
-	int		dot_loc;
 	char	*source;
 
 	source = NULL;

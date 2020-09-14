@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/13 11:32:29 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/28 11:08:38 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/11 18:41:03 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 ** operation code.
 */
 
-static int	check_op_args(t_vm *vm, int *args, int opcode)
+static int	check_op_args(t_vm *vm, int *args, t_process *proc)
 {
 	int i;
 
 	i = 0;
 	while (i < 3)
 	{
-		if ((!(args[i] & vm->operations[opcode - 1].argv[i]) &&\
-		args[i]) || (!args[i] && vm->operations[opcode - 1].argv[i]))
+		if ((!(args[i] & vm->operations[proc->opcode - 1].argv[i]) &&\
+		args[i]) || (!args[i] && vm->operations[proc->opcode - 1].argv[i]))
 			return (0);
 		i++;
 	}
@@ -39,12 +39,12 @@ static int	check_op_args(t_vm *vm, int *args, int opcode)
 ** types for current cursor.
 */
 
-static int	check_types(int *args, t_process *proc)
+static void	get_types(t_vm *vm, int *args, t_process *proc)
 {
 	int i;
 
 	i = 0;
-	while (i < 3)
+	while (i < vm->operations[proc->opcode - 1].argc)
 	{
 		if (args[i] == REG_CODE)
 			proc->args[i] = T_REG;
@@ -52,19 +52,29 @@ static int	check_types(int *args, t_process *proc)
 			proc->args[i] = T_DIR;
 		else if (args[i] == IND_CODE)
 			proc->args[i] = T_IND;
-		else if (args[i] != 0)
-			return (0);
+		else
+			proc->args[i] = 0;
 		i++;
 	}
-	return (1);
 }
+
+/*
+** Using bitmask to extract first three
+** pair of bits which tells us the type
+** of each argument.
+*/
 
 int			validate_encoding(t_vm *vm, int encode_byte, t_process *proc)
 {
 	int arg[3];
+	int	i;
 
+	i = -1;
+	while (++i < 3)
+		proc->args[i] = 0;
 	arg[0] = (encode_byte & MASK1) >> 6;
 	arg[1] = (encode_byte & MASK2) >> 4;
 	arg[2] = (encode_byte & MASK3) >> 2;
-	return (check_types(arg, proc) && check_op_args(vm, arg, proc->opcode));
+	get_types(vm, arg, proc);
+	return (check_op_args(vm, proc->args, proc));
 }

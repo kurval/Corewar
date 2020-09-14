@@ -42,6 +42,7 @@ t_token *token)
 		!(strs[0] = ft_itoa(row)) ||
 		!(strs[1] = ft_strdup(instr_name)))
 		handle_error(MALLOC_ERROR);
+	msg = NULL;
 	if (err_type == INVALID_COUNT)
 	{
 		strs[2] = NULL;

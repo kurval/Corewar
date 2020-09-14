@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op_fork.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:18 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/22 16:57:41 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:10:34 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,7 @@ void	op_fork(t_vm *vm, t_process *proc)
 	new = copy_proc(vm, proc);
 	new->pc = get_addr(proc->pc + (value1 % IDX_MOD));
 	add_to_list(new, &vm->proc_list);
+	if (vm->v_flag)
+		(vm->visu->debug) ?\
+		log_operation(vm, proc, "executed fork\n", 0) : 0;
 }

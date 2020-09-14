@@ -59,7 +59,7 @@ static unsigned int		handle_negative(int number)
 	return (result + 1);
 }
 
-static unsigned char	*get_bytes(int fd, int number, int byte_nbr)
+static unsigned char	*get_bytes(int number, int byte_nbr)
 {
 	int				byte;
 	unsigned char	*output;
@@ -95,7 +95,7 @@ t_state state)
 	unsigned char	*bytes;
 	int				byte_nbr;
 
-	bytes = get_bytes(fd, nbr, size);
+	bytes = get_bytes(nbr, size);
 	byte_nbr = write(fd, bytes, size);
 	if (overlap(g_flags, flag_x))
 		write_hexdump(bytes, byte_nbr, state);

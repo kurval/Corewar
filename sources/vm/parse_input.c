@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/01 17:16:27 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/12 21:48:45 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,24 +34,30 @@ static void	introduce_champs(t_vm *vm)
 
 static void	get_player(char *s, t_player *p, int num)
 {
-	int fd;
-	int len;
+	int				fd;
+	int				len;
+	unsigned int	prog_len;
 
+	prog_len = 0;
 	if ((fd = open(s, O_RDONLY)) != -1)
 	{
 		read(fd, &(p->h.magic), 4);
 		read(fd, &(p->h.prog_name), PROG_NAME_LENGTH);
-		lseek(fd, 8, SEEK_CUR);
+		has_white_space(fd);
+		prog_len = read_n_bytes(fd, 4);
 		read(fd, &(p->h.comment), COMMENT_LENGTH);
-		lseek(fd, 4, SEEK_CUR);
+		has_white_space(fd);
 		len = read(fd, &(p->code), CHAMP_MAX_SIZE);
 		p->id = num;
 		p->h.prog_size = len;
 		close(fd);
 	}
+	if (!(p->h.comment[0]) || !(p->h.comment[0]) ||
+			(prog_len != p->h.prog_size))
+		ft_errno(CODE_ERROR);
 }
 
-static int	get_n_flag(char *s, int id[4], int champ_count)
+int			get_n_flag(char *s, int id[4], int champ_count)
 {
 	int num;
 
@@ -66,7 +72,7 @@ static int	get_n_flag(char *s, int id[4], int champ_count)
 	return (num);
 }
 
-static int	get_next_unused_id(int arr[MAX_PLAYERS])
+int			get_next_unused_id(int arr[MAX_PLAYERS])
 {
 	int i;
 
@@ -84,22 +90,22 @@ void		parse_input(int ac, char **av, t_vm *vm)
 	int	id_arr[MAX_PLAYERS];
 	int	num;
 
-	i = 0;
-	id_arr[0] = 1;
-	id_arr[1] = 2;
-	id_arr[2] = 3;
-	id_arr[3] = 4;
+	i = 5;
+	while (i-- > 1)
+		id_arr[i - 1] = i;
 	while (av[++i])
 	{
-		num = 0;
 		if (ft_strequ("-n", av[i]) && i < ac && i++)
 			num = get_n_flag(av[i++], id_arr, vm->nb_players);
 		else
 			num = get_next_unused_id(id_arr);
 		if (ft_strequ("-dump", av[i]) && i < ac && i++)
 			get_dump(vm, av[i++]);
+		if (ft_strequ("-d", av[i]) && i < ac && i++)
+			get_d_flag(vm, av[i++]);
 		else if ((ft_strequ("-a", av[i]) && (vm->a_flag = 1))
-				|| (ft_strequ("-v", av[i]) && (vm->v_flag = 1)))
+				|| (ft_strequ("-v", av[i]) && (vm->v_flag = 1))
+				|| (ft_strequ("-l", av[i]) && (vm->l_flag = 1)))
 			continue;
 		get_player(av[i], &(vm->p[num - 1]), num);
 		id_arr[num - 1] = 0;

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:42 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/08/14 21:05:38 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:10:34 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,20 @@
 
 void	op_lldi(t_vm *vm, t_process *proc)
 {
-	int	res;
+	int				res;
 
-	res = int_arg(vm, proc->pc + get_op_values(vm, proc, 1) +
-	get_op_values(vm, proc, 2));
+	if (proc->args[0] == T_IND)
+		res = int_arg(vm, proc->pc +
+		(proc->values[0] % IDX_MOD));
+	else
+	{
+		res = int_arg(vm, proc->pc +
+		(get_op_values(vm, proc, 1) +
+		get_op_values(vm, proc, 2)));
+	}
 	proc->reg[proc->values[2] - 1] = res;
 	proc->carry = (!res ? 1 : 0);
+	if (vm->v_flag)
+		(vm->visu->debug) ?\
+		log_operation(vm, proc, "executed lldi\n", 0) : 0;
 }

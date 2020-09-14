@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:51 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/01 09:37:51 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:10:34 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@
 void	op_st(t_vm *vm, t_process *proc)
 {
 	int				value1;
-	unsigned int	addr;
 
 	value1 = get_op_values(vm, proc, 1);
 	if (proc->args[1] == T_REG)
 		proc->reg[proc->values[1] - 1] = value1;
 	else if (proc->args[1] == T_IND)
-	{
-		addr = get_addr(proc->pc + (proc->values[1] % IDX_MOD));
-		load_into_memory(vm, addr, (void *)&value1, proc);
-	}
+		load_into_memory(vm, proc->pc + (proc->values[1] % IDX_MOD),\
+		(void *)&value1, proc);
+	if (vm->v_flag)
+		(vm->visu->debug) ?\
+		log_operation(vm, proc, "executed st\n", 0) : 0;
 }

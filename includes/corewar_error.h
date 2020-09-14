@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar_error.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:39:30 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/03 16:27:04 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/11 11:17:46 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 # define INPUT_ERROR "ERROR: Invalid input parameter"
 
-# define OPEN_ERROR "ERROR: Cannot open file"
+# define OPEN_ERROR "ERROR: Can't open the file"
 
 # define CHAMP_ERROR "ERROR: Invalid Champion"
 
@@ -36,5 +36,13 @@
 # define NB_PROCS_ERROR "ERROR: Too many processes"
 
 # define MALLOC_ERROR "ERROR: Malloc failed"
+
+# define MAGIC_ERROR "ERROR: Invalid magic header"
+
+# define SPACE_ERROR "ERROR: Missing whitespace"
+
+# define SIZE_ERROR "ERROR: Code size does not match the given size"
+
+# define CODE_ERROR "ERROR: The code size differs from what its header says"
 
 #endif

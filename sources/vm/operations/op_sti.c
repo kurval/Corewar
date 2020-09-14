@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:54 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/01 09:37:56 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 22:10:34 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,13 @@ void	op_sti(t_vm *vm, t_process *proc)
 	int				value1;
 	int				addr_val1;
 	int				addr_val2;
-	unsigned int	addr;
 
 	value1 = get_op_values(vm, proc, 1);
 	addr_val1 = get_op_values(vm, proc, 2);
 	addr_val2 = get_op_values(vm, proc, 3);
-	addr = get_addr(proc->pc + ((addr_val1 + addr_val2) % IDX_MOD));
-	load_into_memory(vm, addr, (void *)&value1, proc);
+	load_into_memory(vm, proc->pc + ((addr_val1 + addr_val2) % IDX_MOD),\
+	(void *)&value1, proc);
+	if (vm->v_flag)
+		(vm->visu->debug) ?\
+		log_operation(vm, proc, "executed sti\n", 0) : 0;
 }

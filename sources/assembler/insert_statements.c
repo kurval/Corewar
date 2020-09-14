@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-static void	write_argument(t_arg *arg, t_label *labels, int fd, t_state state)
+static void	write_argument(t_arg *arg, int fd, t_state state)
 {
 	int number;
 
@@ -26,8 +26,7 @@ static void	write_argument(t_arg *arg, t_label *labels, int fd, t_state state)
 	}
 }
 
-static void	write_statement(t_stmt *stmt, int fd, t_label *labels,
-t_state state)
+static void	write_statement(t_stmt *stmt, int fd, t_state state)
 {
 	int i;
 
@@ -37,7 +36,7 @@ t_state state)
 	i = 0;
 	while (stmt->args[i])
 	{
-		write_argument(stmt->args[i], labels, fd, state);
+		write_argument(stmt->args[i], fd, state);
 		i++;
 	}
 }
@@ -55,7 +54,6 @@ static int	get_instr_code(t_stmt *statement, t_op *op)
 
 void		insert_statements(t_stmt *stmt, t_label *labels, t_op *op, int fd)
 {
-	char			*bytes;
 	static t_state	state = statement;
 
 	if (stmt)
@@ -64,7 +62,7 @@ void		insert_statements(t_stmt *stmt, t_label *labels, t_op *op, int fd)
 			insert_statements(stmt->next, labels, op, fd);
 		stmt->arg_code = get_arg_code(stmt);
 		stmt->instr_code = get_instr_code(stmt, op);
-		write_statement(stmt, fd, labels, state);
+		write_statement(stmt, fd, state);
 		stmt = stmt->next;
 		state = (state == statement ? statement + 1 : statement);
 	}

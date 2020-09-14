@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_errno.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:16 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/08/14 17:49:49 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/11 00:07:08 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_errno(char *s)
 {
-	ft_putstr(s);
+	ft_putendl(s);
 	exit(1);
 }

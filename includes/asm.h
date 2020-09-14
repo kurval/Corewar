@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 17:05:18 by jmetelin          #+#    #+#             */
-/*   Updated: 2020/08/12 16:55:53 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 10:13:29 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <fcntl.h>
 # include "libft.h"
 # include "get_next_line.h"
-# include "printf.h"
+# include "ft_printf.h"
 # include "op.h"
 
 /*
@@ -71,8 +71,8 @@ typedef enum	e_flag
 	flag_d = 4,
 	flag_x = 8,
 	flag_f = 16,
-	flag_error_debug = 32,
-	flag_l = 64,
+	flag_l = 32,
+	flag_error_debug = 64,
 }				t_flag;
 
 int				g_flags;
@@ -211,13 +211,14 @@ typedef struct	s_asm
 ** asm.c
 */
 
+char			*get_usage(void);
 int				overlap(int type1, int type2);
 
 /*
 ** check_args.c
 */
 
-char			*check_args(int argc, char **argv, char **dest);
+char			*check_args(int argc, char **argv);
 
 /*
 ** set_flags.c
@@ -277,7 +278,7 @@ void			parse_file(int fd, t_asm *assembler);
 */
 
 int				store_line(char *buff, char **s, int *ret, int fd);
-int				ret_value(char **s, char **line, int ret, int fd);
+int				ret_value(char **s, char **line, int ret, int *row);
 
 /*
 ** tokenize.c
@@ -387,5 +388,23 @@ void			write_hexdump(unsigned char *bytes, int byte_nbr,
 */
 
 void			free_memory(t_op *op, t_champ *champ);
+
+/*
+** validate_file.c
+*/
+
+char			*validate_file(char *file);
+
+/*
+** dasm.c
+*/
+
+void			dasm(char *src, const char *dest);
+int				write_operation(int src_file, int dest_file);
+void			write_arguments(int input_file, int output_file, int ins);
+void			write_t_reg(int output, int input);
+void			write_t_dir(int output, int input, int ins);
+void			write_t_ind(int output, int input);
+char			*open_folder(char *folder, char *file);
 
 #endif

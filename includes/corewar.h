@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/04 13:58:09 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/13 23:00:37 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 # include "op.h"
 # include "visu.h"
 # include "corewar_error.h"
-# include "../libft/libft.h"
-# include <stdio.h> //remove before turning in the assignment
+# include "libft.h"
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
@@ -47,7 +46,7 @@ typedef struct		s_arena
 ** - reg[REG_NUMBER] : registries of current cursor
 ** - args[3] : current cursors argument types
 ** - values[3] : current cursors argument values
-** - player_id : owner of this process
+** - parent_id : owner of this process
 **	>T_REG registry number
 **	>T_DIR A number, saved on 2 or 4 bytes, depending on label
 **	>T_IND relative address number
@@ -65,7 +64,7 @@ typedef struct		s_process
 	unsigned int	pc;
 	int				jump;
 	int				reg[REG_NUMBER];
-	unsigned int	player_id;
+	unsigned int	parent_id;
 	struct s_player	*player;
 	struct s_process*next;
 }					t_process;
@@ -124,6 +123,8 @@ typedef struct		s_vm
 	unsigned int	dump_cycle;
 	int				a_flag;
 	int				v_flag;
+	int				l_flag;
+	unsigned int	d_flag;
 	unsigned int	nb_players;
 	unsigned int	nb_procs;
 	unsigned int	id_counter;
@@ -217,6 +218,12 @@ int					validate_chapions(char **s);
 void				parse_input(int ac, char **av, t_vm *vm);
 void				load_champions(t_vm *vm);
 void				get_dump(t_vm *vm, char *s);
+void				get_d_flag(t_vm *vm, char *s);
+void				has_magic_header(char *file);
+int					get_next_unused_id(int arr[MAX_PLAYERS]);
+int					get_n_flag(char *s, int id[4], int champ_count);
+void				has_white_space(int fd);
+int					read_n_bytes(int input, int count);
 
 /*
 **					OPERATION FUNCTIONS
@@ -253,18 +260,19 @@ void				draw_battle_info(t_vm *vm);
 void				draw_footer(t_vm *vm);
 void				print_winner(t_vm *vm);
 void				box_win(WINDOW *win);
-void				print_player1(t_vm *vm, int height, int weidth,
-					int color_nb);
-void				print_player2(t_vm *vm, int height, int weidth,
-					int color_nb);
-void				print_player3(t_vm *vm, int height, int weidth,
-					int color_nb);
-void				print_player4(t_vm *vm, int height, int weidth,
-					int color_nb);
+void				print_player1(t_vm *vm, int y, int x);
+void				print_player2(t_vm *vm, int y, int x);
+void				print_player3(t_vm *vm, int y, int x);
+void				print_player4(t_vm *vm, int y, int x);
 void				print_info(t_vm *vm, t_player *player, int y, int x);
 void				print_player_info(t_vm *vm);
 void				init_visualizer(t_vm *vm);
 void				manage_windows(t_vm *vm, int key);
+void				draw_log(t_vm *vm);
+void    			log_operation(t_vm *vm, t_process *proc, char *str, int i);
+void				print_log_text(t_vm *vm, t_process *proc, char *str,
+					int color_num);
+void				set_debug(t_vm *vm);
 
 static const t_op			g_ops[16] = {
 	{
