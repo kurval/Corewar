@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 11:05:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/14 11:18:08 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/14 14:24:13 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void		log_operation(t_vm *vm, t_process *proc, int i)
 		free(log);
 	}
 	else
-		print_log_text(vm, proc,  "executed ", i);
+		print_log_text(vm, proc, "executed ", i);
 }
 
 void		print_log_text(t_vm *vm, t_process *proc, char *str, int color_num)
@@ -56,16 +56,16 @@ void		print_log_text(t_vm *vm, t_process *proc, char *str, int color_num)
 	wattroff(win, COLOR_PAIR(M_B) | A_BOLD);
 	if (vm->visu->log_count == 0)
 	{
-		wattron(win, COLOR_PAIR(color_num) | A_BOLD);
+		wattron(win, COLOR_PAIR(GRAY_B) | A_BOLD);
 		wprintw(win, "[NOTHING HAPPENED]\n");
-		wattroff(win, COLOR_PAIR(color_num) | A_BOLD);
+		wattroff(win, COLOR_PAIR(GRAY_B) | A_BOLD);
 		return ;
 	}
-	wattron(win, COLOR_PAIR(GRAY_B) | A_BOLD);
+	wattron(win, COLOR_PAIR(Y_B) | A_BOLD);
 	wprintw(win, "[PROC ID %8d] ", proc->id);
-	wattroff(win, COLOR_PAIR(GRAY_B) | A_BOLD);
+	wattroff(win, COLOR_PAIR(Y_B) | A_BOLD);
 	wattron(win, COLOR_PAIR(color_num) | A_BOLD);
-	wprintw(win, "%s%s\n", str, vm->operations[proc->opcode -1].instr_name);
+	wprintw(win, "%s%s\n", str, vm->operations[proc->opcode - 1].instr_name);
 	wattroff(win, COLOR_PAIR(color_num) | A_BOLD);
 }
 
