@@ -12,19 +12,6 @@
 
 #include "asm.h"
 
-int			write_operation(int input_file, int output_file)
-{
-	int			ins;
-	static char	*instr_name[16] = {"live", "ld", "st", "add", "sub", "and",
-	"or", "xor", "zjmp", "ldi", "sti", "fork", "lld", "lldi", "lfork", "aff"};
-
-	ins = 0;
-	read(input_file, &ins, 1);
-	if (ins)
-		write(output_file, instr_name[ins - 1], ft_strlen(instr_name[ins - 1]));
-	return (ins);
-}
-
 static char	*ft_itob(int num)
 {
 	char	*b;
@@ -100,4 +87,17 @@ void		write_arguments(int input, int output, int ins)
 	}
 	free((void *)argc);
 	ft_strdel(&binary);
+}
+
+int			write_operation(int input_file, int output_file)
+{
+	int			ins;
+	static char	*instr_name[16] = {"live", "ld", "st", "add", "sub", "and",
+	"or", "xor", "zjmp", "ldi", "sti", "fork", "lld", "lldi", "lfork", "aff"};
+
+	ins = 0;
+	read(input_file, &ins, 1);
+	if (ins)
+		write(output_file, instr_name[ins - 1], ft_strlen(instr_name[ins - 1]));
+	return (ins);
 }

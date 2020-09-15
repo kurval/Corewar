@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-int		read_n_bytes(int input, int count)
+static int	read_n_bytes(int input, int count)
 {
 	unsigned char	number;
 	int				result;
@@ -28,17 +28,16 @@ int		read_n_bytes(int input, int count)
 	return (result);
 }
 
-void	write_t_reg(int output, int input)
+void		write_t_ind(int output, int input)
 {
-	char number;
+	short number;
 
 	number = 0;
-	write(output, " r", 2);
-	number = read_n_bytes(input, 1);
+	number = read_n_bytes(input, 2);
 	ft_putnbr_fd(number, output);
 }
 
-void	write_t_dir(int output, int input, int ins)
+void		write_t_dir(int output, int input, int ins)
 {
 	int		number;
 	short	s_num;
@@ -58,11 +57,12 @@ void	write_t_dir(int output, int input, int ins)
 	}
 }
 
-void	write_t_ind(int output, int input)
+void		write_t_reg(int output, int input)
 {
-	short number;
+	char number;
 
 	number = 0;
-	number = read_n_bytes(input, 2);
+	write(output, " r", 2);
+	number = read_n_bytes(input, 1);
 	ft_putnbr_fd(number, output);
 }

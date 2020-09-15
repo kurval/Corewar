@@ -399,12 +399,22 @@ char			*validate_file(char *file);
 ** dasm.c
 */
 
+char			*open_folder(char *folder, char *file);
 void			dasm(char *src, const char *dest);
-int				write_operation(int src_file, int dest_file);
-void			write_arguments(int input_file, int output_file, int ins);
+
+/*
+** dasm2.c
+*/
+
+int				write_operation(int input_file, int output_file);
+void			write_arguments(int input, int output, int ins);
+
+/*
+** dasm3.c
+*/
+
 void			write_t_reg(int output, int input);
 void			write_t_dir(int output, int input, int ins);
 void			write_t_ind(int output, int input);
-char			*open_folder(char *folder, char *file);
 
 #endif

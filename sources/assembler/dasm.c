@@ -12,6 +12,20 @@
 
 #include "asm.h"
 
+static void	write_op_code(int input_file, int output_file)
+{
+	int op;
+
+	op = 0;
+	while ((op = write_operation(input_file, output_file)))
+	{
+		if (op > 15)
+			handle_error("Error: Invalid .cor file");
+		write_arguments(input_file, output_file, op);
+		write(output_file, "\n", 1);
+	}
+}
+
 static void	write_header(int src_file, int dest_file)
 {
 	int		i;
@@ -40,20 +54,19 @@ static void	write_header(int src_file, int dest_file)
 	write(dest_file, "\n", 1);
 }
 
-void		write_op_code(int input_file, int output_file)
+void		dasm(char *src, const char *dest)
 {
-	int op;
-	int count;
+	int	src_file;
+	int	dest_file;
 
-	count = 0;
-	op = 0;
-	while ((op = write_operation(input_file, output_file)))
-	{
-		if (op > 15)
-			handle_error("Error: Invalid .cor file");
-		write_arguments(input_file, output_file, op);
-		write(output_file, "\n", 1);
-	}
+	if ((src_file = open(src, O_RDONLY)) < 0)
+		handle_error("ERROR: Unable to open file");
+	if ((dest_file = open(dest, O_CREAT | O_RDWR, 0644)) < 0)
+		handle_error("ERROR: Unable to create file");
+	write_header(src_file, dest_file);
+	write_op_code(src_file, dest_file);
+	close(src_file);
+	close(dest_file);
 }
 
 char		*open_folder(char *folder, char *file)
@@ -74,19 +87,4 @@ char		*open_folder(char *folder, char *file)
 	final_name[++j] = '\0';
 	ft_strdel(&file);
 	return (final_name);
-}
-
-void		dasm(char *src, const char *dest)
-{
-	int	src_file;
-	int	dest_file;
-
-	if ((src_file = open(src, O_RDONLY)) < 0)
-		handle_error("ERROR: Unable to open file");
-	if ((dest_file = open(dest, O_CREAT | O_RDWR, 0644)) < 0)
-		handle_error("ERROR: Unable to create file");
-	write_header(src_file, dest_file);
-	write_op_code(src_file, dest_file);
-	close(src_file);
-	close(dest_file);
 }
