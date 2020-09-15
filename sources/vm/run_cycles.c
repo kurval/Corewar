@@ -23,7 +23,7 @@
 
 static void	set_opcode(t_vm *vm, t_process *proc)
 {
-	proc->opcode = vm->a->arena[proc->pc];	
+	proc->opcode = vm->a->arena[proc->pc];
 	if (proc->opcode && proc->opcode <= REG_NUMBER)
 		proc->wait_cycles = vm->operations[proc->opcode - 1].wait_cycles;
 	else
