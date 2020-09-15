@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/13 20:50:55 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/15 10:44:48 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 
 static void	set_opcode(t_vm *vm, t_process *proc)
 {
-	proc->opcode = vm->a->arena[proc->pc];
-	if (proc->opcode == 0 || proc->opcode > REG_NUMBER)
-		proc->wait_cycles = 1;
-	else
+	proc->opcode = vm->a->arena[proc->pc];	
+	if (proc->opcode && proc->opcode <= REG_NUMBER)
 		proc->wait_cycles = vm->operations[proc->opcode - 1].wait_cycles;
+	else
+		proc->wait_cycles = 1;
 }
 
 /*
