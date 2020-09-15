@@ -3,1438 +3,231 @@ SUMMARY
 
 D before test number means there were stdout/error differences - check log
 
-D 1 - ./cor_files/42.cor
-D 2 - ./cor_files/Asombra.cor
-D 3 - ./cor_files/Bazou.cor
-D 4 - ./cor_files/Code_eater.cor
-D 5 - ./cor_files/Douceur_power.cor
-D 6 - ./cor_files/Eraser.cor
-D 7 - ./cor_files/Explosive_Kitty.cor
-D 8 - ./cor_files/ForgottenOne.cor
-D 9 - ./cor_files/Gagnant.cor
-D 10 - ./cor_files/Hidden.cor
-D 11 - ./cor_files/Horace.cor
-D 12 - ./cor_files/Izi_Miaou.cor
-D 13 - ./cor_files/Kappa.cor
-D 14 - ./cor_files/Kitty_Miaou.cor
-D 15 - ./cor_files/Kittystrophic.cor
-D 16 - ./cor_files/Machine-gun.cor
-D 17 - ./cor_files/MarineKing.cor
-D 18 - ./cor_files/Misaka_Mikoto.cor
-D 19 - ./cor_files/NoIdea.cor
-D 20 - ./cor_files/O-Maley_Miaou.cor
-D 21 - ./cor_files/Octobre_Rouge_V4.2.cor
-D 22 - ./cor_files/Rainbow_dash.cor
-D 23 - ./cor_files/Stargate0_1.cor
-D 24 - ./cor_files/THUNDER.cor
-D 25 - ./cor_files/TheHarvester.cor
-D 26 - ./cor_files/Varimathras.cor
-D 27 - ./cor_files/Wall.cor
-D 28 - ./cor_files/_.cor
-D 29 - ./cor_files/_honeybadger.cor
-D 30 - ./cor_files/barriere.cor
-D 31 - ./cor_files/big_feet.cor
-D 32 - ./cor_files/casimir.cor
-D 33 - ./cor_files/champ.cor
-D 34 - ./cor_files/corelol.cor
-D 35 - ./cor_files/darksasuke.cor
-D 36 - ./cor_files/doge.cor
-D 37 - ./cor_files/dubo.cor
-D 38 - ./cor_files/echo.cor
-D 39 - ./cor_files/ex.cor
-D 40 - ./cor_files/gateau.cor
-D 41 - ./cor_files/gedeon.cor
-D 42 - ./cor_files/jinx.cor
-D 43 - ./cor_files/jumper.cor
-D 44 - ./cor_files/justin_bee.cor
-D 45 - ./cor_files/kamelkaze.cor
-D 46 - ./cor_files/katchup.cor
-D 47 - ./cor_files/lapsang.cor
-D 48 - ./cor_files/le_pet_de_nonne.cor
-D 49 - ./cor_files/littlepuppy.cor
-D 50 - ./cor_files/live.cor
-D 51 - ./cor_files/loose.cor
-D 52 - ./cor_files/lou_forktologue.cor
-D 53 - ./cor_files/master_of_puppets.cor
-D 54 - ./cor_files/maxidef.cor
-D 55 - ./cor_files/meowluigi.cor
-D 56 - ./cor_files/mise_a_jour_windows95.cor
-D 57 - ./cor_files/mortel.cor
-D 58 - ./cor_files/overwatch.cor
-D 59 - ./cor_files/pai_mu_tan.cor
-D 60 - ./cor_files/run_Kitty_RUN.cor
-D 61 - ./cor_files/salamahenagalabadoun.cor
-D 62 - ./cor_files/sam_2.0.cor
-D 63 - ./cor_files/sencha.cor
-D 64 - ./cor_files/skynet.cor
-D 65 - ./cor_files/slider2.cor
-D 66 - ./cor_files/slow
-D 67 - ./cor_files/tchupka.cor
-D 68 - ./cor_files/terminator.cor
-D 69 - ./cor_files/toto.cor
-D 70 - ./cor_files/ultima.cor
-D 71 - ./cor_files/ultimate-surrender.cor
-D 72 - ./cor_files/wave.cor
-D 73 - ./cor_files/youforkmytralala.cor
+D 1 - ./error_cors/0_exec_magic.cor
+D 2 - ./error_cors/invalid_code_size.cor
+D 3 - ./error_cors/invalid_exec_magic.cor
+D 4 - ./error_cors/invalid_null_comment.cor
+D 5 - ./error_cors/invalid_null_name.cor
+D 6 - ./error_cors/missing_code_size.cor
+D 7 - ./error_cors/missing_exec_magic.cor
+D 8 - ./error_cors/missing_null_comment.cor
+D 9 - ./error_cors/missing_null_name.cor
+D 10 - ./error_cors/no_arg_type_code.cor
+D 11 - ./error_cors/no_comment.cor
+D 12 - ./error_cors/no_name.cor
+D 13 - ./error_cors/too_long_comment_space.cor
+D 14 - ./error_cors/too_long_name_space.cor
+D 15 - ./error_cors/too_long_null_comment.cor
+D 16 - ./error_cors/too_long_null_name.cor
+D 17 - ./error_cors/too_short_comment_space.cor
+D 18 - ./error_cors/too_short_name_space.cor
+D 19 - ./error_cors/too_short_null_comment.cor
+D 20 - ./error_cors/too_short_null_name.cor
 
 STDOUT/ERROR DIFFERENCES
 
 ==========================================================================================
-1 - ./cor_files/42.cor
-Differences
-OURS
-ERROR: Invalid Champion
-Return value 1
-
-ORIG
-Error: File ./cor_files/42.cor has too large a code (993 bytes > 682 bytes)
-Return value 1
-==========================================================================================
-2 - ./cor_files/Asombra.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 670 BYTES, "King Sombra": ("Crystal empire is mine!")
-Contestant 1, "King Sombra", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 670 bytes, "King Sombra" ("Crystal empire is mine!") !
-Contestant 1, "King Sombra", has won !
-Return value 43
-==========================================================================================
-3 - ./cor_files/Bazou.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 682 BYTES, "Bazou": ("C'est comme un petit lapin mais en plus peureux et avec des moins grandes oreilles.")
-Contestant 1, "Bazou", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 682 bytes, "Bazou" ("C'est comme un petit lapin mais en plus peureux et avec des moins grandes oreilles.") !
-Contestant 1, "Bazou", has won !
-Return value 43
-==========================================================================================
-4 - ./cor_files/Code_eater.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 588 BYTES, "Code_eater": ("mnom mnom mnom")
-Contestant 1, "Code_eater", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 588 bytes, "Code_eater" ("mnom mnom mnom") !
-Contestant 1, "Code_eater", has won !
-Return value 43
-==========================================================================================
-5 - ./cor_files/Douceur_power.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 602 BYTES, "Douceur-power": ("La douceur de la quenelle")
-Contestant 1, "Douceur-power", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 602 bytes, "Douceur-power" ("La douceur de la quenelle") !
-Contestant 1, "Douceur-power", has won !
-Return value 43
-==========================================================================================
-6 - ./cor_files/Eraser.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 552 BYTES, "Eraser": ("this is a comment")
-Contestant 1, "Eraser", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 552 bytes, "Eraser" ("this is a comment") !
-Contestant 1, "Eraser", has won !
-Return value 43
-==========================================================================================
-7 - ./cor_files/Explosive_Kitty.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 605 BYTES, "Explosive Kitty": ("Jan-ken-pon (じゃんけんぽん)
-Ce qui reste éternellement incompréhensible dans la nature, c’est qu’on puisse la comprendre.
-Celui qui ne peut plus éprouver ni étonnement ni surprise, est pour ainsi dire mort : ses yeux sont éteints. – Albert Einstein
-Si vous voulez trouver les secrets de l'univers pensez en termes de fréquences, d'énergies et de vibrations. - Nikola Tesla
-Pas la pour etre ici. - Silicon Val[list]
-Dieu est la plus belle invention.
-Tapis dans l'ombre je veille. - Minou")
-Contestant 1, "Explosive Kitty", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 605 bytes, "Explosive Kitty" ("Jan-ken-pon (じゃんけんぽん)
-Ce qui reste éternellement incompréhensible dans la nature, c’est qu’on puisse la comprendre.
-Celui qui ne peut plus éprouver ni étonnement ni surprise, est pour ainsi dire mort : ses yeux sont éteints. – Albert Einstein
-Si vous voulez trouver les secrets de l'univers pensez en termes de fréquences, d'énergies et de vibrations. - Nikola Tesla
-Pas la pour etre ici. - Silicon Val[list]
-Dieu est la plus belle invention.
-Tapis dans l'ombre je veille. - Minou") !
-Contestant 1, "Explosive Kitty", has won !
-Return value 43
-==========================================================================================
-8 - ./cor_files/ForgottenOne.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 677 BYTES, "ForgottenOne": ("I've forget this guy. Sorry.")
-Contestant 1, "ForgottenOne", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 677 bytes, "ForgottenOne" ("I've forget this guy. Sorry.") !
-Contestant 1, "ForgottenOne", has won !
-Return value 43
-==========================================================================================
-9 - ./cor_files/Gagnant.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 325 BYTES, "Celebration Funebre v0.99pl42": ("Jour J")
-Contestant 1, "Celebration Funebre v0.99pl42", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 325 bytes, "Celebration Funebre v0.99pl42" ("Jour J") !
-Contestant 1, "Celebration Funebre v0.99pl42", has won !
-Return value 43
-==========================================================================================
-10 - ./cor_files/Hidden.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 574 BYTES, "Hidden": ("Now you see me...")
-Contestant 1, "Hidden", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 574 bytes, "Hidden" ("Now you see me...") !
-Contestant 1, "Hidden", has won !
-Return value 43
-==========================================================================================
-11 - ./cor_files/Horace.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 636 BYTES, "Horace": ("Le horace qui vaincra les curiaces (bon en vrai c'est vraiment 
-a titre historique uniquement, c'est plus vraiment le cas maintenant)")
-Contestant 1, "Horace", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 636 bytes, "Horace" ("Le horace qui vaincra les curiaces (bon en vrai c'est vraiment 
-a titre historique uniquement, c'est plus vraiment le cas maintenant)") !
-Contestant 1, "Horace", has won !
-Return value 43
-==========================================================================================
-12 - ./cor_files/Izi_Miaou.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 254 BYTES, "Izi Miaou": ("Ma cherie
-Si tu voulais bien etre la bienvenue dans ma vie
-Vi vi c'est bien ce que j'ai dis
-Je ne penses plus qu'a toi
-Mes penses restent sans voix sans toi
-Dis moi es-tu la?
-Me veux-tu?
-Je serais l'esclave de tes desirs
-Aime le monde, pour toi, moi je desire tout le Monde avec toi
-J'aime bien le voir evoluer, et fleurir avec toi
-- Minou
-Dieu est la plus belle invention.
-Tapis dans l'ombre, je veille
-- Minou")
-Contestant 1, "Izi Miaou", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 254 bytes, "Izi Miaou" ("Ma cherie
-Si tu voulais bien etre la bienvenue dans ma vie
-Vi vi c'est bien ce que j'ai dis
-Je ne penses plus qu'a toi
-Mes penses restent sans voix sans toi
-Dis moi es-tu la?
-Me veux-tu?
-Je serais l'esclave de tes desirs
-Aime le monde, pour toi, moi je desire tout le Monde avec toi
-J'aime bien le voir evoluer, et fleurir avec toi
-- Minou
-Dieu est la plus belle invention.
-Tapis dans l'ombre, je veille
-- Minou") !
-Contestant 1, "Izi Miaou", has won !
-Return value 43
-==========================================================================================
-13 - ./cor_files/Kappa.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 682 BYTES, "Kappa": ("AKA Kappa Sandwich.")
-Contestant 1, "Kappa", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 682 bytes, "Kappa" ("AKA Kappa Sandwich.") !
-Contestant 1, "Kappa", has won !
-Return value 43
-==========================================================================================
-14 - ./cor_files/Kitty_Miaou.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 578 BYTES, "Kitty Miaou": ("Ma cherie
-Si tu voulais bien etre la bienvenue dans ma vie
-Vi vi c'est bien ce que j'ai dis
-Je ne penses plus qu'a toi
-Mes penses restent sans voix sans toi
-Dis moi es-tu la?
-Me veux-tu?
-Je serais l'esclave de tes desirs
-Aime le monde, pour toi, moi je desire tout le Monde avec toi
-J'aime bien le voir evoluer, et fleurir avec toi
-- Minou
-Dieu est la plus belle invention.
-Tapis dans l'ombre, je veille
-- Minou")
-Contestant 1, "Kitty Miaou", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 578 bytes, "Kitty Miaou" ("Ma cherie
-Si tu voulais bien etre la bienvenue dans ma vie
-Vi vi c'est bien ce que j'ai dis
-Je ne penses plus qu'a toi
-Mes penses restent sans voix sans toi
-Dis moi es-tu la?
-Me veux-tu?
-Je serais l'esclave de tes desirs
-Aime le monde, pour toi, moi je desire tout le Monde avec toi
-J'aime bien le voir evoluer, et fleurir avec toi
-- Minou
-Dieu est la plus belle invention.
-Tapis dans l'ombre, je veille
-- Minou") !
-Contestant 1, "Kitty Miaou", has won !
-Return value 43
-==========================================================================================
-15 - ./cor_files/Kittystrophic.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 514 BYTES, "Kittystrophic": ("Jan-ken-pon (じゃんけんぽん)
-Ce qui reste éternellement incompréhensible dans la nature, c’est qu’on puisse la comprendre.
-Celui qui ne peut plus éprouver ni étonnement ni surprise, est pour ainsi dire mort : ses yeux sont éteints. – Albert Einstein
-Si vous voulez trouver les secrets de l'univers pensez en termes de fréquences, d'énergies et de vibrations. - Nikola Tesla
-Pas la pour etre ici. - Silicon Val[list]
-Dieu est la plus belle invention.
-Tapis dans l'ombre je veille. - Minou")
-Contestant 1, "Kittystrophic", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 514 bytes, "Kittystrophic" ("Jan-ken-pon (じゃんけんぽん)
-Ce qui reste éternellement incompréhensible dans la nature, c’est qu’on puisse la comprendre.
-Celui qui ne peut plus éprouver ni étonnement ni surprise, est pour ainsi dire mort : ses yeux sont éteints. – Albert Einstein
-Si vous voulez trouver les secrets de l'univers pensez en termes de fréquences, d'énergies et de vibrations. - Nikola Tesla
-Pas la pour etre ici. - Silicon Val[list]
-Dieu est la plus belle invention.
-Tapis dans l'ombre je veille. - Minou") !
-Contestant 1, "Kittystrophic", has won !
-Return value 43
-==========================================================================================
-16 - ./cor_files/Machine-gun.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 301 BYTES, "Machine-gun": ("yipikai mother fucker")
-Contestant 1, "Machine-gun", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 301 bytes, "Machine-gun" ("yipikai mother fucker") !
-Contestant 1, "Machine-gun", has won !
-Return value 43
-==========================================================================================
-17 - ./cor_files/MarineKing.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 460 BYTES, "MKP": ("SaR ez Gg")
-Contestant 1, "MKP", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 460 bytes, "MKP" ("SaR ez Gg") !
-Contestant 1, "MKP", has won !
-Return value 43
-==========================================================================================
-18 - ./cor_files/Misaka_Mikoto.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 681 BYTES, "Misaka Mikoto": ("Misaka Mikoto (御坂 美琴 Misaka Mikoto) (born May 2) is a main heroine in Toaru Majutsu no Index and the main protagonist of Toaru Kagaku no Railgun. Introduced in the first volume of the light novels, her role in the story was later expanded in the third volume as well as the release of the Toaru Kagaku no Railgun manga, making her the main heroine of the science side and the second main heroine of the series.
-
-	She is the third ranked Level 5 esper in Academy City, and is nicknamed the Railgun due to her signature move. Kamijou Touma coined the nickname Biri-Biri (ビリビリ?) (a Japanese onomatopoeia imitating the sound of electricity) for her and whenever the two meet he usually calls her that, even after his amnesia")
-Contestant 1, "Misaka Mikoto", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 681 bytes, "Misaka Mikoto" ("Misaka Mikoto (御坂 美琴 Misaka Mikoto) (born May 2) is a main heroine in Toaru Majutsu no Index and the main protagonist of Toaru Kagaku no Railgun. Introduced in the first volume of the light novels, her role in the story was later expanded in the third volume as well as the release of the Toaru Kagaku no Railgun manga, making her the main heroine of the science side and the second main heroine of the series.
-
-	She is the third ranked Level 5 esper in Academy City, and is nicknamed the Railgun due to her signature move. Kamijou Touma coined the nickname Biri-Biri (ビリビリ?) (a Japanese onomatopoeia imitating the sound of electricity) for her and whenever the two meet he usually calls her that, even after his amnesia") !
-Contestant 1, "Misaka Mikoto", has won !
-Return value 43
-==========================================================================================
-19 - ./cor_files/NoIdea.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 640 BYTES, "NoIdea": ("The random has killed you...")
-Contestant 1, "NoIdea", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 640 bytes, "NoIdea" ("The random has killed you...") !
-Contestant 1, "NoIdea", has won !
-Return value 43
-==========================================================================================
-20 - ./cor_files/O-Maley_Miaou.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 579 BYTES, "O'Maly Miaou": ("Ma cherie
-Si tu voulais bien etre la bienvenue dans ma vie
-Vi vi c'est bien ce que j'ai dis
-Je ne penses plus qu'a toi
-Mes penses restent sans voix sans toi
-Dis moi es-tu la?
-Me veux-tu?
-Je serais l'esclave de tes desirs
-Aime le monde, pour toi, moi je desire tout le Monde avec toi
-J'aime bien le voir evoluer, et fleurir avec toi
-- Minou
-Dieu est la plus belle invention.
-Tapis dans l'ombre, je veille
-- Minou")
-Contestant 1, "O'Maly Miaou", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 579 bytes, "O'Maly Miaou" ("Ma cherie
-Si tu voulais bien etre la bienvenue dans ma vie
-Vi vi c'est bien ce que j'ai dis
-Je ne penses plus qu'a toi
-Mes penses restent sans voix sans toi
-Dis moi es-tu la?
-Me veux-tu?
-Je serais l'esclave de tes desirs
-Aime le monde, pour toi, moi je desire tout le Monde avec toi
-J'aime bien le voir evoluer, et fleurir avec toi
-- Minou
-Dieu est la plus belle invention.
-Tapis dans l'ombre, je veille
-- Minou") !
-Contestant 1, "O'Maly Miaou", has won !
-Return value 43
-==========================================================================================
-21 - ./cor_files/Octobre_Rouge_V4.2.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 609 BYTES, "Octobre Rouge V4.2": ("And the winner is ...")
-Contestant 1, "Octobre Rouge V4.2", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 609 bytes, "Octobre Rouge V4.2" ("And the winner is ...") !
-Contestant 1, "Octobre Rouge V4.2", has won !
-Return value 43
-==========================================================================================
-22 - ./cor_files/Rainbow_dash.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 20 BYTES, "basic": ("this is a basic stuff")
-Contestant 1, "basic", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 20 bytes, "basic" ("this is a basic stuff") !
-Contestant 1, "basic", has won !
-Return value 43
-==========================================================================================
-23 - ./cor_files/Stargate0_1.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 682 BYTES, "stargate0_1": ("infinity")
-Contestant 1, "stargate0_1", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 682 bytes, "stargate0_1" ("infinity") !
-Contestant 1, "stargate0_1", has won !
-Return value 43
-==========================================================================================
-24 - ./cor_files/THUNDER.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 634 BYTES, "thunder": ("you've been thunderstruck...")
-Contestant 1, "thunder", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 634 bytes, "thunder" ("you've been thunderstruck...") !
-Contestant 1, "thunder", has won !
-Return value 43
-==========================================================================================
-25 - ./cor_files/TheHarvester.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 663 BYTES, "The Harvester": ("L'elevage, puis la domestication de process est une activite
-dangereuse mais o combien amusante, attention toutefois a ne pas y perdre la
-vie
-
-Labourage, elevage, domestication")
-Contestant 1, "The Harvester", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 663 bytes, "The Harvester" ("L'elevage, puis la domestication de process est une activite
-dangereuse mais o combien amusante, attention toutefois a ne pas y perdre la
-vie
-
-Labourage, elevage, domestication") !
-Contestant 1, "The Harvester", has won !
-Return value 43
-==========================================================================================
-26 - ./cor_files/Varimathras.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 318 BYTES, "Varimathras": ("If I have wings, why am I always walking?")
-Contestant 1, "Varimathras", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 318 bytes, "Varimathras" ("If I have wings, why am I always walking?") !
-Contestant 1, "Varimathras", has won !
-Return value 43
-==========================================================================================
-27 - ./cor_files/Wall.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 338 BYTES, "Wall": ("Werror(you) Wextra(me)")
-Contestant 1, "Wall", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 338 bytes, "Wall" ("Werror(you) Wextra(me)") !
-Contestant 1, "Wall", has won !
-Return value 43
-==========================================================================================
-28 - ./cor_files/_.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 679 BYTES, "Underscore": ("__UNDERSCORE_S__")
-Contestant 1, "Underscore", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 679 bytes, "Underscore" ("__UNDERSCORE_S__") !
-Contestant 1, "Underscore", has won !
-Return value 43
-==========================================================================================
-29 - ./cor_files/_honeybadger.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 681 BYTES, "HoneyBadger": ("This is where I'd put the forks. IF I HAD ANY")
-Contestant 1, "HoneyBadger", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 681 bytes, "HoneyBadger" ("This is where I'd put the forks. IF I HAD ANY") !
-Contestant 1, "HoneyBadger", has won !
-Return value 43
-==========================================================================================
-30 - ./cor_files/barriere.cor
-Differences
-OURS
-ERROR: Invalid Champion
-Return value 1
-
-ORIG
-Error: File ./cor_files/barriere.cor has too large a code (1023 bytes > 682 bytes)
-Return value 1
-==========================================================================================
-31 - ./cor_files/big_feet.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 277 BYTES, "top defense plus plus": ("la meilleure defense c'est d'avoir une bonne defense")
-Contestant 1, "top defense plus plus", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 277 bytes, "top defense plus plus" ("la meilleure defense c'est d'avoir une bonne defense") !
-Contestant 1, "top defense plus plus", has won !
-Return value 43
-==========================================================================================
-32 - ./cor_files/casimir.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 265 BYTES, "CASIMIR": ("GLOUBIBOULGA")
-Contestant 1, "CASIMIR", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 265 bytes, "CASIMIR" ("GLOUBIBOULGA") !
-Contestant 1, "CASIMIR", has won !
-Return value 43
-==========================================================================================
-33 - ./cor_files/champ.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 489 BYTES, "lazer": ("Mundo dit beaucoup son nom pour pas l'oublier, pck c deja arriver!")
-Contestant 1, "lazer", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 489 bytes, "lazer" ("Mundo dit beaucoup son nom pour pas l'oublier, pck c deja arriver!") !
-Contestant 1, "lazer", has won !
-Return value 43
-==========================================================================================
-34 - ./cor_files/corelol.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 23 BYTES, "laugh": ("aff, just kidding")
-Contestant 1, "laugh", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 23 bytes, "laugh" ("aff, just kidding") !
-Contestant 1, "laugh", has won !
-Return value 43
-==========================================================================================
-35 - ./cor_files/darksasuke.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 264 BYTES, "Xx_DaRk_SaSuKe_93_xX": ("The Dirty Hamster")
-Contestant 1, "Xx_DaRk_SaSuKe_93_xX", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 264 bytes, "Xx_DaRk_SaSuKe_93_xX" ("The Dirty Hamster") !
-Contestant 1, "Xx_DaRk_SaSuKe_93_xX", has won !
-Return value 43
-==========================================================================================
-36 - ./cor_files/doge.cor
-Differences
-OURS
-ERROR: The code size differs from what its header says
-Return value 1
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 679 bytes, "Candy" ("") !
-Contestant 1, "Candy", has won !
-Return value 43
-==========================================================================================
-37 - ./cor_files/dubo.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 71 BYTES, "dubo": ("Tu veux du pain")
-Contestant 1, "dubo", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 71 bytes, "dubo" ("Tu veux du pain") !
-Contestant 1, "dubo", has won !
-Return value 43
-==========================================================================================
-38 - ./cor_files/echo.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 656 BYTES, "Echo": ("I'm coming")
-Contestant 1, "Echo", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 656 bytes, "Echo" ("I'm coming") !
-Contestant 1, "Echo", has won !
-Return value 43
-==========================================================================================
-39 - ./cor_files/ex.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 23 BYTES, "zork": ("just a basic living prog")
-Contestant 1, "zork", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 23 bytes, "zork" ("just a basic living prog") !
-Contestant 1, "zork", has won !
-Return value 43
-==========================================================================================
-40 - ./cor_files/gateau.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 682 BYTES, "🎂": ("🎂")
-Contestant 1, "🎂", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 682 bytes, "🎂" ("🎂") !
-Contestant 1, "🎂", has won !
-Return value 43
-==========================================================================================
-41 - ./cor_files/gedeon.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 316 BYTES, "Gédéon le Cochon": ("Tout est bon dans Gédéon")
-Contestant 1, "Gédéon le Cochon", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 316 bytes, "Gédéon le Cochon" ("Tout est bon dans Gédéon") !
-Contestant 1, "Gédéon le Cochon", has won !
-Return value 43
-==========================================================================================
-42 - ./cor_files/jinx.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 320 BYTES, "Jinx": ("Stay still, I'm trying to shoot you..!")
-Contestant 1, "Jinx", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 320 bytes, "Jinx" ("Stay still, I'm trying to shoot you..!") !
-Contestant 1, "Jinx", has won !
-Return value 43
-==========================================================================================
-43 - ./cor_files/jumper.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 320 BYTES, "Jumper !": ("en fait C forker !")
-Contestant 1, "Jumper !", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 320 bytes, "Jumper !" ("en fait C forker !") !
-Contestant 1, "Jumper !", has won !
-Return value 43
-==========================================================================================
-44 - ./cor_files/justin_bee.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 527 BYTES, "L'arene des abeilles": ("Baby, baby, baby, oh !")
-Contestant 1, "L'arene des abeilles", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 527 bytes, "L'arene des abeilles" ("Baby, baby, baby, oh !") !
-Contestant 1, "L'arene des abeilles", has won !
-Return value 43
-==========================================================================================
-45 - ./cor_files/kamelkaze.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 682 BYTES, " kamelkaze": ("I dont like underscore")
-Contestant 1, " kamelkaze", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 682 bytes, " kamelkaze" ("I dont like underscore") !
-Contestant 1, " kamelkaze", has won !
-Return value 43
-==========================================================================================
-46 - ./cor_files/katchup.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 677 BYTES, "katchup": ("Do you like ketchup?")
-Contestant 1, "katchup", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 677 bytes, "katchup" ("Do you like ketchup?") !
-Contestant 1, "katchup", has won !
-Return value 43
-==========================================================================================
-47 - ./cor_files/lapsang.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 234 BYTES, "Lapsang Souchong Crocodile": ("Tea Time")
-Contestant 1, "Lapsang Souchong Crocodile", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 234 bytes, "Lapsang Souchong Crocodile" ("Tea Time") !
-Contestant 1, "Lapsang Souchong Crocodile", has won !
-Return value 43
-==========================================================================================
-48 - ./cor_files/le_pet_de_nonne.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 549 BYTES, "🍌🍍 Le Pet de Nonne arrangé 🍍🍌": (" Il est également appelé « beignet de vent », « beignet venteux » ou « soupir de nonne », « pet de putain », « pet de vieille » dans l'Aveyron.
-
-Ingrédients : 150 g de farine, 3 oeufs, 50 g de beurre, 40 g de sucre, du Rhum, Fleur d'oranger, 1 pincée de sel, Huile de friture (tournesol ou arachide).
-
-Etape 1
-Mettre 1/4 l d'eau à chauffer avec le beurre, le sel, le sucre, quand çà bout retirer du feu, ajouter d'un seul coup la farine, mélanger énergiquement.
-🍹 Buvez un verre de Rhum.
-
-Etape 2
-Remettre sur le feu, mélanger jusqu'à ce que la pâte se détache du fond de la casserole.
-🍹 Buvez un verre de Rhum.
-
-Etape 3
-Hors du feu ajouter les œufs, un par un en battant fortement puis ajouter le parfum.
-🍹 Buvez un verre de Rhum.
-
-Etape 4
-Faire chauffer la friture, y mettre la pâte par morceaux gros comme des noix.
-🍹 Buvez un verre de Rhum.
-
-Etape 5
-Retournez les pets s'ils ne le font pas d'eux mêmes.
-🍹 Buvez un verre de Rhum.
-
-Etape 6
-Lorsqu'ils sont dorés, les égoutter, les saupoudrer de sucre et servir
-🍹 Buvez un verre de Rhum.
-
-Note de l'auteur
-les beignets ne gonfleront bien que si l'on a vigoureusement battu la pâte en ajoutant les oeufs.
-🍶 Buvez un verre d'eau.")
-Contestant 1, "🍌🍍 Le Pet de Nonne arrangé 🍍🍌", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 549 bytes, "🍌🍍 Le Pet de Nonne arrangé 🍍🍌" (" Il est également appelé « beignet de vent », « beignet venteux » ou « soupir de nonne », « pet de putain », « pet de vieille » dans l'Aveyron.
-
-Ingrédients : 150 g de farine, 3 oeufs, 50 g de beurre, 40 g de sucre, du Rhum, Fleur d'oranger, 1 pincée de sel, Huile de friture (tournesol ou arachide).
-
-Etape 1
-Mettre 1/4 l d'eau à chauffer avec le beurre, le sel, le sucre, quand çà bout retirer du feu, ajouter d'un seul coup la farine, mélanger énergiquement.
-🍹 Buvez un verre de Rhum.
-
-Etape 2
-Remettre sur le feu, mélanger jusqu'à ce que la pâte se détache du fond de la casserole.
-🍹 Buvez un verre de Rhum.
-
-Etape 3
-Hors du feu ajouter les œufs, un par un en battant fortement puis ajouter le parfum.
-🍹 Buvez un verre de Rhum.
-
-Etape 4
-Faire chauffer la friture, y mettre la pâte par morceaux gros comme des noix.
-🍹 Buvez un verre de Rhum.
-
-Etape 5
-Retournez les pets s'ils ne le font pas d'eux mêmes.
-🍹 Buvez un verre de Rhum.
-
-Etape 6
-Lorsqu'ils sont dorés, les égoutter, les saupoudrer de sucre et servir
-🍹 Buvez un verre de Rhum.
-
-Note de l'auteur
-les beignets ne gonfleront bien que si l'on a vigoureusement battu la pâte en ajoutant les oeufs.
-🍶 Buvez un verre d'eau.") !
-Contestant 1, "🍌🍍 Le Pet de Nonne arrangé 🍍🍌", has won !
-Return value 43
-==========================================================================================
-49 - ./cor_files/littlepuppy.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 274 BYTES, "Little Puppy": ("Wang Wang!!!!")
-Contestant 1, "Little Puppy", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 274 bytes, "Little Puppy" ("Wang Wang!!!!") !
-Contestant 1, "Little Puppy", has won !
-Return value 43
-==========================================================================================
-50 - ./cor_files/live.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 532 BYTES, "zdoh": ("w8 for da next one")
-Contestant 1, "zdoh", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 532 bytes, "zdoh" ("w8 for da next one") !
-Contestant 1, "zdoh", has won !
-Return value 43
-==========================================================================================
-51 - ./cor_files/loose.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 682 BYTES, "loose": ("loooose")
-Contestant 1, "loose", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 682 bytes, "loose" ("loooose") !
-Contestant 1, "loose", has won !
-Return value 43
-==========================================================================================
-52 - ./cor_files/lou_forktologue.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 678 BYTES, "The Forktologist": ("Pimp My Fork")
-Contestant 1, "The Forktologist", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 678 bytes, "The Forktologist" ("Pimp My Fork") !
-Contestant 1, "The Forktologist", has won !
-Return value 43
-==========================================================================================
-53 - ./cor_files/master_of_puppets.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 677 BYTES, "The Last Shadow Puppets Master": ("Everything you've come to expect...")
-Contestant 1, "The Last Shadow Puppets Master", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 677 bytes, "The Last Shadow Puppets Master" ("Everything you've come to expect...") !
-Contestant 1, "The Last Shadow Puppets Master", has won !
-Return value 43
-==========================================================================================
-54 - ./cor_files/maxidef.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 301 BYTES, " maxidef ": (" module de defense")
-Contestant 1, " maxidef ", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 301 bytes, " maxidef " (" module de defense") !
-Contestant 1, " maxidef ", has won !
-Return value 43
-==========================================================================================
-55 - ./cor_files/meowluigi.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 525 BYTES, "Meow Luigi": ("Here we meoooooow !")
-Contestant 1, "Meow Luigi", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 525 bytes, "Meow Luigi" ("Here we meoooooow !") !
-Contestant 1, "Meow Luigi", has won !
-Return value 43
-==========================================================================================
-56 - ./cor_files/mise_a_jour_windows95.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 678 BYTES, "mise_a_jour_windows95": ("Votre version de windows est obselete, votre mémoire vas être mise jour, veuillez ne pas eteindre vore ordinateur au risque de voir toutes vos donnees se faire ecrasées")
-Contestant 1, "mise_a_jour_windows95", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 678 bytes, "mise_a_jour_windows95" ("Votre version de windows est obselete, votre mémoire vas être mise jour, veuillez ne pas eteindre vore ordinateur au risque de voir toutes vos donnees se faire ecrasées") !
-Contestant 1, "mise_a_jour_windows95", has won !
-Return value 43
-==========================================================================================
-57 - ./cor_files/mortel.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 238 BYTES, "Booster !": ("Alors la, si ca marche, trop content !  :)")
-Contestant 1, "Booster !", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 238 bytes, "Booster !" ("Alors la, si ca marche, trop content !  :)") !
-Contestant 1, "Booster !", has won !
-Return value 43
-==========================================================================================
-58 - ./cor_files/overwatch.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 639 BYTES, "Overwatch": ("Reinhardt, Pharah, Mercy, Mei, Symmetra & Torbjorn")
-Contestant 1, "Overwatch", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 639 bytes, "Overwatch" ("Reinhardt, Pharah, Mercy, Mei, Symmetra & Torbjorn") !
-Contestant 1, "Overwatch", has won !
-Return value 43
-==========================================================================================
-59 - ./cor_files/pai_mu_tan.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 329 BYTES, "Pai Mu Tan": ("Tea Time")
-Contestant 1, "Pai Mu Tan", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 329 bytes, "Pai Mu Tan" ("Tea Time") !
-Contestant 1, "Pai Mu Tan", has won !
-Return value 43
-==========================================================================================
-60 - ./cor_files/run_Kitty_RUN.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 519 BYTES, "run Kitty RUN": ("Jan-ken-pon (じゃんけんぽん)
-Ce qui reste éternellement incompréhensible dans la nature, c’est qu’on puisse la comprendre.
-Celui qui ne peut plus éprouver ni étonnement ni surprise, est pour ainsi dire mort : ses yeux sont éteints. – Albert Einstein
-Si vous voulez trouver les secrets de l'univers pensez en termes de fréquences, d'énergies et de vibrations. - Nikola Tesla
-Pas la pour etre ici. - Silicon Val[list]
-Dieu est la plus belle invention.
-Tapis dans l'ombre je veille. - Minou
-J'te KHABBAR")
-Contestant 1, "run Kitty RUN", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 519 bytes, "run Kitty RUN" ("Jan-ken-pon (じゃんけんぽん)
-Ce qui reste éternellement incompréhensible dans la nature, c’est qu’on puisse la comprendre.
-Celui qui ne peut plus éprouver ni étonnement ni surprise, est pour ainsi dire mort : ses yeux sont éteints. – Albert Einstein
-Si vous voulez trouver les secrets de l'univers pensez en termes de fréquences, d'énergies et de vibrations. - Nikola Tesla
-Pas la pour etre ici. - Silicon Val[list]
-Dieu est la plus belle invention.
-Tapis dans l'ombre je veille. - Minou
-J'te KHABBAR") !
-Contestant 1, "run Kitty RUN", has won !
-Return value 43
-==========================================================================================
-61 - ./cor_files/salamahenagalabadoun.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 45 BYTES, "salamahenagalabadoun": ("sussKBO hin hin")
-Contestant 1, "salamahenagalabadoun", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 45 bytes, "salamahenagalabadoun" ("sussKBO hin hin") !
-Contestant 1, "salamahenagalabadoun", has won !
-Return value 43
-==========================================================================================
-62 - ./cor_files/sam_2.0.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 235 BYTES, "S.A.M.": ("Ca roxxe du chameau")
-Contestant 1, "S.A.M.", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 235 bytes, "S.A.M." ("Ca roxxe du chameau") !
-Contestant 1, "S.A.M.", has won !
-Return value 43
-==========================================================================================
-63 - ./cor_files/sencha.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 198 BYTES, "Sencha": ("Tea Time")
-Contestant 1, "Sencha", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 198 bytes, "Sencha" ("Tea Time") !
-Contestant 1, "Sencha", has won !
-Return value 43
-==========================================================================================
-64 - ./cor_files/skynet.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 671 BYTES, "skynet": ("j'aime les chats")
-Contestant 1, "skynet", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 671 bytes, "skynet" ("j'aime les chats") !
-Contestant 1, "skynet", has won !
-Return value 43
-==========================================================================================
-65 - ./cor_files/slider2.cor
-Differences
-OURS
-Introducing contestants...
-* Player 1, Weighing in at 576 BYTES, "Sliders": ("And the winner is ...")
-Contestant 1, "Sliders", has won !
-Return value 0
-
-ORIG
-Introducing contestants...
-* Player 1, weighing 576 bytes, "Sliders" ("And the winner is ...") !
-Contestant 1, "Sliders", has won !
-Return value 43
-==========================================================================================
-66 - ./cor_files/slow
+1 - ./error_cors/0_exec_magic.cor
 Differences
 OURS
 ERROR: Invalid magic header
 Return value 1
 
 ORIG
-Error: File ./cor_files/slow is too small to be a champion
+Error: File ./error_cors/0_exec_magic.cor has an invalid header
 Return value 1
 ==========================================================================================
-67 - ./cor_files/tchupka.cor
+2 - ./error_cors/invalid_code_size.cor
 Differences
 OURS
-Introducing contestants...
-* Player 1, Weighing in at 247 BYTES, "katch upper": ("do you like mirror ?")
-Contestant 1, "katch upper", has won !
-Return value 0
+ERROR: The code size differs from what its header says
+Return value 1
+
+ORIG
+Error: File ./error_cors/invalid_code_size.cor has a code size that differ from what its header says
+Return value 1
+==========================================================================================
+3 - ./error_cors/invalid_exec_magic.cor
+Differences
+OURS
+ERROR: Invalid magic header
+Return value 1
+
+ORIG
+Error: File ./error_cors/invalid_exec_magic.cor has an invalid header
+Return value 1
+==========================================================================================
+4 - ./error_cors/invalid_null_comment.cor
+Differences
+OURS
+ERROR: Missing whitespace
+Return value 1
 
 ORIG
 Introducing contestants...
-* Player 1, weighing 247 bytes, "katch upper" ("do you like mirror ?") !
-Contestant 1, "katch upper", has won !
+* Player 1, weighing 8 bytes, "aaa" ("aaaa") !
+Contestant 1, "aaa", has won !
 Return value 43
 ==========================================================================================
-68 - ./cor_files/terminator.cor
+5 - ./error_cors/invalid_null_name.cor
 Differences
 OURS
-Introducing contestants...
-* Player 1, Weighing in at 235 BYTES, "terminator": ("Hasta la vista, baby!")
-Contestant 1, "terminator", has won !
-Return value 0
+ERROR: Missing whitespace
+Return value 1
 
 ORIG
 Introducing contestants...
-* Player 1, weighing 235 bytes, "terminator" ("Hasta la vista, baby!") !
-Contestant 1, "terminator", has won !
+* Player 1, weighing 8 bytes, "aaa" ("aaaa") !
+Contestant 1, "aaa", has won !
 Return value 43
 ==========================================================================================
-69 - ./cor_files/toto.cor
+6 - ./error_cors/missing_code_size.cor
 Differences
 OURS
-Introducing contestants...
-* Player 1, Weighing in at 325 BYTES, "Celebration Funebre v0.99pl42": ("Jour J")
-Contestant 1, "Celebration Funebre v0.99pl42", has won !
-Return value 0
+ERROR: Missing whitespace
+Return value 1
 
 ORIG
-Introducing contestants...
-* Player 1, weighing 325 bytes, "Celebration Funebre v0.99pl42" ("Jour J") !
-Contestant 1, "Celebration Funebre v0.99pl42", has won !
-Return value 43
+Error: File ./error_cors/missing_code_size.cor has a code size that differ from what its header says
+Return value 1
 ==========================================================================================
-70 - ./cor_files/ultima.cor
+7 - ./error_cors/missing_exec_magic.cor
 Differences
 OURS
-Introducing contestants...
-* Player 1, Weighing in at 614 BYTES, "Ultima": ("
-Je suis l'Alpha
-Je suis Le destructeur
-Je suis Omega
-Je suis La raison de ta peur
-
-Ta puissance est ma puissance
-Ton pouvoir est sans défence
-Ma seule crainte est ta faiblesse
-De mourrir d'une maladresse
-
-Les plus puissants combattants
-S'ront détruits d'un coup de dent
-Les plus vifs et combatifs
-S'ront finis d'un coup de griffe
-
-Je suis un puits sans fond
-Qui t'aspire dans ses tréfonds
-La plaie sanglante et cruelle
-Qui déchire tes organes frèles
-
-La haine pur qui se diffuse
-Sur ton code et le déturit
-Prétrifié comme la méduse
-Tu vivras son agonie
-
-un poison ronge ton âme
-L'obscurité noie tes flammes
-Une mort glacée se répends
-Le long d' tes veines et ton sang
-
-Mais déjà tu m'appartients
-Ton destin est dans mes mains
-Pleur de rage, pleur de douleur
-Noie tes larmes dans ton aigreur
-
-Que mes attaques te pénêtre
-A moi tu ne peux que te soumettre
-Qu' ma puissance abime ton etre
-Que j' te brise, petite soubrette
-
-Mon pouvoir aspire tes forces
-Aspire ton ame, et se renforce
-Ma présence est ta souffrance
-Ma raison d'etre ta défaite
-
-Imposer, gifler tes tactiques
-Abuser d' ton code heuristique
-Dénuder ton code d'ses méthodes
-Déchirer toutes tes ruses informes
-
-Contraindre ton code aux pires outrages
-Forcer, détruire tes stratégies
-Tromper, corrompre tes algorithmes
-Vicier, souiller tes procédés
-
-Jusqu'a mon souffle je suis letal
-Meme mon regard détruit ton âme
-T'emporte au vent comme une pétale
-Puis te consumme un vrai lance flammes
-
-Tu viens pour ton exécution
-Pas un combat une pendaison
-Pas un proces, une mise a mort
-Toi le taureau, moi l'matador
-
-A tout jamais le championnat
-Lesté de mon ADN, changera
-Inséminé dans l'corps de mes proies
-Etrange héritage sortira
-Nées du tréfond de tes abats
-
-Mais viens ici, entre mes griffes
-Entre mes cros, t'ecorcher vif
-Pour me repaitre de tes lambeaux
-Pour te détruire en quelques mots
-
-Abandonne tout idée osée,
-de m'échapper, de me défier
-car les roles sont deja figées.
-Je Suis le Prédateur, tu est Ma Proie")
-Contestant 1, "Ultima", has won !
-Return value 0
+ERROR: Invalid magic header
+Return value 1
 
 ORIG
-Introducing contestants...
-* Player 1, weighing 614 bytes, "Ultima" ("
-Je suis l'Alpha
-Je suis Le destructeur
-Je suis Omega
-Je suis La raison de ta peur
-
-Ta puissance est ma puissance
-Ton pouvoir est sans défence
-Ma seule crainte est ta faiblesse
-De mourrir d'une maladresse
-
-Les plus puissants combattants
-S'ront détruits d'un coup de dent
-Les plus vifs et combatifs
-S'ront finis d'un coup de griffe
-
-Je suis un puits sans fond
-Qui t'aspire dans ses tréfonds
-La plaie sanglante et cruelle
-Qui déchire tes organes frèles
-
-La haine pur qui se diffuse
-Sur ton code et le déturit
-Prétrifié comme la méduse
-Tu vivras son agonie
-
-un poison ronge ton âme
-L'obscurité noie tes flammes
-Une mort glacée se répends
-Le long d' tes veines et ton sang
-
-Mais déjà tu m'appartients
-Ton destin est dans mes mains
-Pleur de rage, pleur de douleur
-Noie tes larmes dans ton aigreur
-
-Que mes attaques te pénêtre
-A moi tu ne peux que te soumettre
-Qu' ma puissance abime ton etre
-Que j' te brise, petite soubrette
-
-Mon pouvoir aspire tes forces
-Aspire ton ame, et se renforce
-Ma présence est ta souffrance
-Ma raison d'etre ta défaite
-
-Imposer, gifler tes tactiques
-Abuser d' ton code heuristique
-Dénuder ton code d'ses méthodes
-Déchirer toutes tes ruses informes
-
-Contraindre ton code aux pires outrages
-Forcer, détruire tes stratégies
-Tromper, corrompre tes algorithmes
-Vicier, souiller tes procédés
-
-Jusqu'a mon souffle je suis letal
-Meme mon regard détruit ton âme
-T'emporte au vent comme une pétale
-Puis te consumme un vrai lance flammes
-
-Tu viens pour ton exécution
-Pas un combat une pendaison
-Pas un proces, une mise a mort
-Toi le taureau, moi l'matador
-
-A tout jamais le championnat
-Lesté de mon ADN, changera
-Inséminé dans l'corps de mes proies
-Etrange héritage sortira
-Nées du tréfond de tes abats
-
-Mais viens ici, entre mes griffes
-Entre mes cros, t'ecorcher vif
-Pour me repaitre de tes lambeaux
-Pour te détruire en quelques mots
-
-Abandonne tout idée osée,
-de m'échapper, de me défier
-car les roles sont deja figées.
-Je Suis le Prédateur, tu est Ma Proie") !
-Contestant 1, "Ultima", has won !
-Return value 43
+Error: File ./error_cors/missing_exec_magic.cor has an invalid header
+Return value 1
 ==========================================================================================
-71 - ./cor_files/ultimate-surrender.cor
+8 - ./error_cors/missing_null_comment.cor
 Differences
 OURS
-Introducing contestants...
-* Player 1, Weighing in at 681 BYTES, "Ultimate Surrender": ("Y'en a qui vont prendre cher... :)")
-Contestant 1, "Ultimate Surrender", has won !
-Return value 0
+ERROR: Missing whitespace
+Return value 1
 
 ORIG
-Introducing contestants...
-* Player 1, weighing 681 bytes, "Ultimate Surrender" ("Y'en a qui vont prendre cher... :)") !
-Contestant 1, "Ultimate Surrender", has won !
-Return value 43
+Error: File ./error_cors/missing_null_comment.cor has a code size that differ from what its header says
+Return value 1
 ==========================================================================================
-72 - ./cor_files/wave.cor
+9 - ./error_cors/missing_null_name.cor
 Differences
 OURS
-Introducing contestants...
-* Player 1, Weighing in at 427 BYTES, "Wave": ("I'm coming")
-Contestant 1, "Wave", has won !
-Return value 0
+ERROR: Missing whitespace
+Return value 1
 
 ORIG
-Introducing contestants...
-* Player 1, weighing 427 bytes, "Wave" ("I'm coming") !
-Contestant 1, "Wave", has won !
-Return value 43
+Error: File ./error_cors/missing_null_name.cor has a code size that differ from what its header says
+Return value 1
 ==========================================================================================
-73 - ./cor_files/youforkmytralala.cor
+10 - ./error_cors/no_arg_type_code.cor
 Differences
 OURS
-Introducing contestants...
-* Player 1, Weighing in at 544 BYTES, "Oh, You Fork my TRALALA ...": ("HMMMM, my ding-ding-dong !!")
-Contestant 1, "Oh, You Fork my TRALALA ...", has won !
-Return value 0
+ERROR: The code size differs from what its header says
+Return value 1
 
 ORIG
-Introducing contestants...
-* Player 1, weighing 544 bytes, "Oh, You Fork my TRALALA ..." ("HMMMM, my ding-ding-dong !!") !
-Contestant 1, "Oh, You Fork my TRALALA ...", has won !
-Return value 43
+Error: File ./error_cors/no_arg_type_code.cor has a code size that differ from what its header says
+Return value 1
+==========================================================================================
+11 - ./error_cors/no_comment.cor
+Differences
+OURS
+ERROR: The code size differs from what its header says
+Return value 1
+
+ORIG
+Error: File ./error_cors/no_comment.cor is too small to be a champion
+Return value 1
+==========================================================================================
+12 - ./error_cors/no_name.cor
+Differences
+OURS
+ERROR: The code size differs from what its header says
+Return value 1
+
+ORIG
+Error: File ./error_cors/no_name.cor is too small to be a champion
+Return value 1
+==========================================================================================
+13 - ./error_cors/too_long_comment_space.cor
+Differences
+OURS
+ERROR: Invalid Champion
+Return value 1
+
+ORIG
+Error: File ./error_cors/too_long_comment_space.cor has a code size that differ from what its header says
+Return value 1
+==========================================================================================
+14 - ./error_cors/too_long_name_space.cor
+Differences
+OURS
+ERROR: The code size differs from what its header says
+Return value 1
+
+ORIG
+Error: File ./error_cors/too_long_name_space.cor has a code size that differ from what its header says
+Return value 1
+==========================================================================================
+15 - ./error_cors/too_long_null_comment.cor
+Differences
+OURS
+ERROR: The code size differs from what its header says
+Return value 1
+
+ORIG
+Error: File ./error_cors/too_long_null_comment.cor has a code size that differ from what its header says
+Return value 1
+==========================================================================================
+16 - ./error_cors/too_long_null_name.cor
+Differences
+OURS
+ERROR: The code size differs from what its header says
+Return value 1
+
+ORIG
+Error: File ./error_cors/too_long_null_name.cor has a code size that differ from what its header says
+Return value 1
+==========================================================================================
+17 - ./error_cors/too_short_comment_space.cor
+Differences
+OURS
+ERROR: The code size differs from what its header says
+Return value 1
+
+ORIG
+Error: File ./error_cors/too_short_comment_space.cor is too small to be a champion
+Return value 1
+==========================================================================================
+18 - ./error_cors/too_short_name_space.cor
+Differences
+OURS
+ERROR: The code size differs from what its header says
+Return value 1
+
+ORIG
+Error: File ./error_cors/too_short_name_space.cor is too small to be a champion
+Return value 1
+==========================================================================================
+19 - ./error_cors/too_short_null_comment.cor
+Differences
+OURS
+ERROR: Missing whitespace
+Return value 1
+
+ORIG
+Error: File ./error_cors/too_short_null_comment.cor has a code size that differ from what its header says
+Return value 1
+==========================================================================================
+20 - ./error_cors/too_short_null_name.cor
+Differences
+OURS
+ERROR: Missing whitespace
+Return value 1
+
+ORIG
+Error: File ./error_cors/too_short_null_name.cor has a code size that differ from what its header says
+Return value 1
 ==========================================================================================
