@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 12:50:02 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/14 15:12:51 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/15 21:16:01 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ void		start_visualizer(t_vm *vm)
 	if (!(vm->visu = (t_visu*)malloc(sizeof(t_visu))))
 		ft_errno(MALLOC_ERROR);
 	init_visualizer(vm);
+	manage_windows(vm, getch());
 	run_cycles(vm);
 	print_winner(vm);
 	getchar();

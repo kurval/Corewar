@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/14 14:44:53 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/15 21:26:06 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,6 +174,7 @@ typedef struct		s_visu
 	int				speed;
 	bool			running;
 	bool			debug;
+	bool			end;
 	int				log_count;
 }					t_visu;
 

@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/15 10:44:48 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/15 20:52:47 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,14 +105,13 @@ static void	perform_check(t_vm *vm, t_process **proc_list)
 	unsigned int i;
 
 	i = -1;
+	vm->checks++;
 	check_dead_processes(vm, proc_list);
 	if (vm->lives >= NBR_LIVE || vm->checks >= MAX_CHECKS)
 	{
 		vm->ctd -= CYCLE_DELTA;
-		vm->checks = 1;
+		vm->checks = 0;
 	}
-	else
-		vm->checks++;
 	vm->cycles = 0;
 	vm->lives = 0;
 	while (++i < vm->nb_players)
@@ -152,4 +151,6 @@ void		run_cycles(t_vm *vm)
 		else if (vm->v_flag)
 			manage_windows(vm, getch());
 	}
+	if (vm->v_flag)
+		vm->visu->end = true;
 }
