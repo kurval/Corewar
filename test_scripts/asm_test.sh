@@ -15,7 +15,7 @@ echo $DIR;
 # Paths need to be relative to test_scripts folder
 # DO NOT REMOVE DIR OR THE SCRIPT WILL ONLY WORK INSIDE ASM FOLDER (unless dirname does not work for you)
 
-EXE=$DIR/../sources/assembler/asm
+EXE=$DIR/../asm
 ORIG_EXE=$DIR/../resources/asm
 
 LINECHECKER=$DIR/./linechecker

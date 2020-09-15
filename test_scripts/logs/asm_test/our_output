@@ -1,0 +1,96 @@
+1 Writing output program to ./s_files/test1.cor
+2 Lexical error at [3:1]
+3 Writing output program to ./s_files/test3.cor
+4 Lexical error at [3:1]
+5 Writing output program to ./s_files/test5.cor
+6 Writing output program to ./s_files/test6.cor
+7 Lexical error at [7:1]
+8 Lexical error at [3:1]
+9 Writing output program to ./s_files/test9.cor
+10 Writing output program to ./s_files/test10.cor
+11 Writing output program to ./s_files/test11.cor
+12 Syntax error at token [TOKEN][002:002] INSTRUCTION "ld"
+13 Syntax error at token [TOKEN][007:021] INDIRECT "-52"
+14 Syntax error at token [TOKEN][181:007] INSTRUCTION "x70000004"
+15 Writing output program to ./s_files/test15.cor
+16 Writing output program to ./s_files/test16.cor
+17 Lexical error at [3:1]
+18 Lexical error at [3:1]
+19 Writing output program to ./s_files/test19.cor
+20 Lexical error at [3:1]
+21 Lexical error at [3:1]
+22 Lexical error at [3:1]
+23 Writing output program to ./s_files/test23.cor
+24 Writing output program to ./s_files/test24.cor
+25 Writing output program to ./s_files/test25.cor
+26 Writing output program to ./s_files/test26.cor
+27 Writing output program to ./s_files/test27.cor
+28 Writing output program to ./s_files/test28.cor
+29 Writing output program to ./s_files/test29.cor
+30 Writing output program to ./s_files/test30.cor
+31 Writing output program to ./s_files/test31.cor
+32 Writing output program to ./s_files/test32.cor
+33 Writing output program to ./s_files/test33.cor
+34 Writing output program to ./s_files/test34.cor
+35 Writing output program to ./s_files/test35.cor
+36 Writing output program to ./s_files/test36.cor
+37 Writing output program to ./s_files/test37.cor
+38 Writing output program to ./s_files/test38.cor
+39 Writing output program to ./s_files/test39.cor
+40 Writing output program to ./s_files/test40.cor
+41 Writing output program to ./s_files/test41.cor
+42 Writing output program to ./s_files/test42.cor
+43 Writing output program to ./s_files/test43.cor
+44 Writing output program to ./s_files/test44.cor
+45 Writing output program to ./s_files/test45.cor
+46 Writing output program to ./s_files/test46.cor
+47 Writing output program to ./s_files/test47.cor
+48 Writing output program to ./s_files/test48.cor
+49 Writing output program to ./s_files/test49.cor
+50 Writing output program to ./s_files/test50.cor
+51 Writing output program to ./s_files/test51.cor
+52 Writing output program to ./s_files/test52.cor
+53 Writing output program to ./s_files/test53.cor
+54 Writing output program to ./s_files/test54.cor
+55 Writing output program to ./s_files/test55.cor
+56 Writing output program to ./s_files/test56.cor
+57 Writing output program to ./s_files/test57.cor
+58 Writing output program to ./s_files/test58.cor
+59 Writing output program to ./s_files/test59.cor
+60 Writing output program to ./s_files/test60.cor
+61 Writing output program to ./s_files/test61.cor
+62 Writing output program to ./s_files/test62.cor
+63 Writing output program to ./s_files/test63.cor
+64 Writing output program to ./s_files/test64.cor
+65 Syntax error at token [TOKEN][024:012] LABEL "protection:"
+66 Syntax error - unexpected end of input
+67 row 7: Invalid argument for "live" (type REGISTER)
+68 Syntax error at token [TOKEN][002:003] INSTRUCTION "fork"
+69 Syntax error at token [TOKEN][003:003] INSTRUCTION "fork"
+70 Syntax error at token [TOKEN][002:003] INSTRUCTION "fork"
+71 Champion name or comment missing
+72 Champion name or comment missing
+73 Champion name or comment missing
+74 Champion name or comment missing
+75 Champion name or comment missing
+76 Writing output program to ./s_files/test76.cor
+77 Writing output program to ./s_files/test77.cor
+78 Champion name too long (Max length 128)
+79 Champion comment too long (Max length 2048)
+80 Syntax error - unexpected end of input
+81 Writing output program to ./s_files/test81.cor
+82 Syntax error - unexpected end of input
+83 Syntax error - unexpected end of input
+84 Writing output program to ./s_files/test84.cor
+85 Writing output program to ./s_files/test85.cor
+86 Writing output program to ./s_files/test86.cor
+87 Writing output program to ./s_files/test87.cor
+88 Writing output program to ./s_files/test88.cor
+89 Writing output program to ./s_files/test89.cor
+90 Writing output program to ./s_files/test90.cor
+91 row 4: Invalid argument for "live" (type REGISTER)
+92 row 4: Invalid argument for "fork" (type INDIRECT)
+93 row 4: Invalid argument for "sub" (type INDIRECT)
+94 row 4: Invalid arg count for "sub"
+95 row 4: Invalid arg count for "sub"
+96 Syntax error at token [TOKEN][004:030] ENDLINE
