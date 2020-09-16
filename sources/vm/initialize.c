@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:33:54 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/13 20:40:36 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/16 20:29:44 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void		init_vm(t_vm *vm)
 	vm->last_live_id = 0;
 	vm->ctd = CYCLE_TO_DIE;
 	vm->lives = 0;
-	vm->dump_cycle = 0;
+	vm->dump_cycle = -1;
 	vm->a = NULL;
 	vm->operations = (t_op *)g_ops;
 	while (++i < 4)
@@ -45,10 +45,11 @@ void		init_vm(t_vm *vm)
 	vm->a_flag = 0;
 	vm->v_flag = 0;
 	vm->id_counter = 1;
-	vm->d_flag = 0;
+	vm->d_flag = -1;
 	vm->l_flag = 0;
 	vm->nb_players = 0;
 	vm->nb_procs = 0;
+	vm->dump = false;
 }
 
 /*
