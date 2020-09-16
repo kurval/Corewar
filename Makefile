@@ -76,15 +76,15 @@ all: $(ASM) $(COREWAR)
 
 $(ASM): $(LIBFT) $(HEADERS) $(A) $(ASM_SRC)
 		@$(COMPILE) $(INCLUDES) $(A) $(ASM_SRC) $(LIBFT) -o $(ASM)
-		@$(CP) -f $(ASM_MANPAGE) $(ASM_MAN_LOCATION)
-		@$(GZIP) -f $(ASM_MAN_LOCATION)
+		#@$(CP) -f $(ASM_MANPAGE) $(ASM_MAN_LOCATION)
+		#@$(GZIP) -f $(ASM_MAN_LOCATION)
 		@echo "[$(COLOR_PENDING)Putting everything together$(COLOR_RESET)]"
 		@echo "[$(COLOR_SUCCESS)Executable $(ASM) created$(COLOR_RESET)]"
 
 $(COREWAR): $(LIBFT) $(HEADERS) $(C) $(COREWAR_SRC)
 		@$(COMPILE) $(NCURSES) $(INCLUDES) $(C) $(COREWAR_SRC) $(LIBFT) -o $(COREWAR)
-		@$(CP) -f $(COREWAR_MANPAGE) $(COREWAR_MAN_LOCATION)
-		@$(GZIP) -f $(COREWAR_MAN_LOCATION)
+		#@$(CP) -f $(COREWAR_MANPAGE) $(COREWAR_MAN_LOCATION)
+		#@$(GZIP) -f $(COREWAR_MAN_LOCATION)
 		@echo "[$(COLOR_PENDING)Putting everything together$(COLOR_RESET)]"
 		@echo "[$(COLOR_SUCCESS)Executable $(COREWAR) created$(COLOR_RESET)]"
 
@@ -100,8 +100,8 @@ clean:
 		@make clean -C libft/ > /dev/null
 
 mclean:
-		@rm $(ASM_MAN_LOCATION).gz
-		@rm $(COREWAR_MAN_LOCATION).gz
+		#@rm $(ASM_MAN_LOCATION).gz
+		#@rm $(COREWAR_MAN_LOCATION).gz
 
 fclean: clean mclean
 		@rm -fv $(ASM) > /dev/null
