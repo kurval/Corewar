@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/15 21:26:06 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/16 11:12:26 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,6 +176,7 @@ typedef struct		s_visu
 	bool			debug;
 	bool			end;
 	int				log_count;
+	unsigned int	live_id;
 }					t_visu;
 
 /*
@@ -271,9 +272,7 @@ void				print_player_info(t_vm *vm);
 void				init_visualizer(t_vm *vm);
 void				manage_windows(t_vm *vm, int key);
 void				draw_log(t_vm *vm);
-void				log_operation(t_vm *vm, t_process *proc, int i);
-void				print_log_text(t_vm *vm, t_process *proc, char *str,
-					int color_num);
+void				log_operation(t_vm *vm, t_process *proc);
 void				set_debug(t_vm *vm);
 
 static const t_op			g_ops[16] = {

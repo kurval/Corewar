@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 17:25:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/15 21:20:20 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/16 11:13:00 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,5 @@ void		init_visualizer(t_vm *vm)
 	vm->visu->debug = false;
 	vm->visu->log_count = 0;
 	vm->visu->end = false;
+	vm->visu->live_id = 0;
 }
