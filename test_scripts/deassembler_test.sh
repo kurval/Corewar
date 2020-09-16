@@ -26,7 +26,7 @@ echo -e "${YELLOW}The following files will be PERMANENTLY deleted:${NOCOL}"
 echo "   $DEST*.s"
 echo "   $DEST*.cor"
 echo "   $DEST/s_files/*.s"
-echo "   $DEST/s_files/*.cor"
+echo "   $DEST/cor_files/*.cor"
 echo -ne "${RED}"
 read -p "DO NOT PRESS Y IF logs/deassembler_test IS NOT SHOWN! [y/n] " -n 1 -r
 echo
@@ -38,7 +38,7 @@ echo -ne "${NOCOL}"
 rm -rf $DEST*.s
 rm -rf $DEST*.cor
 rm -rf $DEST/s_files/*.s
-rm -rf $DEST/s_files/*.cor
+rm -rf $DEST/cor_files/*.cor
 wait
 if [ "$OPTION" == "--clean" ];
 then
