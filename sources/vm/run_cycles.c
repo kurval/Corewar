@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/16 19:36:36 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/16 21:33:23 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,9 +144,9 @@ void		run_cycles(t_vm *vm)
 		}
 		if (vm->ctd <= 0 || vm->cycles == (unsigned int)vm->ctd)
 			perform_check(vm, &vm->proc_list);
-		if (vm->current_cycle == vm->dump_cycle)
+		if ((int)vm->current_cycle == vm->dump_cycle)
 			dump_memory(vm);
-		else if (vm->current_cycle == vm->d_flag)
+		else if ((int)vm->current_cycle == vm->d_flag)
 			print_arena(vm);
 		else if (vm->v_flag)
 			manage_windows(vm, getch());
