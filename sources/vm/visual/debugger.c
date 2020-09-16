@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 11:05:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/16 11:14:39 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/16 11:53:50 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,8 @@
 
 static void	print_debug_info(t_vm *vm)
 {
-	int		max_y;
-	int		max_x;
-
 	WINDOW * win;
 	win = vm->visu->side2;
-	getmaxyx(win, max_y, max_x);
 	wattron(win, COLOR_PAIR(W_B));
 	mvwprintw(win, 1, 1, "** HIT SPACE TO DEBUG **\n");
 	wattroff(win, COLOR_PAIR(W_B));
