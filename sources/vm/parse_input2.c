@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 07:53:44 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/13 08:39:31 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/16 20:07:27 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,9 @@ void	get_dump(t_vm *vm, char *s)
 	while (s[++i])
 		if (!ft_isdigit(s[i]))
 			ft_errno(DUMP_ERROR);
-	if (vm->dump_cycle)
+	if (vm->dump)
 		ft_errno(DUMP_ERROR_SET);
+	vm->dump = true;
 	vm->dump_cycle = ft_atoi(s);
 }
 
@@ -37,8 +38,9 @@ void	get_d_flag(t_vm *vm, char *s)
 	while (s[++i])
 		if (!ft_isdigit(s[i]))
 			ft_errno(DUMP_ERROR);
-	if (vm->d_flag)
+	if (vm->dump)
 		ft_errno(DUMP_ERROR_SET);
+	vm->dump = true;
 	vm->d_flag = ft_atoi(s);
 }
 
