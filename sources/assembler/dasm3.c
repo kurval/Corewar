@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 15:22:12 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/14 14:10:57 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/17 00:22:51 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void		write_t_ind(int output, int input)
 
 	number = 0;
 	number = read_n_bytes(input, 2);
+	write(output, " ", 1);
 	ft_putnbr_fd(number, output);
 }
 
