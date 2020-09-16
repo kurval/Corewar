@@ -133,6 +133,7 @@ else
 			OUR_ABORT=0
 			echo -n "$TEST_NBR " > $DESTDIR/orig_output
 			$ORIG_EXE $f >> $DESTDIR/orig_output 2>&1
+			wait
 			if [ $? -gt 1 ];
 			then
 				echo "abort" >> $DESTDIR/orig_output
@@ -140,11 +141,13 @@ else
 			fi
 			cp $FOLDER/*.cor $DESTDIR/orig.cor.temp 2> /dev/null
 			mv $FOLDER/*.cor $DESTDIR/orig_cor_files/. 2> /dev/null
+			wait
 			echo "Orig" >> $DESTDIR/log_exe_output
 			cat $DESTDIR/orig_output >> $DESTDIR/log_exe_output
 
 			echo -n "$TEST_NBR " > $DESTDIR/our_output
 			$EXE $f >> $DESTDIR/our_output 2>&1
+			wait
 			if [ $? -gt 1 ];
 			then
 				echo "abort" >> $DESTDIR/orig_output
@@ -152,6 +155,7 @@ else
 			fi
 			cp $FOLDER/*.cor $DESTDIR/our.cor.temp 2> /dev/null
 			mv $FOLDER/*.cor $DESTDIR/our_cor_files/. 2> /dev/null
+			wait
 			echo "Our" >> $DESTDIR/log_exe_output
 			cat $DESTDIR/our_output >> $DESTDIR/log_exe_output
 			echo "---" >> $DESTDIR/log_exe_output
