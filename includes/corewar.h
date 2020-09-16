@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/16 21:36:01 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/16 22:44:38 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,12 +224,13 @@ void				load_champions(t_vm *vm);
 void				get_dump(t_vm *vm, char *s);
 void				get_d_flag(t_vm *vm, char *s);
 void				has_magic_header(char *file);
-int					get_next_unused_id(int arr[MAX_PLAYERS]);
+int					get_next_unused_id(int arr[MAX_PLAYERS], char **av);
 int					get_n_flag(char *s, int id[4], int champ_count);
 void				has_white_space(int fd);
 int					read_n_bytes(int input, int count);
 int					avl_flags(char *s, t_vm *vm);
 int					is_number_available(char **av, int num);
+int					ends_with_cor(char *s);
 
 /*
 **					OPERATION FUNCTIONS
