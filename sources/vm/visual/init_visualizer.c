@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 17:25:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/14 14:05:44 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/16 11:13:00 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ static void	set_owners(t_vm *vm)
 	{
 		j = -1;
 		while (++j < vm->p[i].h.prog_size)
+		{
+			(j == 0) ? vm->visu->attributes[addr].cursor = true : 0;
 			vm->visu->attributes[addr + j].owner = vm->p[i].id;
+		}
 		addr += MEM_SIZE / vm->nb_players;
 	}
 }
@@ -80,4 +83,6 @@ void		init_visualizer(t_vm *vm)
 	vm->visu->running = false;
 	vm->visu->debug = false;
 	vm->visu->log_count = 0;
+	vm->visu->end = false;
+	vm->visu->live_id = 0;
 }

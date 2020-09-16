@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:38 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/14 11:00:26 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/16 11:15:05 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 static void	set_live_on(t_vm *vm, t_process *proc, int i)
 {
 	if (vm->visu->debug)
-		log_operation(vm, proc, i);
+	{
+		vm->visu->live_id = i;
+		log_operation(vm, proc);
+	}
 	vm->visu->attributes[proc->pc].owner = vm->p[i].id;
 	vm->visu->attributes[proc->pc].live = LIVE_ON;
 }

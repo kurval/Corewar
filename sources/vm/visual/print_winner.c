@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 16:35:07 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/12 15:32:26 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/15 21:03:49 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,6 @@ void		print_winner(t_vm *vm)
 	print_win_banner(win, winner);
 	print_info(vm, &vm->p[vm->last_live_id - 1], 5, 4);
 	box_win(win);
+	draw_arena(vm);
 	wrefresh(win);
 }

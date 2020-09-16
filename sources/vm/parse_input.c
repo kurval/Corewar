@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/12 21:48:45 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/16 13:32:54 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,27 +86,28 @@ int			get_next_unused_id(int arr[MAX_PLAYERS])
 
 void		parse_input(int ac, char **av, t_vm *vm)
 {
-	int i;
-	int	id_arr[MAX_PLAYERS];
-	int	num;
+	int			i;
+	static int	id_arr[4] = {1, 2, 3, 4};
+	int			num;
 
-	i = 5;
-	while (i-- > 1)
-		id_arr[i - 1] = i;
+	i = 0;
 	while (av[++i])
 	{
 		if (ft_strequ("-n", av[i]) && i < ac && i++)
 			num = get_n_flag(av[i++], id_arr, vm->nb_players);
 		else
+		{
 			num = get_next_unused_id(id_arr);
+			num = is_number_available(av, num);
+		}
 		if (ft_strequ("-dump", av[i]) && i < ac && i++)
 			get_dump(vm, av[i++]);
 		if (ft_strequ("-d", av[i]) && i < ac && i++)
 			get_d_flag(vm, av[i++]);
-		else if ((ft_strequ("-a", av[i]) && (vm->a_flag = 1))
-				|| (ft_strequ("-v", av[i]) && (vm->v_flag = 1))
-				|| (ft_strequ("-l", av[i]) && (vm->l_flag = 1)))
+		if (avl_flags(av[i], vm))
 			continue;
+		if (!av[i])
+			break ;
 		get_player(av[i], &(vm->p[num - 1]), num);
 		id_arr[num - 1] = 0;
 	}

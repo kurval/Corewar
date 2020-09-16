@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/06 11:31:36 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/15 10:44:48 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/16 00:15:33 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static void	set_opcode(t_vm *vm, t_process *proc)
 
 static void	execute_operation(t_vm *vm, t_process *proc)
 {
-	vm->v_flag ? vm->visu->attributes[proc->pc].cursor = true : 0;
 	!proc->wait_cycles ? set_opcode(vm, proc) : 0;
 	proc->wait_cycles -= 1;
 	if (!proc->wait_cycles)
@@ -64,6 +63,7 @@ static void	execute_operation(t_vm *vm, t_process *proc)
 			proc->jump = 1;
 		proc->pc = get_addr(proc->pc + proc->jump);
 	}
+	vm->v_flag ? vm->visu->attributes[proc->pc].cursor = true : 0;
 }
 
 /*
@@ -105,14 +105,13 @@ static void	perform_check(t_vm *vm, t_process **proc_list)
 	unsigned int i;
 
 	i = -1;
+	vm->checks++;
 	check_dead_processes(vm, proc_list);
 	if (vm->lives >= NBR_LIVE || vm->checks >= MAX_CHECKS)
 	{
 		vm->ctd -= CYCLE_DELTA;
-		vm->checks = 1;
+		vm->checks = 0;
 	}
-	else
-		vm->checks++;
 	vm->cycles = 0;
 	vm->lives = 0;
 	while (++i < vm->nb_players)
@@ -152,4 +151,6 @@ void		run_cycles(t_vm *vm)
 		else if (vm->v_flag)
 			manage_windows(vm, getch());
 	}
+	if (vm->v_flag)
+		vm->visu->end = true;
 }

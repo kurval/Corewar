@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 15:22:12 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/14 08:20:01 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/14 14:10:57 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ static int	read_n_bytes(int input, int count)
 		read(input, &number, 1);
 		result += number;
 	}
+	result *= -1;
+	result = ~ result;
+	result++;
 	return (result);
 }
 
@@ -40,11 +43,10 @@ void		write_t_ind(int output, int input)
 void		write_t_dir(int output, int input, int ins)
 {
 	int		number;
-	short	s_num;
+	short		s_num;
 
 	write(output, " %", 2);
 	number = 0;
-	s_num = 0;
 	if (ins > 8 && ins < 17 && ins != 13)
 	{
 		s_num = read_n_bytes(input, 2);
