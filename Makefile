@@ -33,9 +33,9 @@ COREWAR_SRC_FILES = ft_errno.c initialize.c parse_input.c validate_champions.c \
 			proc_functions.c operations/utils.c winner.c \
 			visual/start_visualizer.c visual/create_color_pairs.c \
 			visual/draw_arena.c visual/get_attribute.c visual/print_winner.c \
-			visual/init_visualizer.c visual/draw_footer.c visual/draw_player_info.c \
-			visual/draw_players.c visual/draw_logo.c visual/draw_battle_info.c \
-			visual/debugger.c
+			visual/init_visualizer.c visual/draw_footer.c \
+			visual/draw_player_info.c visual/draw_players.c visual/draw_logo.c \
+			visual/draw_battle_info.c visual/debugger.c
 
 ASM_SRC = $(addprefix $(ASM_SRC_PATH), $(ASM_SRC_FILES))
 COREWAR_SRC = $(addprefix $(COREWAR_SRC_PATH), $(COREWAR_SRC_FILES))
