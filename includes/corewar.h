@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/16 20:03:01 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/16 21:32:36 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,17 +120,17 @@ typedef struct		s_vm
 	unsigned int	checks;
 	unsigned int	lives;
 	int				ctd;
-	unsigned int	dump_cycle;
 	int				a_flag;
 	int				v_flag;
 	int				l_flag;
-	unsigned int	d_flag;
+	int				d_flag;
 	unsigned int	nb_players;
 	unsigned int	nb_procs;
 	unsigned int	id_counter;
 	t_process		*proc_list;
 	struct s_visu	*visu;
 	bool			dump;
+	int				dump_cycle;
 }					t_vm;
 
 /*
