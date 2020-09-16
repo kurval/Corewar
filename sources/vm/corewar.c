@@ -6,7 +6,11 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:30:41 by bkonjuha          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2020/09/16 20:32:38 by vkurkela         ###   ########.fr       */
+=======
+/*   Updated: 2020/09/16 20:46:08 by vkurkela         ###   ########.fr       */
+>>>>>>> 8d3c04cd10236ff9a2cb09f9f8f743ef2cf7450f
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +36,7 @@ int			main(int ac, char **av)
 		load_champions(&vm);
 		init_processes(&vm);
 		if (!vm.dump_cycle || !vm.d_flag)
-			vm.dump_cycle ? dump_memory(&vm) : print_arena(&vm);
+			!vm.dump_cycle ? dump_memory(&vm) : print_arena(&vm);
 		else if (vm.v_flag)
 			start_visualizer(&vm);
 		run_cycles(&vm);
