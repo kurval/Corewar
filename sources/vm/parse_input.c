@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/16 23:32:36 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/17 00:14:37 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ void		parse_input(int ac, char **av, t_vm *vm)
 	int			num;
 
 	i = 0;
+	num = 0;
 	while (av[++i])
 	{
 		if (ft_strequ("-n", av[i]) && i < ac && i++)

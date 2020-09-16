@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 13:20:40 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/16 22:55:12 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/17 00:14:26 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ int			is_number_available(char **av, int num)
 	i = 0;
 	while (av[++i])
 	{
-		if (is_a_number(av[i]) && (ft_atoi(av[i]) == num))
+		if (is_a_number(av[i]) && (ft_atoi(av[i]) == num)
+			&& ft_strequ("-n", av[i -1]))
 		{
 			return (is_number_available(av, num + 1));
 		}

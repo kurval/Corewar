@@ -166,8 +166,12 @@ done
 # EXPECTED: Add to the expected variable what should be the output
 
 PLAYERS=("-dump 1000 -n 1 resources/champs/ex.cor"
+"-dump 0 -n 1 resources/champs/ex.cor"
+"-d 4 resources/champs/ex.cor resources/champs/ex.cor resources/champs/ex.cor resources/champs/ex.cor "
 )
 EXPEXTED=("Player 1, Weighing in at 23 BYTES, \"zork\": (\"just a basic living prog\")"
+"Player 1, Weighing in at 23 BYTES, \"zork\": (\"just a basic living prog\")"
+"Player 1, Weighing in at 23 BYTES, \"zork\": (\"just a basic living prog\")"
 )
 LINES=(130)
 echo "\n\n"
