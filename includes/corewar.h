@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/16 11:12:26 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/16 13:41:30 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -227,6 +227,8 @@ int					get_next_unused_id(int arr[MAX_PLAYERS]);
 int					get_n_flag(char *s, int id[4], int champ_count);
 void				has_white_space(int fd);
 int					read_n_bytes(int input, int count);
+int					avl_flags(char *s, t_vm *vm);
+int					is_number_available(char **av, int num);
 
 /*
 **					OPERATION FUNCTIONS
