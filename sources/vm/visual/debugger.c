@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/13 11:05:40 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/14 17:14:48 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/16 11:14:39 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,33 @@ static void	print_debug_info(t_vm *vm)
 	wattroff(win, COLOR_PAIR(W_B));
 }
 
-void		log_operation(t_vm *vm, t_process *proc, int i)
+static void	print_operation(t_vm *vm, t_process *proc)
 {
-	char	*log;
+	int	color;
 
-	log = NULL;
-	vm->visu->log_count++;
+	WINDOW * win;
+	win = vm->visu->side2;
+	color = (proc->opcode == 1) ? vm->p[vm->visu->live_id].id : W_B;
+	wattron(win, COLOR_PAIR(Y_B) | A_BOLD);
+	wprintw(win, "[CURSOR ID %6d] ", proc->id);
+	wattroff(win, COLOR_PAIR(Y_B) | A_BOLD);
+	wattron(win, COLOR_PAIR(color) | A_BOLD);
 	if (proc->opcode == 1)
-	{
-		if (!(log = ft_strjoin(vm->p[i].h.prog_name, " is a")))
-			ft_errno(MALLOC_ERROR);
-		print_log_text(vm, proc, log, vm->p[i].id);
-		free(log);
-	}
+		wprintw(win, "%s is alive\n", vm->p[vm->visu->live_id].h.prog_name);
 	else
-		print_log_text(vm, proc, "executed ", i);
+		wprintw(win, "executed %s\n",\
+		vm->operations[proc->opcode - 1].instr_name);
+	wattroff(win, COLOR_PAIR(color) | A_BOLD);
 }
 
-void		print_log_text(t_vm *vm, t_process *proc, char *str, int color_num)
+void		log_operation(t_vm *vm, t_process *proc)
 {
 	int		y;
 	int		x;
 
 	WINDOW * win;
 	win = vm->visu->side2;
+	vm->visu->log_count++;
 	getyx(win, y, x);
 	wmove(win, y, x + 1);
 	wattron(win, COLOR_PAIR(M_B) | A_BOLD);
@@ -61,12 +64,8 @@ void		print_log_text(t_vm *vm, t_process *proc, char *str, int color_num)
 		wattroff(win, COLOR_PAIR(GRAY_B) | A_BOLD);
 		return ;
 	}
-	wattron(win, COLOR_PAIR(Y_B) | A_BOLD);
-	wprintw(win, "[CURSOR ID %6d] ", proc->id);
-	wattroff(win, COLOR_PAIR(Y_B) | A_BOLD);
-	wattron(win, COLOR_PAIR(color_num) | A_BOLD);
-	wprintw(win, "%s%s\n", str, vm->operations[proc->opcode - 1].instr_name);
-	wattroff(win, COLOR_PAIR(color_num) | A_BOLD);
+	else
+		print_operation(vm, proc);
 }
 
 void		draw_log(t_vm *vm)
@@ -75,8 +74,12 @@ void		draw_log(t_vm *vm)
 	win = vm->visu->side2;
 	scrollok(win, TRUE);
 	if (vm->visu->log_count == 0)
-		print_log_text(vm, vm->proc_list, NULL, Y_B);
-	vm->visu->log_count = 0;
+	{
+		vm->visu->log_count = -1;
+		log_operation(vm, vm->proc_list);
+	}
+	else
+		vm->visu->log_count = 0;
 	box_win(win);
 	wrefresh(win);
 }
