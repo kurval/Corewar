@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 14:27:55 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/13 10:52:59 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/17 17:18:07 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void		write_arguments(int input, int output, int ins)
 	arguments = 0;
 	i = 0;
 	argc = get_argc();
-	if (ins == 1 || ins == 9 || ins == 12 || ins > 14)
+	if (ins == 1 || ins == 9 || ins == 12 || ins == 15)
 		arguments = 128;
 	else
 		read(input, &arguments, 1);
