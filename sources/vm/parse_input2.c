@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 07:53:44 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/17 10:56:46 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/17 11:37:32 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,39 +15,37 @@
 void	get_dump(t_vm *vm, char *s)
 {
 	int i;
+	int num;
 
 	i = -1;
-	while (s[++i])
-	{
-		if (!ft_isdigit(s[i]))
-		{
-			vm->dump_cycle = 0;
-			break ;
-		}
-	}
+	if (!ft_atoi_err(s))
+		ft_errno(DUMP_ERROR);
 	if (vm->dump)
 		ft_errno(DUMP_ERROR_SET);
 	vm->dump = true;
-	vm->dump_cycle = (!vm->dump_cycle) ? 0 : ft_atoi(s);
+	if (ft_atoi(s) < 0)
+		num = -1;
+	else
+		num = ft_atoi(s);
+	vm->dump_cycle = num;
 }
 
 void	get_d_flag(t_vm *vm, char *s)
 {
 	int i;
+	int num;
 
 	i = -1;
-	while (s[++i])
-	{
-		if (!ft_isdigit(s[i]))
-		{
-			vm->d_flag = 0;
-			break ;
-		}
-	}
+	if (!ft_atoi_err(s))
+		ft_errno(DUMP_ERROR);
 	if (vm->dump)
 		ft_errno(DUMP_ERROR_SET);
 	vm->dump = true;
-	vm->d_flag = (!vm->d_flag) ? 0 : ft_atoi(s);
+	if (ft_atoi(s) < 0)
+		num = -1;
+	else
+		num = ft_atoi(s);
+	vm->d_flag = num;
 }
 
 void	has_magic_header(char *file)
