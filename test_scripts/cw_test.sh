@@ -58,6 +58,10 @@ diff corewar_orig_output corewar_our_output > /dev/null
 if [ $? -eq 0 ];
 then
 	echo -e "${GREEN}Program output messages are equal${NOCOL}"
+	rm corewar_orig_output
+	rm corewar_our_output
+	wait
+	exit 0
 else
 	INPUT_OURS="$DIR/corewar_our_output"
 	INPUT_ORIG="$DIR/corewar_orig_output"
@@ -77,6 +81,9 @@ else
 	done 8<$INPUT_OURS 9<$INPUT_ORIG
 	exec 8>&-
 	exec 9>&- 
+	wait
 	rm corewar_orig_output
 	rm corewar_our_output
+	wait
+	exit 1
 fi
