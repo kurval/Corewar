@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/16 13:32:54 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/17 00:14:37 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,10 @@ int			get_n_flag(char *s, int id[4], int champ_count)
 		ft_errno(N_FLAG_ERROR);
 	if (!id[num - 1])
 		ft_errno(DUPLICATE_N);
-	id[num - 1] = 0;
 	return (num);
 }
 
-int			get_next_unused_id(int arr[MAX_PLAYERS])
+int			get_next_unused_id(int arr[MAX_PLAYERS], char **av)
 {
 	int i;
 
@@ -81,7 +80,8 @@ int			get_next_unused_id(int arr[MAX_PLAYERS])
 		i++;
 	if (i == MAX_PLAYERS)
 		ft_errno(CHAMP_NUM_ERROR);
-	return (i + 1);
+	i = is_number_available(av, i + 1);
+	return (i);
 }
 
 void		parse_input(int ac, char **av, t_vm *vm)
@@ -91,23 +91,20 @@ void		parse_input(int ac, char **av, t_vm *vm)
 	int			num;
 
 	i = 0;
+	num = 0;
 	while (av[++i])
 	{
 		if (ft_strequ("-n", av[i]) && i < ac && i++)
 			num = get_n_flag(av[i++], id_arr, vm->nb_players);
 		else
-		{
-			num = get_next_unused_id(id_arr);
-			num = is_number_available(av, num);
-		}
+			num = get_next_unused_id(id_arr, av);
 		if (ft_strequ("-dump", av[i]) && i < ac && i++)
-			get_dump(vm, av[i++]);
+			get_dump(vm, av[i]);
 		if (ft_strequ("-d", av[i]) && i < ac && i++)
-			get_d_flag(vm, av[i++]);
-		if (avl_flags(av[i], vm))
-			continue;
-		if (!av[i])
-			break ;
+			get_d_flag(vm, av[i]);
+		avl_flags(av[i], vm);
+		if (!ends_with_cor(av[i]))
+			continue ;
 		get_player(av[i], &(vm->p[num - 1]), num);
 		id_arr[num - 1] = 0;
 	}
