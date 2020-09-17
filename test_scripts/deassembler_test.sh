@@ -22,6 +22,30 @@ GREEN='\033[0;32m'
 BLUE='\033[0;36m'
 NOCOL='\033[0m'
 
+folder_setup ()
+{
+	if [ -d "$DEST" ];
+	then
+		rm -rf $DEST*.s
+		rm -rf $DEST*.cor
+	else
+		mkdir $DEST
+	fi
+	wait
+	if [ -d "$DEST/s_files" ];
+	then
+		rm -rf $DEST/s_files/*.s
+	else
+		mkdir $DEST/s_files
+	fi
+	if [ -d "$DEST/cor_files" ];
+	then
+		rm -rf $DEST/cor_files/*.cor
+	else
+		mkdir $DEST/cor_files
+	fi
+}
+
 echo -e "${YELLOW}The following files will be PERMANENTLY deleted:${NOCOL}"
 echo "   $DEST*.s"
 echo "   $DEST*.cor"
@@ -35,10 +59,7 @@ then
 	exit 1
 fi
 echo -ne "${NOCOL}"
-rm -rf $DEST*.s
-rm -rf $DEST*.cor
-rm -rf $DEST/s_files/*.s
-rm -rf $DEST/cor_files/*.cor
+folder_setup
 wait
 if [ "$OPTION" == "--clean" ];
 then
