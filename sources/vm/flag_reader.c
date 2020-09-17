@@ -6,13 +6,13 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 13:20:40 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/16 13:40:30 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/17 00:14:26 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
 
-int	avl_flags(char *s, t_vm *vm)
+int			avl_flags(char *s, t_vm *vm)
 {
 	if ((ft_strequ("-a", s) && (vm->a_flag = 1))
 		|| (ft_strequ("-v", s) && (vm->v_flag = 1))
@@ -21,16 +21,28 @@ int	avl_flags(char *s, t_vm *vm)
 	return (0);
 }
 
-int	is_number_available(char **av, int num)
+static int	is_a_number(char *s)
+{
+	int i;
+
+	i = -1;
+	while (s[++i])
+	{
+		if (!ft_isdigit(s[i]))
+			return (0);
+	}
+	return(1);
+}
+
+int			is_number_available(char **av, int num)
 {
 	int		i;
-	char	number[2];
 
 	i = 0;
-	number[0] = num + 48;
 	while (av[++i])
 	{
-		if (ft_strequ(av[i], &number[0]))
+		if (is_a_number(av[i]) && (ft_atoi(av[i]) == num)
+			&& ft_strequ("-n", av[i -1]))
 		{
 			return (is_number_available(av, num + 1));
 		}

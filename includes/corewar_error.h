@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:39:30 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/11 11:17:46 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/16 22:32:52 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define CHAMP_NUM_ERROR "ERROR: Too many champions"
 
 # define N_FLAG_ERROR "ERROR: -n flag number out of bounds"
+
+# define N_FLAG_INPUT "ERROR: invalid -n flag input paramaters"
 
 # define DUMP_ERROR "ERROR: -Dump invalid dump flag"
 

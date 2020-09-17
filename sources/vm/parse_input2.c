@@ -6,56 +6,57 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 07:53:44 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/16 20:07:27 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/17 11:41:07 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
 
-/*
-**	TODO: Merge get_dump and get_d_flag into one function;
-*/
-
 void	get_dump(t_vm *vm, char *s)
 {
 	int i;
+	int num;
 
 	i = -1;
-	while (s[++i])
-		if (!ft_isdigit(s[i]))
-			ft_errno(DUMP_ERROR);
+	if (!ft_atoi_err(s))
+		ft_errno(DUMP_ERROR);
 	if (vm->dump)
 		ft_errno(DUMP_ERROR_SET);
 	vm->dump = true;
-	vm->dump_cycle = ft_atoi(s);
+	if (ft_atoi(s) < 0)
+		num = -1;
+	else
+		num = ft_atoi(s);
+	vm->dump_cycle = num;
 }
 
 void	get_d_flag(t_vm *vm, char *s)
 {
 	int i;
+	int num;
 
 	i = -1;
-	while (s[++i])
-		if (!ft_isdigit(s[i]))
-			ft_errno(DUMP_ERROR);
+	if (!ft_atoi_err(s))
+		ft_errno(DUMP_ERROR);
 	if (vm->dump)
 		ft_errno(DUMP_ERROR_SET);
 	vm->dump = true;
-	vm->d_flag = ft_atoi(s);
+	if (ft_atoi(s) < 0)
+		num = -1;
+	else
+		num = ft_atoi(s);
+	vm->d_flag = num;
 }
 
 void	has_magic_header(char *file)
 {
-	unsigned char	magic[4];
+	unsigned int	magic;
 	int				fd;
 
 	if ((fd = open(file, O_RDONLY)) > 0)
 	{
-		read(fd, &magic[3], 1);
-		read(fd, &magic[2], 1);
-		read(fd, &magic[1], 1);
-		read(fd, &magic[0], 1);
-		if (*(unsigned int *)magic != COREWAR_EXEC_MAGIC)
+		magic = read_n_bytes(fd, 4);
+		if (magic != COREWAR_EXEC_MAGIC)
 			ft_errno(MAGIC_ERROR);
 	}
 	else
