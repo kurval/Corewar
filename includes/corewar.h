@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/16 22:44:38 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/17 16:28:46 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ typedef struct		s_arena
 
 /*
 ** Cursors contain following information:
+** - args[3] : current cursor's argument types
+** - values[3] : current cursor's argument values
+**	>T_REG registry number
+**	>T_DIR A number, saved on 2 or 4 bytes, depending on label
+**	>T_IND relative address number
 ** - id : unique.
 ** - carry : affects zjmp operation, initialised with value false.
 ** - opcode: operation code, before the battle starts it is not initialised.
@@ -44,12 +49,7 @@ typedef struct		s_arena
 ** - pc : current position address in memory
 ** - jump : amount of bytes cursor must jump to get to the next operation
 ** - reg[REG_NUMBER] : registries of current cursor
-** - args[3] : current cursors argument types
-** - values[3] : current cursors argument values
 ** - parent_id : owner of this process
-**	>T_REG registry number
-**	>T_DIR A number, saved on 2 or 4 bytes, depending on label
-**	>T_IND relative address number
 */
 
 typedef struct		s_process
@@ -65,20 +65,17 @@ typedef struct		s_process
 	int				jump;
 	int				reg[REG_NUMBER];
 	unsigned int	parent_id;
-	struct s_player	*player;
 	struct s_process*next;
 }					t_process;
 
 /*
 ** Players contain following information:
 ** - id : unique ID
-** - name : champion name
-** - comment[COMMENT_LENGTH + 1]:  champion comment
-** - executable_size : executable code size
 ** - code : executable code
-** - Other information can be found in op.h header struct
+** - comment[COMMENT_LENGTH + 1]:  champion comment
 ** - last_live : last cycle players was alive
 ** - period_lives: number of lives in current period
+** - Other information can be found in op.h header struct
 */
 
 typedef struct		s_player
@@ -95,18 +92,22 @@ typedef struct		s_player
 ** - last_live_id : player last reported alive
 ** 	>It is initialised with the highest player id,
 ** 	>and is updated every time operation live is performed.
+** - cycles : is used to track periods
 ** - current_cycle : cycles counter
+** - checks : amount of checks performed
 ** - lives : counter for operation live, to check how many times
 ** 	>this operation was performed during the last cycles_to_die cycles.
 ** - ctd (cycles_to_die) : length of current check period in cycles.
 ** 	>This variable is initialised with the value of constant CYCLES_TO_DIE
 **  (1536).
-** - dump_cycle : number of cycle to dump memory (if present)
-** - checks : amount of checks performed
-** - cycles : is used to track periods
-** - operations : list of all operations and info of each one
+** - a_flag : print aff operations
+** - l_flag : print live operations
+** - d_flag : print 64 bytes dump at given cycle number
 ** - nb_players : number of champions
 ** - nb_procs : number of process
+** - id_counter : uded to calculate unique id for each process
+** - dump : true if -dump or -d flag is selected
+** - dump_cycle : print 32 bytes dump at given cycle number
 */
 
 typedef struct		s_vm
@@ -137,11 +138,12 @@ typedef struct		s_vm
 ** Operations contain following information:
 ** - instr_name : operation name
 ** - argc : number of arguments
-** - argv : arguments tab
+** - argv : arguments type tab
 ** - instr_code : operation code
 ** - wait_cycles : cycles untill execution
 ** - dir_size : 2 or 4 bytes
 ** - encode : 1 present 0 no encoding byte
+** - f : pointer to operation function
 */
 
 typedef struct		s_op
