@@ -14,10 +14,8 @@
 
 void	get_dump(t_vm *vm, char *s)
 {
-	int i;
 	int num;
 
-	i = -1;
 	if (!ft_atoi_err(s))
 		ft_errno(DUMP_ERROR);
 	if (vm->dump)
@@ -32,10 +30,8 @@ void	get_dump(t_vm *vm, char *s)
 
 void	get_d_flag(t_vm *vm, char *s)
 {
-	int i;
 	int num;
 
-	i = -1;
 	if (!ft_atoi_err(s))
 		ft_errno(DUMP_ERROR);
 	if (vm->dump)
