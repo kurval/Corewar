@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 12:50:02 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/18 12:05:20 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/18 12:30:47 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,6 @@ void		start_visualizer(t_vm *vm)
 	manage_windows(vm, getch());
 	run_cycles(vm);
 	print_winner(vm);
-	getch();
+	getchar();
 	exit_visu(vm);
 }
