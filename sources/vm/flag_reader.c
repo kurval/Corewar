@@ -31,7 +31,7 @@ static int	is_a_number(char *s)
 		if (!ft_isdigit(s[i]))
 			return (0);
 	}
-	return(1);
+	return (1);
 }
 
 int			is_number_available(char **av, int num)
@@ -42,7 +42,7 @@ int			is_number_available(char **av, int num)
 	while (av[++i])
 	{
 		if (is_a_number(av[i]) && (ft_atoi(av[i]) == num)
-			&& ft_strequ("-n", av[i -1]))
+			&& ft_strequ("-n", av[i - 1]))
 		{
 			return (is_number_available(av, num + 1));
 		}

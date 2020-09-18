@@ -26,7 +26,7 @@ static int	read_n_bytes(int input, int count)
 		result += number;
 	}
 	result *= -1;
-	result = ~ result;
+	result = ~result;
 	result++;
 	return (result);
 }
@@ -44,7 +44,7 @@ void		write_t_ind(int output, int input)
 void		write_t_dir(int output, int input, int ins)
 {
 	int		number;
-	short		s_num;
+	short	s_num;
 
 	write(output, " %", 2);
 	number = 0;

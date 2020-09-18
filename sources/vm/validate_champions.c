@@ -40,7 +40,7 @@ static int	is_valid_length(char *s)
 
 static int	valid_n_input(char **s, int i)
 {
-	if (!s[i + 1] || !s[i + 2] || !ft_isdigit(s[i +1][0])
+	if (!s[i + 1] || !s[i + 2] || !ft_isdigit(s[i + 1][0])
 		|| !ends_with_cor(s[i + 2]) || s[i + 1][1])
 		ft_errno(N_FLAG_INPUT);
 	return (1);
