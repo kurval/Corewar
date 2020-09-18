@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 12:50:02 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/18 12:30:47 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/18 12:38:02 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	exit_visu(t_vm *vm)
 }
 
 /*
-** If user have pased the game it
+** If user has paused the game it
 ** will be paused as long as user
 ** hits 'd' or 'SPACE'.
 */
