@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/18 12:18:45 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/18 13:47:21 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,10 +160,10 @@ typedef struct		s_op
 
 /*
 ** Struct of attributes:
-** owner : owner nb of the cell
-** live : set if live is executed
-** new_mem : set if new memory sector is written
-** cursor : cursor position
+** - owner : owner nb of the cell
+** - live : set if live is executed
+** - new_mem : set if new memory sector is written
+** - cursor : cursor position
 */
 
 typedef struct		s_attr
@@ -176,19 +176,19 @@ typedef struct		s_attr
 
 /*
 ** arena : window for arena
-** side1 : logo
-** side2 : log and player info
-** side3 : battle info
-** side4 : contirbutors
-** attributes: arena attributes
-** speed : speed in microseconds
-** running : set false if paused
-** debug : set true if debug mode is on
-** end : true if game is over
-** >used when printing final state of the arena
-** log_count : counts number of operations executed
-** live_id : id of the player who executed live
-** >used when logging live operations (debug true)
+** - side1 : logo
+** - side2 : log and player info
+** - side3 : battle info
+** - side4 : contributors
+** - attributes: arena attributes
+** - speed : speed in microseconds
+** - running : set false if paused
+** - debug : set true if debug mode is on
+** - end : true if game is over
+** 	>used when printing final state of the arena
+** - log_count : counts number of operations executed
+** - live_id : id of the player who executed live
+** 	>used when logging live operations (debug true)
 */
 
 typedef struct		s_visu
