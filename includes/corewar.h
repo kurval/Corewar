@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/17 16:28:46 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/18 12:18:45 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,14 @@ typedef struct		s_op
 	void			(*f)(t_vm *vm, t_process *proc);
 }					t_op;
 
+/*
+** Struct of attributes:
+** owner : owner nb of the cell
+** live : set if live is executed
+** new_mem : set if new memory sector is written
+** cursor : cursor position
+*/
+
 typedef struct		s_attr
 {
 	int				owner;
@@ -165,6 +173,23 @@ typedef struct		s_attr
 	int				new_mem;
 	bool			cursor;
 }					t_attr;
+
+/*
+** arena : window for arena
+** side1 : logo
+** side2 : log and player info
+** side3 : battle info
+** side4 : contirbutors
+** attributes: arena attributes
+** speed : speed in microseconds
+** running : set false if paused
+** debug : set true if debug mode is on
+** end : true if game is over
+** >used when printing final state of the arena
+** log_count : counts number of operations executed
+** live_id : id of the player who executed live
+** >used when logging live operations (debug true)
+*/
 
 typedef struct		s_visu
 {

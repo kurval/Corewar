@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 17:25:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/16 11:13:00 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/18 12:05:25 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,16 @@ static void	create_windows(t_vm *vm)
 	(sub_height * 2) - 6, WIDTH);
 	vm->visu->side4 = newwin(5, sub_width, (sub_height * 3) - 3, WIDTH);
 }
+
+/*
+** setlocale : Initialize the locale
+** initscr : Start curses mode
+** cbreak : Disable line buffering
+** noecho : No echo() when getch
+** keypad : Enables the reading of function keys
+** nodelay : If disabled (bf is FALSE)
+** >getch waits until a key is pressed.
+*/
 
 void		init_visualizer(t_vm *vm)
 {
