@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   proc_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/18 16:55:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/13 20:45:52 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/19 11:39:44 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_process	*new_proc(void)
 	t_process *new;
 
 	if (!(new = (t_process*)malloc(sizeof(t_process))))
-		ft_errno(MALLOC_ERROR);
+		ft_errno(MALLOC_ERROR, "unable to initialize new process");
 	new->next = NULL;
 	return (new);
 }

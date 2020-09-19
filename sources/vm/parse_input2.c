@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 07:53:44 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/17 16:06:35 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/19 11:40:51 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	get_dump(t_vm *vm, char *s)
 	int num;
 
 	if (!ft_atoi_err(s))
-		ft_errno(DUMP_ERROR);
+		ft_errno(DUMP_ERROR, s);
 	if (vm->dump)
-		ft_errno(DUMP_ERROR_SET);
+		ft_errno(DUMP_ERROR_SET, s);
 	vm->dump = true;
 	if (ft_atoi(s) < 0)
 		num = -1;
@@ -33,9 +33,9 @@ void	get_d_flag(t_vm *vm, char *s)
 	int num;
 
 	if (!ft_atoi_err(s))
-		ft_errno(DUMP_ERROR);
+		ft_errno(DUMP_ERROR, s);
 	if (vm->dump)
-		ft_errno(DUMP_ERROR_SET);
+		ft_errno(DUMP_ERROR_SET, s);
 	vm->dump = true;
 	if (ft_atoi(s) < 0)
 		num = -1;
@@ -53,10 +53,10 @@ void	has_magic_header(char *file)
 	{
 		magic = read_n_bytes(fd, 4);
 		if (magic != COREWAR_EXEC_MAGIC)
-			ft_errno(MAGIC_ERROR);
+			ft_errno(MAGIC_ERROR, file);
 	}
 	else
-		ft_errno(OPEN_ERROR);
+		ft_errno(OPEN_ERROR, file);
 }
 
 void	has_white_space(int fd)
@@ -69,7 +69,8 @@ void	has_white_space(int fd)
 	{
 		read(fd, &character, 1);
 		if (character)
-			ft_errno(SPACE_ERROR);
+			ft_errno(SPACE_ERROR, "Champion name, comment, \
+			and exec code should be seperated by NULL bytes");
 		i++;
 	}
 }

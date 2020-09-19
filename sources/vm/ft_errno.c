@@ -6,14 +6,14 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:37:16 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/11 00:07:08 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/19 11:41:17 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/corewar.h"
 
-void	ft_errno(char *s)
+void	ft_errno(char *s, char *file)
 {
-	ft_putendl(s);
+	ft_printf("%s : %s\n", s, file);
 	exit(1);
 }

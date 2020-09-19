@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   start_visualizer.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/28 12:50:02 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/18 12:38:02 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/19 11:43:35 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void		manage_windows(t_vm *vm, int key)
 void		start_visualizer(t_vm *vm)
 {
 	if (!(vm->visu = (t_visu*)malloc(sizeof(t_visu))))
-		ft_errno(MALLOC_ERROR);
+		ft_errno(MALLOC_ERROR, "Unable to allocate memmory for Visualizer");
 	init_visualizer(vm);
 	manage_windows(vm, getch());
 	run_cycles(vm);

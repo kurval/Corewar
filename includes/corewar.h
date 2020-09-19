@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/18 13:47:21 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/19 11:43:42 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,7 +221,7 @@ void				dump_memory(t_vm *vm);
 **					HELPER FUNCTIONS
 */
 
-void				ft_errno(char *id);
+void				ft_errno(char *id, char *file);
 void				get_op(t_op *op);
 int					validate_encoding(t_vm *vm, int encode_byte,
 					t_process *proc);

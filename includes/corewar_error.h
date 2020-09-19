@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 15:39:30 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/16 22:32:52 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/19 11:20:45 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@
 # define SIZE_ERROR "ERROR: Code size does not match the given size"
 
 # define CODE_ERROR "ERROR: The code size differs from what its header says"
+
+# define MISSING_CHAMP "ERROR: Missing champions"
 
 #endif

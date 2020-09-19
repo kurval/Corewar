@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 13:20:40 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/17 17:03:01 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/19 11:26:45 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ int			is_number_available(char **av, int num)
 		}
 	}
 	if (num > MAX_PLAYERS)
-		ft_errno(N_FLAG_ERROR);
+		ft_errno(N_FLAG_ERROR, "or already in use");
 	return (num);
 }
