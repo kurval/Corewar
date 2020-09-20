@@ -1,10 +1,39 @@
 .name "Matti"
-.comment "Please don't hurt me"
+.comment "Please don't hurt me :("
 
-start:
-ld 		%3932220, r1
-sti1:
-sti		r1, %:sti1, %60
-ld		%747521, r2
-sti2:
-sti		r2, %:sti2, %57
+setup:
+sti r1, %:live, %1
+live: live %61773
+#st	r1, :setup
+#st	r2, -6
+and	 %61774, r1, r3
+#st	r3, :setup
+zjmp %:setup
+start:	
+live %61774
+live %61774
+live %61774
+live %61774
+live %61774
+live %61774
+xor	 %61774, r1, r3
+zjmp %:setup
+fork %:start
+live %61774
+live %61774
+live %61774
+live %61774
+live %61774
+live %61774
+xor	 %61774, r1, r3
+zjmp %:setup
+fork %:start
+live %61774
+live %61774
+live %61774
+live %61774
+live %61774
+live %61774
+xor  %61774, r1, r3
+zjmp %:setup
+fork %:start
