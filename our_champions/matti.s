@@ -18,7 +18,6 @@ live %61774
 live %61774
 xor	 %61774, r1, r3
 zjmp %:setup
-fork %:start
 live %61774
 live %61774
 live %61774
@@ -27,7 +26,6 @@ live %61774
 live %61774
 xor	 %61774, r1, r3
 zjmp %:setup
-fork %:start
 live %61774
 live %61774
 live %61774
@@ -36,4 +34,3 @@ live %61774
 live %61774
 xor  %61774, r1, r3
 zjmp %:setup
-fork %:start
