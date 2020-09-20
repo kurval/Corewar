@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/16 13:20:40 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/17 00:14:26 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/19 11:26:45 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	is_a_number(char *s)
 		if (!ft_isdigit(s[i]))
 			return (0);
 	}
-	return(1);
+	return (1);
 }
 
 int			is_number_available(char **av, int num)
@@ -42,12 +42,12 @@ int			is_number_available(char **av, int num)
 	while (av[++i])
 	{
 		if (is_a_number(av[i]) && (ft_atoi(av[i]) == num)
-			&& ft_strequ("-n", av[i -1]))
+			&& ft_strequ("-n", av[i - 1]))
 		{
 			return (is_number_available(av, num + 1));
 		}
 	}
 	if (num > MAX_PLAYERS)
-		ft_errno(N_FLAG_ERROR);
+		ft_errno(N_FLAG_ERROR, "or already in use");
 	return (num);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dasm2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 14:27:55 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/13 10:52:59 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/20 14:44:19 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void		write_arguments(int input, int output, int ins)
 	arguments = 0;
 	i = 0;
 	argc = get_argc();
-	if (ins == 1 || ins == 9 || ins == 12 || ins > 14)
+	if (ins == 1 || ins == 9 || ins == 12 || ins == 15)
 		arguments = 128;
 	else
 		read(input, &arguments, 1);
@@ -97,6 +97,8 @@ int			write_operation(int input_file, int output_file)
 
 	ins = 0;
 	read(input_file, &ins, 1);
+	if (ins > 16)
+		handle_error("Error: Invalid operational code");
 	if (ins)
 		write(output_file, instr_name[ins - 1], ft_strlen(instr_name[ins - 1]));
 	return (ins);

@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/17 00:14:37 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/19 11:30:54 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static void	introduce_champs(t_vm *vm)
 	{
 		if (vm->p[i].id)
 		{
-			ft_printf("* Player %d, Weighing in at %d BYTES, ", i + 1,
+			ft_printf("* Player %d, weighing %d bytes, ", i + 1,
 			vm->p[i].h.prog_size);
-			ft_printf("\"%s\": (\"%s\")\n", vm->p[i].h.prog_name,
+			ft_printf("\"%s\" (\"%s\") !\n", vm->p[i].h.prog_name,
 			vm->p[i].h.comment);
 		}
 	}
@@ -54,7 +54,7 @@ static void	get_player(char *s, t_player *p, int num)
 	}
 	if (!(p->h.comment[0]) || !(p->h.comment[0]) ||
 			(prog_len != p->h.prog_size))
-		ft_errno(CODE_ERROR);
+		ft_errno(CODE_ERROR, s);
 }
 
 int			get_n_flag(char *s, int id[4], int champ_count)
@@ -62,12 +62,12 @@ int			get_n_flag(char *s, int id[4], int champ_count)
 	int num;
 
 	if (!(ft_strlen(s) < 2) || !(ft_isdigit(*s)))
-		ft_errno(N_FLAG_ERROR);
+		ft_errno(N_FLAG_ERROR, s);
 	num = ft_atoi(s);
 	if (num > MAX_PLAYERS || num < 1 || num > champ_count)
-		ft_errno(N_FLAG_ERROR);
+		ft_errno(N_FLAG_ERROR, s);
 	if (!id[num - 1])
-		ft_errno(DUPLICATE_N);
+		ft_errno(DUPLICATE_N, s);
 	return (num);
 }
 
@@ -79,7 +79,7 @@ int			get_next_unused_id(int arr[MAX_PLAYERS], char **av)
 	while (i < MAX_PLAYERS && arr[i] == 0)
 		i++;
 	if (i == MAX_PLAYERS)
-		ft_errno(CHAMP_NUM_ERROR);
+		ft_errno(CHAMP_NUM_ERROR, "Check your input parameters");
 	i = is_number_available(av, i + 1);
 	return (i);
 }

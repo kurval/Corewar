@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 12:22:34 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/13 11:01:57 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/17 17:04:11 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ static void	write_op_code(int input_file, int output_file)
 	op = 0;
 	while ((op = write_operation(input_file, output_file)))
 	{
-		if (op > 15)
-			handle_error("Error: Invalid .cor file");
 		write_arguments(input_file, output_file, op);
 		write(output_file, "\n", 1);
 	}

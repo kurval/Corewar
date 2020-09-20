@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:45:03 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/16 22:43:41 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/19 11:39:19 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,18 @@ static int	is_valid_length(char *s)
 
 	num = -1;
 	if ((fd = open(s, O_RDONLY)) < 0)
-		ft_errno(OPEN_ERROR);
+		ft_errno(OPEN_ERROR, s);
 	else if ((num = lseek(fd, 0, SEEK_END) - sizeof(t_header)) > CHAMP_MAX_SIZE)
-		ft_errno(CHAMP_ERROR);
+		ft_errno(CHAMP_ERROR, s);
 	close(fd);
 	return (1);
 }
 
 static int	valid_n_input(char **s, int i)
 {
-	if (!s[i + 1] || !s[i + 2] || !ft_isdigit(s[i +1][0])
+	if (!s[i + 1] || !s[i + 2] || !ft_isdigit(s[i + 1][0])
 		|| !ends_with_cor(s[i + 2]) || s[i + 1][1])
-		ft_errno(N_FLAG_INPUT);
+		ft_errno(N_FLAG_INPUT, "check your -n flag");
 	return (1);
 }
 
@@ -61,8 +61,10 @@ int			validate_chapions(char **s)
 			|| ft_strequ(s[i], "-d")) && i++))
 			continue ;
 		count += ends_with_cor(s[i]);
+		count > 4 ? ft_errno(CHAMP_NUM_ERROR, s[i]) : 0;
 		is_valid_length(s[i]);
 		has_magic_header(s[i]);
 	}
+	count ? 0 : ft_errno(MISSING_CHAMP, "No chapmion found");
 	return (count);
 }
