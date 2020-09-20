@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+         #
+#    By: bkonjuha <bkonjuha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/09/16 13:41:54 by bkonjuha         ###   ########.fr        #
+#    Updated: 2020/09/20 14:58:00 by bkonjuha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,21 +76,23 @@ all: $(ASM) $(COREWAR)
 
 $(ASM): $(LIBFT) $(HEADERS) $(A) $(ASM_SRC)
 		@$(COMPILE) $(INCLUDES) $(A) $(ASM_SRC) $(LIBFT) -o $(ASM)
-		@$(CP) -f $(ASM_MANPAGE) $(ASM_MAN_LOCATION)
-		@$(GZIP) -f $(ASM_MAN_LOCATION)
 		@echo "[$(COLOR_PENDING)Putting everything together$(COLOR_RESET)]"
 		@echo "[$(COLOR_SUCCESS)Executable $(ASM) created$(COLOR_RESET)]"
 
 $(COREWAR): $(LIBFT) $(HEADERS) $(C) $(COREWAR_SRC)
 		@$(COMPILE) $(NCURSES) $(INCLUDES) $(C) $(COREWAR_SRC) $(LIBFT) -o $(COREWAR)
-		@$(CP) -f $(COREWAR_MANPAGE) $(COREWAR_MAN_LOCATION)
-		@$(GZIP) -f $(COREWAR_MAN_LOCATION)
 		@echo "[$(COLOR_PENDING)Putting everything together$(COLOR_RESET)]"
 		@echo "[$(COLOR_SUCCESS)Executable $(COREWAR) created$(COLOR_RESET)]"
 
 $(LIBFT): $(LIBFT_SRCS)*.c $(FT_PRINTF_SRCS)*.c
 		@echo "Recompiling library"
 		@make -C libft/
+
+man: $(ASM_MANPAGE) $(COREWAR_MANPAGE)
+		@$(CP) -f $(ASM_MANPAGE) $(ASM_MAN_LOCATION)
+		@$(GZIP) -f $(ASM_MAN_LOCATION)
+		@$(CP) -f $(COREWAR_MANPAGE) $(COREWAR_MAN_LOCATION)
+		@$(GZIP) -f $(COREWAR_MAN_LOCATION)
 
 exec: $(LIBFT)
 		@$(COMPILE) $(INCLUDES) $(A) $(ASM_SRC) $(LIBFT) -o $(ASM)
@@ -103,11 +105,11 @@ mclean:
 		@rm $(ASM_MAN_LOCATION).gz
 		@rm $(COREWAR_MAN_LOCATION).gz
 
-fclean: clean mclean
+fclean: clean
 		@rm -fv $(ASM) > /dev/null
 		@rm -fv $(COREWAR) > /dev/null
 		@make fclean -C libft/ > /dev/null
 
 re: fclean all
 
-.PHONY = all exec clean mclean fclean re
+.PHONY = all exec clean mclean fclean re man
