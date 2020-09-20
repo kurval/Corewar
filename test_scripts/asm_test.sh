@@ -18,7 +18,7 @@ echo $DIR;
 EXE=$DIR/../asm
 ORIG_EXE=$DIR/../resources/asm
 
-LINECHECKER=$DIR/./linechecker
+LINECHECKER="$DIR/./linechecker.sh 1 0"
 
 # TEST_COUNT represents the number of tests in s_files/ folder.
 TEST_COUNT=96

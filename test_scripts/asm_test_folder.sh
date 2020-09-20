@@ -13,10 +13,10 @@ fi
 # ORIG_EXE = path to the comparison executable
 # Paths need to be relative to test_scripts folder
 
-EXE=../sources/assembler/asm
+EXE=../asm
 ORIG_EXE=../resources/asm
 
-LINECHECKER=./linechecker
+LINECHECKER="./linechecker.sh 1 0"
 
 # Time in seconds added to each test for readability. Set to 0 for fast output
 INTERVAL=1

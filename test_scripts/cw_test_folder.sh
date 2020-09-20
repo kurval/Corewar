@@ -16,7 +16,7 @@ fi
 EXE=../corewar
 ORIG_EXE=../resources/corewar
 
-LINECHECKER=./linechecker
+LINECHECKER=./linechecker.sh
 
 # Time in seconds added to each test for readability. Set to 0 for fast output
 INTERVAL=0
@@ -117,12 +117,10 @@ else
 			rm $DESTDIR/our_output 2> /dev/null
 
 			$ORIG_EXE $f >> $DESTDIR/orig_output 2>&1
-			echo -e "${YELLOW}Return value $?${NOCOL}" >> $DESTDIR/orig_output
 			echo "Orig $TEST_NBR" >> $DESTDIR/log_exe_output
 			cat $DESTDIR/orig_output >> $DESTDIR/log_exe_output
 
 			$EXE $f >> $DESTDIR/our_output 2>&1
-			echo -e "${YELLOW}Return value $?${NOCOL}" >> $DESTDIR/our_output
 			echo "Our $TEST_NBR" >> $DESTDIR/log_exe_output
 			cat $DESTDIR/our_output >> $DESTDIR/log_exe_output
 			echo "---" >> $DESTDIR/log_exe_output
@@ -133,11 +131,11 @@ else
 			if [ $? -eq 0 ];
 			then
 				echo -e "${GREEN}Program output messages are equal${NOCOL}"
-				echo -ne "- " >> $DESTDIR/.summary
+				echo -e "  $TEST_NBR - $f" >> $DESTDIR/.summary
 			else
-				echo -e "${RED}Differences${NOCOL}"  | tee -a $DESTDIR/.output
+				echo -e "${YELLOW}Differences${NOCOL}"  | tee -a $DESTDIR/.output
 				echo ""
-				echo -e "${RED}D ${NOCOL}$TEST_NBR - $f" >> $DESTDIR/.summary
+				echo -e "${YELLOW}D ${NOCOL}$TEST_NBR - $f" >> $DESTDIR/.summary
 				echo -ne ${BLUE}
 				echo "OURS" | tee -a $DESTDIR/.output
 				echo -ne ${NOCOL}
