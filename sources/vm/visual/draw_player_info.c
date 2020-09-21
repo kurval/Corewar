@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/30 19:24:46 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/12 15:49:32 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/21 17:24:47 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void		print_info(t_vm *vm, t_player *player, int y, int x)
 	win = vm->visu->side2;
 	wattron(win, COLOR_PAIR(player->id) | A_BOLD);
 	mvwprintw(win, y, x + 46, "%s", player->h.prog_name);
+	wattroff(win, COLOR_PAIR(player->id) | A_BOLD);
 	wattron(win, COLOR_PAIR(W_B) | A_BOLD);
 	mvwprintw(win, y++, x + 40, "Name: ");
 	mvwprintw(win, y++, x + 40, "Last live: %d", player->last_live);

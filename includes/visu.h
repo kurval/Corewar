@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 22:48:50 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/21 11:46:57 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/21 17:35:04 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 # define B_LIVE         22
 # define R_LIVE         23
 # define C_LIVE         24
-# define GRAY           15
+# define COLOR_GRAY     15
 # define FRAME          17
 
 # define L1  L" ▄████▄   ▒█████   ██▀███  ▓█████  █     █░ ▄▄▄       ██▀███  "
