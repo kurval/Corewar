@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 17:25:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/21 17:44:03 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/21 18:48:57 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ static void	set_owners(t_vm *vm)
 	i = -1;
 	while (++i < MEM_SIZE)
 	{
+		vm->visu->attributes[i].cursor = false;
 		vm->visu->attributes[i].live = 0;
 		vm->visu->attributes[i].new_mem = 0;
 		vm->visu->attributes[i].owner = 99;
