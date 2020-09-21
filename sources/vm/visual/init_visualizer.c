@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 17:25:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/21 17:34:49 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/21 17:44:03 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	set_owners(t_vm *vm)
 	{
 		vm->visu->attributes[i].live = 0;
 		vm->visu->attributes[i].new_mem = 0;
-		vm->visu->attributes[i].owner = 0;
+		vm->visu->attributes[i].owner = 99;
 	}
 	i = -1;
 	while (++i < vm->nb_players)

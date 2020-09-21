@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 22:48:50 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/21 17:35:04 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/21 17:43:49 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define LIVE_ON    50
 # define NEW_MEM    50
 
-# define GRAY_B         0
+# define GRAY_B         99
 # define G_B            1
 # define B_B            2
 # define R_B            3
