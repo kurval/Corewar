@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/31 17:25:01 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/18 12:05:25 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/21 11:44:46 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static void	create_windows(t_vm *vm)
 	max_y = 0;
 	max_x = 0;
 	getmaxyx(stdscr, max_y, max_x);
-	sub_height = max_y / 3;
+	sub_height = HEIGHT / 3;
 	sub_width = max_x - WIDTH;
 	vm->visu->arena = newwin(HEIGHT, WIDTH, 0, 0);
 	vm->visu->side1 = newwin(sub_height - 6, sub_width, 0, WIDTH);
