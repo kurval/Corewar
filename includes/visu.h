@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/29 22:48:50 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/21 17:43:49 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/21 18:03:54 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define M_B            5
 # define W_B            6
 # define Y_B            7
-# define GRAY_CURSOR    10
+# define GRAY_CURSOR    109
 # define G_CURSOR       11
 # define B_CURSOR       12
 # define R_CURSOR       13
