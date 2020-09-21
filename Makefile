@@ -51,7 +51,7 @@ INCLUDES = -I ./includes/ -I ./libft/incls/
 HEADER_PATH = ./includes/
 HEADER_FILES = asm.h corewar.h corewar_error.h visu.h op.h
 HEADERS = $(addprefix $(HEADER_PATH), $(HEADER_FILES))
-COMPILE = gcc -Wall -Wextra -Werror -g # remove g flag before turning the assignment in
+COMPILE = gcc -Wall -Wextra -Werror
 NCURSES = -lncurses
 
 LIBFT_SRCS = ./libft/srcs/
