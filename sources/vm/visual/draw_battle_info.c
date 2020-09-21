@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 15:41:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/12 16:20:01 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/21 17:24:12 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static void	print_battle_info(t_vm *vm, WINDOW *win, int y, int x)
 	mvwprintw(win, y + 11, x, "--> ");
 	mvwprintw(win, y + 12, x, "--> ");
 	mvwprintw(win, y + 13, x, "--> ");
+	wattroff(win, COLOR_PAIR(M_B) | A_BOLD);
 	wattron(win, COLOR_PAIR(W_B) | A_BOLD);
 	mvwprintw(win, y, x + 8, "%d", vm->current_cycle);
 	mvwprintw(win, y, x + 41, "%d", vm->nb_procs);
