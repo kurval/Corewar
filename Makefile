@@ -6,7 +6,7 @@
 #    By: bkonjuha <bkonjuha@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/09/20 14:58:00 by bkonjuha         ###   ########.fr        #
+#    Updated: 2020/09/21 13:20:30 by bkonjuha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,10 +60,10 @@ LIBFT_FILE = libft.a
 LIBFT = $(addprefix $(LIBFT_PATH), $(LIBFT_FILE))
 FT_PRINTF_SRCS = ./libft/srcs/ft_printf/
 
-ASM_MANPAGE = ./sources/asm
-COREWAR_MANPAGE = ./sources/corewar
-ASM_MAN_LOCATION = /usr/local/share/man/man8/asm.8
-COREWAR_MAN_LOCATION = /usr/local/share/man/man8/corewar.8
+ASM_MANPAGE = ./sources/asm_man
+COREWAR_MANPAGE = ./sources/corewar_man
+ASM_MAN_LOCATION = sources/man/man1/asm.1
+COREWAR_MAN_LOCATION = sources/man/man1/corewar.1
 GZIP = gzip
 CP = cp
 
@@ -88,7 +88,9 @@ $(LIBFT): $(LIBFT_SRCS)*.c $(FT_PRINTF_SRCS)*.c
 		@echo "Recompiling library"
 		@make -C libft/
 
-man: $(ASM_MANPAGE) $(COREWAR_MANPAGE)
+man:
+		mkdir -p sources/man/man1
+		export MANPATH=./sources/man
 		@$(CP) -f $(ASM_MANPAGE) $(ASM_MAN_LOCATION)
 		@$(GZIP) -f $(ASM_MAN_LOCATION)
 		@$(CP) -f $(COREWAR_MANPAGE) $(COREWAR_MAN_LOCATION)
@@ -104,8 +106,9 @@ clean:
 mclean:
 		@rm $(ASM_MAN_LOCATION).gz
 		@rm $(COREWAR_MAN_LOCATION).gz
+		@rm -rf ./sources/man
 
-fclean: clean
+fclean: clean mclean
 		@rm -fv $(ASM) > /dev/null
 		@rm -fv $(COREWAR) > /dev/null
 		@make fclean -C libft/ > /dev/null

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: bkonjuha <bkonjuha@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:35:39 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/19 11:30:54 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/21 12:30:35 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ static void	get_player(char *s, t_player *p, int num)
 		p->h.prog_size = len;
 		close(fd);
 	}
-	if (!(p->h.comment[0]) || !(p->h.comment[0]) ||
-			(prog_len != p->h.prog_size))
+	if (prog_len != p->h.prog_size)
 		ft_errno(CODE_ERROR, s);
 }
 
