@@ -6,14 +6,14 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/19 23:25:59 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/13 20:40:36 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/21 21:34:51 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/corewar.h"
 
 /*
-** Sests value from registry into the arena as unsigned char.
+** Sets value from registry into the arena as unsigned char.
 */
 
 void	load_into_memory(t_vm *vm, unsigned int addr,\

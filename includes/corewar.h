@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   corewar.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/07/29 09:49:51 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/19 11:43:42 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/21 21:34:30 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ typedef struct		s_process
 ** Players contain following information:
 ** - id : unique ID
 ** - code : executable code
-** - comment[COMMENT_LENGTH + 1]:  champion comment
 ** - last_live : last cycle players was alive
 ** - period_lives: number of lives in current period
 ** - Other information can be found in op.h header struct
