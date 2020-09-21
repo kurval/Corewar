@@ -108,7 +108,7 @@ mclean:
 		@rm $(COREWAR_MAN_LOCATION).gz
 		@rm -rf ./sources/man
 
-fclean: clean mclean
+fclean: clean
 		@rm -fv $(ASM) > /dev/null
 		@rm -fv $(COREWAR) > /dev/null
 		@make fclean -C libft/ > /dev/null

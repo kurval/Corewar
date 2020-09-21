@@ -12,7 +12,7 @@ echo $DIR;
 
 # EXE = path to our asm executable
 # ORIG_EXE = path to school-given asm
-# Paths need to be relative to test_scripts folder
+# Paths need to be relative to eval_tests folder
 # DO NOT REMOVE DIR OR THE SCRIPT WILL ONLY WORK INSIDE ASM FOLDER (unless dirname does not work for you)
 
 EXE=$DIR/../asm
@@ -38,7 +38,7 @@ if [ $# -ne 1 ];
 then
 	echo -e "+---------------------------------------------------------------------------------------+"
 	echo -e "|                                                                                       |"
-	echo -e "| ${YELLOW}USAGE ${RED}(NOTE: RUN INSIDE test_scripts folder)${NOCOL}                                          |"
+	echo -e "| ${YELLOW}USAGE ${RED}(NOTE: RUN INSIDE eval_tests folder)${NOCOL}                                          |"
 	echo -e "|                                                                                       |"
 	echo -e "| ${BLUE}./asm_test.sh --compare${NOCOL}                                                               |"
 	echo -e "|      -> compare our asm output to original asm output                                 |" 
@@ -49,7 +49,7 @@ then
 	echo -e "|                                                                                       |"
 	echo -e "| Your asm needs to be compiled before you run tests.                                   |"
 	echo -e "| Check that file path variables (${GREEN}EXE${NOCOL} and ${GREEN}ORIG_EXE${NOCOL}) are correctly set.                  |"
-	echo -e "| (relative path from test_scripts folder)                                              |"
+	echo -e "| (relative path from eval_tests folder)                                              |"
 	echo -e "|                                                                                       |"
 	echo -e "| ${YELLOW}How to add more tests:${NOCOL}                                                                |"
 	echo -e "| If file name doesn't matter, you can add a file with a new number in ${GREEN}tests${NOCOL} folder.    |"
@@ -168,7 +168,7 @@ else
 		echo "";
 		echo -e "+---------------------------------------------------------------------------------------+"
 		echo -e "|                                                                                       |"
-		echo -e "| ${YELLOW}USAGE ${RED}(NOTE: RUN INSIDE test_scripts folder)${NOCOL}                                          |"
+		echo -e "| ${YELLOW}USAGE ${RED}(NOTE: RUN INSIDE eval_tests folder)${NOCOL}                                          |"
 		echo -e "|                                                                                       |"
 		echo -e "| ${BLUE}./asm_test.sh --compare${NOCOL}                                                               |"
 		echo -e "|      -> compare our asm output to original asm output                                 |" 
@@ -179,7 +179,7 @@ else
 		echo -e "|                                                                                       |"
 		echo -e "| Your asm needs to be compiled before you run tests.                                   |"
 		echo -e "| Check that file path variables (${GREEN}EXE${NOCOL} and ${GREEN}ORIG_EXE${NOCOL}) are correctly set.                  |"
-		echo -e "| (relative path from test_scripts folder)                                              |"
+		echo -e "| (relative path from eval_tests folder)                                              |"
 		echo -e "|                                                                                       |"
 		echo -e "| ${YELLOW}How to add more tests:${NOCOL}                                                                |"
 		echo -e "| If file name doesn't matter, you can add a file with a new number in ${GREEN}tests${NOCOL} folder.    |"

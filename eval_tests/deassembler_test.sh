@@ -80,7 +80,7 @@ do
 	then
 		echo -e "${GREEN}Equal cor files${NOCOL}"
 	else
-		echo -e "${RED}Differences in cor files or missing cor file${NOCOL}"
+		echo -e "${YELLOW}Differences in cor files or missing cor file${NOCOL}"
 	fi
 	wait
 	mv $DEST/*.s $DEST/s_files/ > /dev/null 2>&1

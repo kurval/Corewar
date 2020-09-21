@@ -11,7 +11,7 @@ fi
 
 # EXE = path to our asm executable
 # ORIG_EXE = path to the comparison executable
-# Paths need to be relative to test_scripts folder
+# Paths need to be relative to eval_tests folder
 
 EXE=../asm
 ORIG_EXE=../resources/asm
@@ -68,7 +68,7 @@ then
 		echo "";
 		echo -e "+---------------------------------------------------------------------------------------+"
 		echo -e "|                                                                                       |"
-		echo -e "| ${YELLOW}USAGE ${RED}(NOTE: RUN INSIDE test_scripts folder)${NOCOL}                                       |"
+		echo -e "| ${YELLOW}USAGE ${RED}(NOTE: RUN INSIDE eval_tests folder)${NOCOL}                                       |"
 		echo -e "|                                                                                       |"
 		echo -e "| ${BLUE}./asm_test_folder.sh --test [folder name without trailing '/'] ${NOCOL}                       |"
 		echo -e "|      -> compare our asm output to original asm output                                 |" 
@@ -78,7 +78,7 @@ then
 		echo -e "|                                                                                       |"
 		echo -e "| Your asm needs to be compiled before you run tests.                                   |"
 		echo -e "| Check that file path variables (${GREEN}EXE${NOCOL} and ${GREEN}ORIG_EXE${NOCOL}) are correctly set.                  |"
-		echo -e "| (relative path from test_scripts folder)                                           |"
+		echo -e "| (relative path from eval_tests folder)                                           |"
 		echo -e "|                                                                                       |"
 		echo -e "| ${YELLOW}Notes:${NOCOL}                                                                                |"
 		echo -e "| Alter INTERVAL in the script file to change test speed (bigger value = slower test)   |"
@@ -252,7 +252,7 @@ else
 		echo "";
 		echo -e "+---------------------------------------------------------------------------------------+"
 		echo -e "|                                                                                       |"
-		echo -e "| ${YELLOW}USAGE ${RED}(NOTE: RUN INSIDE test_scripts folder)${NOCOL}                                       |"
+		echo -e "| ${YELLOW}USAGE ${RED}(NOTE: RUN INSIDE eval_tests folder)${NOCOL}                                       |"
 		echo -e "|                                                                                       |"
 		echo -e "| ${BLUE}./asm_test_folder.sh --test [folder name without trailing '/'] ${NOCOL}                       |"
 		echo -e "|      -> compare our asm output to original asm output                                 |" 
@@ -262,7 +262,7 @@ else
 		echo -e "|                                                                                       |"
 		echo -e "| Your asm needs to be compiled before you run tests.                                   |"
 		echo -e "| Check that file path variables (${GREEN}EXE${NOCOL} and ${GREEN}ORIG_EXE${NOCOL}) are correctly set.                  |"
-		echo -e "| (relative path from test_scripts folder)                                           |"
+		echo -e "| (relative path from eval_tests folder)                                           |"
 		echo -e "|                                                                                       |"
 		echo -e "| ${YELLOW}Notes:${NOCOL}                                                                                |"
 		echo -e "| Set INTERVAL to 0 in the script file if you want a faster test.                       |"

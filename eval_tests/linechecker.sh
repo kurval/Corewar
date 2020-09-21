@@ -13,7 +13,7 @@ if [ $# -ne 4 ];
 then
 	echo "--------"
 	echo "${YELLOW}Usage: ./linechecker.sh [errors_only (1 | 0)] [strictness (1 = red on diff 0 = yellow on diff)] [our_file] [orig_file]"
-	echo "Compares 2 files line by line. Prints differing our file lines in color based on strictness${NOCOL}"
+	echo "Compares 2 files line by line. Prints lines from our file that are different to original file in color based on strictness${NOCOL}"
 	echo "--------"
 	exit 1;
 fi
