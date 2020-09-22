@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:06 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/16 11:08:26 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/22 15:25:14 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@
 
 void	op_aff(t_vm *vm, t_process *proc)
 {
+	char val;
+
+	val = (char)(get_op_values(vm, proc, 1) % 256);
 	if (vm->a_flag)
-		ft_putchar((char)get_op_values(vm, proc, 1));
+		ft_printf("Aff: %c\n", val);
 	if (vm->v_flag)
 		(vm->visu->debug) ?\
 		log_operation(vm, proc) : 0;
