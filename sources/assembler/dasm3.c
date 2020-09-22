@@ -12,7 +12,7 @@
 
 #include "asm.h"
 
-int	read_n_bytes(int input, int count)
+int			read_n_bytes(int input, int count)
 {
 	unsigned char	number;
 	int				result;

@@ -418,5 +418,4 @@ void			write_t_dir(int output, int input, int ins);
 void			write_t_ind(int output, int input);
 int				read_n_bytes(int input, int count);
 
-
 #endif
