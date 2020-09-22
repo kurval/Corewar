@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/20 07:53:44 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/19 11:40:51 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/22 08:44:08 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	has_white_space(int fd)
 		read(fd, &character, 1);
 		if (character)
 			ft_errno(SPACE_ERROR, "Champion name, comment, \
-			and exec code should be seperated by NULL bytes");
+and exec code should be seperated by NULL bytes");
 		i++;
 	}
 }

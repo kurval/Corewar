@@ -6,13 +6,13 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/12 15:22:12 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/17 00:22:51 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/22 07:50:45 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "asm.h"
 
-static int	read_n_bytes(int input, int count)
+int	read_n_bytes(int input, int count)
 {
 	unsigned char	number;
 	int				result;

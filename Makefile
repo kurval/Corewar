@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: bkonjuha <bkonjuha@student.42.fr>          +#+  +:+       +#+         #
+#    By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/02 15:57:46 by bkonjuha          #+#    #+#              #
-#    Updated: 2020/09/21 13:20:30 by bkonjuha         ###   ########.fr        #
+#    Updated: 2020/09/22 09:11:10 by bkonjuha         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -90,7 +90,6 @@ $(LIBFT): $(LIBFT_SRCS)*.c $(FT_PRINTF_SRCS)*.c
 
 man:
 		mkdir -p sources/man/man1
-		export MANPATH=./sources/man
 		@$(CP) -f $(ASM_MANPAGE) $(ASM_MAN_LOCATION)
 		@$(GZIP) -f $(ASM_MAN_LOCATION)
 		@$(CP) -f $(COREWAR_MANPAGE) $(COREWAR_MAN_LOCATION)

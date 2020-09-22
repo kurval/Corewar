@@ -6,7 +6,7 @@
 /*   By: bkonjuha <bkonjuha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/02 16:45:03 by bkonjuha          #+#    #+#             */
-/*   Updated: 2020/09/19 11:39:19 by bkonjuha         ###   ########.fr       */
+/*   Updated: 2020/09/22 08:26:09 by bkonjuha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ static int	is_valid_length(char *s)
 	num = -1;
 	if ((fd = open(s, O_RDONLY)) < 0)
 		ft_errno(OPEN_ERROR, s);
-	else if ((num = lseek(fd, 0, SEEK_END) - sizeof(t_header)) > CHAMP_MAX_SIZE)
+	num = lseek(fd, 0, SEEK_END);
+	if ((num - sizeof(t_header)) > CHAMP_MAX_SIZE
+			|| num < (int)sizeof(t_header))
 		ft_errno(CHAMP_ERROR, s);
 	close(fd);
 	return (1);
