@@ -103,8 +103,8 @@ clean:
 		@make clean -C libft/ > /dev/null
 
 mclean:
-		@rm $(ASM_MAN_LOCATION).gz
-		@rm $(COREWAR_MAN_LOCATION).gz
+		@rm -f $(ASM_MAN_LOCATION).gz
+		@rm -f $(COREWAR_MAN_LOCATION).gz
 		@rm -rf ./sources/man
 
 fclean: clean
