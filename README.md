@@ -52,7 +52,7 @@ It offers various functions, all of which will be useful for the battle of the c
 
 ## Compiling  
 You can clone this repository and compile both of the programs by running following command inside of your terminal:  
-```git clone https://github.com/kurval/Corewar.git corewar && cd corewar```  
+```git clone https://github.com/kurval/Corewar.git corewar && cd corewar && make```  
 
 ## Contributors:  
 [@anntuomi](https://github.com/anntuomi) : assembler, test scripts  
