@@ -6,7 +6,7 @@
 /*   By: vkurkela <vkurkela@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/08 11:45:42 by vkurkela          #+#    #+#             */
-/*   Updated: 2020/09/16 19:17:57 by vkurkela         ###   ########.fr       */
+/*   Updated: 2020/09/16 11:08:26 by vkurkela         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ void	op_lld(t_vm *vm, t_process *proc)
 {
 	int	res;
 
-	res = get_op_values(vm, proc, 1);
+	if (proc->args[0] == T_IND)
+		res = int_arg(vm, proc->pc +
+		proc->values[0]);
+	else
+		res = get_op_values(vm, proc, 1);
 	proc->reg[proc->values[1] - 1] = res;
 	proc->carry = (!res ? 1 : 0);
 	if (vm->v_flag)
