@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ../corewar $1 $2 $3 $4
 echo
 ../corewar $1 $2 $4 $3
