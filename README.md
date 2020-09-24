@@ -13,7 +13,12 @@ This project can be broken down into three distinctive parts:
 • **The virtual machine:** It’s the “arena” where champions will be executed.
 It offers various functions, all of which will be useful for the battle of the champions.
 
-• **The champion:** Our task was to write the champion in assembly language which will fight in the arena against other champions.
+• **The champion:** Our task was to write the champion in assembly language which will fight in the arena against other champions.  
+
+The game ends when all the processes are dead. The winner is the last player
+reported to be “alive”.  
+
+![winner](winner.png)
 
 ## Usage
 ### Assembler:  
