@@ -59,6 +59,17 @@ reported to be “alive”.
 You can clone this repository and compile both of the programs by running following command inside of your terminal:  
 ```git clone https://github.com/kurval/Corewar.git corewar && cd corewar && make```  
 
+## Manpage  
+You can view our manpage by running:  
+```make man```  
+and set enviroment variable:  
+```export MANPATH=./sources/man```  
+Now you can view asm and corewar manpages:  
+```man asm```  
+or  
+```man corewar```  
+![corewar_man](man.png)
+
 ## Contributors:  
 [@anntuomi](https://github.com/anntuomi) : assembler, test scripts  
 [@janettem](https://github.com/janettem) : assembler, vm operations  
