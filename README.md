@@ -60,7 +60,7 @@ You can clone this repository and compile both of the programs by running follow
 ```git clone https://github.com/kurval/Corewar.git corewar && cd corewar && make```  
 
 ## Manpage  
-You can view our manpage by running: ```make man``` and set enviroment variable ```export MANPATH=./sources/man```  
+You can view our manpage by running: ```make man``` and set environment variable ```export MANPATH=./sources/man```  
 
 Now you can view asm and corewar manpages:  
 ```man asm```  
