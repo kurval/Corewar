@@ -1,6 +1,6 @@
 # Corewar
 
-![vm](corewar.gif)  
+![vm](corewar_readme.gif)  
 *```The virtual machine visualizer (using ncurses library)```*
 
 ## Description  
